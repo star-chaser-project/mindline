@@ -1,14 +1,1 @@
-MongoDBAtlas-Details
-
-
-Cluster24
-
-Username
-curtinUser
-
-Password
-aZ0DB61wsIVTIinX
-
-
-mongodb+srv://curtinUser:aZ0DB61wsIVTIinX@cluster24.tnmxh.mongodb.net/
 
