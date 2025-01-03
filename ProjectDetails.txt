@@ -1,0 +1,80 @@
+Project Details
+-------------------
+
+Unit: DIG31
+Assignment: A3
+Student Name: Nancy Lanario
+Student ID: 13903040
+Submission Date: 20/11/2024
+-----------------------------------------------------------
+
+Live URL
+------------
+
+Backend: 
+-----------
+https://
+
+
+Frontend: 
+-----------
+https://
+
+------------------------------------------------------------
+
+Login details
+----------------
+
+Barista
+User access level: 2
+--------------------------
+
+email: hello@cafeminori.bigpond.com
+password: Liz1234
+
+
+Customer
+User access level: 1
+--------------------------
+email: awonderland@curtin.edu.au
+password: Alice1234
+
+email: patrickg@iinet.com.au
+password: Patrick1234
+
+email: heatherm@optus.com.au
+password: Heather1234
+
+email: marys@iinet.au
+password: Mary1234
+
+email: Joshy@primus.com.au
+password: Josh1234
+
+email: betmidler@telstra.com
+password: Bet1234
+
+email: awonderland@curtin.edu.au
+password: Alice1234
+
+email: jsmith@curtin.edu.au
+password: John1234
+
+email: jackeast@curtin.edu.au
+password: Jack1234
+
+email: candys@optus.net.au
+password: Candy1234
+
+email: donnaf@iinet.com.au
+password: Donna1234
+
+email: daniel.brouse@curtin.edu.au
+password: Dan1234
+
+email: sally@curtin.edu.au
+password: Sally1234
+
+email: bobby@hotmail.com
+password: Bob1234
+
