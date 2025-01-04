@@ -19,22 +19,40 @@ class aboutUsView {
         <div class="owner-bio">
         <sl-animation name="fadeIn" duration="2000" play iterations="1">
           <div class="owner-bio-text">
-            <h1>My Story</h1>
+            <h1>About Us</h1>
             <p>
-              I grew up with the aroma of freshly made coffee <br>
-              every morning as my Mum and Nona made that every <br> 
-              day coming from a big Italian family. My coffee van <br> 
-              dream was born after a visit to see my Grandfather <br> 
-              in Minori, Italy. His love of coffee and serving his <br>
-              community inspired me to do the same here in Perth. <br>
-              I've been serving great coffee and delicious savoury <br>
-              and sweet treats from my quirky coffee van since <br>
-              August 2024. I look forward to meeting you soon.<br><br>
+              Mindline AU's is a not-for-profit organisation on a mission to raise awareness
+              and support for young people to reach their full potential mentally, physically,
+              and emotionally<br><br>
 
-              <b><i>Liz</i></b> <br>
-              xx
+              <b><i>The Mindline Team</i></b>
+              
             </p>
           </div>
+          <div>
+          <h1>Our Mission</h1>
+            <p>
+              For you to have a safe space to hang out and explore resources and tools
+              to empower you to manage your wellbeing, have fun! <br><br>
+
+              <b><i>The Mindline Team</i></b>
+              
+            </p>
+          </div>
+
+          <div>
+          <h1>Contact Info</h1>
+            <p>
+              Address: 143 Brookland Avenue, Merryville QLD 4506 
+              Phone: <a href="tel:0406 090 996">1800 034 034</a>
+              Email: <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
+              Web: www.mindline-au@netlify.com.au
+                            
+              <br><br>
+                      
+            </p>
+          </div>
+
         </sl-animation>
           <div class="bg-img" class="responsive-img"><img src="/images/cafe-minori-owner-with-truck-custom.png"></div>
         </div>

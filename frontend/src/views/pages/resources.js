@@ -16,7 +16,7 @@ class TemplateView {
       <va-app-header title="Resources" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
       <div class="page-content">        
         <h1>Resources</h1>
-        <p>Page content ...</p>
+        <p>Supporting You Every Step of the Way.</p>
         
       </div>      
     `

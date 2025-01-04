@@ -16,8 +16,9 @@ class TemplateView {
       <va-app-header title="Mindfulness" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
       <div class="page-content">        
         <h1>Mindfulness</h1>
-        <p>Page content ...</p>
-        
+        <p>Be Present</p>
+        <p>Be Peaceful</p>
+        <p>Be You</p>
       </div>      
     `
     render(template, App.rootEl)
