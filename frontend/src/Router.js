@@ -14,7 +14,7 @@ import aboutView from './views/pages/about';
 
 import productsView from './views/pages/products';
 import ordersView from './views/pages/orders';
-import favouriteProductsView from './views/pages/favouriteProducts';
+import favouritesView from './views/pages/favourites';
 import newProductView from './views/pages/newProduct';
 import locationView from './views/pages/location';
 import aboutUsView from './views/pages/aboutUs';

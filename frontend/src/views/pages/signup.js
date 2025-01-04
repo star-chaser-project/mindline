@@ -50,13 +50,13 @@ class SignUpView{
               <div class="input-group">
                 <sl-select name="accessLevel" placeholder="I am a ..." placement="bottom">
                   <sl-menu-item value="1">Customer</sl-menu-item>
-                  <sl-menu-item value="2">Barista</sl-menu-item>
+                  <sl-menu-item value="2">Mindline Admin</sl-menu-item>
                 </sl-select>
               </div>
               <div>         
               <sl-button type="primary" class="submit-btn" submit style="width: 50%;">SIGN UP</sl-button>
             </sl-form>
-              <p>Brand new? <a href="/signin" @click=${anchorRoute}>Sign in</a></p>
+              <p>Already have an account? <a href="/signin" @click=${anchorRoute}>Sign in</a></p>
           </div>
           
           </div>

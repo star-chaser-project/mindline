@@ -7,7 +7,7 @@ import Utils from './../../Utils';
 class SignInView {
   init(){
     console.log('SignInView.init');
-    document.title = 'Sign In';
+    document.title = 'Log in';
     this.render();
     Utils.pageIntroAnim();
   }
@@ -30,7 +30,7 @@ class SignInView {
         <div class="signon2-container">
           <div class="signinup-box">
             <img class="signinup-logo" src="/images/cafe-minori-logo-portrait.png" class="responsive-img"> <br>
-            <h1>Sign in</h1>       
+            <h1>Log in</h1>       
             <sl-form class="form-signup dark-theme" @sl-submit=${this.signInSubmitHandler}>          
               <div class="input-group">
                 <sl-input name="email" type="email" placeholder="Email" required></sl-input>

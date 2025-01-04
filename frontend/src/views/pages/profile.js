@@ -35,7 +35,7 @@ class ProfileView {
           <p>${Auth.currentUser.bio}</p>
         ` : html``}
 
-        <sl-button @click=${() => gotoRoute('/editProfile')}>Edit Profile</sl-button>
+        <sl-button @click=${() => gotoRoute('/editProfile')}>UPDATE</sl-button>
       </div>      
     `;
     render(template, App.rootEl);

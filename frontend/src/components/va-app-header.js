@@ -161,7 +161,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
       }
 
     </style>
-
+  
     <header class="app-header">
       <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>       
       
@@ -175,11 +175,14 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
       <nav class="app-top-nav">
         <a href="/" @click="${anchorRoute}">Home</a>  
         ${this.user.accessLevel == 2 ? html`
+          <a href="/favourites" @click="${anchorRoute}">Add Favourite</a>
+          <a href="/favourites" @click="${anchorRoute}">Remove Favourite</a>  
           <a href="/newProduct" @click="${anchorRoute}">Add Product</a> 
           <a href="/products" @click="${anchorRoute}">View Products</a>
           <a href="/orders" @click="${anchorRoute}">View Orders</a>
         ` : ''}
         ${this.user.accessLevel == 1 ? html`
+          <a href="/about" @click="${anchorRoute}">About</a>
           <a href="/aboutUs" @click="${anchorRoute}">About Us</a>
           <a href="/location" @click="${anchorRoute}">Location</a>
           <a href="/products" @click="${anchorRoute}">View Products</a>
@@ -207,13 +210,12 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
       <br>
       <nav class="app-side-menu-items">
         ${this.user.accessLevel == 2 ? html`
-          <a href="/newProduct" @click="${this.menuClick}">Add Product</a> 
-        ` : ''}
-        <a href="/products" @click="${this.menuClick}">View Products</a>
-        <a href="/orders" @click="${this.menuClick}">View Orders</a>
-        <a href="/favouriteProducts" @click="${this.menuClick}">Favourites</a>
-        <a href="/location" @click="${this.menuClick}">Location</a>
-        <a href="/aboutUs" @click="${this.menuClick}">About Us</a>
+        
+        <a href="/mentalHealth" @click="${this.menuClick}">Mental Health</a>
+        <a href="/mindfulness" @click="${this.menuClick}">Mindfulness</a>
+        <a href="/resources" @click="${this.menuClick}">Resources</a>
+        <a href="/favourites" @click="${this.menuClick}">Favourites</a>
+        <a href="/about" @click="${this.menuClick}">About</a>
         <a href="/profile" @click="${this.menuClick}">Profile</a>
         <a href="#" @click="${() => Auth.signOut()}">Sign Out</a>
 
@@ -222,11 +224,21 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         <a href="/products" @click="${this.menuClick}">Privacy</a>
         <a href="/products" @click="${this.menuClick}">T&Cs</a>
         <a href="/products" @click="${this.menuClick}">Socials</a>
-        
-        <hr style="color: #2F1E1F">
 
-        <a href="mailto:hello@cafeminori.bigpond.com">hello@cafeminori.bigpond.com</a>
-        <a href="tel:0406 090 996">0406 090 996</a>
+        <hr style="color: #fff width:10%" >
+
+        <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
+        <a href="tel:1800 034 034">1800 034 034</a>
+
+        
+        <a href="/newProduct" @click="${this.menuClick}">Add Product</a> 
+        ` : ''}
+        <a href="/aboutUs" @click="${this.menuClick}">About Us</a>
+        <a href="/products" @click="${this.menuClick}">View Products</a>
+        <a href="/orders" @click="${this.menuClick}">View Orders</a>
+        <a href="/favouriteProducts" @click="${this.menuClick}">Favourites</a>
+        <a href="/location" @click="${this.menuClick}">Location</a>
+        <a href="/aboutUs" @click="${this.menuClick}">About Us</a>
         
       </nav>  
     </sl-drawer>

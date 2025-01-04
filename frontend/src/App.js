@@ -12,6 +12,7 @@ class App {
     this.version = "1.0.0";
   }
   //https://cafe-minori-app-4d4dfdb9bbc1.herokuapp.com
+ 
   init() { 
     console.log("App.init");
     

@@ -7277,7 +7277,7 @@ class HomeView {
   // Image - adapted from Microsoft PowerPoint – Accessed on September 23, 2024
   // Animation - from https://shoelace.style/components/animation
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header user=", ">\n        <a href=\"/\" @click=\"", "\"><img class=\"header-logo\" src=\"/images/cafe-minori-logo-landscape-w.png\">\n      </a></va-app-header>\n      <div class=\"page-content\" class=\"centered\">\n        <div class=\"blurb-container\">\n          <div class=\"blurb-text\"><h1 class=\"anim-in\">Hey ", "</h1>\n            <p>We look forward to seeing you.<br>\n            To beat the queues at the food truck pre-order your favourite items then at the event\n            confirm your order, come to the van, to enjoy our fine coffee and delicious food faster! \n            </p>\n          </div>\n          <div class=\"order-btn\">\n          <sl-animation name=\"heartBeat\" duration=\"1000\" play iterations=\"1\"><sl-button type=\"primary\" size=\"large\" @click=", ">ORDER NOW</sl-button></sl-animation>\n          </div>\n          <img src=\"/images/background-group-sitting-outdoors-rs.png\" >\n        </div>\n        \n        \n      </div>\n     \n    "])), JSON.stringify(_Auth.default.currentUser), _Router.anchorRoute, _Auth.default.currentUser.firstName, () => (0, _Router.gotoRoute)('/products'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header user=", ">\n        <a href=\"/\" @click=\"", "\"><img class=\"header-logo\" src=\"/images/cafe-minori-logo-landscape-w.png\">\n      </a></va-app-header>\n      <div class=\"page-content\" class=\"centered\">\n        <div class=\"blurb-container\">\n          <div class=\"blurb-text\"><h1 class=\"anim-in\">Hey ", "</h1>\n          <h1>Empower Your Life</h1>\n          <h3>HARNESS YOUR POTENTIAL</h3>\n            <p>Lorem lkalkadflkadflk. \n            </p>\n          </div>\n          \n          <div class=\"order-btn\">\n          <sl-animation name=\"heartBeat\" duration=\"1000\" play iterations=\"1\"><sl-button type=\"primary\" size=\"large\" @click=", ">ORDER NOW</sl-button></sl-animation>\n          </div>\n          <img src=\"/images/background-group-sitting-outdoors-rs.png\" >\n        </div>\n        \n        \n      </div>\n     \n    "])), JSON.stringify(_Auth.default.currentUser), _Router.anchorRoute, _Auth.default.currentUser.firstName, () => (0, _Router.gotoRoute)('/products'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -7325,7 +7325,7 @@ function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.fre
 class SignInView {
   init() {
     console.log('SignInView.init');
-    document.title = 'Sign In';
+    document.title = 'Log in';
     this.render();
     _Utils.default.pageIntroAnim();
   }
@@ -7341,7 +7341,7 @@ class SignInView {
     });
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["      \n      <div class=\"page-content page-centered\">\n        <div class=\"signon2-container\">\n          <div class=\"signinup-box\">\n            <img class=\"signinup-logo\" src=\"/images/cafe-minori-logo-portrait.png\" class=\"responsive-img\"> <br>\n            <h1>Sign in</h1>       \n            <sl-form class=\"form-signup dark-theme\" @sl-submit=", ">          \n              <div class=\"input-group\">\n                <sl-input name=\"email\" type=\"email\" placeholder=\"Email\" required></sl-input>\n              </div>\n              <div class=\"input-group\">\n                <sl-input name=\"password\" type=\"password\" placeholder=\"Password\" required toggle-password></sl-input>\n              </div>\n              <sl-button class=\"submit-btn\" type=\"primary\" submit style=\"width: 50%;\">LOG IN</sl-button>\n            </sl-form>\n            <p> <b>Brand new?</b> <a href=\"/signup\" @click=", ">Sign up</a></p>\n          </div>\n\n          <div class=\"signon2-img\">\n             <img src=\"/images/coffee-beans-custom.png\" class=\"responsive-img\" >\n          </div>\n\n        </div>\n      </div>\n    "])), this.signInSubmitHandler, _Router.anchorRoute);
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["      \n      <div class=\"page-content page-centered\">\n        <div class=\"signon2-container\">\n          <div class=\"signinup-box\">\n            <img class=\"signinup-logo\" src=\"/images/cafe-minori-logo-portrait.png\" class=\"responsive-img\"> <br>\n            <h1>Log in</h1>       \n            <sl-form class=\"form-signup dark-theme\" @sl-submit=", ">          \n              <div class=\"input-group\">\n                <sl-input name=\"email\" type=\"email\" placeholder=\"Email\" required></sl-input>\n              </div>\n              <div class=\"input-group\">\n                <sl-input name=\"password\" type=\"password\" placeholder=\"Password\" required toggle-password></sl-input>\n              </div>\n              <sl-button class=\"submit-btn\" type=\"primary\" submit style=\"width: 50%;\">LOG IN</sl-button>\n            </sl-form>\n            <p> <b>Brand new?</b> <a href=\"/signup\" @click=", ">Sign up</a></p>\n          </div>\n\n          <div class=\"signon2-img\">\n             <img src=\"/images/coffee-beans-custom.png\" class=\"responsive-img\" >\n          </div>\n\n        </div>\n      </div>\n    "])), this.signInSubmitHandler, _Router.anchorRoute);
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -7380,7 +7380,7 @@ class SignUpView {
     });
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["      \n      <div class=\"page-content page-centered\">   \n        <div class=\"signon-container\">   \n          <div class=\"signinup-box\">\n            <img class=\"signinup-logo\" src=\"/images/cafe-minori-logo-portrait.png\" class=\"responsive-img\">\n            <br>\n            <h1>You're nearly there!</h1>\n            <h4>Let's us know a little more about you</h4>\n            <sl-form class=\"form-signup\" @sl-submit=", ">\n              <div class=\"input-group\">\n                <sl-input name=\"firstName\" type=\"text\" placeholder=\"First name\" required></sl-input>\n              </div>\n              <div class=\"input-group\">\n                <sl-input name=\"lastName\" type=\"text\" placeholder=\"Last name\" required></sl-input>\n              </div>\n              <div class=\"input-group\">\n                <sl-input name=\"email\" type=\"email\" placeholder=\"Email\" required></sl-input>\n              </div>\n              <div class=\"input-group\">\n                <sl-input name=\"password\" type=\"password\" placeholder=\"Password\" required toggle-password></sl-input>\n              </div>\n              <div class=\"input-group\">\n                <sl-select name=\"accessLevel\" placeholder=\"I am a ...\" placement=\"bottom\">\n                  <sl-menu-item value=\"1\">Customer</sl-menu-item>\n                  <sl-menu-item value=\"2\">Barista</sl-menu-item>\n                </sl-select>\n              </div>\n              <div>         \n              <sl-button type=\"primary\" class=\"submit-btn\" submit style=\"width: 50%;\">SIGN UP</sl-button>\n            </sl-form>\n              <p>Brand new? <a href=\"/signin\" @click=", ">Sign in</a></p>\n          </div>\n          \n          </div>\n           <div class=\"signon-img\">\n             <img src=\"/images/coffee-beans-custom.png\" class=\"responsive-img\">\n            </div>\n      </div>\n    "])), this.signUpSubmitHandler, _Router.anchorRoute);
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["      \n      <div class=\"page-content page-centered\">   \n        <div class=\"signon-container\">   \n          <div class=\"signinup-box\">\n            <img class=\"signinup-logo\" src=\"/images/cafe-minori-logo-portrait.png\" class=\"responsive-img\">\n            <br>\n            <h1>You're nearly there!</h1>\n            <h4>Let's us know a little more about you</h4>\n            <sl-form class=\"form-signup\" @sl-submit=", ">\n              <div class=\"input-group\">\n                <sl-input name=\"firstName\" type=\"text\" placeholder=\"First name\" required></sl-input>\n              </div>\n              <div class=\"input-group\">\n                <sl-input name=\"lastName\" type=\"text\" placeholder=\"Last name\" required></sl-input>\n              </div>\n              <div class=\"input-group\">\n                <sl-input name=\"email\" type=\"email\" placeholder=\"Email\" required></sl-input>\n              </div>\n              <div class=\"input-group\">\n                <sl-input name=\"password\" type=\"password\" placeholder=\"Password\" required toggle-password></sl-input>\n              </div>\n              <div class=\"input-group\">\n                <sl-select name=\"accessLevel\" placeholder=\"I am a ...\" placement=\"bottom\">\n                  <sl-menu-item value=\"1\">Customer</sl-menu-item>\n                  <sl-menu-item value=\"2\">Mindline Admin</sl-menu-item>\n                </sl-select>\n              </div>\n              <div>         \n              <sl-button type=\"primary\" class=\"submit-btn\" submit style=\"width: 50%;\">SIGN UP</sl-button>\n            </sl-form>\n              <p>Already have an account? <a href=\"/signin\" @click=", ">Sign in</a></p>\n          </div>\n          \n          </div>\n           <div class=\"signon-img\">\n             <img src=\"/images/coffee-beans-custom.png\" class=\"responsive-img\">\n            </div>\n      </div>\n    "])), this.signUpSubmitHandler, _Router.anchorRoute);
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -13101,7 +13101,7 @@ class ProfileView {
     _Utils.default.pageIntroAnim();
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Profile\" user=\"", "\"></va-app-header>\n      <div class=\"page-content calign\">  \n        <br>\n        <p></p>\n        <br>      \n        ", "\n        <h2>", " ", "</h2>\n        <p>", "</p>\n        \n        <p>Updated: ", "</p>\n\n        ", "\n\n        <sl-button @click=", ">Edit Profile</sl-button>\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), _Auth.default.currentUser && _Auth.default.currentUser.avatar ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <sl-avatar style=\"--size: 200px; margin-bottom: 3em;\" image=", "></sl-avatar>\n        "])), _Auth.default.currentUser && _Auth.default.currentUser.avatar ? "".concat(_App.default.apiBase, "/images/").concat(_Auth.default.currentUser.avatar) : '') : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        <sl-avatar style=\"--size: 200px; margin-bottom: 3em;\"></sl-avatar>\n        "]))), _Auth.default.currentUser.firstName, _Auth.default.currentUser.lastName, _Auth.default.currentUser.email, (0, _moment.default)(_Auth.default.currentUser.updatedAt).format('D MMMM YYYY @ h:mm a'), _Auth.default.currentUser.bio ? (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n          <h3>Bio</h3>\n          <p>", "</p>\n        "])), _Auth.default.currentUser.bio) : (0, _litHtml.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral([""]))), () => (0, _Router.gotoRoute)('/editProfile'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Profile\" user=\"", "\"></va-app-header>\n      <div class=\"page-content calign\">  \n        <br>\n        <p></p>\n        <br>      \n        ", "\n        <h2>", " ", "</h2>\n        <p>", "</p>\n        \n        <p>Updated: ", "</p>\n\n        ", "\n\n        <sl-button @click=", ">UPDATE</sl-button>\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), _Auth.default.currentUser && _Auth.default.currentUser.avatar ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <sl-avatar style=\"--size: 200px; margin-bottom: 3em;\" image=", "></sl-avatar>\n        "])), _Auth.default.currentUser && _Auth.default.currentUser.avatar ? "".concat(_App.default.apiBase, "/images/").concat(_Auth.default.currentUser.avatar) : '') : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        <sl-avatar style=\"--size: 200px; margin-bottom: 3em;\"></sl-avatar>\n        "]))), _Auth.default.currentUser.firstName, _Auth.default.currentUser.lastName, _Auth.default.currentUser.email, (0, _moment.default)(_Auth.default.currentUser.updatedAt).format('D MMMM YYYY @ h:mm a'), _Auth.default.currentUser.bio ? (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n          <h3>Bio</h3>\n          <p>", "</p>\n        "])), _Auth.default.currentUser.bio) : (0, _litHtml.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral([""]))), () => (0, _Router.gotoRoute)('/editProfile'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -13320,12 +13320,149 @@ class GuideView {
   }
   // Animation - from https://shoelace.style/components/animation/
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Guide\" user=\"", "\"></va-app-header>\n      <div class=\"page-content calign\">     \n      <br>\n      <p></p>   \n      <h2 class=\"--base-txt-color\">Welcome ", "!</h2>\n        <p>Here's a quick tour of Cafe Minori.</p>\n\n        <div class=\"guide-step\">\n          <h4>Search Products</h4>\n          <img src=\"images/coffee-making.png\" class=\"responsive-img\" >\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Save products to favourites</h4>\n          <img src=\"images/coffee-fav.png\" class=\"responsive-img\">\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Find a product</h4>\n          <img src=\"images/coffee-types.png\" class=\"responsive-img\" >\n        </div>\n\n        <sl-animation name=\"jello\" duration=\"2000\" play iterations=\"10\"><sl-button type=\"primary\" @click=", ">Okay got it!</sl-button></sl-animation>\n        \n        <p></p>\n\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), _Auth.default.currentUser.firstName, () => (0, _Router.gotoRoute)('/'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Guide\" user=\"", "\"></va-app-header>\n      <div class=\"page-content calign\">     \n      <br>\n      <p></p>   \n      <h2 class=\"--base-txt-color\">Welcome ", "!</h2>\n        <p>Here's a quick tour of Mindline AU</p>\n\n        <div class=\"guide-step\">\n          <h4>Search wellbeing information</h4>\n          <img src=\"images/coffee-making.png\" class=\"responsive-img\" >\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Save articles, audio and video to favourites</h4>\n          <img src=\"images/coffee-fav.png\" class=\"responsive-img\">\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Find a resources</h4>\n          <img src=\"images/coffee-types.png\" class=\"responsive-img\" >\n        </div>\n\n        <sl-animation name=\"jello\" duration=\"2000\" play iterations=\"10\"><sl-button type=\"primary\" @click=", ">Okay got it!</sl-button></sl-animation>\n        \n        <p></p>\n\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), _Auth.default.currentUser.firstName, () => (0, _Router.gotoRoute)('/'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
 var _default = exports.default = new GuideView();
-},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js","./../../UserAPI":"UserAPI.js","../../Toast":"Toast.js"}],"ProductAPI.js":[function(require,module,exports) {
+},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js","./../../UserAPI":"UserAPI.js","../../Toast":"Toast.js"}],"views/pages/mentalHealth.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("../../App"));
+var _litHtml = require("lit-html");
+var _Router = require("../../Router");
+var _Auth = _interopRequireDefault(require("../../Auth"));
+var _Utils = _interopRequireDefault(require("../../Utils"));
+var _templateObject;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
+class TemplateView {
+  init() {
+    document.title = 'Mental Health';
+    this.render();
+    _Utils.default.pageIntroAnim();
+  }
+  render() {
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Mental Health\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <h1>Mental Health</h1>\n        <p>Because it Matters</p>\n        \n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser));
+    (0, _litHtml.render)(template, _App.default.rootEl);
+  }
+}
+var _default = exports.default = new TemplateView();
+},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js"}],"views/pages/mindfulness.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("../../App"));
+var _litHtml = require("lit-html");
+var _Router = require("../../Router");
+var _Auth = _interopRequireDefault(require("../../Auth"));
+var _Utils = _interopRequireDefault(require("../../Utils"));
+var _templateObject;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
+class TemplateView {
+  init() {
+    document.title = 'Mindfulness';
+    this.render();
+    _Utils.default.pageIntroAnim();
+  }
+  render() {
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Mindfulness\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <h1>Mindfulness</h1>\n        <p>Be Present</p>\n        <p>Be Peaceful</p>\n        <p>Be You</p>\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser));
+    (0, _litHtml.render)(template, _App.default.rootEl);
+  }
+}
+var _default = exports.default = new TemplateView();
+},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js"}],"views/pages/resources.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("../../App"));
+var _litHtml = require("lit-html");
+var _Router = require("../../Router");
+var _Auth = _interopRequireDefault(require("../../Auth"));
+var _Utils = _interopRequireDefault(require("../../Utils"));
+var _templateObject;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
+class TemplateView {
+  init() {
+    document.title = 'Resources';
+    this.render();
+    _Utils.default.pageIntroAnim();
+  }
+  render() {
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Resources\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <h1>Resources</h1>\n        <p>Supporting You Every Step of the Way.</p>\n        \n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser));
+    (0, _litHtml.render)(template, _App.default.rootEl);
+  }
+}
+var _default = exports.default = new TemplateView();
+},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js"}],"views/pages/favourites.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("../../App"));
+var _litHtml = require("lit-html");
+var _Router = require("../../Router");
+var _Auth = _interopRequireDefault(require("../../Auth"));
+var _Utils = _interopRequireDefault(require("../../Utils"));
+var _templateObject;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
+class TemplateView {
+  init() {
+    document.title = 'Favourites';
+    this.render();
+    _Utils.default.pageIntroAnim();
+  }
+  render() {
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Favourites\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <h1>View Favourites</h1>\n        <p>Here you can manage your favourite Mindline AU articles, audio and videos.</p>\n        \n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser));
+    (0, _litHtml.render)(template, _App.default.rootEl);
+  }
+}
+var _default = exports.default = new TemplateView();
+},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js"}],"views/pages/about.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("../../App"));
+var _litHtml = require("lit-html");
+var _Router = require("../../Router");
+var _Auth = _interopRequireDefault(require("../../Auth"));
+var _Utils = _interopRequireDefault(require("../../Utils"));
+var _templateObject;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
+class aboutUsView {
+  init() {
+    document.title = 'About';
+    this.render();
+    _Utils.default.pageIntroAnim();
+  }
+
+  // Image adapted from Microsoft PowerPoint – Accessed on September 23, 2024
+  render() {
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"About\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <div class=\"owner-bio\">\n        <sl-animation name=\"fadeIn\" duration=\"2000\" play iterations=\"1\">\n          <div class=\"owner-bio-text\">\n            <h1>About Us</h1>\n            <p>\n              Mindline AU's is a not-for-profit organisation on a mission to raise awareness\n              and support for young people to reach their full potential mentally, physically,\n              and emotionally<br><br>\n\n              <b><i>The Mindline Team</i></b>\n              \n            </p>\n          </div>\n          <div>\n          <h1>Our Mission</h1>\n            <p>\n              For you to have a safe space to hang out and explore resources and tools\n              to empower you to manage your wellbeing, have fun! <br><br>\n\n              <b><i>The Mindline Team</i></b>\n              \n            </p>\n          </div>\n\n          <div>\n          <h1>Contact Info</h1>\n            <p>\n              Address: 143 Brookland Avenue, Merryville QLD 4506 \n              Phone: <a href=\"tel:0406 090 996\">1800 034 034</a>\n              Email: <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a>\n              Web: www.mindline-au@netlify.com.au\n                            \n              <br><br>\n                      \n            </p>\n          </div>\n\n        </sl-animation>\n          <div class=\"bg-img\" class=\"responsive-img\"><img src=\"/images/cafe-minori-owner-with-truck-custom.png\"></div>\n        </div>\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser));
+    (0, _litHtml.render)(template, _App.default.rootEl);
+  }
+}
+var _default = exports.default = new aboutUsView();
+},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js"}],"ProductAPI.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13768,6 +13905,11 @@ var _signup = _interopRequireDefault(require("./views/pages/signup"));
 var _profile = _interopRequireDefault(require("./views/pages/profile"));
 var _editProfile = _interopRequireDefault(require("./views/pages/editProfile"));
 var _guide = _interopRequireDefault(require("./views/pages/guide"));
+var _mentalHealth = _interopRequireDefault(require("./views/pages/mentalHealth"));
+var _mindfulness = _interopRequireDefault(require("./views/pages/mindfulness"));
+var _resources = _interopRequireDefault(require("./views/pages/resources"));
+var _favourites = _interopRequireDefault(require("./views/pages/favourites"));
+var _about = _interopRequireDefault(require("./views/pages/about"));
 var _products = _interopRequireDefault(require("./views/pages/products"));
 var _orders = _interopRequireDefault(require("./views/pages/orders"));
 var _favouriteProducts = _interopRequireDefault(require("./views/pages/favouriteProducts"));
@@ -13787,6 +13929,11 @@ const routes = {
   '/profile': _profile.default,
   '/editProfile': _editProfile.default,
   '/guide': _guide.default,
+  '/mentalHealth': _mentalHealth.default,
+  '/mindfulness': _mindfulness.default,
+  '/resources': _resources.default,
+  '/favourites': _favourites.default,
+  '/about': _about.default,
   '/products': _products.default,
   '/orders': _orders.default,
   '/favouriteProducts': _favouriteProducts.default,
@@ -13839,7 +13986,7 @@ function anchorRoute(e) {
   const pathname = e.target.closest('a').pathname;
   AppRouter.gotoRoute(pathname);
 }
-},{"./views/pages/home":"views/pages/home.js","./views/pages/404":"views/pages/404.js","./views/pages/signin":"views/pages/signin.js","./views/pages/signup":"views/pages/signup.js","./views/pages/profile":"views/pages/profile.js","./views/pages/editProfile":"views/pages/editProfile.js","./views/pages/guide":"views/pages/guide.js","./views/pages/products":"views/pages/products.js","./views/pages/orders":"views/pages/orders.js","./views/pages/favouriteProducts":"views/pages/favouriteProducts.js","./views/pages/newProduct":"views/pages/newProduct.js","./views/pages/location":"views/pages/location.js","./views/pages/aboutUs":"views/pages/aboutUs.js","./views/pages/hairdressers":"views/pages/hairdressers.js"}],"App.js":[function(require,module,exports) {
+},{"./views/pages/home":"views/pages/home.js","./views/pages/404":"views/pages/404.js","./views/pages/signin":"views/pages/signin.js","./views/pages/signup":"views/pages/signup.js","./views/pages/profile":"views/pages/profile.js","./views/pages/editProfile":"views/pages/editProfile.js","./views/pages/guide":"views/pages/guide.js","./views/pages/mentalHealth":"views/pages/mentalHealth.js","./views/pages/mindfulness":"views/pages/mindfulness.js","./views/pages/resources":"views/pages/resources.js","./views/pages/favourites":"views/pages/favourites.js","./views/pages/about":"views/pages/about.js","./views/pages/products":"views/pages/products.js","./views/pages/orders":"views/pages/orders.js","./views/pages/favouriteProducts":"views/pages/favouriteProducts.js","./views/pages/newProduct":"views/pages/newProduct.js","./views/pages/location":"views/pages/location.js","./views/pages/aboutUs":"views/pages/aboutUs.js","./views/pages/hairdressers":"views/pages/hairdressers.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13852,13 +13999,14 @@ var _Toast = _interopRequireDefault(require("./Toast"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 class App {
   constructor() {
-    this.name = "Cafe Minori";
+    this.name = "Mindline";
     this.version = "1.0.0";
     this.apiBase = "http://localhost:3000";
     this.rootEl = document.getElementById("root");
     this.version = "1.0.0";
   }
   //https://cafe-minori-app-4d4dfdb9bbc1.herokuapp.com
+
   init() {
     console.log("App.init");
 
@@ -15413,7 +15561,7 @@ customElements.define('va-app-header', class AppHeader extends _litElement.LitEl
     });
   }
   render() {
-    return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    <style>      \n      * {\n        box-sizing: border-box;\n      }\n      .app-header {\n        background: var(--brand-color);\n        position: fixed;\n        top: 0;\n        right: 0;\n        left: 0;\n        height: var(--app-header-height);\n        color: #fff;\n        display: flex;\n        z-index: 9;\n        box-shadow: 4px 0px 10px rgba(0,0,0,0.2);\n        align-items: center;\n      }\n      \n\n      .app-header-main {\n        flex-grow: 1;\n        display: flex;\n        align-items: center;\n      }\n\n      .app-header-main::slotted(h1){\n        color: #fff;\n      }\n\n      .app-logo a {\n        color: #fff;\n        text-decoration: none;\n        font-weight: bold;\n        font-size: 1.2em;\n        padding: .6em;\n        display: inline-block;        \n      }\n\n      .app-logo img {\n        width: 90px;\n      }\n      \n      .hamburger-btn::part(base) {\n        color: #fff;\n      }\n\n      .app-top-nav {\n        display: flex;\n        height: 100%;\n        align-items: center;\n      }\n\n      .app-top-nav a {\n        display: inline-block;\n        padding: .8em;\n        text-decoration: none;\n        color: #fff;\n      }\n      \n      .app-side-menu-items a {\n        display: block;\n        padding: .5em;\n        text-decoration: none;\n        font-size: 1.3em;\n        color: #2F1E1F;\n      }\n\n      .app-side-menu-logo {\n        width: 120px;\n        margin-bottom: 1em;\n        position: absolute;\n        top: 2em;\n        left: 1.5em;\n      }\n\n      .page-title {\n        color: var(--app-header-txt-color);\n        margin-right: 0.5em;\n        font-size: var(--app-header-title-font-size);\n      }\n\n      /* active nav links */\n      .app-top-nav a.active,\n      .app-side-menu-items a.active {\n        font-weight: bold;\n      }\n\n      .menu-item::part(label) :hover {\n        color: #fff;\n      }\n\n\n      /* right side menu */\n      .right-side-menu {\n        --base-txt-color: #2F1E1F;\n      }\n\n\n      /* RESPONSIVE - MOBILE ------------------- */\n      @media all and (max-width: 768px){       \n        \n        .app-top-nav {\n          display: none;\n        }\n      }\n\n    </style>\n\n    <header class=\"app-header\">\n      <sl-icon-button class=\"hamburger-btn\" name=\"list\" @click=\"", "\" style=\"font-size: 2em;\"></sl-icon-button>       \n      \n      <div class=\"app-header-main\">\n        ", "\n        <slot></slot>\n      </div>\n\n      <nav class=\"app-top-nav\">\n        <a href=\"/\" @click=\"", "\">Home</a>  \n        ", "\n        ", "\n        \n        <sl-dropdown>\n          <a slot=\"trigger\" href=\"#\" @click=\"", "\">\n            <sl-avatar style=\"--size: 40px;\" image=", "></sl-avatar> ", "\n          </a>\n          <sl-menu class=\"right-side-menu\">            \n            <sl-menu-item @click=\"", "\">Profile</sl-menu-item>\n            <sl-menu-item @click=\"", "\">Edit Profile</sl-menu-item>\n            <sl-menu-item @click=\"", "\">Sign Out</sl-menu-item>\n          </sl-menu>\n        </sl-dropdown>\n      </nav>\n    </header>\n\n    <sl-drawer class=\"app-side-menu\" placement=\"left\">\n    <a href=\"/\" @click=\"", "\"><img class=\"app-side-menu-logo\" src=\"/images/cafe-minori-logo-portrait.png\"></a>\n      <br>\n      <br>\n      <nav class=\"app-side-menu-items\">\n        ", "\n        <a href=\"/products\" @click=\"", "\">View Products</a>\n        <a href=\"/orders\" @click=\"", "\">View Orders</a>\n        <a href=\"/favouriteProducts\" @click=\"", "\">Favourites</a>\n        <a href=\"/location\" @click=\"", "\">Location</a>\n        <a href=\"/aboutUs\" @click=\"", "\">About Us</a>\n        <a href=\"/profile\" @click=\"", "\">Profile</a>\n        <a href=\"#\" @click=\"", "\">Sign Out</a>\n\n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"/products\" @click=\"", "\">Privacy</a>\n        <a href=\"/products\" @click=\"", "\">T&Cs</a>\n        <a href=\"/products\" @click=\"", "\">Socials</a>\n        \n        <hr style=\"color: #2F1E1F\">\n\n        <a href=\"mailto:hello@cafeminori.bigpond.com\">hello@cafeminori.bigpond.com</a>\n        <a href=\"tel:0406 090 996\">0406 090 996</a>\n        \n      </nav>  \n    </sl-drawer>\n    "])), this.hamburgerClick, this.title ? (0, _litElement.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <h1 class=\"page-title\">", "</h1>\n        "])), this.title) : "", _Router.anchorRoute, this.user.accessLevel == 2 ? (0, _litElement.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n          <a href=\"/newProduct\" @click=\"", "\">Add Product</a> \n          <a href=\"/products\" @click=\"", "\">View Products</a>\n          <a href=\"/orders\" @click=\"", "\">View Orders</a>\n        "])), _Router.anchorRoute, _Router.anchorRoute, _Router.anchorRoute) : '', this.user.accessLevel == 1 ? (0, _litElement.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n          <a href=\"/aboutUs\" @click=\"", "\">About Us</a>\n          <a href=\"/location\" @click=\"", "\">Location</a>\n          <a href=\"/products\" @click=\"", "\">View Products</a>\n          <a href=\"/orders\" @click=\"", "\">View Orders</a>\n          <sl-icon-button class=\"cart-icon\" name=\"cart3\" label=\"Add to Cart\" style=\"font-size: 20px\"></sl-icon-button>\n\n        "])), _Router.anchorRoute, _Router.anchorRoute, _Router.anchorRoute, _Router.anchorRoute) : '', e => e.preventDefault(), this.user && this.user.avatar ? "".concat(_App.default.apiBase, "/images/").concat(this.user.avatar) : '', this.user && this.user.firstName, () => (0, _Router.gotoRoute)('/profile'), () => (0, _Router.gotoRoute)('/editProfile'), () => _Auth.default.signOut(), this.menuClick, this.user.accessLevel == 2 ? (0, _litElement.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n          <a href=\"/newProduct\" @click=\"", "\">Add Product</a> \n        "])), this.menuClick) : '', this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, () => _Auth.default.signOut(), this.menuClick, this.menuClick, this.menuClick);
+    return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    <style>      \n      * {\n        box-sizing: border-box;\n      }\n      .app-header {\n        background: var(--brand-color);\n        position: fixed;\n        top: 0;\n        right: 0;\n        left: 0;\n        height: var(--app-header-height);\n        color: #fff;\n        display: flex;\n        z-index: 9;\n        box-shadow: 4px 0px 10px rgba(0,0,0,0.2);\n        align-items: center;\n      }\n      \n\n      .app-header-main {\n        flex-grow: 1;\n        display: flex;\n        align-items: center;\n      }\n\n      .app-header-main::slotted(h1){\n        color: #fff;\n      }\n\n      .app-logo a {\n        color: #fff;\n        text-decoration: none;\n        font-weight: bold;\n        font-size: 1.2em;\n        padding: .6em;\n        display: inline-block;        \n      }\n\n      .app-logo img {\n        width: 90px;\n      }\n      \n      .hamburger-btn::part(base) {\n        color: #fff;\n      }\n\n      .app-top-nav {\n        display: flex;\n        height: 100%;\n        align-items: center;\n      }\n\n      .app-top-nav a {\n        display: inline-block;\n        padding: .8em;\n        text-decoration: none;\n        color: #fff;\n      }\n      \n      .app-side-menu-items a {\n        display: block;\n        padding: .5em;\n        text-decoration: none;\n        font-size: 1.3em;\n        color: #2F1E1F;\n      }\n\n      .app-side-menu-logo {\n        width: 120px;\n        margin-bottom: 1em;\n        position: absolute;\n        top: 2em;\n        left: 1.5em;\n      }\n\n      .page-title {\n        color: var(--app-header-txt-color);\n        margin-right: 0.5em;\n        font-size: var(--app-header-title-font-size);\n      }\n\n      /* active nav links */\n      .app-top-nav a.active,\n      .app-side-menu-items a.active {\n        font-weight: bold;\n      }\n\n      .menu-item::part(label) :hover {\n        color: #fff;\n      }\n\n\n      /* right side menu */\n      .right-side-menu {\n        --base-txt-color: #2F1E1F;\n      }\n\n\n      /* RESPONSIVE - MOBILE ------------------- */\n      @media all and (max-width: 768px){       \n        \n        .app-top-nav {\n          display: none;\n        }\n      }\n\n    </style>\n  \n    <header class=\"app-header\">\n      <sl-icon-button class=\"hamburger-btn\" name=\"list\" @click=\"", "\" style=\"font-size: 2em;\"></sl-icon-button>       \n      \n      <div class=\"app-header-main\">\n        ", "\n        <slot></slot>\n      </div>\n\n      <nav class=\"app-top-nav\">\n        <a href=\"/\" @click=\"", "\">Home</a>  \n        ", "\n        ", "\n        \n        <sl-dropdown>\n          <a slot=\"trigger\" href=\"#\" @click=\"", "\">\n            <sl-avatar style=\"--size: 40px;\" image=", "></sl-avatar> ", "\n          </a>\n          <sl-menu class=\"right-side-menu\">            \n            <sl-menu-item @click=\"", "\">Profile</sl-menu-item>\n            <sl-menu-item @click=\"", "\">Edit Profile</sl-menu-item>\n            <sl-menu-item @click=\"", "\">Sign Out</sl-menu-item>\n          </sl-menu>\n        </sl-dropdown>\n      </nav>\n    </header>\n\n    <sl-drawer class=\"app-side-menu\" placement=\"left\">\n    <a href=\"/\" @click=\"", "\"><img class=\"app-side-menu-logo\" src=\"/images/cafe-minori-logo-portrait.png\"></a>\n      <br>\n      <br>\n      <nav class=\"app-side-menu-items\">\n        ", "\n        <a href=\"/aboutUs\" @click=\"", "\">About Us</a>\n        <a href=\"/products\" @click=\"", "\">View Products</a>\n        <a href=\"/orders\" @click=\"", "\">View Orders</a>\n        <a href=\"/favouriteProducts\" @click=\"", "\">Favourites</a>\n        <a href=\"/location\" @click=\"", "\">Location</a>\n        <a href=\"/aboutUs\" @click=\"", "\">About Us</a>\n        \n      </nav>  \n    </sl-drawer>\n    "])), this.hamburgerClick, this.title ? (0, _litElement.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <h1 class=\"page-title\">", "</h1>\n        "])), this.title) : "", _Router.anchorRoute, this.user.accessLevel == 2 ? (0, _litElement.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n          <a href=\"/favourites\" @click=\"", "\">Add Favourite</a>\n          <a href=\"/favourites\" @click=\"", "\">Remove Favourite</a>  \n          <a href=\"/newProduct\" @click=\"", "\">Add Product</a> \n          <a href=\"/products\" @click=\"", "\">View Products</a>\n          <a href=\"/orders\" @click=\"", "\">View Orders</a>\n        "])), _Router.anchorRoute, _Router.anchorRoute, _Router.anchorRoute, _Router.anchorRoute, _Router.anchorRoute) : '', this.user.accessLevel == 1 ? (0, _litElement.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n          <a href=\"/about\" @click=\"", "\">About</a>\n          <a href=\"/aboutUs\" @click=\"", "\">About Us</a>\n          <a href=\"/location\" @click=\"", "\">Location</a>\n          <a href=\"/products\" @click=\"", "\">View Products</a>\n          <a href=\"/orders\" @click=\"", "\">View Orders</a>\n          <sl-icon-button class=\"cart-icon\" name=\"cart3\" label=\"Add to Cart\" style=\"font-size: 20px\"></sl-icon-button>\n\n        "])), _Router.anchorRoute, _Router.anchorRoute, _Router.anchorRoute, _Router.anchorRoute, _Router.anchorRoute) : '', e => e.preventDefault(), this.user && this.user.avatar ? "".concat(_App.default.apiBase, "/images/").concat(this.user.avatar) : '', this.user && this.user.firstName, () => (0, _Router.gotoRoute)('/profile'), () => (0, _Router.gotoRoute)('/editProfile'), () => _Auth.default.signOut(), this.menuClick, this.user.accessLevel == 2 ? (0, _litElement.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        \n        <a href=\"/mentalHealth\" @click=\"", "\">Mental Health</a>\n        <a href=\"/mindfulness\" @click=\"", "\">Mindfulness</a>\n        <a href=\"/resources\" @click=\"", "\">Resources</a>\n        <a href=\"/favourites\" @click=\"", "\">Favourites</a>\n        <a href=\"/about\" @click=\"", "\">About</a>\n        <a href=\"/profile\" @click=\"", "\">Profile</a>\n        <a href=\"#\" @click=\"", "\">Sign Out</a>\n\n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"/products\" @click=\"", "\">Privacy</a>\n        <a href=\"/products\" @click=\"", "\">T&Cs</a>\n        <a href=\"/products\" @click=\"", "\">Socials</a>\n\n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a>\n        <a href=\"tel:1800 034 034\">1800 034 034</a>\n\n        \n        <a href=\"/newProduct\" @click=\"", "\">Add Product</a> \n        "])), this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, () => _Auth.default.signOut(), this.menuClick, this.menuClick, this.menuClick, this.menuClick) : '', this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick);
   }
 });
 },{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","./../Router":"Router.js","./../Auth":"Auth.js","./../App":"App.js"}],"components/va-product.js":[function(require,module,exports) {
@@ -15763,7 +15911,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49839" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54989" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

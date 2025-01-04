@@ -22,11 +22,12 @@ class HomeView {
       <div class="page-content" class="centered">
         <div class="blurb-container">
           <div class="blurb-text"><h1 class="anim-in">Hey ${Auth.currentUser.firstName}</h1>
-            <p>We look forward to seeing you.<br>
-            To beat the queues at the food truck pre-order your favourite items then at the event
-            confirm your order, come to the van, to enjoy our fine coffee and delicious food faster! 
+          <h1>Empower Your Life</h1>
+          <h3>HARNESS YOUR POTENTIAL</h3>
+            <p>Lorem lkalkadflkadflk. 
             </p>
           </div>
+          
           <div class="order-btn">
           <sl-animation name="heartBeat" duration="1000" play iterations="1"><sl-button type="primary" size="large" @click=${() => gotoRoute('/products')}>ORDER NOW</sl-button></sl-animation>
           </div>

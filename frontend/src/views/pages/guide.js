@@ -31,20 +31,20 @@ class GuideView {
       <br>
       <p></p>   
       <h2 class="--base-txt-color">Welcome ${Auth.currentUser.firstName}!</h2>
-        <p>Here's a quick tour of Cafe Minori.</p>
+        <p>Here's a quick tour of Mindline AU</p>
 
         <div class="guide-step">
-          <h4>Search Products</h4>
+          <h4>Search wellbeing information</h4>
           <img src="images/coffee-making.png" class="responsive-img" >
         </div>
 
         <div class="guide-step">
-          <h4>Save products to favourites</h4>
+          <h4>Save articles, audio and video to favourites</h4>
           <img src="images/coffee-fav.png" class="responsive-img">
         </div>
 
         <div class="guide-step">
-          <h4>Find a product</h4>
+          <h4>Find a resources</h4>
           <img src="images/coffee-types.png" class="responsive-img" >
         </div>
 
