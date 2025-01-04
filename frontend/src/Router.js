@@ -6,10 +6,11 @@ import signupView from './views/pages/signup';
 import profileView from './views/pages/profile';
 import editProfileView from './views/pages/editProfile';
 import guideView from './views/pages/guide';
-import aboutView from './views/pages/about';
 import mentalHealthView from './views/pages/mentalHealth';
 import mindfulnessView from './views/pages/mindfulness';
 import resourcesView from './views/pages/resources';
+import favouritesView from './views/pages/favourites';
+import aboutView from './views/pages/about';
 
 import productsView from './views/pages/products';
 import ordersView from './views/pages/orders';
@@ -28,13 +29,14 @@ const routes = {
 	'/profile': profileView,
 	'/editProfile': editProfileView,
 	'/guide': guideView,
-	'/about': aboutView,
 	'/mentalHealth': mentalHealthView,
 	'/mindfulness': mindfulnessView,
 	'/resources': resourcesView,
-
+	'/favourites': favouritesView,
+	'/about': aboutView,
 	'/products': productsView,
 	'/orders': ordersView,
+	
 	'/favouriteProducts': favouriteProductsView,
 	'/newProduct': newProductView,
 	'/location': locationView,
