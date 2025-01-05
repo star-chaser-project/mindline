@@ -16,7 +16,7 @@ class FourOFourView{
         <p></p>
         <h1>Oops!</h1>
         <p>Sorry, we couldn't find that.</p>
-        <img src="/images/dinosaur-404-error.png">
+        <img src="/images/404-error-dinosaur-1024.png">
       </div>
     `;
     render(template, App.rootEl);

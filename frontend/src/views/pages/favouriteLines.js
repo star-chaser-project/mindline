@@ -7,9 +7,9 @@ import Toast from '../../Toast';
 import UserAPI from '../../UserAPI';
 
 
-class FavouritesView {
+class FavouriteLinesView {
   init(){
-    document.title = 'Favourites';
+    document.title = 'Favourite Lines';
     this.favProducts = null;    
     this.render();    
     Utils.pageIntroAnim();
@@ -19,8 +19,8 @@ class FavouritesView {
   async getFavProducts(){
     try {
       const currentUser = await UserAPI.getUser(Auth.currentUser._id);
-      this.favProducts = currentUser.favourites;
-      console.log(this.favourites);
+      this.favProducts = currentUser.favouriteProducts;
+      console.log(this.favouriteProducts);
       this.render();
     }catch(err){
       Toast.show(err, 'error');
@@ -47,7 +47,7 @@ class FavouritesView {
 
       </div> 
       <div class="favourites-grid">
-        ${this.favourites == null ? html`
+        ${this.favouriteProducts == null ? html`
           <sl-spinner></sl-spinner>
         ` : html`
           ${this.favProducts.map(product => html`
@@ -74,4 +74,4 @@ class FavouritesView {
 }
 
 
-export default new FavouritesView();
+export default new FavouriteLinesView();

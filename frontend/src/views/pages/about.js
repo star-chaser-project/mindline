@@ -54,7 +54,7 @@ class aboutUsView {
           </div>
 
         </sl-animation>
-          <div class="bg-img" class="responsive-img"><img src="/images/cafe-minori-owner-with-truck-custom.png"></div>
+          <div class="bg-img" class="responsive-img"><img src="/images/about-group-hero-image-no-bg-768.png"></div>
         </div>
       </div>      
     `;
