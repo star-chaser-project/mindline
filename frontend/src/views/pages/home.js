@@ -26,6 +26,10 @@ class HomeView {
           <h3>HARNESS YOUR POTENTIAL</h3>
             <p>Lorem lkalkadflkadflk. 
             </p>
+            <p>Lorem lkalkadflkadflk. 
+            </p>
+            <p>Lorem lkalkadflkadflk. 
+            </p>
           </div>
           
           <div class="order-btn">
