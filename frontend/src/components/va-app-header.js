@@ -175,8 +175,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
       <nav class="app-top-nav">
         <a href="/" @click="${anchorRoute}">Home</a>  
         ${this.user.accessLevel == 2 ? html`
-          <a href="/favourites" @click="${anchorRoute}">Add Favourite</a>
-          <a href="/favourites" @click="${anchorRoute}">Remove Favourite</a>  
+          <a href="/favouriteLines" @click="${anchorRoute}">Favourites</a> 
           <a href="/newProduct" @click="${anchorRoute}">Add Product</a> 
           <a href="/products" @click="${anchorRoute}">View Products</a>
           <a href="/orders" @click="${anchorRoute}">View Orders</a>
@@ -186,6 +185,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
           <a href="/aboutUs" @click="${anchorRoute}">About Us</a>
           <a href="/location" @click="${anchorRoute}">Location</a>
           <a href="/products" @click="${anchorRoute}">View Products</a>
+          <a href="/favouriteLines" @click="${anchorRoute}">Favourites</a> 
           <a href="/orders" @click="${anchorRoute}">View Orders</a>
           <sl-icon-button class="cart-icon" name="cart3" label="Add to Cart" style="font-size: 20px"></sl-icon-button>
 
@@ -214,7 +214,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         <a href="/mentalHealth" @click="${this.menuClick}">Mental Health</a>
         <a href="/mindfulness" @click="${this.menuClick}">Mindfulness</a>
         <a href="/resources" @click="${this.menuClick}">Resources</a>
-        <a href="/favourites" @click="${this.menuClick}">Favourites</a>
+        <a href="/favouritesLine" @click="${this.menuClick}">Favourites</a>
         <a href="/about" @click="${this.menuClick}">About</a>
         <a href="/profile" @click="${this.menuClick}">Profile</a>
         <a href="#" @click="${() => Auth.signOut()}">Sign Out</a>
