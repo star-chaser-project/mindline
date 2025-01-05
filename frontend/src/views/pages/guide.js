@@ -35,7 +35,7 @@ class GuideView {
 
         <div class="guide-step">
           <h4>Search wellbeing information</h4>
-          <img src="images/guide-page-young-lady-standing-holding-mobile.png" class="responsive-img" >
+          <img src="images/guide-page-young-lady-standing-holding-mobile-768.png" class="responsive-img" >
         </div>
 
         <div class="guide-step">
