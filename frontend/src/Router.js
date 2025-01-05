@@ -9,12 +9,12 @@ import guideView from './views/pages/guide';
 import mentalHealthView from './views/pages/mentalHealth';
 import mindfulnessView from './views/pages/mindfulness';
 import resourcesView from './views/pages/resources';
-import favouritesView from './views/pages/favourites';
+import favouriteLinesView from './views/pages/favouriteLines';
 import aboutView from './views/pages/about';
 
 import productsView from './views/pages/products';
 import ordersView from './views/pages/orders';
-import favouritesView from './views/pages/favourites';
+import favouriteProductsView from './views/pages/favouriteProducts';
 import newProductView from './views/pages/newProduct';
 import locationView from './views/pages/location';
 import aboutUsView from './views/pages/aboutUs';
@@ -32,13 +32,13 @@ const routes = {
 	'/mentalHealth': mentalHealthView,
 	'/mindfulness': mindfulnessView,
 	'/resources': resourcesView,
-	'/favourites': favouritesView,
+	'/favouriteLines': favouriteLinesView,
 	'/about': aboutView,
+
 	'/products': productsView,
 	'/orders': ordersView,
-	
-	'/favouriteProducts': favouriteProductsView,
 	'/newProduct': newProductView,
+	'/favouriteProducts': favouriteProductsView,
 	'/location': locationView,
 	'/aboutUs': aboutUsView,
 	'/hairdressers': hairdressersView

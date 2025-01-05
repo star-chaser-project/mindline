@@ -8,6 +8,7 @@ import './components/va-app-header';
 import './components/va-product';
 import './components/va-order';
 import './components/va-checkout';
+import './components/va-favourite-line.js';
 import './components/va-favourite-product.js';
 
 // styles
