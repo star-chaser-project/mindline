@@ -7277,7 +7277,7 @@ class HomeView {
   // Image - adapted from Microsoft PowerPoint – Accessed on September 23, 2024
   // Animation - from https://shoelace.style/components/animation
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header user=", ">\n        <a href=\"/\" @click=\"", "\"><img class=\"header-logo\" src=\"/images/cafe-minori-logo-landscape-w.png\">\n      </a></va-app-header>\n      <div class=\"page-content\" class=\"centered\">\n        <div class=\"blurb-container\">\n          <div class=\"blurb-text\"><h1 class=\"anim-in\">Hey ", "</h1>\n          <h1>Empower Your Life</h1>\n          <h3>HARNESS YOUR POTENTIAL</h3>\n            <p>Lorem lkalkadflkadflk. \n            </p>\n          </div>\n          \n          <div class=\"order-btn\">\n          <sl-animation name=\"heartBeat\" duration=\"1000\" play iterations=\"1\"><sl-button type=\"primary\" size=\"large\" @click=", ">ORDER NOW</sl-button></sl-animation>\n          </div>\n          <img src=\"/images/background-group-sitting-outdoors-rs.png\" >\n        </div>\n        \n        \n      </div>\n     \n    "])), JSON.stringify(_Auth.default.currentUser), _Router.anchorRoute, _Auth.default.currentUser.firstName, () => (0, _Router.gotoRoute)('/products'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header user=", ">\n        <a href=\"/\" @click=\"", "\"><img class=\"header-logo\" src=\"/images/cafe-minori-logo-landscape-w.png\">\n      </a></va-app-header>\n      <div class=\"page-content\" class=\"centered\">\n        <div class=\"blurb-container\">\n          <div class=\"blurb-text\"><h1 class=\"anim-in\">Hey ", "</h1>\n          <h1>Empower Your Life</h1>\n          <h3>HARNESS YOUR POTENTIAL</h3>\n            <p>Lorem lkalkadflkadflk. \n            </p>\n            <p>Lorem lkalkadflkadflk. \n            </p>\n            <p>Lorem lkalkadflkadflk. \n            </p>\n          </div>\n          \n          <div class=\"order-btn\">\n          <sl-animation name=\"heartBeat\" duration=\"1000\" play iterations=\"1\"><sl-button type=\"primary\" size=\"large\" @click=", ">ORDER NOW</sl-button></sl-animation>\n          </div>\n          <img src=\"/images/background-group-sitting-outdoors-rs.png\" >\n        </div>\n        \n        \n      </div>\n     \n    "])), JSON.stringify(_Auth.default.currentUser), _Router.anchorRoute, _Auth.default.currentUser.firstName, () => (0, _Router.gotoRoute)('/products'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -7302,7 +7302,7 @@ class FourOFourView {
     this.render();
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral([";    \n      <div class=\"calign\">\n        <p></p>\n        <h1>Oops!</h1>\n        <p>Sorry, we couldn't find that.</p>\n        <img src=\"/images/dinosaur-404-error.png\">\n      </div>\n    "])));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral([";    \n      <div class=\"calign\">\n        <p></p>\n        <h1>Oops!</h1>\n        <p>Sorry, we couldn't find that.</p>\n        <img src=\"/images/404-error-dinosaur-1024.png\">\n      </div>\n    "])));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -13320,7 +13320,7 @@ class GuideView {
   }
   // Animation - from https://shoelace.style/components/animation/
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Guide\" user=\"", "\"></va-app-header>\n      <div class=\"page-content calign\">     \n      <br>\n      <p></p>   \n      <h2 class=\"--base-txt-color\">Welcome ", "!</h2>\n        <p>Here's a quick tour of Mindline AU</p>\n\n        <div class=\"guide-step\">\n          <h4>Search wellbeing information</h4>\n          <img src=\"images/coffee-making.png\" class=\"responsive-img\" >\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Save articles, audio and video to favourites</h4>\n          <img src=\"images/coffee-fav.png\" class=\"responsive-img\">\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Find a resources</h4>\n          <img src=\"images/coffee-types.png\" class=\"responsive-img\" >\n        </div>\n\n        <sl-animation name=\"jello\" duration=\"2000\" play iterations=\"10\"><sl-button type=\"primary\" @click=", ">Okay got it!</sl-button></sl-animation>\n        \n        <p></p>\n\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), _Auth.default.currentUser.firstName, () => (0, _Router.gotoRoute)('/'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Guide\" user=\"", "\"></va-app-header>\n      <div class=\"page-content calign\">     \n      <br>\n      <p></p>   \n      <h2 class=\"--base-txt-color\">Welcome ", "!</h2>\n        <p>Here's a quick tour of Mindline AU</p>\n\n        <div class=\"guide-step\">\n          <h4>Search wellbeing information</h4>\n          <img src=\"images/guide-page-young-lady-standing-holding-mobile.png\" class=\"responsive-img\" >\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Save articles, audio and video to favourites</h4>\n          <img src=\"images/coffee-fav.png\" class=\"responsive-img\">\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Find a resources</h4>\n          <img src=\"images/coffee-types.png\" class=\"responsive-img\" >\n        </div>\n\n        <sl-animation name=\"jello\" duration=\"2000\" play iterations=\"10\"><sl-button type=\"primary\" @click=", ">Okay got it!</sl-button></sl-animation>\n        \n        <p></p>\n\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), _Auth.default.currentUser.firstName, () => (0, _Router.gotoRoute)('/'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -13406,7 +13406,7 @@ class TemplateView {
   }
 }
 var _default = exports.default = new TemplateView();
-},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js"}],"views/pages/favourites.js":[function(require,module,exports) {
+},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js"}],"views/pages/favouriteLines.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13418,22 +13418,36 @@ var _litHtml = require("lit-html");
 var _Router = require("../../Router");
 var _Auth = _interopRequireDefault(require("../../Auth"));
 var _Utils = _interopRequireDefault(require("../../Utils"));
-var _templateObject;
+var _Toast = _interopRequireDefault(require("../../Toast"));
+var _UserAPI = _interopRequireDefault(require("../../UserAPI"));
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
-class TemplateView {
+class FavouriteLinesView {
   init() {
-    document.title = 'Favourites';
+    document.title = 'Favourite Lines';
+    this.favProducts = null;
     this.render();
     _Utils.default.pageIntroAnim();
+    this.getFavProducts();
+  }
+  async getFavProducts() {
+    try {
+      const currentUser = await _UserAPI.default.getUser(_Auth.default.currentUser._id);
+      this.favProducts = currentUser.favouriteProducts;
+      console.log(this.favouriteProducts);
+      this.render();
+    } catch (err) {
+      _Toast.default.show(err, 'error');
+    }
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Favourites\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <h1>View Favourites</h1>\n        <p>Here you can manage your favourite Mindline AU articles, audio and videos.</p>\n        \n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Favourites\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">   \n        <div class=\"fav-container\">     \n        <h1>Favourites</h1>\n        \n        <div class=\"fav-list\">\n          <sl-button type=\"primary\" size=\"large\" @click=", ">View Order</sl-button>\n          <sl-button type=\"primary\" size=\"large\" @click=", ">View Products</sl-button>\n          <sl-button class=\"red-btn\" type=\"primary\" size=\"large\" @click=", ">CHECKOUT</sl-button>      \n        </div>\n\n        <hr>\n        <br>\n\n        <p>Page content ...</p>\n\n      </div> \n      <div class=\"favourites-grid\">\n        ", "\n        </div>\n      </div>\n    "])), JSON.stringify(_Auth.default.currentUser), () => (0, _Router.gotoRoute)('/orders'), () => (0, _Router.gotoRoute)('/products'), () => (0, _Router.gotoRoute)('/orders'), this.favouriteProducts == null ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <sl-spinner></sl-spinner>\n        "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n          ", "\n        "])), this.favProducts.map(product => (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n            <va-favourite-product class=\"favourite-card\"\n              id=\"", "\"\n              name=\"", "\"\n              description=\"", "\"\n              price=\"", "\"\n              user=\"", "\"\n              favourite=\"", "\" \n              image=\"", "\"\n              milk=\"", "\"\n              shots=\"", "\"\n            >        \n            </va-favourite-product>\n\n          "])), product._id, product.name, product.description, product.price, JSON.stringify(product.user), favourite.product, product.image, product.milk, product.shots))));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
-var _default = exports.default = new TemplateView();
-},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js"}],"views/pages/about.js":[function(require,module,exports) {
+var _default = exports.default = new FavouriteLinesView();
+},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js","../../Toast":"Toast.js","../../UserAPI":"UserAPI.js"}],"views/pages/about.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13457,7 +13471,7 @@ class aboutUsView {
 
   // Image adapted from Microsoft PowerPoint – Accessed on September 23, 2024
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"About\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <div class=\"owner-bio\">\n        <sl-animation name=\"fadeIn\" duration=\"2000\" play iterations=\"1\">\n          <div class=\"owner-bio-text\">\n            <h1>About Us</h1>\n            <p>\n              Mindline AU's is a not-for-profit organisation on a mission to raise awareness\n              and support for young people to reach their full potential mentally, physically,\n              and emotionally<br><br>\n\n              <b><i>The Mindline Team</i></b>\n              \n            </p>\n          </div>\n          <div>\n          <h1>Our Mission</h1>\n            <p>\n              For you to have a safe space to hang out and explore resources and tools\n              to empower you to manage your wellbeing, have fun! <br><br>\n\n              <b><i>The Mindline Team</i></b>\n              \n            </p>\n          </div>\n\n          <div>\n          <h1>Contact Info</h1>\n            <p>\n              Address: 143 Brookland Avenue, Merryville QLD 4506 \n              Phone: <a href=\"tel:0406 090 996\">1800 034 034</a>\n              Email: <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a>\n              Web: www.mindline-au@netlify.com.au\n                            \n              <br><br>\n                      \n            </p>\n          </div>\n\n        </sl-animation>\n          <div class=\"bg-img\" class=\"responsive-img\"><img src=\"/images/cafe-minori-owner-with-truck-custom.png\"></div>\n        </div>\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"About\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <div class=\"owner-bio\">\n        <sl-animation name=\"fadeIn\" duration=\"2000\" play iterations=\"1\">\n          <div class=\"owner-bio-text\">\n            <h1>About Us</h1>\n            <p>\n              Mindline AU's is a not-for-profit organisation on a mission to raise awareness\n              and support for young people to reach their full potential mentally, physically,\n              and emotionally<br><br>\n\n              <b><i>The Mindline Team</i></b>\n              \n            </p>\n          </div>\n          <div>\n          <h1>Our Mission</h1>\n            <p>\n              For you to have a safe space to hang out and explore resources and tools\n              to empower you to manage your wellbeing, have fun! <br><br>\n\n              <b><i>The Mindline Team</i></b>\n              \n            </p>\n          </div>\n\n          <div>\n          <h1>Contact Info</h1>\n            <p>\n              Address: 143 Brookland Avenue, Merryville QLD 4506 \n              Phone: <a href=\"tel:0406 090 996\">1800 034 034</a>\n              Email: <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a>\n              Web: www.mindline-au@netlify.com.au\n                            \n              <br><br>\n                      \n            </p>\n          </div>\n\n        </sl-animation>\n          <div class=\"bg-img\" class=\"responsive-img\"><img src=\"/images/about-group-hero-image-no-bg-768.png\"></div>\n        </div>\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -13745,7 +13759,7 @@ class FavouriteProductsView {
     }
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Favourites\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">   \n        <div class=\"fav-container\">     \n        <h1>Favourites</h1>\n        \n        <div class=\"fav-list\">\n          <sl-button type=\"primary\" size=\"large\" @click=", ">View Order</sl-button>\n          <sl-button type=\"primary\" size=\"large\" @click=", ">View Products</sl-button>\n          <sl-button class=\"red-btn\" type=\"primary\" size=\"large\" @click=", ">CHECKOUT</sl-button>      \n        </div>\n\n        <hr>\n        <br>\n\n        <p>Page content ...</p>\n\n      </div> \n      <div class=\"favourites-grid\">\n        ", "\n        </div>\n      </div>\n    "])), JSON.stringify(_Auth.default.currentUser), () => (0, _Router.gotoRoute)('/orders'), () => (0, _Router.gotoRoute)('/products'), () => (0, _Router.gotoRoute)('/orders'), this.favouriteProducts == null ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <sl-spinner></sl-spinner>\n        "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n          ", "\n        "])), this.favProducts.map(product => (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n            <va-favourite-product class=\"favourite-card\"\n              id=\"", "\"\n              name=\"", "\"\n              description=\"", "\"\n              price=\"", "\"\n              user=\"", "\"\n              favourite=\"", "\" \n              image=\"", "\"\n              milk=\"", "\"\n              shots=\"", "\"\n            >        \n            </va-favourite-product>\n\n          "])), product._id, product.name, product.description, product.price, JSON.stringify(product.user), favourite.product, product.image, product.milk, product.shots))));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Favourites Products\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">   \n        <div class=\"fav-container\">     \n        <h1>Favourites</h1>\n        \n        <div class=\"fav-list\">\n          <sl-button type=\"primary\" size=\"large\" @click=", ">View Order</sl-button>\n          <sl-button type=\"primary\" size=\"large\" @click=", ">View Products</sl-button>\n          <sl-button class=\"red-btn\" type=\"primary\" size=\"large\" @click=", ">CHECKOUT</sl-button>      \n        </div>\n\n        <hr>\n        <br>\n\n        <p>Page content ...</p>\n\n      </div> \n      <div class=\"favourites-grid\">\n        ", "\n        </div>\n      </div>\n    "])), JSON.stringify(_Auth.default.currentUser), () => (0, _Router.gotoRoute)('/orders'), () => (0, _Router.gotoRoute)('/products'), () => (0, _Router.gotoRoute)('/orders'), this.favouriteProducts == null ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <sl-spinner></sl-spinner>\n        "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n          ", "\n        "])), this.favProducts.map(product => (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n            <va-favourite-product class=\"favourite-card\"\n              id=\"", "\"\n              name=\"", "\"\n              description=\"", "\"\n              price=\"", "\"\n              user=\"", "\"\n              favourite=\"", "\" \n              image=\"", "\"\n              milk=\"", "\"\n              shots=\"", "\"\n            >        \n            </va-favourite-product>\n\n          "])), product._id, product.name, product.description, product.price, JSON.stringify(product.user), favourite.product, product.image, product.milk, product.shots))));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -13908,7 +13922,7 @@ var _guide = _interopRequireDefault(require("./views/pages/guide"));
 var _mentalHealth = _interopRequireDefault(require("./views/pages/mentalHealth"));
 var _mindfulness = _interopRequireDefault(require("./views/pages/mindfulness"));
 var _resources = _interopRequireDefault(require("./views/pages/resources"));
-var _favourites = _interopRequireDefault(require("./views/pages/favourites"));
+var _favouriteLines = _interopRequireDefault(require("./views/pages/favouriteLines"));
 var _about = _interopRequireDefault(require("./views/pages/about"));
 var _products = _interopRequireDefault(require("./views/pages/products"));
 var _orders = _interopRequireDefault(require("./views/pages/orders"));
@@ -13932,12 +13946,12 @@ const routes = {
   '/mentalHealth': _mentalHealth.default,
   '/mindfulness': _mindfulness.default,
   '/resources': _resources.default,
-  '/favourites': _favourites.default,
+  '/favouriteLines': _favouriteLines.default,
   '/about': _about.default,
   '/products': _products.default,
   '/orders': _orders.default,
-  '/favouriteProducts': _favouriteProducts.default,
   '/newProduct': _newProduct.default,
+  '/favouriteProducts': _favouriteProducts.default,
   '/location': _location.default,
   '/aboutUs': _aboutUs.default,
   '/hairdressers': _hairdressers.default
@@ -13986,7 +14000,7 @@ function anchorRoute(e) {
   const pathname = e.target.closest('a').pathname;
   AppRouter.gotoRoute(pathname);
 }
-},{"./views/pages/home":"views/pages/home.js","./views/pages/404":"views/pages/404.js","./views/pages/signin":"views/pages/signin.js","./views/pages/signup":"views/pages/signup.js","./views/pages/profile":"views/pages/profile.js","./views/pages/editProfile":"views/pages/editProfile.js","./views/pages/guide":"views/pages/guide.js","./views/pages/mentalHealth":"views/pages/mentalHealth.js","./views/pages/mindfulness":"views/pages/mindfulness.js","./views/pages/resources":"views/pages/resources.js","./views/pages/favourites":"views/pages/favourites.js","./views/pages/about":"views/pages/about.js","./views/pages/products":"views/pages/products.js","./views/pages/orders":"views/pages/orders.js","./views/pages/favouriteProducts":"views/pages/favouriteProducts.js","./views/pages/newProduct":"views/pages/newProduct.js","./views/pages/location":"views/pages/location.js","./views/pages/aboutUs":"views/pages/aboutUs.js","./views/pages/hairdressers":"views/pages/hairdressers.js"}],"App.js":[function(require,module,exports) {
+},{"./views/pages/home":"views/pages/home.js","./views/pages/404":"views/pages/404.js","./views/pages/signin":"views/pages/signin.js","./views/pages/signup":"views/pages/signup.js","./views/pages/profile":"views/pages/profile.js","./views/pages/editProfile":"views/pages/editProfile.js","./views/pages/guide":"views/pages/guide.js","./views/pages/mentalHealth":"views/pages/mentalHealth.js","./views/pages/mindfulness":"views/pages/mindfulness.js","./views/pages/resources":"views/pages/resources.js","./views/pages/favouriteLines":"views/pages/favouriteLines.js","./views/pages/about":"views/pages/about.js","./views/pages/products":"views/pages/products.js","./views/pages/orders":"views/pages/orders.js","./views/pages/favouriteProducts":"views/pages/favouriteProducts.js","./views/pages/newProduct":"views/pages/newProduct.js","./views/pages/location":"views/pages/location.js","./views/pages/aboutUs":"views/pages/aboutUs.js","./views/pages/hairdressers":"views/pages/hairdressers.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15763,6 +15777,52 @@ class CheckoutBox extends _litElement.LitElement {
 }
 _defineProperty(CheckoutBox, "styles", (0, _litElement.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        .checkout-box {\n            width: 300px;\n            padding: 20px;\n            border: 1px solid #ccc;\n            border-radius: 10px;\n            box-shadow: 0 0 10px rgba(0,0,0,0.1);\n            margin: 0 auto;\n        }\n        h2 {\n            text-align: center;\n        }\n        input[type=\"text\"],\n        input[type=\"email\"],\n        input[type=\"number\"] {\n            width: 100%;\n            padding: 10px;\n            margin: 10px 0;\n            border: 1px solid #ccc;\n            border-radius: 5px;\n        }\n        button {\n            width: 100%;\n            padding: 10px;\n            background-color: #4CAF50;\n            color: white;\n            border: none;\n            border-radius: 5px;\n            cursor: pointer;\n        }\n        button:hover {\n            background-color: #45a049;\n        }\n    "]))));
 customElements.define('checkout-box', CheckoutBox);
+},{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","lit-html":"../node_modules/lit-html/lit-html.js","../Router":"Router.js","../Auth":"Auth.js","../App":"App.js","../UserAPI":"UserAPI.js","../Toast":"Toast.js"}],"components/va-favourite-line.js":[function(require,module,exports) {
+"use strict";
+
+var _litElement = require("@polymer/lit-element");
+var _litHtml = require("lit-html");
+var _Router = require("../Router");
+var _Auth = _interopRequireDefault(require("../Auth"));
+var _App = _interopRequireDefault(require("../App"));
+var _UserAPI = _interopRequireDefault(require("../UserAPI"));
+var _Toast = _interopRequireDefault(require("../Toast"));
+var _FavouriteLines, _templateObject, _templateObject2;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+// Adapted from CoPilot accessed 18 November 2024
+customElements.define('va-favourite-line', (_FavouriteLines = class FavouriteLines extends _litElement.LitElement {
+  constructor() {
+    super();
+    this.products = [{
+      id: 1,
+      name: 'Product 1',
+      favourite: false
+    }, {
+      id: 2,
+      name: 'Product 2',
+      favourite: false
+    }, {
+      id: 3,
+      name: 'Product 3',
+      favourite: false
+    }];
+  }
+  render() {
+    return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n            <style>\n                .product-list {\n                    list-style-type: none;\n                    padding: 0;\n                    box-shadow: 8px 5px 20px rgba(0,0,0.1);\n                }\n                .product-item {\n                    padding: 10px;\n                    border-bottom: 1px solid #ccc;\n                    display: flex;\n                    justify-content: space-between;\n                    align-items: center;\n                }\n                .favourite {\n                    color: red;\n                }\n            </style>\n            <ul class=\"product-list\">\n                ", "\n            </ul>\n        "])), this.products.map(product => (0, _litElement.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n                    <li class=\"product-item\">\n                        ", "\n                        ", "\n                        <sl-button @click=\"", "\">\n                            ", "\n                        </sl-button>\n                    </li>\n                "])), this.name, this.product.name, () => this.toggleFavourite(product), favourite.product ? '❤️' : '♡')));
+  }
+  toggleFavourite(product) {
+    favourite.product = !favourite.product;
+    this.requestUpdate();
+  }
+}, _defineProperty(_FavouriteLines, "properties", {
+  products: {
+    type: Array
+  }
+}), _FavouriteLines));
 },{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","lit-html":"../node_modules/lit-html/lit-html.js","../Router":"Router.js","../Auth":"Auth.js","../App":"App.js","../UserAPI":"UserAPI.js","../Toast":"Toast.js"}],"components/va-favourite-product.js":[function(require,module,exports) {
 "use strict";
 
@@ -15872,6 +15932,7 @@ require("./components/va-app-header");
 require("./components/va-product");
 require("./components/va-order");
 require("./components/va-checkout");
+require("./components/va-favourite-line.js");
 require("./components/va-favourite-product.js");
 require("./scss/master.scss");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -15886,7 +15947,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
 document.addEventListener('DOMContentLoaded', () => {
   _App.default.init();
 });
-},{"./App.js":"App.js","./components/va-app-header":"components/va-app-header.js","./components/va-product":"components/va-product.js","./components/va-order":"components/va-order.js","./components/va-checkout":"components/va-checkout.js","./components/va-favourite-product.js":"components/va-favourite-product.js","./scss/master.scss":"scss/master.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./App.js":"App.js","./components/va-app-header":"components/va-app-header.js","./components/va-product":"components/va-product.js","./components/va-order":"components/va-order.js","./components/va-checkout":"components/va-checkout.js","./components/va-favourite-line.js":"components/va-favourite-line.js","./components/va-favourite-product.js":"components/va-favourite-product.js","./scss/master.scss":"scss/master.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -15911,7 +15972,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54989" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52696" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
