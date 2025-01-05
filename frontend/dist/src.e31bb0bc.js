@@ -13320,7 +13320,7 @@ class GuideView {
   }
   // Animation - from https://shoelace.style/components/animation/
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Guide\" user=\"", "\"></va-app-header>\n      <div class=\"page-content calign\">     \n      <br>\n      <p></p>   \n      <h2 class=\"--base-txt-color\">Welcome ", "!</h2>\n        <p>Here's a quick tour of Mindline AU</p>\n\n        <div class=\"guide-step\">\n          <h4>Search wellbeing information</h4>\n          <img src=\"images/guide-page-young-lady-standing-holding-mobile.png\" class=\"responsive-img\" >\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Save articles, audio and video to favourites</h4>\n          <img src=\"images/coffee-fav.png\" class=\"responsive-img\">\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Find a resources</h4>\n          <img src=\"images/coffee-types.png\" class=\"responsive-img\" >\n        </div>\n\n        <sl-animation name=\"jello\" duration=\"2000\" play iterations=\"10\"><sl-button type=\"primary\" @click=", ">Okay got it!</sl-button></sl-animation>\n        \n        <p></p>\n\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), _Auth.default.currentUser.firstName, () => (0, _Router.gotoRoute)('/'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Guide\" user=\"", "\"></va-app-header>\n      <div class=\"page-content calign\">     \n      <br>\n      <p></p>   \n      <h2 class=\"--base-txt-color\">Welcome ", "!</h2>\n        <p>Here's a quick tour of Mindline AU</p>\n\n        <div class=\"guide-step\">\n          <h4>Search wellbeing information</h4>\n          <img src=\"images/guide-page-young-lady-standing-holding-mobile-768.png\" class=\"responsive-img\" >\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Save articles, audio and video to favourites</h4>\n          <img src=\"images/coffee-fav.png\" class=\"responsive-img\">\n        </div>\n\n        <div class=\"guide-step\">\n          <h4>Find a resources</h4>\n          <img src=\"images/coffee-types.png\" class=\"responsive-img\" >\n        </div>\n\n        <sl-animation name=\"jello\" duration=\"2000\" play iterations=\"10\"><sl-button type=\"primary\" @click=", ">Okay got it!</sl-button></sl-animation>\n        \n        <p></p>\n\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), _Auth.default.currentUser.firstName, () => (0, _Router.gotoRoute)('/'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -15972,7 +15972,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52696" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53263" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
