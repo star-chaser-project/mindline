@@ -24,12 +24,7 @@ class HomeView {
           <div class="blurb-text"><h1 class="anim-in">Hey ${Auth.currentUser.firstName}</h1>
           <h1>Empower Your Life</h1>
           <h3>HARNESS YOUR POTENTIAL</h3>
-            <p>Lorem lkalkadflkadflk. 
-            </p>
-            <p>Lorem lkalkadflkadflk. 
-            </p>
-            <p>Lorem lkalkadflkadflk. 
-            </p>
+            <p>Lorem lkalkadflkadflk.</p>
           </div>
           
           <div class="order-btn">
