@@ -30,7 +30,7 @@ class SignUpView{
       <div class="page-content page-centered">   
         <div class="signon-container">   
           <div class="signinup-box">
-            <img class="signinup-logo" src="/images/cafe-minori-logo-portrait.png" class="responsive-img">
+            <img class="signinup-logo" src="/images/logo-mindline-clr-circle-150.png" class="responsive-img">
             <br>
             <h1>You're nearly there!</h1>
             <h4>Let's us know a little more about you</h4>

@@ -17,7 +17,7 @@ class aboutUsView {
       <va-app-header title="About Us" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
       <div class="page-content">        
         <div class="owner-bio">
-        <sl-animation name="fadeIn" duration="2000" play iterations="1">
+        <sl-animation name="fadeIn" duration="2000" play iterations="1"></sl-animation>
           <div class="owner-bio-text">
             <h1>My Story</h1>
             <p>
@@ -35,7 +35,7 @@ class aboutUsView {
               xx
             </p>
           </div>
-        </sl-animation>
+        
           <div class="bg-img" class="responsive-img"><img src="/images/cafe-minori-owner-with-truck-custom.png"></div>
         </div>
       </div>      
