@@ -6,7 +6,8 @@ import Utils from '../../Utils';
 import Toast from '../../Toast';
 import UserAPI from '../../UserAPI';
 
-
+// bookmarks = previously favourites
+// favouriteBookmarks = previously favouriteProducts
 class FavouriteLinesView {
   init(){
     document.title = 'Favourite Lines';

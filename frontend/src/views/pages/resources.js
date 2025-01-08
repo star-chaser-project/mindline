@@ -4,7 +4,8 @@ import {gotoRoute, anchorRoute} from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
 
-class TemplateView {
+ // Image adapted from Canva – Accessed on December 18, 2024
+class resourcesView {
   init(){
     document.title = 'Resources'    
     this.render()    
@@ -17,7 +18,9 @@ class TemplateView {
       <div class="page-content">        
         <h1>Resources</h1>
         <p>Supporting You Every Step of the Way.</p>
-        
+        <div>
+          <img src="images/resources-hero-image-837.png" class="responsive-img" >    
+        </div>
       </div>      
     `
     render(template, App.rootEl)
@@ -25,4 +28,4 @@ class TemplateView {
 }
 
 
-export default new TemplateView()
+export default new resourcesView()

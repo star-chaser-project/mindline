@@ -29,7 +29,7 @@ class SignInView {
       <div class="page-content page-centered">
         <div class="signon2-container">
           <div class="signinup-box">
-            <img class="signinup-logo" src="/images/cafe-minori-logo-portrait.png" class="responsive-img"> <br>
+            <img class="signinup-logo" src="/images/logo-mindline-clr-circle-150.png" class="responsive-img"> <br>
             <h1>Log in</h1>       
             <sl-form class="form-signup dark-theme" @sl-submit=${this.signInSubmitHandler}>          
               <div class="input-group">

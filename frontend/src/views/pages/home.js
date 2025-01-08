@@ -12,12 +12,12 @@ class HomeView {
     this.render();    
     Utils.pageIntroAnim();    
   }
-  // Image - adapted from Microsoft PowerPoint – Accessed on September 23, 2024
+   // Image adapted from Canva – Accessed on December 18, 2024
   // Animation - from https://shoelace.style/components/animation
   render(){
     const template = html`
       <va-app-header user=${JSON.stringify(Auth.currentUser)}>
-        <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/cafe-minori-logo-landscape-w.png">
+        <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo-mindline-no-wording-white-125.png">
       </a></va-app-header>
       <div class="page-content" class="centered">
         <div class="blurb-container">
@@ -28,9 +28,9 @@ class HomeView {
           </div>
           
           <div class="order-btn">
-          <sl-animation name="heartBeat" duration="1000" play iterations="1"><sl-button type="primary" size="large" @click=${() => gotoRoute('/products')}>ORDER NOW</sl-button></sl-animation>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/products')}>ORDER NOW</sl-button>
           </div>
-          <img src="/images/background-group-sitting-outdoors-rs.png" >
+          <sl-animation name="heartBeat" duration="1000" play iterations="1"><img src="/images/home-hero-image-175.png" ></sl-animation>
         </div>
         
         

@@ -4,7 +4,8 @@ import {gotoRoute, anchorRoute} from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
 
-class TemplateView {
+ // Image adapted from Canva – Accessed on December 18, 2024
+class mentalHealthView {
   init(){
     document.title = 'Mental Health'    
     this.render()    
@@ -17,12 +18,18 @@ class TemplateView {
       <div class="page-content">        
         <h1>Mental Health</h1>
         <p>Because it Matters</p>
+        <div>
+          <img src="images/mental-health-hero-image.png" class="responsive-img" >    
+        </div>
+
+      </div>
         
-      </div>      
+      
+
     `
     render(template, App.rootEl)
   }
 }
 
 
-export default new TemplateView()
+export default new mentalHealthView()

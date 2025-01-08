@@ -4,7 +4,8 @@ import {gotoRoute, anchorRoute} from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
 
-class TemplateView {
+ // Image adapted from Canva – Accessed on December 18, 2024
+class mindfulnessView {
   init(){
     document.title = 'Mindfulness'    
     this.render()    
@@ -19,6 +20,10 @@ class TemplateView {
         <p>Be Present</p>
         <p>Be Peaceful</p>
         <p>Be You</p>
+        <div>
+          <img src="images/mindfulness-hero-image-837.png" class="responsive-img" >    
+        </div>
+
       </div>      
     `
     render(template, App.rootEl)
@@ -26,4 +31,4 @@ class TemplateView {
 }
 
 
-export default new TemplateView()
+export default new mindfulnessView()
