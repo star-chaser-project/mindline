@@ -35,12 +35,11 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
-  order: [
-    { type: Schema.ObjectId, ref: 'Order' }
-  ],
-  favouriteProduct: [
-    { type: Schema.ObjectId, ref: 'Product' }
-  ]
+  bookmarkArticle: {
+     type: Schema.ObjectId, 
+     ref: 'Article' 
+  }
+  
 }, { timestamps: true })
 
 // encrypt password field on save
