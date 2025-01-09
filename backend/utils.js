@@ -20,22 +20,24 @@ class Utils {
     }
 
     generateAccessToken(user){
+        console.log('Secret = ', process.env.ACCESS_TOKEN_SECRET)
+        console.log('User = ', user)
         return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '7d'})
     }
 
     authenticateToken(req, res, next){
         const authHeader = req.headers['authorization']        
         const token = authHeader && authHeader.split(' ')[1]
-        if(token == null){
-            return res.status(401).json({
-                message: "Unauthorised"
-            })
-        } 
+
+        if (!token) {
+            return res.status(401).json({ error: 'Token not found' })
+        }
         
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+
             if(err) {
-                return res.status(401).json({
-                    message: "Unauthorised"
+                return res.status(403).json({
+                    error: "Invalid or expired token" 
                 })
             }
             req.user = user

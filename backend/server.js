@@ -42,12 +42,12 @@ app.use('/auth', authRouter)
 const userRouter = require('./routes/user')
 app.use('/user', userRouter)
 
-// product
-const productRouter = require('./routes/product')
-app.use('/product', productRouter)
+// article
+const articleRouter = require('./routes/article')
+app.use('/article', articleRouter)
 
 // order
-const orderRouter = require('./routes/order')
+const orderRouter = require('./routes/bookmark')
 app.use('/order', orderRouter)
 
 // run app listen on port --------------------
