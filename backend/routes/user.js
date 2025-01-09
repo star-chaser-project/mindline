@@ -4,33 +4,46 @@ const Utils = require('./../utils')
 const User = require('../models/User')
 const path = require('path')
 
-// PUT - add favouriteProduct --------------------------------------
-// endpoint = /user/addFavProduct
-router.put('/addFavProduct/', Utils.authenticateToken, (req, res) => {  
+//GET - get all users ----------------------------------------------
+// endpoint: /user 
+router.get('/', (req, res) => {
+  // Get all users from the  User model, using the find method //
+  User.find()
+      .then(users => {
+          res.json(users)
+      })
+      .catch(err => {
+          console.log("problem getting users", err)
+      })
+})
+
+// PUT - add favouriteArticle --------------------------------------
+// endpoint = /user/addFavArticle
+router.put('/bookmarkArticle/', Utils.authenticateToken, (req, res) => {  
   // validate check
-  if(!req.body.productId){
+  if(!req.body.articleId){
     return res.status(400).json({
-      message: "No product specified"
+      message: "No article specified"
     })
   }
-  // add productId to favouriteProducts field (array - push)
+  // add articleId to favouriteArticles field (array - push)
   // push = method that can add an item to an array
   User.updateOne({
     _id: req.user._id
   }, {
     $push: {
-      favouriteProducts: req.body.productId
+      bookmarkedArticles: req.body.articleId
     }
   })
     .then((user) => {            
       res.json({
-        message: "Product added to favourites"
+        message: "Article bookmarked"
       })
     })
     .catch(err => {
       console.log(err)
       res.status(500).json({
-        message: "Problem adding favourite product"
+        message: "Problem bookmarking article"
       })
     })
 })
@@ -70,7 +83,7 @@ router.get("/:id", Utils.authenticateToken, (req, res) => {
   .populate({
       path: 'order',
       populate: {
-        path: 'product', 
+        path: 'article', 
 
       }
     })
