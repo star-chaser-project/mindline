@@ -1,4 +1,4 @@
-import { LitElement, html, css } from '@polymer/lit-element';
+import { LitElement, html, render } from '@polymer/lit-element';
 import {anchorRoute, gotoRoute} from './../Router';
 import Auth from './../Auth';
 import App from './../App';
@@ -50,6 +50,18 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
       // goto route after menu is hidden
       gotoRoute(pathname);
     });
+  }
+  handleTitleClick(path, e) {
+    e.preventDefault();
+    gotoRoute(path);
+  }
+
+  handleChevronClick(e) {
+    e.stopPropagation();
+    const details = e.target.closest('sl-details');
+    if (details) {
+      details.open = !details.open;
+    }
   }
 
   render(){    
@@ -115,19 +127,21 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
       
       .app-side-menu-items a {
         display: block;
-        padding: .5em;
+        padding: 0.5em;
         text-decoration: none;
         font-size: 1.3em;
-        color: #2F1E1F;
+        color: var(--app-header-txt-color);
+        padding-bottom: 0.5em;
       }
 
       .app-side-menu-logo {
-        width: 120px;
-        margin-bottom: 1em;
-        position: absolute;
-        top: 2em;
-        left: 1.5em;
-      }
+      width: 150px !important; 
+        height: auto !important; /* Remove fixed height to maintain aspect ratio */
+        
+        top: 1em;
+      display: block;
+      
+    }
 
       .page-title {
         color: var(--app-header-txt-color);
@@ -146,10 +160,70 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
       }
 
 
+  
+
+      sl-details::part(summary) {
+    transition: color 0.3s ease;
+  }
+
+  sl-details::part(summary):hover {
+    color: var(--sl-color-primary-600);
+    cursor: pointer;
+  }
+
+  .menu-expand {
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .menu-expand:hover {
+    color: var(--sl-color-primary-600);
+    padding-left: 1.5em;
+    transition: all 0.5s ease;
+  }
+
       /* right side menu */
       .right-side-menu {
         --base-txt-color: #2F1E1F;
       }
+
+        .menu-expand {
+        font-size: 1.3em;
+        margin-left: 1em;
+        margin-top: 0.5em;
+      }
+
+      sl-drawer::part(label) {
+    padding: 0.6em;
+    
+    
+  }
+
+  sl-details::part(base) {
+  display: block;
+  border: none;
+  padding: 0.65em;
+}
+
+sl-details::part(content) {
+  border: none;
+  padding: 0;
+}
+
+sl-details::part(header) {
+  border: none;
+  padding: 0;
+}
+
+sl-details::part(summary) {
+  color: var(--sl-color-neutral-600);
+  font-size: 1.3em;
+  color: var(--app-header-txt-color);
+}
+
+sl-details::part(base) {
+  border: none;
+}
 
 
       /* RESPONSIVE - MOBILE ------------------- */
@@ -159,6 +233,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
           display: none;
         }
       }
+
 
     </style>
   
@@ -198,13 +273,36 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
     </header>
 
     <sl-drawer class="app-side-menu" placement="left">
-    <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
+    <div slot="label">  
+          <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
+        </div>
       <br>
       <nav class="app-side-menu-items">
       ${this.user.accessLevel == 1 ? html`
-        <a href="/mentalHealth" @click="${this.menuClick}">Mental Health</a>
-        <a href="/mindfulness" @click="${this.menuClick}">Mindfulness</a>
-        <a href="/resources" @click="${this.menuClick}">Resources</a>
+        <sl-details>
+                <div slot="summary" class="summary-content">
+                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
+                </div>
+                  <a class="menu-expand" href="">Stress</a>
+                  <a class="menu-expand" href="">Anxiety</a>
+                  <a class="menu-expand" href="">Depression</a>
+              </sl-details>
+              <sl-details>
+                <div slot="summary" class="summary-content">
+                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
+                </div>
+                  <a class="menu-expand" href="">Meditation</a>
+                  <a class="menu-expand" href="">Breathing</a>
+                  <a class="menu-expand" href="">Motivation</a>
+              </sl-details>
+              <sl-details>
+                <div slot="summary" class="summary-content">
+                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
+                </div>
+                  <a class="menu-expand" href="">Support</a>
+                  <a class="menu-expand" href="">Services</a>
+                  <a class="menu-expand" href="">Guides</a>
+              </sl-details>
         <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
         <a href="/about" @click="${this.menuClick}">About</a>
         <a href="/profile" @click="${this.menuClick}">Profile</a>   
@@ -223,9 +321,30 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         ` : ''}
         ${this.user.accessLevel == 2 ? html`
         
-        <a href="/mentalHealth" @click="${this.menuClick}">Mental Health</a>
-        <a href="/mindfulness" @click="${this.menuClick}">Mindfulness</a>
-        <a href="/resources" @click="${this.menuClick}">Resources</a>
+        <sl-details>
+                <div slot="summary" class="summary-content">
+                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
+                </div>
+                  <a class="menu-expand" href="">Stress</a>
+                  <a class="menu-expand" href="">Anxiety</a>
+                  <a class="menu-expand" href="">Depression</a>
+              </sl-details>
+              <sl-details>
+                <div slot="summary" class="summary-content">
+                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
+                </div>
+                  <a class="menu-expand" href="">Meditation</a>
+                  <a class="menu-expand" href="">Breathing</a>
+                  <a class="menu-expand" href="">Motivation</a>
+              </sl-details>
+              <sl-details>
+                <div slot="summary" class="summary-content">
+                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
+                </div>
+                  <a class="menu-expand" href="">Support</a>
+                  <a class="menu-expand" href="">Services</a>
+                  <a class="menu-expand" href="">Guides</a>
+              </sl-details>
         <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
         <a href="/about" @click="${this.menuClick}">About</a>
         <a href="/profile" @click="${this.menuClick}">Profile</a>

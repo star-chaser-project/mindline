@@ -15318,146 +15318,7 @@ class ProductView {
   }
 }
 var _default = exports.default = new ProductView();
-},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js","../../ProductAPI":"ProductAPI.js","../../Toast":"Toast.js"}],"OrderAPI.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _App = _interopRequireDefault(require("./App"));
-var _Auth = _interopRequireDefault(require("./Auth"));
-var _Toast = _interopRequireDefault(require("./Toast"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-class OrderAPI {
-  async newOrder(formData) {
-    // send fetch request
-    const response = await fetch("".concat(_App.default.apiBase, "/order"), {
-      method: 'POST',
-      headers: {
-        "Authorization": "Bearer ".concat(localStorage.accessToken)
-      },
-      body: formData
-    });
-
-    // if response not ok
-    if (!response.ok) {
-      let message = 'Problem adding order';
-      if (response.status == 400) {
-        const err = await response.json();
-        message = err.message;
-      }
-      // throw error (exit this function)      
-      throw new Error(message);
-    }
-
-    // convert response payload into json - store as data
-    const data = await response.json();
-
-    // return data
-    return data;
-  }
-  async addFavProduct(productId, favourite) {
-    // validate
-    if (!productId) return;
-
-    // fetch the json data
-    const response = await fetch("".concat(_App.default.apiBase, "/order/addFavProduct/").concat(productId), {
-      method: "PUT",
-      headers: {
-        "Authorization": "Bearer ".concat(localStorage.accessToken),
-        "Content-Type": 'application/json'
-      },
-      body: JSON.stringify({
-        favourite
-      })
-    });
-
-    // if response not ok
-    if (!response.ok) {
-      // console log error
-      const err = await response.json();
-      if (err) console.log(err);
-      // throw error (exit this function)      
-      throw new Error('Problem adding product to favourites');
-    }
-
-    // convert response payload into json - store as data
-    const data = await response.json();
-
-    // return data
-    return data;
-  }
-  async getOrders() {
-    console.log("calling orders beginning");
-    // fetch the json data
-    const response = await fetch("".concat(_App.default.apiBase, "/order"), {
-      headers: {
-        "Authorization": "Bearer ".concat(localStorage.accessToken)
-      }
-    });
-    console.log("calling orders");
-    // if response not ok
-    if (!response.ok) {
-      // console log error
-      const err = await response.json();
-      if (err) console.log(err);
-      // throw error (exit this function)      
-      throw new Error('Problem getting orders');
-    }
-
-    // convert response payload into json - store as data
-    const data = await response.json();
-    console.log("data", data);
-
-    // return data
-    return data;
-  }
-}
-var _default = exports.default = new OrderAPI();
-},{"./App":"App.js","./Auth":"Auth.js","./Toast":"Toast.js"}],"views/pages/orders.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _App = _interopRequireDefault(require("../../App"));
-var _litHtml = require("lit-html");
-var _Router = require("../../Router");
-var _Auth = _interopRequireDefault(require("../../Auth"));
-var _Utils = _interopRequireDefault(require("../../Utils"));
-var _OrderAPI = _interopRequireDefault(require("../../OrderAPI"));
-var _UserAPI = _interopRequireDefault(require("../../UserAPI"));
-var _Toast = _interopRequireDefault(require("../../Toast"));
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7;
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
-class OrdersView {
-  init() {
-    document.title = 'Orders';
-    this.orders = null;
-    this.render();
-    _Utils.default.pageIntroAnim();
-    this.getOrders();
-  }
-  async getOrders() {
-    try {
-      const userOrders = await _UserAPI.default.getUser(_Auth.default.currentUser._id);
-      this.orders = userOrders.order;
-      console.log("orders 1/1/25", userOrders.order);
-      this.render();
-    } catch (err) {
-      _Toast.default.show(err, 'error');
-    }
-  }
-  render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Orders\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <div class=\"orders-container\">\n          <div class=\"orders-top\"> \n          <h1>View Orders</h1>\n          <p>Here you can view current and previous orders.</p>\n          <div class=\"order-list\">\n            <sl-button type=\"primary\" size=\"large\" @click=", ">View Products</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">View Favourites</sl-button>\n            <sl-button class=\"red-btn\" type=\"primary\" size=\"large\" @click=", ">CHECKOUT</sl-button>      \n          </div>\n\n            <hr>\n\n            <br>         \n            \n            <div>\n              <h1>Current order</h1>\n            \n              <div class=\"orders-grid\">\n                ", "\n            </div>\n\n\n          </div>  \n\n          <br>\n\n          <hr>\n          \n          <br>\n\n          <div class=\"prev-orders-btn-set\">\n            <h1>Previous orders</h1>\n            <sl-button type=\"primary\" size=\"small\" @click=", ">VIEW ALL</sl-button> \n              \n          </div>  \n        \n\n          <div>\n            \n              <div class=\"orders-grid\">\n                ", "  \n\n        </div>\n      \n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), () => (0, _Router.gotoRoute)('/products'), () => (0, _Router.gotoRoute)('/favouriteProducts'), () => (0, _Router.gotoRoute)('/orders'), this.orders == null ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n                <sl-spinner></sl-spinner>\n              "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n                ", "\n\n                \n              "])), this.orders.map(order => (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n                  <va-order class=\"order-card\"  \n                    id=\"", "\"\n                    user=\"", "\"\n                    product=\"", "\"\n                    favourite=\"", "\" \n                    price=\"$", "\"\n                    totalPrice=\"$", "\"\n                    orderTime=\"", "\"\n                  >\n                  </va-order>\n\n\n                "])), order._id, JSON.stringify(order.user), JSON.stringify(order.product), order.favourite, order.product.price, order.totalPrice, order.orderTime))), () => (0, _Router.gotoRoute)('/orders'), this.orders == null ? (0, _litHtml.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n                <sl-spinner></sl-spinner>\n              "]))) : (0, _litHtml.html)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n                ", "\n\n                \n              "])), this.orders.map(order => (0, _litHtml.html)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n                  <va-order class=\"order-card\"  \n                    id=\"", "\"\n                    user=\"", "\"\n                    product=\"", "\"\n                    favourite=\"", "\" \n                    price=\"$", "\"\n                    totalPrice=\"$", "\"\n                    orderTime=\"", "\"\n                    orderCompleted=\"", "\"\n                  >\n                  </va-order>\n\n\n                "])), order._id, JSON.stringify(order.user), JSON.stringify(order.product), order.favourite, order.product.price, order.totalPrice, order.orderTime, order.orderCompleted))));
-    (0, _litHtml.render)(template, _App.default.rootEl);
-  }
-}
-var _default = exports.default = new OrdersView();
-},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js","../../OrderAPI":"OrderAPI.js","../../UserAPI":"UserAPI.js","../../Toast":"Toast.js"}],"views/pages/favouriteProducts.js":[function(require,module,exports) {
+},{"../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","../../Router":"Router.js","../../Auth":"Auth.js","../../Utils":"Utils.js","../../ProductAPI":"ProductAPI.js","../../Toast":"Toast.js"}],"views/pages/favouriteProducts.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15659,7 +15520,6 @@ var _resources = _interopRequireDefault(require("./views/pages/resources"));
 var _favouriteLines = _interopRequireDefault(require("./views/pages/favouriteLines"));
 var _about = _interopRequireDefault(require("./views/pages/about"));
 var _products = _interopRequireDefault(require("./views/pages/products"));
-var _orders = _interopRequireDefault(require("./views/pages/orders"));
 var _favouriteProducts = _interopRequireDefault(require("./views/pages/favouriteProducts"));
 var _newProduct = _interopRequireDefault(require("./views/pages/newProduct"));
 var _location = _interopRequireDefault(require("./views/pages/location"));
@@ -15683,7 +15543,6 @@ const routes = {
   '/favouriteLines': _favouriteLines.default,
   '/about': _about.default,
   '/products': _products.default,
-  '/orders': _orders.default,
   '/newProduct': _newProduct.default,
   '/favouriteProducts': _favouriteProducts.default,
   '/location': _location.default,
@@ -15734,7 +15593,7 @@ function anchorRoute(e) {
   const pathname = e.target.closest('a').pathname;
   AppRouter.gotoRoute(pathname);
 }
-},{"./views/pages/home":"views/pages/home.js","./views/pages/404":"views/pages/404.js","./views/pages/signin":"views/pages/signin.js","./views/pages/signup":"views/pages/signup.js","./views/pages/profile":"views/pages/profile.js","./views/pages/editProfile":"views/pages/editProfile.js","./views/pages/guide":"views/pages/guide.js","./views/pages/mentalHealth":"views/pages/mentalHealth.js","./views/pages/mindfulness":"views/pages/mindfulness.js","./views/pages/resources":"views/pages/resources.js","./views/pages/favouriteLines":"views/pages/favouriteLines.js","./views/pages/about":"views/pages/about.js","./views/pages/products":"views/pages/products.js","./views/pages/orders":"views/pages/orders.js","./views/pages/favouriteProducts":"views/pages/favouriteProducts.js","./views/pages/newProduct":"views/pages/newProduct.js","./views/pages/location":"views/pages/location.js","./views/pages/aboutUs":"views/pages/aboutUs.js","./views/pages/hairdressers":"views/pages/hairdressers.js"}],"App.js":[function(require,module,exports) {
+},{"./views/pages/home":"views/pages/home.js","./views/pages/404":"views/pages/404.js","./views/pages/signin":"views/pages/signin.js","./views/pages/signup":"views/pages/signup.js","./views/pages/profile":"views/pages/profile.js","./views/pages/editProfile":"views/pages/editProfile.js","./views/pages/guide":"views/pages/guide.js","./views/pages/mentalHealth":"views/pages/mentalHealth.js","./views/pages/mindfulness":"views/pages/mindfulness.js","./views/pages/resources":"views/pages/resources.js","./views/pages/favouriteLines":"views/pages/favouriteLines.js","./views/pages/about":"views/pages/about.js","./views/pages/products":"views/pages/products.js","./views/pages/favouriteProducts":"views/pages/favouriteProducts.js","./views/pages/newProduct":"views/pages/newProduct.js","./views/pages/location":"views/pages/location.js","./views/pages/aboutUs":"views/pages/aboutUs.js","./views/pages/hairdressers":"views/pages/hairdressers.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15822,8 +15681,19 @@ customElements.define('va-app-header', class AppHeader extends _litElement.LitEl
       (0, _Router.gotoRoute)(pathname);
     });
   }
+  handleTitleClick(path, e) {
+    e.preventDefault();
+    (0, _Router.gotoRoute)(path);
+  }
+  handleChevronClick(e) {
+    e.stopPropagation();
+    const details = e.target.closest('sl-details');
+    if (details) {
+      details.open = !details.open;
+    }
+  }
   render() {
-    return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    <style>      \n      * {\n        box-sizing: border-box;\n      }\n      .app-header {\n        background: var(--brand-color);\n        position: fixed;\n        top: 0;\n        right: 0;\n        left: 0;\n        height: var(--app-header-height);\n        color: #fff;\n        display: flex;\n        z-index: 9;\n        box-shadow: 4px 0px 10px rgba(0,0,0,0.2);\n        align-items: center;\n      }\n      \n\n      .app-header-main {\n        flex-grow: 1;\n        display: flex;\n        align-items: center;\n      }\n\n      .app-header-main::slotted(h1){\n        color: #fff;\n      }\n\n      .app-logo a {\n        color: #fff;\n        text-decoration: none;\n        font-weight: bold;\n        font-size: 1.2em;\n        padding: .6em;\n        display: inline-block;        \n      }\n\n      .app-logo img {\n        width: 90px;\n      }\n      \n      .hamburger-btn::part(base) {\n        color: #fff;\n      }\n\n      .app-top-nav {\n        display: flex;\n        height: 100%;\n        align-items: center;\n      }\n\n      .app-top-nav a {\n        display: inline-block;\n        padding: .8em;\n        text-decoration: none;\n        color: #fff;\n      }\n      \n      .app-side-menu-items a {\n        display: block;\n        padding: .5em;\n        text-decoration: none;\n        font-size: 1.3em;\n        color: #2F1E1F;\n      }\n\n      .app-side-menu-logo {\n        width: 120px;\n        margin-bottom: 1em;\n        position: absolute;\n        top: 2em;\n        left: 1.5em;\n      }\n\n      .page-title {\n        color: var(--app-header-txt-color);\n        margin-right: 0.5em;\n        font-size: var(--app-header-title-font-size);\n      }\n\n      /* active nav links */\n      .app-top-nav a.active,\n      .app-side-menu-items a.active {\n        font-weight: bold;\n      }\n\n      .menu-item::part(label) :hover {\n        color: #fff;\n      }\n\n\n      /* right side menu */\n      .right-side-menu {\n        --base-txt-color: #2F1E1F;\n      }\n\n\n      /* RESPONSIVE - MOBILE ------------------- */\n      @media all and (max-width: 768px){       \n        \n        .app-top-nav {\n          display: none;\n        }\n      }\n\n    </style>\n  \n    <header class=\"app-header\">\n      <sl-icon-button class=\"hamburger-btn\" name=\"list\" @click=\"", "\" style=\"font-size: 2em;\"></sl-icon-button>       \n      \n      <div class=\"app-header-main\">\n        ", "\n        <slot></slot>\n      </div>\n\n      <nav class=\"app-top-nav\">\n        \n        ", "\n        ", "\n        \n        <sl-dropdown>\n          <a slot=\"trigger\" href=\"#\" @click=\"", "\">\n            <sl-avatar style=\"--size: 40px;\" image=", "></sl-avatar> ", "\n          </a>\n          <sl-menu class=\"right-side-menu\">            \n            <sl-menu-item @click=\"", "\">Profile</sl-menu-item>\n            <sl-menu-item @click=\"", "\">Edit Profile</sl-menu-item>\n            <sl-menu-item @click=\"", "\">Sign Out</sl-menu-item>\n          </sl-menu>\n        </sl-dropdown>\n      </nav>\n    </header>\n\n    <sl-drawer class=\"app-side-menu\" placement=\"left\">\n    <a href=\"/\" @click=\"", "\"><img class=\"app-side-menu-logo\" src=\"/images/logo-mindline-trimmed-no-wording-clr.png\"></a>\n      <br>\n      <nav class=\"app-side-menu-items\">\n      ", "\n        ", "\n       \n        \n        \n\n      </nav>  \n    </sl-drawer>\n    "])), this.hamburgerClick, this.title ? (0, _litElement.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <h1 class=\"page-title\">", "</h1>\n        "])), this.title) : "", this.user.accessLevel == 2 ? (0, _litElement.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["  \n          <a href=\"/newProduct\" @click=\"", "\">Add Bookmarks</a> \n          <a href=\"/orders\" @click=\"", "\">View Bookmarks</a>\n        "])), _Router.anchorRoute, _Router.anchorRoute) : '', this.user.accessLevel == 1 ? (0, _litElement.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n       \n          <a href=\"/about\" @click=\"", "\">About</a>       \n\n        "])), _Router.anchorRoute) : '', e => e.preventDefault(), this.user && this.user.avatar ? "".concat(_App.default.apiBase, "/images/").concat(this.user.avatar) : '', this.user && this.user.firstName, () => (0, _Router.gotoRoute)('/profile'), () => (0, _Router.gotoRoute)('/editProfile'), () => _Auth.default.signOut(), this.menuClick, this.user.accessLevel == 1 ? (0, _litElement.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        <a href=\"/mentalHealth\" @click=\"", "\">Mental Health</a>\n        <a href=\"/mindfulness\" @click=\"", "\">Mindfulness</a>\n        <a href=\"/resources\" @click=\"", "\">Resources</a>\n        <a href=\"/favouriteLines\" @click=\"", "\">Bookmarks</a>\n        <a href=\"/about\" @click=\"", "\">About</a>\n        <a href=\"/profile\" @click=\"", "\">Profile</a>   \n        \n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"/products\" @click=\"", "\">Privacy</a>\n        <a href=\"/products\" @click=\"", "\">T&Cs</a>\n        <a href=\"/products\" @click=\"", "\">Socials</a>\n\n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a>\n        <a href=\"tel:1800 034 034\">1800 034 034</a>\n\n        "])), this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick) : '', this.user.accessLevel == 2 ? (0, _litElement.html)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        \n        <a href=\"/mentalHealth\" @click=\"", "\">Mental Health</a>\n        <a href=\"/mindfulness\" @click=\"", "\">Mindfulness</a>\n        <a href=\"/resources\" @click=\"", "\">Resources</a>\n        <a href=\"/favouriteLines\" @click=\"", "\">Bookmarks</a>\n        <a href=\"/about\" @click=\"", "\">About</a>\n        <a href=\"/profile\" @click=\"", "\">Profile</a>\n\n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"/products\" @click=\"", "\">Privacy</a>\n        <a href=\"/products\" @click=\"", "\">T&Cs</a>\n        <a href=\"/products\" @click=\"", "\">Socials</a>\n\n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a>\n        <a href=\"tel:1800 034 034\">1800 034 034</a>\n\n        "])), this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick) : '');
+    return (0, _litElement.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    <style>      \n      * {\n        box-sizing: border-box;\n      }\n      .app-header {\n        background: var(--brand-color);\n        position: fixed;\n        top: 0;\n        right: 0;\n        left: 0;\n        height: var(--app-header-height);\n        color: #fff;\n        display: flex;\n        z-index: 9;\n        box-shadow: 4px 0px 10px rgba(0,0,0,0.2);\n        align-items: center;\n      }\n      \n\n      .app-header-main {\n        flex-grow: 1;\n        display: flex;\n        align-items: center;\n      }\n\n      .app-header-main::slotted(h1){\n        color: #fff;\n      }\n\n      .app-logo a {\n        color: #fff;\n        text-decoration: none;\n        font-weight: bold;\n        font-size: 1.2em;\n        padding: .6em;\n        display: inline-block;        \n      }\n\n      .app-logo img {\n        width: 90px;\n      }\n      \n      .hamburger-btn::part(base) {\n        color: #fff;\n      }\n\n      .app-top-nav {\n        display: flex;\n        height: 100%;\n        align-items: center;\n      }\n\n      .app-top-nav a {\n        display: inline-block;\n        padding: .8em;\n        text-decoration: none;\n        color: #fff;\n      }\n      \n      .app-side-menu-items a {\n        display: block;\n        padding: 0.5em;\n        text-decoration: none;\n        font-size: 1.3em;\n        color: var(--app-header-txt-color);\n        padding-bottom: 0.5em;\n      }\n\n      .app-side-menu-logo {\n      width: 150px !important; \n        height: auto !important; /* Remove fixed height to maintain aspect ratio */\n        \n        top: 1em;\n      display: block;\n      \n    }\n\n      .page-title {\n        color: var(--app-header-txt-color);\n        margin-right: 0.5em;\n        font-size: var(--app-header-title-font-size);\n      }\n\n      /* active nav links */\n      .app-top-nav a.active,\n      .app-side-menu-items a.active {\n        font-weight: bold;\n      }\n\n      .menu-item::part(label) :hover {\n        color: #fff;\n      }\n\n\n  \n\n      sl-details::part(summary) {\n    transition: color 0.3s ease;\n  }\n\n  sl-details::part(summary):hover {\n    color: var(--sl-color-primary-600);\n    cursor: pointer;\n  }\n\n  .menu-expand {\n    transition: color 0.3s ease;\n    text-decoration: none;\n  }\n\n  .menu-expand:hover {\n    color: var(--sl-color-primary-600);\n    padding-left: 1.5em;\n    transition: all 0.5s ease;\n  }\n\n      /* right side menu */\n      .right-side-menu {\n        --base-txt-color: #2F1E1F;\n      }\n\n        .menu-expand {\n        font-size: 1.3em;\n        margin-left: 1em;\n        margin-top: 0.5em;\n      }\n\n      sl-drawer::part(label) {\n    padding: 0.6em;\n    \n    \n  }\n\n  sl-details::part(base) {\n  display: block;\n  border: none;\n  padding: 0.65em;\n}\n\nsl-details::part(content) {\n  border: none;\n  padding: 0;\n}\n\nsl-details::part(header) {\n  border: none;\n  padding: 0;\n}\n\nsl-details::part(summary) {\n  color: var(--sl-color-neutral-600);\n  font-size: 1.3em;\n  color: var(--app-header-txt-color);\n}\n\nsl-details::part(base) {\n  border: none;\n}\n\n\n      /* RESPONSIVE - MOBILE ------------------- */\n      @media all and (max-width: 768px){       \n        \n        .app-top-nav {\n          display: none;\n        }\n      }\n\n\n    </style>\n  \n    <header class=\"app-header\">\n      <sl-icon-button class=\"hamburger-btn\" name=\"list\" @click=\"", "\" style=\"font-size: 2em;\"></sl-icon-button>       \n      \n      <div class=\"app-header-main\">\n        ", "\n        <slot></slot>\n      </div>\n\n      <nav class=\"app-top-nav\">\n        \n        ", "\n        ", "\n        \n        <sl-dropdown>\n          <a slot=\"trigger\" href=\"#\" @click=\"", "\">\n            <sl-avatar style=\"--size: 40px;\" image=", "></sl-avatar> ", "\n          </a>\n          <sl-menu class=\"right-side-menu\">            \n            <sl-menu-item @click=\"", "\">Profile</sl-menu-item>\n            <sl-menu-item @click=\"", "\">Edit Profile</sl-menu-item>\n            <sl-menu-item @click=\"", "\">Sign Out</sl-menu-item>\n          </sl-menu>\n        </sl-dropdown>\n      </nav>\n    </header>\n\n    <sl-drawer class=\"app-side-menu\" placement=\"left\">\n    <div slot=\"label\">  \n          <a href=\"/\" @click=\"", "\"><img class=\"app-side-menu-logo\" src=\"/images/logo-mindline-trimmed-no-wording-clr.png\"></a>\n        </div>\n      <br>\n      <nav class=\"app-side-menu-items\">\n      ", "\n        ", "\n       \n        \n        \n\n      </nav>  \n    </sl-drawer>\n    "])), this.hamburgerClick, this.title ? (0, _litElement.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <h1 class=\"page-title\">", "</h1>\n        "])), this.title) : "", this.user.accessLevel == 2 ? (0, _litElement.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["  \n          <a href=\"/newProduct\" @click=\"", "\">Add Bookmarks</a> \n          <a href=\"/orders\" @click=\"", "\">View Bookmarks</a>\n        "])), _Router.anchorRoute, _Router.anchorRoute) : '', this.user.accessLevel == 1 ? (0, _litElement.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n       \n          <a href=\"/about\" @click=\"", "\">About</a>       \n\n        "])), _Router.anchorRoute) : '', e => e.preventDefault(), this.user && this.user.avatar ? "".concat(_App.default.apiBase, "/images/").concat(this.user.avatar) : '', this.user && this.user.firstName, () => (0, _Router.gotoRoute)('/profile'), () => (0, _Router.gotoRoute)('/editProfile'), () => _Auth.default.signOut(), this.menuClick, this.user.accessLevel == 1 ? (0, _litElement.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n        <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Mental Health</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Stress</a>\n                  <a class=\"menu-expand\" href=\"\">Anxiety</a>\n                  <a class=\"menu-expand\" href=\"\">Depression</a>\n              </sl-details>\n              <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Mindfulness</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Meditation</a>\n                  <a class=\"menu-expand\" href=\"\">Breathing</a>\n                  <a class=\"menu-expand\" href=\"\">Motivation</a>\n              </sl-details>\n              <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Resources</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Support</a>\n                  <a class=\"menu-expand\" href=\"\">Services</a>\n                  <a class=\"menu-expand\" href=\"\">Guides</a>\n              </sl-details>\n        <a href=\"/favouriteLines\" @click=\"", "\">Bookmarks</a>\n        <a href=\"/about\" @click=\"", "\">About</a>\n        <a href=\"/profile\" @click=\"", "\">Profile</a>   \n        \n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"/products\" @click=\"", "\">Privacy</a>\n        <a href=\"/products\" @click=\"", "\">T&Cs</a>\n        <a href=\"/products\" @click=\"", "\">Socials</a>\n\n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a>\n        <a href=\"tel:1800 034 034\">1800 034 034</a>\n\n        "])), e => this.handleTitleClick('/mentalHealth', e), e => this.handleTitleClick('/mindfulness', e), e => this.handleTitleClick('/resources', e), this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick) : '', this.user.accessLevel == 2 ? (0, _litElement.html)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n        \n        <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Mental Health</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Stress</a>\n                  <a class=\"menu-expand\" href=\"\">Anxiety</a>\n                  <a class=\"menu-expand\" href=\"\">Depression</a>\n              </sl-details>\n              <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Mindfulness</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Meditation</a>\n                  <a class=\"menu-expand\" href=\"\">Breathing</a>\n                  <a class=\"menu-expand\" href=\"\">Motivation</a>\n              </sl-details>\n              <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Resources</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Support</a>\n                  <a class=\"menu-expand\" href=\"\">Services</a>\n                  <a class=\"menu-expand\" href=\"\">Guides</a>\n              </sl-details>\n        <a href=\"/favouriteLines\" @click=\"", "\">Bookmarks</a>\n        <a href=\"/about\" @click=\"", "\">About</a>\n        <a href=\"/profile\" @click=\"", "\">Profile</a>\n\n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"/products\" @click=\"", "\">Privacy</a>\n        <a href=\"/products\" @click=\"", "\">T&Cs</a>\n        <a href=\"/products\" @click=\"", "\">Socials</a>\n\n        <hr style=\"color: #fff width:10%\" >\n\n        <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a>\n        <a href=\"tel:1800 034 034\">1800 034 034</a>\n\n        "])), e => this.handleTitleClick('/mentalHealth', e), e => this.handleTitleClick('/mindfulness', e), e => this.handleTitleClick('/resources', e), this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick) : '');
   }
 });
 },{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","./../Router":"Router.js","./../Auth":"Auth.js","./../App":"App.js"}],"components/va-product.js":[function(require,module,exports) {
@@ -15926,7 +15796,104 @@ customElements.define('va-product', class Product extends _litElement.LitElement
     return (0, _litElement.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n        <style>\n            .product-card {\n                box-shadow: 8px 5px 20px rgba(0,0,0.1);\n            }\n        </style>\n        \n       <sl-card>\n        <img slot=\"image\" src=\"", "/images/", "\" />\n        <h2>", "</h2>\n        <h3>", "</h3>\n        <hr>\n        <sl-button @click=", ">More Info</sl-button>\n        <sl-icon-button name=\"star-fill\" style=\"font-size: 24px\" label=\"Add to Favourites\" @click=", "></sl-icon-button>\n        <sl-icon-button name=\"cart3\" style=\"font-size: 24px\" label=\"Add to Cart\" @click=", "></sl-icon-button>\n       </sl-card>\n        \n        "])), _App.default.apiBase, this.image, this.name, this.price, this.moreInfoHandler.bind(this), this.addFavHandler.bind(this), this.addCartHandler.bind(this));
   }
 });
-},{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","lit-html":"../node_modules/lit-html/lit-html.js","../Router":"Router.js","../Auth":"Auth.js","../App":"App.js","../UserAPI":"UserAPI.js","../Toast":"Toast.js"}],"components/va-order.js":[function(require,module,exports) {
+},{"@polymer/lit-element":"../node_modules/@polymer/lit-element/lit-element.js","lit-html":"../node_modules/lit-html/lit-html.js","../Router":"Router.js","../Auth":"Auth.js","../App":"App.js","../UserAPI":"UserAPI.js","../Toast":"Toast.js"}],"OrderAPI.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("./App"));
+var _Auth = _interopRequireDefault(require("./Auth"));
+var _Toast = _interopRequireDefault(require("./Toast"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+class OrderAPI {
+  async newOrder(formData) {
+    // send fetch request
+    const response = await fetch("".concat(_App.default.apiBase, "/order"), {
+      method: 'POST',
+      headers: {
+        "Authorization": "Bearer ".concat(localStorage.accessToken)
+      },
+      body: formData
+    });
+
+    // if response not ok
+    if (!response.ok) {
+      let message = 'Problem adding order';
+      if (response.status == 400) {
+        const err = await response.json();
+        message = err.message;
+      }
+      // throw error (exit this function)      
+      throw new Error(message);
+    }
+
+    // convert response payload into json - store as data
+    const data = await response.json();
+
+    // return data
+    return data;
+  }
+  async addFavProduct(productId, favourite) {
+    // validate
+    if (!productId) return;
+
+    // fetch the json data
+    const response = await fetch("".concat(_App.default.apiBase, "/order/addFavProduct/").concat(productId), {
+      method: "PUT",
+      headers: {
+        "Authorization": "Bearer ".concat(localStorage.accessToken),
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify({
+        favourite
+      })
+    });
+
+    // if response not ok
+    if (!response.ok) {
+      // console log error
+      const err = await response.json();
+      if (err) console.log(err);
+      // throw error (exit this function)      
+      throw new Error('Problem adding product to favourites');
+    }
+
+    // convert response payload into json - store as data
+    const data = await response.json();
+
+    // return data
+    return data;
+  }
+  async getOrders() {
+    console.log("calling orders beginning");
+    // fetch the json data
+    const response = await fetch("".concat(_App.default.apiBase, "/order"), {
+      headers: {
+        "Authorization": "Bearer ".concat(localStorage.accessToken)
+      }
+    });
+    console.log("calling orders");
+    // if response not ok
+    if (!response.ok) {
+      // console log error
+      const err = await response.json();
+      if (err) console.log(err);
+      // throw error (exit this function)      
+      throw new Error('Problem getting orders');
+    }
+
+    // convert response payload into json - store as data
+    const data = await response.json();
+    console.log("data", data);
+
+    // return data
+    return data;
+  }
+}
+var _default = exports.default = new OrderAPI();
+},{"./App":"App.js","./Auth":"Auth.js","./Toast":"Toast.js"}],"components/va-order.js":[function(require,module,exports) {
 "use strict";
 
 var _litElement = require("@polymer/lit-element");
@@ -16220,7 +16187,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65420" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50714" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
