@@ -9012,7 +9012,209 @@ class SignUpView {
   }
 }
 var _default = exports.default = new SignUpView();
-},{"./../../App":"App.js","./../../Auth":"Auth.js","lit-html":"../node_modules/lit-html/lit-html.js","./../../Router":"Router.js","./../../Utils":"Utils.js"}],"../node_modules/moment/moment.js":[function(require,module,exports) {
+},{"./../../App":"App.js","./../../Auth":"Auth.js","lit-html":"../node_modules/lit-html/lit-html.js","./../../Router":"Router.js","./../../Utils":"Utils.js"}],"views/pages/profile.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("./../../App"));
+var _litHtml = require("lit-html");
+var _Router = require("./../../Router");
+var _Auth = _interopRequireDefault(require("./../../Auth"));
+var _Utils = _interopRequireDefault(require("./../../Utils"));
+var _templateObject, _templateObject2, _templateObject3;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
+class ProfileView {
+  init() {
+    console.log('ProfileView.init');
+    document.title = 'Profile';
+    this.render();
+    _Utils.default.pageIntroAnim();
+  }
+  firstUpdated() {
+    super.firstUpdated();
+    this.navActiveLinks();
+    console.log('Header initialized with title:', this.title);
+  }
+  navActiveLinks() {
+    const currentPath = window.location.pathname;
+    const navLinks = this.shadowRoot.querySelectorAll('.app-top-nav a, .app-side-menu-items a');
+    navLinks.forEach(navLink => {
+      if (navLink.href.slice(-1) == '#') return;
+      if (navLink.pathname === currentPath) {
+        navLink.classList.add('active');
+      }
+    });
+  }
+  hamburgerClick() {
+    const appMenu = document.querySelector('.app-side-menu'); // Use document instead of shadowRoot
+    if (appMenu) {
+      appMenu.show();
+    } else {
+      console.error('Drawer element not found!');
+    }
+  }
+  menuClick(e) {
+    e.preventDefault();
+    const pathname = e.target.closest('a').pathname;
+    const appSideMenu = this.shadowRoot.querySelector('.app-side-menu');
+    // hide appMenu
+    appSideMenu.hide();
+    appSideMenu.addEventListener('sl-after-hide', () => {
+      // goto route after menu is hidden
+      (0, _Router.gotoRoute)(pathname);
+    });
+  }
+  handleTitleClick(path, e) {
+    e.preventDefault();
+    (0, _Router.gotoRoute)(path);
+  }
+  handleChevronClick(e) {
+    e.stopPropagation();
+    const details = e.target.closest('sl-details');
+    if (details) {
+      details.open = !details.open;
+    }
+  }
+  editSubmitHandler(e) {
+    e.preventDefault();
+    const editBtn = document.querySelector('.edit-btn');
+    submitBtn.setAttribute('loading', '');
+    const formData = e.detail.formData;
+
+    // sign up using Auth
+    _Auth.default.signUp(formData, () => {
+      submitBtn.removeAttribute('loading');
+    });
+  }
+  render() {
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    <style>\n    .signin-background {\n        background-image: url('/images/login-background.png');\n        background-size: cover;\n        background-position: center;\n        background-repeat: no-repeat;\n        height: 100vh;\n        width: 100%;\n        position: fixed;\n        top: 0;\n        left: 0;\n        z-index: -1;\n    }\n    .page-content {\n        display: flex;\n        width: 100%;\n        height: 100vh; /* Full viewport height */\n        margin: 0;\n        padding: 0;\n      }\n      \n      .signon2-container {\n        background-color: rgba(5, 166, 209, 0.8);\n        backdrop-filter: blur(10px);\n        -webkit-backdrop-filter: blur(10px);\n        width: 45%;\n        height: 100%;\n        position: fixed;\n        left: 0;\n        top: 0;\n        margin: 0;\n        padding: 0;\n      }\n      \n      .welcome-box {\n        width: 55%;\n        height: 100%;\n        position: fixed;\n        right: 0;\n        top: 50%;\n        transform: translateY(-50%);\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        flex-direction: column;\n        color: #fff;\n      }\n  \n\n    .submit-btn::part(base) {\n        background-color: #F4D35E;\n        border-color: #F4D35E;\n        color: #000000;\n        style= padding-bottom: 1em;\n      }\n\n    .submit-btn::part(base):hover {\n        background-color: #e5c654;\n        border-color: #e5c654;\n      }\n\n    .submit-btn::part(base):active {\n        background-color: #d6b84a;\n        border-color: #d6b84a;\n      }\n\n      h2 {\n      text-align: left;\n      width:238.61px;\n      }\n\n      p {\n      width: 100%;\n      margin-top: 1em;\n      }\n      \n      .app-side-menu-logo {\n      width: 150px !important; \n        height: auto !important; /* Remove fixed height to maintain aspect ratio */\n        \n        top: 1em;\n      display: block;\n      \n    }\n\n    .hamburger-btn::part(base) {\n        color: #fff;\n        position: fixed;\n        top: 1em;\n        left: 1em;\n        z-index: 100;\n      }\n\n      .app-top-nav {\n        display: flex;\n        height: 100%;\n        align-items: center;\n      }\n\n      .app-top-nav a {\n        display: inline-block;\n        padding: .8em;\n        text-decoration: none;\n        color: #fff;\n      }\n\n      .app-side-menu-items a {\n        display: block;\n        padding: 0.5em;\n        text-decoration: none;\n        font-size: 1.3em;\n        color: var(--app-header-txt-color);\n        padding-bottom: 0.5em;\n      }\n\n      .home-logo {\n        width: 150px !important; \n        height: auto !important; /* Remove fixed height to maintain aspect ratio */\n        position: absolute;\n        top: 30px;\n        left: 42%;\n        z-index: 2;\n      }\n\n      /* active nav links */\n      .app-top-nav a.active,\n      .app-side-menu-items a.active {\n        font-weight: bold;\n      }\n\n      sl-details::part(summary) {\n    transition: color 0.3s ease;\n  }\n\n  sl-details::part(summary):hover {\n    color: var(--sl-color-primary-600);\n    cursor: pointer;\n  }\n\n  .menu-expand {\n    transition: color 0.3s ease;\n    text-decoration: none;\n  }\n\n  .menu-expand:hover {\n    color: var(--sl-color-primary-600);\n    padding-left: 1.5em;\n    transition: all 0.5s ease;\n  }\n\n      /* right side menu */\n      .right-side-menu {\n        --base-txt-color: #2F1E1F;\n      }\n\n        .menu-expand {\n        font-size: 1.3em;\n        margin-left: 1em;\n        margin-top: 0.5em;\n      }\n\n      sl-drawer::part(label) {\n    padding: 0.6em;\n    \n    \n  }\n        \n    </style>  \n\n    <div class=\"signin-background\"></div>\n    <sl-icon-button class=\"hamburger-btn\" name=\"list\" @click=\"", "\" style=\"font-size: 2em;\"></sl-icon-button>\n\n    <sl-drawer class=\"app-side-menu\" placement=\"left\">\n        <div slot=\"label\">  \n          <a href=\"/\" @click=\"", "\"><img class=\"app-side-menu-logo\" src=\"/images/logo-mindline-trimmed-no-wording-clr.png\"></a>\n        </div>\n        <nav class=\"app-side-menu-items\">\n              <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Mental Health</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Stress</a>\n                  <a class=\"menu-expand\" href=\"\">Anxiety</a>\n                  <a class=\"menu-expand\" href=\"\">Depression</a>\n              </sl-details>\n              <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Mindfulness</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Meditation</a>\n                  <a class=\"menu-expand\" href=\"\">Breathing</a>\n                  <a class=\"menu-expand\" href=\"\">Motivation</a>\n              </sl-details>\n              <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Resources</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Support</a>\n                  <a class=\"menu-expand\" href=\"\">Services</a>\n                  <a class=\"menu-expand\" href=\"\">Guides</a>\n              </sl-details>\n              \n              <a href=\"/favouriteLines\" @click=\"", "\">Bookmarks</a>\n              <a href=\"/about\" @click=\"", "\">About</a>\n              <a href=\"/profile\" @click=\"", "\">Profile</a>   \n              \n              <hr style=\"color: #fff width:10%\" >\n      \n              <a href=\"/products\" @click=\"", "\">Privacy</a>\n              <a href=\"/products\" @click=\"", "\">T&Cs</a>\n              <a href=\"/products\" @click=\"", "\">Socials</a>\n      \n              <hr style=\"color: #fff width:10%\" >\n      \n              <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a>\n              <a href=\"tel:1800 034 034\">1800 034 034</a>\n              \n      \n        </nav>  \n      </sl-drawer>\n\n      \n      <div class=\"page-content page-centered\">  \n        <div class=\"signon2-container\">\n              <a @click=\"", "\"><img class=\"home-logo\" src=\"/images/mindline-white-logo.png\"></a>\n              <div class=\"signinup-box\">\n                <div class=\"avatar\">\n                  ", " \n                </div>\n                <h1 >", " ", "</h1>     \n                <p>", "</p>  \n                <sl-form class=\"form-signup\" @sl-submit=", ">\n                         \n                  <sl-button size=\"large\" pill class=\"edit-btn\" type=\"primary\" style=\"width: 100%;\" @click=", ">EDIT PROFILE</sl-button>\n                </sl-form>\n                \n              </div>\n            \n          </div>\n          </div>\n        <div class=\"welcome-box\">\n                  <h2>Hi ", "</h2>\n                  <h1>All about you</h1>\n          </div>\n        </div>  \n    "])), this.hamburgerClick, this.menuClick, e => this.handleTitleClick('/mentalHealth', e), e => this.handleTitleClick('/mindfulness', e), e => this.handleTitleClick('/resources', e), this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, () => (0, _Router.gotoRoute)('/home'), _Auth.default.currentUser && _Auth.default.currentUser.avatar ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n                  <sl-avatar style=\"--size: ", "; padding-top: 1.5em; margin-bottom: 1em;\" image=", "></sl-avatar>\n                  "])), avatarSize, _Auth.default.currentUser && _Auth.default.currentUser.avatar ? "".concat(_App.default.apiBase, "/images/").concat(_Auth.default.currentUser.avatar) : '') : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n                  <sl-avatar style=\"--size: 200px; padding-top: 1.5em; margin-bottom: 1em;\"></sl-avatar>\n                  "]))), _Auth.default.currentUser.firstName, _Auth.default.currentUser.lastName, _Auth.default.currentUser.email, this.signUpSubmitHandler, () => (0, _Router.gotoRoute)('/editProfile'), _Auth.default.currentUser.firstName);
+    (0, _litHtml.render)(template, _App.default.rootEl);
+  }
+}
+var _default = exports.default = new ProfileView();
+},{"./../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","./../../Router":"Router.js","./../../Auth":"Auth.js","./../../Utils":"Utils.js"}],"UserAPI.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("./App"));
+var _Auth = _interopRequireDefault(require("./Auth"));
+var _Toast = _interopRequireDefault(require("./Toast"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+class UserAPI {
+  async updateUser(userId, userData) {
+    let dataType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'form';
+    // validate
+    if (!userId || !userData) return;
+    let responseHeader;
+
+    // form data
+    if (dataType == 'form') {
+      // fetch response header normal (form data)
+      responseHeader = {
+        method: "PUT",
+        headers: {
+          "Authorization": "Bearer ".concat(localStorage.accessToken)
+        },
+        body: userData
+      };
+
+      // json data
+    } else if (dataType == 'json') {
+      responseHeader = {
+        method: "PUT",
+        headers: {
+          "Authorization": "Bearer ".concat(localStorage.accessToken),
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userData)
+      };
+    }
+
+    // make fetch request to backend
+    const response = await fetch("".concat(_App.default.apiBase, "/user/").concat(userId), responseHeader);
+
+    // if response not ok
+    if (!response.ok) {
+      // console log error
+      const err = await response.json();
+      if (err) console.log(err);
+      // throw error (exit this function)      
+      throw new Error('Problem updating user');
+    }
+
+    // convert response payload into json - store as data
+    const data = await response.json();
+
+    // return data
+    return data;
+  }
+  async getUser(userId) {
+    // validate
+    if (!userId) return;
+
+    // fetch the json data
+    const response = await fetch("".concat(_App.default.apiBase, "/user/").concat(userId), {
+      headers: {
+        "Authorization": "Bearer ".concat(localStorage.accessToken)
+      }
+    });
+
+    // if response not ok
+    if (!response.ok) {
+      // console log error
+      const err = await response.json();
+      if (err) console.log(err);
+      // throw error (exit this function)      
+      throw new Error('Problem getting user');
+    }
+
+    // convert response payload into json - store as data
+    const data = await response.json();
+
+    // return data
+    return data;
+  }
+  async addFavProduct(productId) {
+    // validate
+    if (!productId) return;
+
+    // fetch the json data
+    const response = await fetch("".concat(_App.default.apiBase, "/user/addFavProduct"), {
+      method: "PUT",
+      headers: {
+        "Authorization": "Bearer ".concat(localStorage.accessToken),
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify({
+        productId: productId
+      })
+    });
+
+    // if response not ok
+    if (!response.ok) {
+      // console log error
+      const err = await response.json();
+      if (err) console.log(err);
+      // throw error (exit this function)      
+      throw new Error('Problem adding product to favourites');
+    }
+
+    // convert response payload into json - store as data
+    const data = await response.json();
+
+    // return data
+    return data;
+  }
+}
+var _default = exports.default = new UserAPI();
+},{"./App":"App.js","./Auth":"Auth.js","./Toast":"Toast.js"}],"../node_modules/moment/moment.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 //! moment.js
@@ -14704,154 +14906,7 @@ var global = arguments[3];
 
 })));
 
-},{}],"views/pages/profile.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _App = _interopRequireDefault(require("./../../App"));
-var _litHtml = require("lit-html");
-var _Router = require("./../../Router");
-var _Auth = _interopRequireDefault(require("./../../Auth"));
-var _Utils = _interopRequireDefault(require("./../../Utils"));
-var _moment = _interopRequireDefault(require("moment"));
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
-class ProfileView {
-  init() {
-    console.log('ProfileView.init');
-    document.title = 'Profile';
-    this.render();
-    _Utils.default.pageIntroAnim();
-  }
-  render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Profile\" user=\"", "\"></va-app-header>\n      <div class=\"page-content calign\">  \n        <br>\n        <p></p>\n        <br>      \n        ", "\n        <h2>", " ", "</h2>\n        <p>", "</p>\n        \n        <p>Updated: ", "</p>\n\n        ", "\n\n        <sl-button @click=", ">UPDATE</sl-button>\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), _Auth.default.currentUser && _Auth.default.currentUser.avatar ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <sl-avatar style=\"--size: 200px; margin-bottom: 3em;\" image=", "></sl-avatar>\n        "])), _Auth.default.currentUser && _Auth.default.currentUser.avatar ? "".concat(_App.default.apiBase, "/images/").concat(_Auth.default.currentUser.avatar) : '') : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        <sl-avatar style=\"--size: 200px; margin-bottom: 3em;\"></sl-avatar>\n        "]))), _Auth.default.currentUser.firstName, _Auth.default.currentUser.lastName, _Auth.default.currentUser.email, (0, _moment.default)(_Auth.default.currentUser.updatedAt).format('D MMMM YYYY @ h:mm a'), _Auth.default.currentUser.bio ? (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n          <h3>Bio</h3>\n          <p>", "</p>\n        "])), _Auth.default.currentUser.bio) : (0, _litHtml.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral([""]))), () => (0, _Router.gotoRoute)('/editProfile'));
-    (0, _litHtml.render)(template, _App.default.rootEl);
-  }
-}
-var _default = exports.default = new ProfileView();
-},{"./../../App":"App.js","lit-html":"../node_modules/lit-html/lit-html.js","./../../Router":"Router.js","./../../Auth":"Auth.js","./../../Utils":"Utils.js","moment":"../node_modules/moment/moment.js"}],"UserAPI.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _App = _interopRequireDefault(require("./App"));
-var _Auth = _interopRequireDefault(require("./Auth"));
-var _Toast = _interopRequireDefault(require("./Toast"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-class UserAPI {
-  async updateUser(userId, userData) {
-    let dataType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'form';
-    // validate
-    if (!userId || !userData) return;
-    let responseHeader;
-
-    // form data
-    if (dataType == 'form') {
-      // fetch response header normal (form data)
-      responseHeader = {
-        method: "PUT",
-        headers: {
-          "Authorization": "Bearer ".concat(localStorage.accessToken)
-        },
-        body: userData
-      };
-
-      // json data
-    } else if (dataType == 'json') {
-      responseHeader = {
-        method: "PUT",
-        headers: {
-          "Authorization": "Bearer ".concat(localStorage.accessToken),
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(userData)
-      };
-    }
-
-    // make fetch request to backend
-    const response = await fetch("".concat(_App.default.apiBase, "/user/").concat(userId), responseHeader);
-
-    // if response not ok
-    if (!response.ok) {
-      // console log error
-      const err = await response.json();
-      if (err) console.log(err);
-      // throw error (exit this function)      
-      throw new Error('Problem updating user');
-    }
-
-    // convert response payload into json - store as data
-    const data = await response.json();
-
-    // return data
-    return data;
-  }
-  async getUser(userId) {
-    // validate
-    if (!userId) return;
-
-    // fetch the json data
-    const response = await fetch("".concat(_App.default.apiBase, "/user/").concat(userId), {
-      headers: {
-        "Authorization": "Bearer ".concat(localStorage.accessToken)
-      }
-    });
-
-    // if response not ok
-    if (!response.ok) {
-      // console log error
-      const err = await response.json();
-      if (err) console.log(err);
-      // throw error (exit this function)      
-      throw new Error('Problem getting user');
-    }
-
-    // convert response payload into json - store as data
-    const data = await response.json();
-
-    // return data
-    return data;
-  }
-  async addFavProduct(productId) {
-    // validate
-    if (!productId) return;
-
-    // fetch the json data
-    const response = await fetch("".concat(_App.default.apiBase, "/user/addFavProduct"), {
-      method: "PUT",
-      headers: {
-        "Authorization": "Bearer ".concat(localStorage.accessToken),
-        "Content-Type": 'application/json'
-      },
-      body: JSON.stringify({
-        productId: productId
-      })
-    });
-
-    // if response not ok
-    if (!response.ok) {
-      // console log error
-      const err = await response.json();
-      if (err) console.log(err);
-      // throw error (exit this function)      
-      throw new Error('Problem adding product to favourites');
-    }
-
-    // convert response payload into json - store as data
-    const data = await response.json();
-
-    // return data
-    return data;
-  }
-}
-var _default = exports.default = new UserAPI();
-},{"./App":"App.js","./Auth":"Auth.js","./Toast":"Toast.js"}],"views/pages/editProfile.js":[function(require,module,exports) {
+},{}],"views/pages/editProfile.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14886,6 +14941,51 @@ class EditProfileView {
       _Toast.default.show(err, 'error');
     }
   }
+  firstUpdated() {
+    super.firstUpdated();
+    this.navActiveLinks();
+    console.log('Header initialized with title:', this.title);
+  }
+  navActiveLinks() {
+    const currentPath = window.location.pathname;
+    const navLinks = this.shadowRoot.querySelectorAll('.app-top-nav a, .app-side-menu-items a');
+    navLinks.forEach(navLink => {
+      if (navLink.href.slice(-1) == '#') return;
+      if (navLink.pathname === currentPath) {
+        navLink.classList.add('active');
+      }
+    });
+  }
+  hamburgerClick() {
+    const appMenu = document.querySelector('.app-side-menu'); // Use document instead of shadowRoot
+    if (appMenu) {
+      appMenu.show();
+    } else {
+      console.error('Drawer element not found!');
+    }
+  }
+  menuClick(e) {
+    e.preventDefault();
+    const pathname = e.target.closest('a').pathname;
+    const appSideMenu = this.shadowRoot.querySelector('.app-side-menu');
+    // hide appMenu
+    appSideMenu.hide();
+    appSideMenu.addEventListener('sl-after-hide', () => {
+      // goto route after menu is hidden
+      (0, _Router.gotoRoute)(pathname);
+    });
+  }
+  handleTitleClick(path, e) {
+    e.preventDefault();
+    (0, _Router.gotoRoute)(path);
+  }
+  handleChevronClick(e) {
+    e.stopPropagation();
+    const details = e.target.closest('sl-details');
+    if (details) {
+      details.open = !details.open;
+    }
+  }
   async updateProfileSubmitHandler(e) {
     e.preventDefault();
     const formData = e.detail.formData;
@@ -14904,7 +15004,7 @@ class EditProfileView {
     submitBtn.removeAttribute('loading');
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Edit Profile\" user=", "></va-app-header>\n      <div class=\"page-content\"> \n        ", "\n      </div>\n    "])), JSON.stringify(_Auth.default.currentUser), this.user == null ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <sl-spinner></sl-spinner>\n        "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n          <div class=\"edit-profile-container\">\n          <h1>My Details</h1>\n          <p>Updated: ", "</p>\n          <sl-form class=\"page-form\" @sl-submit=", ">\n            <div class=\"input-group\">\n              <sl-input type=\"text\" name=\"firstName\" value=\"", "\" placeholder=\"First Name\"></sl-input>\n            </div>\n            <div class=\"input-group\">\n              <sl-input type=\"text\" name=\"lastName\" value=\"", "\" placeholder=\"Last Name\"></sl-input>\n            </div>\n            <div class=\"input-group\">\n              <sl-input type=\"text\" name=\"email\" value=\"", "\" placeholder=\"Email Address\"></sl-input>\n            </div> \n            <div class=\"input-group\">\n               <sl-textarea name=\"bio\" rows=\"4\" placeholder=\"Bio\" value=\"", "\"></sl-textarea>\n            </div>     \n            <div class=\"input-group\">\n              <label><h3>Avatar</h3></label>          \n              ", " \n            </div>\n            <br>\n            <sl-animation name=\"jello\" duration=\"2000\" play iterations=\"2\">\n              <sl-button type=\"primary\" class=\"submit-btn\" submit>Update Profile</sl-button>\n            </sl-animation> \n          </sl-form>\n          </div>\n        "])), (0, _moment.default)(_Auth.default.currentUser.updatedAt).format('D MMMM YYYY @ h:mm a'), this.updateProfileSubmitHandler.bind(this), this.user.firstName, this.user.lastName, this.user.email, this.user.bio, this.user.avatar ? (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n                <sl-avatar image=\"", "/images/", "\"></sl-avatar>\n                <input type=\"file\" name=\"avatar\" />\n              "])), _App.default.apiBase, this.user.avatar) : (0, _litHtml.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n                <input type=\"file\" name=\"avatar\" />\n              "])))));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    <style>\n    .signin-background {\n        background-image: url('/images/login-background.png');\n        background-size: cover;\n        background-position: center;\n        background-repeat: no-repeat;\n        height: 100vh;\n        width: 100%;\n        position: fixed;\n        top: 0;\n        left: 0;\n        z-index: -1;\n    }\n    .page-content {\n        display: flex;\n        width: 100%;\n        height: 100vh; /* Full viewport height */\n        margin: 0;\n        padding: 0;\n      }\n      \n      .signon2-container {\n        background-color: rgba(5, 166, 209, 0.8);\n        backdrop-filter: blur(10px);\n        -webkit-backdrop-filter: blur(10px);\n        width: 45%;\n        height: 100%;\n        position: fixed;\n        left: 0;\n        top: 0;\n        margin: 0;\n        padding: 0;\n      }\n      \n      .welcome-box {\n        width: 55%;\n        height: 100%;\n        position: fixed;\n        right: 0;\n        top: 50%;\n        transform: translateY(-50%);\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        flex-direction: column;\n        color: #fff;\n      }\n  \n\n    .submit-btn::part(base) {\n        background-color: #F4D35E;\n        border-color: #F4D35E;\n        color: #000000;\n        style= padding-bottom: 1em;\n      }\n\n    .submit-btn::part(base):hover {\n        background-color: #e5c654;\n        border-color: #e5c654;\n      }\n\n    .submit-btn::part(base):active {\n        background-color: #d6b84a;\n        border-color: #d6b84a;\n      }\n\n      h2 {\n      text-align: left;\n      width:238.61px;\n      }\n\n      p {\n      width: 100%;\n      margin-top: 1em;\n      }\n      \n      .app-side-menu-logo {\n      width: 150px !important; \n        height: auto !important; /* Remove fixed height to maintain aspect ratio */\n        \n        top: 1em;\n      display: block;\n      \n    }\n\n    .hamburger-btn::part(base) {\n        color: #fff;\n        position: fixed;\n        top: 1em;\n        left: 1em;\n        z-index: 100;\n      }\n\n      .app-top-nav {\n        display: flex;\n        height: 100%;\n        align-items: center;\n      }\n\n      .app-top-nav a {\n        display: inline-block;\n        padding: .8em;\n        text-decoration: none;\n        color: #fff;\n      }\n\n      .app-side-menu-items a {\n        display: block;\n        padding: 0.5em;\n        text-decoration: none;\n        font-size: 1.3em;\n        color: var(--app-header-txt-color);\n        padding-bottom: 0.5em;\n      }\n\n      .home-logo {\n        width: 150px !important; \n        height: auto !important; /* Remove fixed height to maintain aspect ratio */\n        position: absolute;\n        top: 30px;\n        left: 42%;\n        z-index: 2;\n      }\n\n      /* active nav links */\n      .app-top-nav a.active,\n      .app-side-menu-items a.active {\n        font-weight: bold;\n      }\n\n      sl-details::part(summary) {\n    transition: color 0.3s ease;\n  }\n\n  sl-details::part(summary):hover {\n    color: var(--sl-color-primary-600);\n    cursor: pointer;\n  }\n\n  .menu-expand {\n    transition: color 0.3s ease;\n    text-decoration: none;\n  }\n\n  .menu-expand:hover {\n    color: var(--sl-color-primary-600);\n    padding-left: 1.5em;\n    transition: all 0.5s ease;\n  }\n\n      /* right side menu */\n      .right-side-menu {\n        --base-txt-color: #2F1E1F;\n      }\n\n        .menu-expand {\n        font-size: 1.3em;\n        margin-left: 1em;\n        margin-top: 0.5em;\n      }\n\n      sl-drawer::part(label) {\n    padding: 0.6em;\n    }\n\n    .custom-file-upload {\n    display: inline-block;\n    padding: 12px;\n    cursor: pointer;\n    background-color:rgb(255, 255, 255);\n    border-radius: 30px;\n    color:rgb(0, 0, 0);\n    width: 100%;\n    height: 47px;\n    width: 100%;\n  }\n\n  .custom-file-upload:hover {\n    background-color:rgb(94, 203, 225);\n  }\n\n        \n    </style>  \n\n    <div class=\"signin-background\"></div>\n    <sl-icon-button class=\"hamburger-btn\" name=\"list\" @click=\"", "\" style=\"font-size: 2em;\"></sl-icon-button>\n     <sl-drawer class=\"app-side-menu\" placement=\"left\">\n        <div slot=\"label\">  \n          <a href=\"/\" @click=\"", "\"><img class=\"app-side-menu-logo\" src=\"/images/logo-mindline-trimmed-no-wording-clr.png\"></a>\n        </div>\n        <nav class=\"app-side-menu-items\">\n              <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Mental Health</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Stress</a>\n                  <a class=\"menu-expand\" href=\"\">Anxiety</a>\n                  <a class=\"menu-expand\" href=\"\">Depression</a>\n              </sl-details>\n              <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Mindfulness</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Meditation</a>\n                  <a class=\"menu-expand\" href=\"\">Breathing</a>\n                  <a class=\"menu-expand\" href=\"\">Motivation</a>\n              </sl-details>\n              <sl-details>\n                <div slot=\"summary\" class=\"summary-content\">\n                  <span class=\"summary-title\" @click=\"", "\">Resources</span>\n                </div>\n                  <a class=\"menu-expand\" href=\"\">Support</a>\n                  <a class=\"menu-expand\" href=\"\">Services</a>\n                  <a class=\"menu-expand\" href=\"\">Guides</a>\n              </sl-details>\n              \n              <a href=\"/favouriteLines\" @click=\"", "\">Bookmarks</a>\n              <a href=\"/about\" @click=\"", "\">About</a>\n              <a href=\"/profile\" @click=\"", "\">Profile</a>   \n              \n              <hr style=\"color: #fff width:10%\" >\n      \n              <a href=\"/products\" @click=\"", "\">Privacy</a>\n              <a href=\"/products\" @click=\"", "\">T&Cs</a>\n              <a href=\"/products\" @click=\"", "\">Socials</a>\n      \n              <hr style=\"color: #fff width:10%\" >\n      \n              <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a>\n              <a href=\"tel:1800 034 034\">1800 034 034</a>\n              \n      \n        </nav>  \n      </sl-drawer>\n\n      <div class=\"page-content page-centered\"> \n        ", "\n      </div>\n    "])), this.hamburgerClick, this.menuClick, e => this.handleTitleClick('/mentalHealth', e), e => this.handleTitleClick('/mindfulness', e), e => this.handleTitleClick('/resources', e), this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.menuClick, this.user == null ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          <sl-spinner></sl-spinner>\n        "]))) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n        <div class=\"signon2-container\">\n              <a @click=\"", "\"><img class=\"home-logo\" src=\"/images/mindline-white-logo.png\"></a>\n          <div class=\"signinup-box\">\n          <h1>My Details</h1>\n          <p>Updated: ", "</p>\n          <sl-form class=\"page-form\" @sl-submit=", ">\n            <div class=\"input-group\">\n              <sl-input size=\"large\" pill style= \"padding-bottom: 1em;\" type=\"text\" name=\"firstName\" value=\"", "\" placeholder=\"First Name\"></sl-input>\n            </div>\n            <div class=\"input-group\">\n              <sl-input size=\"large\" pill style= \"padding-bottom: 1em;\" type=\"text\" name=\"lastName\" value=\"", "\" placeholder=\"Last Name\"></sl-input>\n            </div>\n            <div class=\"input-group\">\n              <sl-input size=\"large\" pill style= \"padding-bottom: 1em;\" type=\"text\" name=\"email\" value=\"", "\" placeholder=\"Email Address\"></sl-input>\n            </div> \n                 \n            <div class=\"input-group\">\n                        \n\n              ", "\n            </div>\n            <br>\n            \n              <sl-button size=\"large\" pill type=\"primary\" style=\"width: 100%;\" class=\"submit-btn\" submit>Update Profile</sl-button>\n            \n          </sl-form>\n          </div>\n        "])), () => (0, _Router.gotoRoute)('/home'), (0, _moment.default)(_Auth.default.currentUser.updatedAt).format('D MMMM YYYY @ h:mm a'), this.updateProfileSubmitHandler.bind(this), this.user.firstName, this.user.lastName, this.user.email, this.user.avatar ? (0, _litHtml.html)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n                <sl-avatar image=\"", "/images/", "\"></sl-avatar>\n                \n                <input id=\"file-upload\" type=\"file\" name=\"avatar\" style=\"display: none;\" />\n              "])), _App.default.apiBase, this.user.avatar) : (0, _litHtml.html)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n                <label for=\"file-upload\" class=\"custom-file-upload\">\n                  Upload Avatar\n                </label>\n                <input id=\"file-upload\" type=\"file\" name=\"avatar\" style=\"display: none;\" />\n              "])))));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -16120,7 +16220,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62669" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65420" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
