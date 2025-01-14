@@ -18,7 +18,7 @@ class mindfulnessView {
       <div class="page-content">        
         <section class="banner">  
         <img src="images/mindfulness-hero-image-837.png" class="responsive-img" >  
-          <div class="quote-overlay">
+          <div class="banner-content"> 
             <h2 class="quote">Be Present</h2>
             <h2 class="quote">Be Peaceful</h2>
             <h2 class="quote">Be You</h2>

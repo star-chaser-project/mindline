@@ -17,10 +17,10 @@ class resourcesView {
       <va-app-header title="Resources" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
       <div class="page-content"> 
       <section class="banner">
-        <img src="images/resources-hero-image-837.png" class="responsive-img" >    
-        <div class ="banner-text">      
+        <img src="images/resources-hero-image-837.png" class="responsive-img" alt="Hero banner for Resources page">
+        <div class="banner-content">
           <h1>Resources</h1>
-          <h2>Supporting You Every Step of the Way.</p>
+          <h2>Supporting You Every Step of the Way.</h2>
         </div>
       </section>
       <section class="nav-page">
