@@ -59,7 +59,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         box-sizing: border-box;
       }
       .app-header {
-        background: var(--brand-color);
+        background: transparent;
         position: fixed;
         top: 0;
         right: 0;
@@ -202,6 +202,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
       <br>
       <nav class="app-side-menu-items">
       ${this.user.accessLevel == 1 ? html`
+        <a href="/" @click="${this.menuClick}">Home</a>
         <a href="/mentalHealth" @click="${this.menuClick}">Mental Health</a>
         <a href="/mindfulness" @click="${this.menuClick}">Mindfulness</a>
         <a href="/resources" @click="${this.menuClick}">Resources</a>
@@ -222,7 +223,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
 
         ` : ''}
         ${this.user.accessLevel == 2 ? html`
-        
+        <a href="/" @click="${this.menuClick}">Home</a>
         <a href="/mentalHealth" @click="${this.menuClick}">Mental Health</a>
         <a href="/mindfulness" @click="${this.menuClick}">Mindfulness</a>
         <a href="/resources" @click="${this.menuClick}">Resources</a>

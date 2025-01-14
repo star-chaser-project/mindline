@@ -25,9 +25,9 @@ class resourcesView {
       </section>
       <section class="nav-page">
         <div class="button-group">
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Stress')}>Stress</sl-button>
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Anxiety')}>Anxiety</sl-button>
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Depression')}>Depression</sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Support')}>Support</sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Services')}>Services</sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Guides')}>Guides</sl-button>
         </div>
       </section>
       </div>      
