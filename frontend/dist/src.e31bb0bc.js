@@ -14975,7 +14975,7 @@ class mentalHealthView {
     _Utils.default.pageIntroAnim();
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Mental Health\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <h1>Mental Health</h1>\n        <p>Because it Matters</p>\n        <div>\n          <img src=\"images/mental-health-hero-image.png\" class=\"responsive-img\" >    \n        </div>\n\n      </div>\n        \n      \n\n    "])), JSON.stringify(_Auth.default.currentUser));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Mental Health\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\"> \n        <section class=\"banner\">\n            <img src=\"images/mental-health-hero-image.png\" class=\"responsive-img\" >    \n              <div class =\"banner-text\">      \n                <h1>Mental Health</h1>\n                <h2>Because it Matters</p>\n              </div>\n        </section>\n        <section class=\"nav-page\">\n         <section class=\"nav-page\">\n          <div class=\"button-group\">\n          <sl-button type=\"primary\" size=\"large\" @click=", ">Stress</sl-button>\n          <sl-button type=\"primary\" size=\"large\" @click=", ">Anxiety</sl-button>\n          <sl-button type=\"primary\" size=\"large\" @click=", ">Depression</sl-button>\n          </div>\n       </section>\n      \n      </div>  \n    "])), JSON.stringify(_Auth.default.currentUser), () => (0, _Router.gotoRoute)('/Stress'), () => (0, _Router.gotoRoute)('/Anxiety'), () => (0, _Router.gotoRoute)('/Depression'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -15003,7 +15003,7 @@ class mindfulnessView {
     _Utils.default.pageIntroAnim();
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Mindfulness\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <h1>Mindfulness</h1>\n        <p>Be Present</p>\n        <p>Be Peaceful</p>\n        <p>Be You</p>\n        <div>\n          <img src=\"images/mindfulness-hero-image-837.png\" class=\"responsive-img\" >    \n        </div>\n\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    <va-app-header title=\"Mindfulness\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <section class=\"banner\">  \n        <img src=\"images/mindfulness-hero-image-837.png\" class=\"responsive-img\" >  \n          <div class=\"quote-overlay\">\n            <h2 class=\"quote\">Be Present</h2>\n            <h2 class=\"quote\">Be Peaceful</h2>\n            <h2 class=\"quote\">Be You</h2>\n          </div>\n        </section>\n        <section class=\"nav-page\">\n          <div class=\"button-group\">\n          <sl-button type=\"primary\" size=\"large\" @click=", ">Meditation</sl-button>\n          <sl-button type=\"primary\" size=\"large\" @click=", ">Breathing</sl-button>\n          <sl-button type=\"primary\" size=\"large\" @click=", ">Meditation</sl-button>\n          </div>\n       </section>\n      </div>            \n           \n    "])), JSON.stringify(_Auth.default.currentUser), () => (0, _Router.gotoRoute)('/Meditation'), () => (0, _Router.gotoRoute)('/Breathing'), () => (0, _Router.gotoRoute)('/Meditation'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -15031,7 +15031,7 @@ class resourcesView {
     _Utils.default.pageIntroAnim();
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Resources\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\">        \n        <h1>Resources</h1>\n        <p>Supporting You Every Step of the Way.</p>\n        <div>\n          <img src=\"images/resources-hero-image-837.png\" class=\"responsive-img\" >    \n        </div>\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header title=\"Resources\" user=\"", "\"></va-app-header>\n      <div class=\"page-content\"> \n      <section class=\"banner\">\n        <img src=\"images/resources-hero-image-837.png\" class=\"responsive-img\" >    \n        <div class =\"banner-text\">      \n          <h1>Resources</h1>\n          <h2>Supporting You Every Step of the Way.</p>\n        </div>\n      </section>\n      <section class=\"nav-page\">\n        <div class=\"button-group\">\n          <sl-button type=\"primary\" size=\"large\" @click=", ">Stress</sl-button>\n          <sl-button type=\"primary\" size=\"large\" @click=", ">Anxiety</sl-button>\n          <sl-button type=\"primary\" size=\"large\" @click=", ">Depression</sl-button>\n        </div>\n      </section>\n      </div>      \n    "])), JSON.stringify(_Auth.default.currentUser), () => (0, _Router.gotoRoute)('/Stress'), () => (0, _Router.gotoRoute)('/Anxiety'), () => (0, _Router.gotoRoute)('/Depression'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -16120,7 +16120,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62669" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65051" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

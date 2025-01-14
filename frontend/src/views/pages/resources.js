@@ -15,12 +15,21 @@ class resourcesView {
   render(){
     const template = html`
       <va-app-header title="Resources" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
-      <div class="page-content">        
-        <h1>Resources</h1>
-        <p>Supporting You Every Step of the Way.</p>
-        <div>
-          <img src="images/resources-hero-image-837.png" class="responsive-img" >    
+      <div class="page-content"> 
+      <section class="banner">
+        <img src="images/resources-hero-image-837.png" class="responsive-img" >    
+        <div class ="banner-text">      
+          <h1>Resources</h1>
+          <h2>Supporting You Every Step of the Way.</p>
         </div>
+      </section>
+      <section class="nav-page">
+        <div class="button-group">
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Stress')}>Stress</sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Anxiety')}>Anxiety</sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Depression')}>Depression</sl-button>
+        </div>
+      </section>
       </div>      
     `
     render(template, App.rootEl)
