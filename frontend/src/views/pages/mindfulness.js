@@ -14,17 +14,25 @@ class mindfulnessView {
 
   render(){
     const template = html`
-      <va-app-header title="Mindfulness" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
+    <va-app-header title="Mindfulness" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
       <div class="page-content">        
-        <h1>Mindfulness</h1>
-        <p>Be Present</p>
-        <p>Be Peaceful</p>
-        <p>Be You</p>
-        <div>
-          <img src="images/mindfulness-hero-image-837.png" class="responsive-img" >    
-        </div>
-
-      </div>      
+        <section class="banner">  
+        <img src="images/mindfulness-hero-image-837.png" class="responsive-img" >  
+          <div class="quote-overlay">
+            <h2 class="quote">Be Present</h2>
+            <h2 class="quote">Be Peaceful</h2>
+            <h2 class="quote">Be You</h2>
+          </div>
+        </section>
+        <section class="nav-page">
+          <div class="button-group">
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Meditation')}>Meditation</sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Breathing')}>Breathing</sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Meditation')}>Meditation</sl-button>
+          </div>
+       </section>
+      </div>            
+           
     `
     render(template, App.rootEl)
   }

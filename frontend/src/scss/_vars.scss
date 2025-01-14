@@ -34,14 +34,14 @@
   // https://github.com/shoelace-style/shoelace/blob/current/src/styles/base.scss
   // Primary colour = Aero from https://coolors.co/
   --sl-color-primary-50: #00B9DF;
-  --sl-color-primary-100: #{lighten($brand-color, 40%)};
-  --sl-color-primary-200: #{lighten($brand-color, 30%)};
-  --sl-color-primary-300: #{lighten($brand-color, 20%)};
-  --sl-color-primary-400: #{lighten($brand-color, 10%)};
+  --sl-color-primary-100: #{color.adjust($brand-color, $lightness: 40%)};
+  --sl-color-primary-200: #{color.adjust($brand-color, $lightness: 30%)};
+  --sl-color-primary-300: #{color.adjust($brand-color, $lightness: 20%)};
+  --sl-color-primary-400: #{color.adjust($brand-color, $lightness: 10%)};
   --sl-color-primary-500: #{$brand-color};
-  --sl-color-primary-600: #{darken($brand-color, 10%)};
-  --sl-color-primary-700: #{darken($brand-color, 20%)};
-  --sl-color-primary-800: #{darken($brand-color, 30%)};
-  --sl-color-primary-900: #{darken($brand-color, 40%)};
+  --sl-color-primary-600: #{color.adjust($brand-color, $lightness: -10%)};
+  --sl-color-primary-700: #{color.adjust($brand-color, $lightness: -20%)};
+  --sl-color-primary-800: #{color.adjust($brand-color, $lightness: -30%)};
+  --sl-color-primary-900: #{color.adjust($brand-color, $lightness: -40%)};
   --sl-focus-ring-color-primary: #{rgba($brand-color, 0.1)};
 }

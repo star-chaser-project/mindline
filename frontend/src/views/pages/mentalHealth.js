@@ -15,17 +15,24 @@ class mentalHealthView {
   render(){
     const template = html`
       <va-app-header title="Mental Health" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
-      <div class="page-content">        
-        <h1>Mental Health</h1>
-        <p>Because it Matters</p>
-        <div>
-          <img src="images/mental-health-hero-image.png" class="responsive-img" >    
-        </div>
-
-      </div>
-        
+      <div class="page-content"> 
+        <section class="banner">
+            <img src="images/mental-health-hero-image.png" class="responsive-img" >    
+              <div class ="banner-text">      
+                <h1>Mental Health</h1>
+                <h2>Because it Matters</p>
+              </div>
+        </section>
+        <section class="nav-page">
+         <section class="nav-page">
+          <div class="button-group">
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Stress')}>Stress</sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Anxiety')}>Anxiety</sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Depression')}>Depression</sl-button>
+          </div>
+       </section>
       
-
+      </div>  
     `
     render(template, App.rootEl)
   }
