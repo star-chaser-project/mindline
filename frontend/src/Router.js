@@ -13,7 +13,6 @@ import favouriteLinesView from './views/pages/favouriteLines';
 import aboutView from './views/pages/about';
 
 import productsView from './views/pages/products';
-import ordersView from './views/pages/orders';
 import favouriteProductsView from './views/pages/favouriteProducts';
 import newProductView from './views/pages/newProduct';
 import locationView from './views/pages/location';
@@ -36,7 +35,6 @@ const routes = {
 	'/about': aboutView,
 
 	'/products': productsView,
-	'/orders': ordersView,
 	'/newProduct': newProductView,
 	'/favouriteProducts': favouriteProductsView,
 	'/location': locationView,
