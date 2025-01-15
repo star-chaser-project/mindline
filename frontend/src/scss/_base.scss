@@ -505,13 +505,13 @@ sl-details::part(base) {
 
 /* Color customization for headings */
 .our-mission h2 {
-  color: #F3C728;
+  color: var(--web-color-yelow);
 }
 .contact-info h2 {
-  color: #C992DD;
+  color: var(--web-color-lilac);
 }
 .how-we-are h2 {
-  color: #8ED479;
+  color: var(--web-color-green);
 }
 
 /* Responsive layout for mobile screens */

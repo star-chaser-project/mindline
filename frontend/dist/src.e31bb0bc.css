@@ -9,8 +9,13 @@
   --background-mental-health: linear-gradient(to bottom,#6686E3, #83A4FD, #384A7D );
   --background-mindfulness:linear-gradient(to bottom,#30AAF5, #5EBBF4, #0071B7 );
   --background-resources:linear-gradient(to bottom,#B26DCB, #C992DD, #6C4F77 );
-  --brand-color: #047E9F;
+  --brand-color: #0BB7C0;
   --link-color: --brand-color;
+  --web-color-yelow: #F3C728;
+  --web-color-purple: #6587E3;
+  --web-color-blue: #6587E3;
+  --web-color-lilac: #C992DD;
+  --web-color-green: #8ED479;
   --app-header-height: 60px;
   --app-header-txt-color: #2F1E1F;
   --app-header-title-font-size: 1.6em;
@@ -18,16 +23,16 @@
   --public-header-txt-color: #2F1E1F;
   --public-title-font-size: 1.6em;
   --sl-color-primary-50: #047E9F;
-  --sl-color-primary-100: rgb(115.509202454, 222.5398773006, 251.490797546);
-  --sl-color-primary-200: rgb(65.7607361963, 210.963190184, 250.2392638037);
-  --sl-color-primary-300: rgb(16.0122699387, 199.3865030675, 248.9877300613);
-  --sl-color-primary-400: rgb(5.2515337423, 165.4233128834, 208.7484662577);
-  --sl-color-primary-500: #047E9F;
-  --sl-color-primary-600: rgb(2.7484662577, 86.5766871166, 109.2515337423);
-  --sl-color-primary-700: rgb(1.4969325153, 47.1533742331, 59.5030674847);
-  --sl-color-primary-800: rgb(0.245398773, 7.7300613497, 9.754601227);
-  --sl-color-primary-900: hsl(192.7741935484, 95.0920245399%, -8.0392156863%);
-  --sl-focus-ring-color-primary: rgba(4, 126, 159, 0.1);
+  --sl-color-primary-100: rgb(157.5812807882, 244.8522167488, 249.4187192118);
+  --sl-color-primary-200: rgb(109.3448275862, 239.8275862069, 246.6551724138);
+  --sl-color-primary-300: rgb(61.1083743842, 234.802955665, 243.8916256158);
+  --sl-color-primary-400: rgb(13.763546798, 228.9753694581, 240.236453202);
+  --sl-color-primary-500: #0BB7C0;
+  --sl-color-primary-600: rgb(8.236453202, 137.0246305419, 143.763546798);
+  --sl-color-primary-700: rgb(5.4729064039, 91.0492610837, 95.5270935961);
+  --sl-color-primary-800: rgb(2.7093596059, 45.0738916256, 47.2906403941);
+  --sl-color-primary-900: hsl(182.9834254144, 89.1625615764%, -0.1960784314%);
+  --sl-focus-ring-color-primary: rgba(11, 183, 192, 0.1);
 }
 
 * {
@@ -470,15 +475,15 @@ sl-details::part(base) {
 
 /* Color customization for headings */
 .our-mission h2 {
-  color: #F3C728;
+  color: var(--web-color-yelow);
 }
 
 .contact-info h2 {
-  color: #C992DD;
+  color: var(--web-color-lilac);
 }
 
 .how-we-are h2 {
-  color: #8ED479;
+  color: var(--web-color-green);
 }
 
 /* Responsive layout for mobile screens */
