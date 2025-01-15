@@ -8,7 +8,7 @@ import Utils from './../../Utils';
 class ProfileView {
   init(){
     console.log('ProfileView.init');
-    document.title = 'Profile'    ;
+    document.title = 'Profile';
     this.render()    ;
     Utils.pageIntroAnim();
   }
@@ -77,6 +77,10 @@ class ProfileView {
           }
 
   render(){
+    if (!Auth.currentUser) {
+      console.error('No user data available')
+      return
+  }
     const template = html`
     <style>
     .signin-background {
@@ -305,11 +309,9 @@ class ProfileView {
               <a @click="${() => gotoRoute('/home')}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
               <div class="signinup-box">
                 <div class="avatar">
-                  ${Auth.currentUser && Auth.currentUser.avatar ? html`
-                  <sl-avatar style="--size: ${avatarSize}; padding-top: 1.5em; margin-bottom: 1em;" image=${(Auth.currentUser && Auth.currentUser.avatar) ? `${App.apiBase}/images/${Auth.currentUser.avatar}` : ''}></sl-avatar>
-                  `:html`
-                  <sl-avatar style="--size: 200px; padding-top: 1.5em; margin-bottom: 1em;"></sl-avatar>
-                  `} 
+                  <sl-avatar style="--size: 200px; margin-bottom: 1em;" 
+                    image="${Auth.currentUser.avatar ? `${App.apiBase}/images/${Auth.currentUser.avatar}` : ''}">
+                  </sl-avatar>
                 </div>
                 <h1 >${Auth.currentUser.firstName} ${Auth.currentUser.lastName}</h1>     
                 <p>${Auth.currentUser.email}</p>  

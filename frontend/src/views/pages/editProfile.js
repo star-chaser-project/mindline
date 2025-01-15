@@ -14,7 +14,7 @@ class EditProfileView {
     this.user = null;
     this.render();
     Utils.pageIntroAnim();
-    this.getUser()    ;
+    this.getUser();
   }
 
   async getUser(){
@@ -77,23 +77,31 @@ class EditProfileView {
       }
     }
 
-  async updateProfileSubmitHandler(e){
-    e.preventDefault();
-    const formData = e.detail.formData;
-    const submitBtn = document.querySelector('.submit-btn');
-    submitBtn.setAttribute('loading', '');
-    try {
-      const updatedUser = await UserAPI.updateUser(Auth.currentUser._id, formData);  
-      delete updatedUser.password;
-      this.user = updatedUser;
-      Auth.currentUser = updatedUser;
-      this.render();
-      Toast.show('profile updated');
-    }catch(err){      
-      Toast.show(err, 'error');
+    async updateProfileSubmitHandler(e) {
+      e.preventDefault();
+      const formData = e.detail.formData;
+      const submitBtn = document.querySelector('.submit-btn');
+      submitBtn.setAttribute('loading', '');
+      
+      try {
+        const updatedUser = await UserAPI.updateUser(Auth.currentUser._id, formData);
+        delete updatedUser.password;
+        this.user = updatedUser;
+        Auth.currentUser = updatedUser;
+        Toast.show('Profile updated successfully');
+        
+        // Wait brief moment for state to update
+        setTimeout(() => {
+          gotoRoute('/profile');
+        }, 300);
+        
+      } catch(err) {
+        console.error('Profile update error:', err);
+        Toast.show(err, 'error');
+      }
+      
+      submitBtn.removeAttribute('loading');
     }
-    submitBtn.removeAttribute('loading');
-  }
 
   render(){
     const template = html`
@@ -264,7 +272,7 @@ class EditProfileView {
 
     .custom-file-upload {
     display: inline-block;
-    padding: 12px;
+    padding: 6px 12px;
     cursor: pointer;
     background-color:rgb(255, 255, 255);
     border-radius: 30px;
@@ -277,6 +285,19 @@ class EditProfileView {
   .custom-file-upload:hover {
     background-color:rgb(94, 203, 225);
   }
+
+  .avatar-image {
+  margin-bottom: 1em;
+  width: 150px;  /* Set width */
+  height: 150px; /* Fix height typo */
+  --size: 150px; /* Shoelace avatar custom property */
+}
+
+.avatar-image::part(base) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
         
     </style>  
@@ -339,6 +360,10 @@ class EditProfileView {
         <div class="signon2-container">
               <a @click="${() => gotoRoute('/home')}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
           <div class="signinup-box">
+
+          ${(this.user.avatar) ? html`
+                  <sl-avatar style="--size: ${this.avatarSize}; margin-bottom: 1em;" class="avatar-image" image="${App.apiBase}/images/${this.user.avatar}"></sl-avatar>
+                      ` : ''}
           <h1>My Details</h1>
           <p>Updated: ${moment(Auth.currentUser.updatedAt).format('D MMMM YYYY @ h:mm a')}</p>
           <sl-form class="page-form" @sl-submit=${this.updateProfileSubmitHandler.bind(this)}>
@@ -353,18 +378,11 @@ class EditProfileView {
             </div> 
                  
             <div class="input-group">
-                        
-
-              ${(this.user.avatar) ? html`
-                <sl-avatar image="${App.apiBase}/images/${this.user.avatar}"></sl-avatar>
-                
-                <input id="file-upload" type="file" name="avatar" style="display: none;" />
-              ` : html`
-                <label for="file-upload" class="custom-file-upload">
-                  Upload Avatar
-                </label>
-                <input id="file-upload" type="file" name="avatar" style="display: none;" />
-              `}
+  
+                    <label for="file-upload" class="custom-file-upload">
+                      ${this.user.avatar ? 'Change Avatar' : 'Upload Avatar'}
+                    </label>
+                    <input id="file-upload" type="file" name="avatar" style="display: none;" />
             </div>
             <br>
             
