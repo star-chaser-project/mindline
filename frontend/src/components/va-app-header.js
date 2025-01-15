@@ -71,7 +71,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         box-sizing: border-box;
       }
       .app-header {
-        background: var(--brand-color);
+        background: transparent;
         position: fixed;
         top: 0;
         right: 0;
@@ -305,8 +305,9 @@ sl-details::part(base) {
               </sl-details>
         <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
         <a href="/about" @click="${this.menuClick}">About</a>
-        <a href="/profile" @click="${this.menuClick}">Profile</a>   
         
+        <a href="/profile" @click="${this.menuClick}">Profile</a>   
+         <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
         <hr style="color: #fff width:10%" >
 
         <a href="/products" @click="${this.menuClick}">Privacy</a>
@@ -348,6 +349,7 @@ sl-details::part(base) {
         <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
         <a href="/about" @click="${this.menuClick}">About</a>
         <a href="/profile" @click="${this.menuClick}">Profile</a>
+        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
 
         <hr style="color: #fff width:10%" >
 
