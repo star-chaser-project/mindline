@@ -27,8 +27,8 @@ class mindfulnessView {
           </div>
         </section>
         <section class="nav-page">
+        <h3>Ways to Practice...</h3>
           <div class="button-group">
-          <h3>Ways to Practice...</h3>
           <sl-button type="primary" size="large" @click=${() => gotoRoute('/Meditation')}>Meditation</sl-button>
           <sl-button type="primary" size="large" @click=${() => gotoRoute('/mindfulness')}>mindfulness</sl-button>
           <sl-button type="primary" size="large" @click=${() => gotoRoute('/Meditation')}>Meditation</sl-button>

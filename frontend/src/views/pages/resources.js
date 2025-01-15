@@ -26,7 +26,8 @@ class resourcesView {
         </div>
       </section>
       <section class="nav-page">
-        <div class="button-group">
+        <h3>Ways to deal with...</h3>
+          <div class="button-group">
           <sl-button type="primary" size="large" @click=${() => gotoRoute('/Support')}>Support</sl-button>
           <sl-button type="primary" size="large" @click=${() => gotoRoute('/Services')}>Services</sl-button>
           <sl-button type="primary" size="large" @click=${() => gotoRoute('/Guides')}>Guides</sl-button>
