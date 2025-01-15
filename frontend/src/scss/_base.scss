@@ -11,15 +11,17 @@ body {
   color: var(--base-txt-color);
   font-family: var(--base-font-family);
   font-weight: 300;
-  background: var(--body-bg);
-  height: 100vh;
+  height: 100%; /* Ensure body takes full height */
 }
-
-
 // headings ------------
-h1,h2,h3,h5,h6 {
+h1,h2{
   margin: 0 0 .5em;
   color: var(--heading-color);
+}
+
+h3{
+  margin: 0 0 .5em;
+  color: var( --base-txt-color);
 }
 
 // links ---------------
@@ -27,6 +29,76 @@ a {
   color: var(--link-color);
 }
 
+
+//banner ----------------
+
+.banner {
+  padding: 270px;
+  position: relative; 
+  color: white;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  overflow: hidden;
+
+  &.home {
+    background: var(--background-home);
+  }
+  &.resources {
+    background: var(--background-resources);
+  }
+  &.about {
+    background: var(--background-about);
+  }
+  &.mindfulness {
+    background: var(--background-mindfulness);
+  }
+  &.mental-health {
+    background: var(--background-mental-health);
+  }
+
+  img {
+    padding: 0px;
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 1;
+    bottom: 0px; 
+  }
+
+  .banner-content {
+    position: relative; /* Ensures it stays on top of the image */
+    z-index: 2; /* Ensure content overlays the image */
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin: 0 0 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  
+}
+.nav-page {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center vertically within the container */
+  align-items: center; /* Center horizontally */
+  height: auto; /* Adjust height based on content */
+  text-align: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem; /* Add space between buttons */
+}
 
 // app splash screen -------
 .app-splash {
@@ -81,11 +153,28 @@ a {
   overflow: hidden;
 }
 
-// page ---------------------
+// pages ---------------------
+
+// Home page ----------------------------------------------------------------------------------
+
+.blurb-container {
+  position: relative;
+  display: center;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+// All pages 
+// fallback background colour = Peach from https://coolors.co/ ---------
+
 .page-content {
   position: absolute;
   //top: var(--app-header-height);
   left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
   overflow-y: scroll;
@@ -100,10 +189,6 @@ a {
   align-items: center;
   justify-content: center;
 }
-
-
-// All pages 
-// fallback background colour = Peach from https://coolors.co/ ---------
 
 //menu drop down styling
 
@@ -220,16 +305,7 @@ sl-details::part(base) {
 }
 
 
-// Home page ----------------------------------------------------------------------------------
 
-.blurb-container {
-  position: relative;
-  display: center;
-  img {
-    width: 100%;
-    height: auto;
-  }
-}
 
 // text only 
 .blurb-text {
@@ -238,7 +314,6 @@ sl-details::part(base) {
   left: 20%;
   text-align: center;
   transform: translate(-50%, -50%);
- 
   padding: 5px;
 }
 
@@ -418,14 +493,36 @@ sl-details::part(base) {
 
 
 // about page ----------------------------------------------------------------------------
+.about-content {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  justify-content: space-between; /* Creates equal spacing between the sections */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* Centers the content horizontally */
+  padding: 40px 20px;
+}
 
-.owner.bio {
-  position: relative;
-  text-align: center;
-  img {
-    width: 100%;
-    height: auto;
-    background: rgba(0, 0, 0, 0.8); /* Black background with 0.5 opacity */
+/* Color customization for headings */
+.our-mission h2 {
+  color: var(--web-color-yelow);
+}
+.contact-info h2 {
+  color: var(--web-color-lilac);
+}
+.how-we-are h2 {
+  color: var(--web-color-green);
+}
+
+/* Responsive layout for mobile screens */
+@media screen and (max-width: 768px) {
+  .about-content {
+    flex-direction: column; /* Stacks the sections vertically */
+    gap: 30px; /* Adds more space between sections */
+  }
+
+  .about-content > section {
+    max-width: 100%; /* Makes sections take full width */
   }
 }
 
@@ -439,8 +536,6 @@ sl-details::part(base) {
   border-radius: 25px;
   padding: 20px;
 }
-
-
 
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 
@@ -516,7 +611,11 @@ sl-details::part(base) {
 @media (max-width: 767px) {
   .responsive-image {
       width: 100%;
+    }
+ .button-group {
+      flex-direction: column; /* Stack buttons and heading vertically */
   }
+  
 }
 
 // Medium devices (tablets, 768px and up)
