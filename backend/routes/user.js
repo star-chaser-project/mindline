@@ -80,13 +80,6 @@ router.get("/:id", Utils.authenticateToken, (req, res) => {
   }
 
   User.findById(req.params.id)
-  .populate({
-      path: 'order',
-      populate: {
-        path: 'article', 
-
-      }
-    })
     .then((user) => {
       res.json(user);
     })
