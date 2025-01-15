@@ -14,13 +14,15 @@ class resourcesView {
 
   render(){
     const template = html`
-      <va-app-header title="Resources" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
+       <va-app-header user=${JSON.stringify(Auth.currentUser)}>
+           <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo-mindline-no-wording-white-125.png"></a>
+           </va-app-header>  
       <div class="page-content"> 
-      <section class="banner">
-        <img src="images/resources-hero-image-837.png" class="responsive-img" alt="Hero banner for Resources page">
-        <div class="banner-content">
+      <section class="banner resources">
+        <img src="images/resources-hero-image-837.png" class="responsive-img" >    
+        <div class ="banner-text">      
           <h1>Resources</h1>
-          <h2>Supporting You Every Step of the Way.</h2>
+          <h2>Supporting You Every Step of the Way.</p>
         </div>
       </section>
       <section class="nav-page">

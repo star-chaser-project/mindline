@@ -206,10 +206,10 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         <a href="/mentalHealth" @click="${this.menuClick}">Mental Health</a>
         <a href="/mindfulness" @click="${this.menuClick}">Mindfulness</a>
         <a href="/resources" @click="${this.menuClick}">Resources</a>
-        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
         <a href="/about" @click="${this.menuClick}">About</a>
-        <a href="/profile" @click="${this.menuClick}">Profile</a>   
         
+        <a href="/profile" @click="${this.menuClick}">Profile</a>   
+         <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
         <hr style="color: #fff width:10%" >
 
         <a href="/products" @click="${this.menuClick}">Privacy</a>
@@ -227,9 +227,9 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         <a href="/mentalHealth" @click="${this.menuClick}">Mental Health</a>
         <a href="/mindfulness" @click="${this.menuClick}">Mindfulness</a>
         <a href="/resources" @click="${this.menuClick}">Resources</a>
-        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
         <a href="/about" @click="${this.menuClick}">About</a>
         <a href="/profile" @click="${this.menuClick}">Profile</a>
+        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
 
         <hr style="color: #fff width:10%" >
 

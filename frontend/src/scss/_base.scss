@@ -11,15 +11,17 @@ body {
   color: var(--base-txt-color);
   font-family: var(--base-font-family);
   font-weight: 300;
-  background: var(--body-bg);
-  height: 100vh;
+  height: 100%; /* Ensure body takes full height */
 }
-
-
 // headings ------------
-h1,h2,h3,h5,h6 {
+h1,h2{
   margin: 0 0 .5em;
   color: var(--heading-color);
+}
+
+h3{
+  margin: 0 0 .5em;
+  color: var( --base-txt-color);
 }
 
 // links ---------------
@@ -27,6 +29,77 @@ a {
   color: var(--link-color);
 }
 
+
+//banner ----------------
+
+.banner {
+  padding: 300px;
+  position: relative; 
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  overflow: hidden;
+
+  &.home {
+    background: var(--background-home);
+  }
+  &.resources {
+    background: var(--background-resources);
+  }
+  &.about {
+    background: var(--background-about);
+  }
+  &.mindfulness {
+    background: var(--background-mindfulness);
+  }
+  &.mental-health {
+    background: var(--background-mental-health);
+  }
+
+  img {
+    padding: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 1;
+    bottom: 0px; 
+  }
+
+  .banner-content {
+    position: relative; /* Ensures it stays on top of the image */
+    z-index: 2; /* Ensure content overlays the image */
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin: 0 0 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: auto; /* Adjust height for smaller screens */
+    padding: auto;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+}
 
 // app splash screen -------
 .app-splash {
@@ -81,11 +154,28 @@ a {
   overflow: hidden;
 }
 
-// page ---------------------
+// pages ---------------------
+
+// Home page ----------------------------------------------------------------------------------
+
+.blurb-container {
+  position: relative;
+  display: center;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+// All pages 
+// fallback background colour = Peach from https://coolors.co/ ---------
+
 .page-content {
   position: absolute;
   //top: var(--app-header-height);
   left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
   overflow-y: scroll;
@@ -100,10 +190,6 @@ a {
   align-items: center;
   justify-content: center;
 }
-
-
-// All pages 
-// fallback background colour = Peach from https://coolors.co/ ---------
 
 //menu drop down styling
 
@@ -220,16 +306,7 @@ sl-details::part(base) {
 }
 
 
-// Home page ----------------------------------------------------------------------------------
 
-.blurb-container {
-  position: relative;
-  display: center;
-  img {
-    width: 100%;
-    height: auto;
-  }
-}
 
 // text only 
 .blurb-text {
@@ -238,7 +315,6 @@ sl-details::part(base) {
   left: 20%;
   text-align: center;
   transform: translate(-50%, -50%);
- 
   padding: 5px;
 }
 

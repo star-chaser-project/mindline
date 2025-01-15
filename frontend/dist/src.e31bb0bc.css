@@ -1,10 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,300;0,500;1,100;1,200;1,500&display=swap");
 :root {
-  --base-txt-color: #2F1E1F;
-  --heading-color: #2F1E1F;
+  --base-txt-color: #383838;
+  --heading-color: #ffffff;
   --base-font-family: "Work Sans", sans-serif;
-  --body-bg: #00B9DF;
-  --brand-color: #00B9DF;
+  --body-bg: #ffffff;
+  --background-home: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
+  --background-about: linear-gradient(to bottom,#78BE64, #A3DD92, #78BE64 );
+  --background-mental-health: linear-gradient(to bottom,#6686E3, #83A4FD, #384A7D );
+  --background-mindfulness:linear-gradient(to bottom,#30AAF5, #5EBBF4, #0071B7 );
+  --background-resources:linear-gradient(to bottom,#B26DCB, #C992DD, #6C4F77 );
+  --brand-color: #047E9F;
   --link-color: --brand-color;
   --app-header-height: 60px;
   --app-header-txt-color: #2F1E1F;
@@ -12,17 +17,17 @@
   --public-header-height: 60px;
   --public-header-txt-color: #2F1E1F;
   --public-title-font-size: 1.6em;
-  --sl-color-primary-50: #00B9DF;
-  --sl-color-primary-100: rgb(172, 240.8565022422, 255);
-  --sl-color-primary-200: rgb(121, 232.1659192825, 255);
-  --sl-color-primary-300: rgb(70, 223.4753363229, 255);
-  --sl-color-primary-400: rgb(19, 214.7847533632, 255);
-  --sl-color-primary-500: #00B9DF;
-  --sl-color-primary-600: rgb(0, 142.6905829596, 172);
-  --sl-color-primary-700: rgb(0, 100.3811659193, 121);
-  --sl-color-primary-800: rgb(0, 58.0717488789, 70);
-  --sl-color-primary-900: rgb(0, 15.7623318386, 19);
-  --sl-focus-ring-color-primary: rgba(0, 185, 223, 0.1);
+  --sl-color-primary-50: #047E9F;
+  --sl-color-primary-100: rgb(115.509202454, 222.5398773006, 251.490797546);
+  --sl-color-primary-200: rgb(65.7607361963, 210.963190184, 250.2392638037);
+  --sl-color-primary-300: rgb(16.0122699387, 199.3865030675, 248.9877300613);
+  --sl-color-primary-400: rgb(5.2515337423, 165.4233128834, 208.7484662577);
+  --sl-color-primary-500: #047E9F;
+  --sl-color-primary-600: rgb(2.7484662577, 86.5766871166, 109.2515337423);
+  --sl-color-primary-700: rgb(1.4969325153, 47.1533742331, 59.5030674847);
+  --sl-color-primary-800: rgb(0.245398773, 7.7300613497, 9.754601227);
+  --sl-color-primary-900: hsl(192.7741935484, 95.0920245399%, -8.0392156863%);
+  --sl-focus-ring-color-primary: rgba(4, 126, 159, 0.1);
 }
 
 * {
@@ -36,17 +41,84 @@ body {
   color: var(--base-txt-color);
   font-family: var(--base-font-family);
   font-weight: 300;
-  background: var(--body-bg);
-  height: 100vh;
+  height: 100%; /* Ensure body takes full height */
 }
 
-h1, h2, h3, h5, h6 {
+h1, h2 {
   margin: 0 0 0.5em;
   color: var(--heading-color);
 }
 
+h3 {
+  margin: 0 0 0.5em;
+  color: var(--base-txt-color);
+}
+
 a {
   color: var(--link-color);
+}
+
+.banner {
+  padding: 300px;
+  position: relative;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  overflow: hidden;
+}
+.banner.home {
+  background: var(--background-home);
+}
+.banner.resources {
+  background: var(--background-resources);
+}
+.banner.about {
+  background: var(--background-about);
+}
+.banner.mindfulness {
+  background: var(--background-mindfulness);
+}
+.banner.mental-health {
+  background: var(--background-mental-health);
+}
+.banner img {
+  padding: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 1;
+  bottom: 0px;
+}
+.banner .banner-content {
+  position: relative; /* Ensures it stays on top of the image */
+  z-index: 2; /* Ensure content overlays the image */
+}
+.banner h1 {
+  font-size: 3rem;
+  margin: 0 0 10px;
+}
+.banner h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+@media screen and (max-width: 768px) {
+  .banner {
+    height: auto; /* Adjust height for smaller screens */
+    padding: auto;
+  }
+  .banner h1 {
+    font-size: 2rem;
+  }
+  .banner h2 {
+    font-size: 1.2rem;
+  }
 }
 
 .app-splash {
@@ -97,9 +169,19 @@ a {
   overflow: hidden;
 }
 
+.blurb-container {
+  position: relative;
+  display: center;
+}
+.blurb-container img {
+  width: 100%;
+  height: auto;
+}
+
 .page-content {
   position: absolute;
   left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
   overflow-y: scroll;
@@ -212,15 +294,6 @@ sl-details::part(base) {
   max-width: 600px;
 }
 .guide-step img {
-  width: 100%;
-  height: auto;
-}
-
-.blurb-container {
-  position: relative;
-  display: center;
-}
-.blurb-container img {
   width: 100%;
   height: auto;
 }
