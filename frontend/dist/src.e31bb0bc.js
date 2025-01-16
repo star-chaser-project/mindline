@@ -7277,7 +7277,7 @@ class HomeView {
   // Image adapted from Canva – Accessed on December 18, 2024
   // Animation - from https://shoelace.style/components/animation
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header user=", ">\n        <a href=\"/\" @click=\"", "\"><img class=\"header-logo\" src=\"/images/logo-mindline-no-wording-white-125.png\"></a>\n      </va-app-header>\n    <div class=\"page-content centered page-content-home\">\n        <section class=\"home banner\">\n            <h1>Empower Your Life</h1>\n            <img src=\"/images/home-hero-image-175.png\">\n            <h2>HARNESS YOUR POTENTIAL</h2>\n        </section>\n       <section class=\"nav-page\">\n        <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n            <sl-button type=\"primary\" size=\"large\" @click=", ">MntalHealth</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Mindfulness</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Resources</sl-button>\n          </div>\n        </section> \n      </div>\n     \n    "])), JSON.stringify(_Auth.default.currentUser), _Router.anchorRoute, () => (0, _Router.gotoRoute)('/mentalHealth'), () => (0, _Router.gotoRoute)('/mindfulness'), () => (0, _Router.gotoRoute)('/resources'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <va-app-header user=", ">\n        <a href=\"/\" @click=\"", "\"><img class=\"header-logo\" src=\"/images/logo-mindline-no-wording-white-125.svg\"></a>\n      </va-app-header>\n    <div class=\"page-content\">\n        <section class=\" banner home\">\n            <h1>Empower Your Life</h1>\n            <img class=\"cloud\" src=\"/images/home-hero-image-175.png\" alt=\"Cloud Image\">\n            <h2>HARNESS YOUR POTENTIAL</h2>\n        </section>\n       <section class=\"nav-page\">\n        <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n            <sl-button class=\"green-btn\" type=\"primary\" size=\"large\" @click=", ">Mental Health</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Mindfulness</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Resources</sl-button>\n          </div>\n        </section> \n      </div>\n     \n    "])), JSON.stringify(_Auth.default.currentUser), _Router.anchorRoute, () => (0, _Router.gotoRoute)('/mentalHealth'), () => (0, _Router.gotoRoute)('/mindfulness'), () => (0, _Router.gotoRoute)('/resources'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -16196,7 +16196,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58254" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62889" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
