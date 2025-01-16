@@ -110,14 +110,23 @@ a {
   font-size: 1.5rem;
   margin: 0;
 }
+.banner .button-group {
+  bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+}
 
 .nav-page {
+  padding: 2rem;
   display: flex;
   flex-direction: column; /* Stack content vertically */
   justify-content: center; /* Center vertically within the container */
   align-items: center; /* Center horizontally */
   height: auto; /* Adjust height based on content */
   text-align: center;
+}
+.nav-page h3 {
+  margin-bottom: 2rem;
 }
 
 .button-group {
