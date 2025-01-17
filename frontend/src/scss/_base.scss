@@ -1,4 +1,5 @@
 // Base
+@use 'vars' as *;
 
 * {
   box-sizing: border-box;
@@ -30,6 +31,7 @@ a {
 }
 
 
+
 //banner ----------------
 
 .banner {
@@ -46,6 +48,11 @@ a {
 
   &.home {
     background: var(--background-home);
+    img {
+
+      bottom: 2rem; 
+
+    }
   }
   &.resources {
     background: var(--background-resources);
@@ -59,7 +66,7 @@ a {
   &.mental-health {
     background: var(--background-mental-health);
   }
-
+ 
   img {
     padding: 0px;
     position: absolute;
@@ -84,21 +91,53 @@ a {
     margin: 0;
   }
 
-  
+  .button-group{
+    bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+  }
 }
 .nav-page {
+  padding: 2rem;
   display: flex;
   flex-direction: column; /* Stack content vertically */
   justify-content: center; /* Center vertically within the container */
   align-items: center; /* Center horizontally */
   height: auto; /* Adjust height based on content */
   text-align: center;
+
+  h3{
+    margin-bottom: 2rem;
+  }
 }
 
 .button-group {
   display: flex;
   gap: 1rem; /* Add space between buttons */
 }
+
+
+// animations -------https://codepen.io/MarioDesigns/pen/woJgeo-----
+
+.cloud {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+   
+    transform: translateY(0px);
+  }
+  50% {
+  
+    transform: translateY(-20px);
+  }
+  100% {
+   
+    transform: translateY(0px);
+  }
+}
+
 
 // app splash screen -------
 .app-splash {
@@ -164,6 +203,10 @@ a {
     width: 100%;
     height: auto;
   }
+}
+.green-btn::part(base) {
+  background:var(--web-color-green) ;
+  border: none;
 }
 
 
@@ -379,7 +422,7 @@ sl-details::part(base) {
 
 .product-card::part(body) {
   background: #F0C4A1;
-  --border-radius: var(card--border-radius);
+  --border-radius: var(--card--border-radius);
 }
 
 // products dialog ------------------------
@@ -394,6 +437,7 @@ sl-details::part(base) {
 }
 
 // products and orders checkout red button ----------
+
 .red-btn::part(base) {
   color: var(--sl-color-brand);
   background: red;
@@ -631,3 +675,4 @@ sl-details::part(base) {
       width: 50%;
   }
 }
+

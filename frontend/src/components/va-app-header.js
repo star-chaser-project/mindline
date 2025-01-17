@@ -276,6 +276,7 @@ sl-details::part(base) {
     <div slot="label">  
           <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
         </div>
+    <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.svg"></a>
       <br>
       <nav class="app-side-menu-items">
       ${this.user.accessLevel == 1 ? html`

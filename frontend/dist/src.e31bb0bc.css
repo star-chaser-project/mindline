@@ -4,6 +4,8 @@
   --heading-color: #ffffff;
   --base-font-family: "Work Sans", sans-serif;
   --body-bg: #ffffff;
+  --background-profile: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
+  --background-favourite: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
   --background-home: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
   --background-about: linear-gradient(to bottom,#78BE64, #A3DD92, #78BE64 );
   --background-mental-health: linear-gradient(to bottom,#6686E3, #83A4FD, #384A7D );
@@ -78,6 +80,9 @@ a {
 .banner.home {
   background: var(--background-home);
 }
+.banner.home img {
+  bottom: 2rem;
+}
 .banner.resources {
   background: var(--background-resources);
 }
@@ -110,8 +115,14 @@ a {
   font-size: 1.5rem;
   margin: 0;
 }
+.banner .button-group {
+  bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+}
 
 .nav-page {
+  padding: 2rem;
   display: flex;
   flex-direction: column; /* Stack content vertically */
   justify-content: center; /* Center vertically within the container */
@@ -119,12 +130,30 @@ a {
   height: auto; /* Adjust height based on content */
   text-align: center;
 }
+.nav-page h3 {
+  margin-bottom: 2rem;
+}
 
 .button-group {
   display: flex;
   gap: 1rem; /* Add space between buttons */
 }
 
+.cloud {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 .app-splash {
   position: fixed;
   background: #fff;
@@ -180,6 +209,11 @@ a {
 .blurb-container img {
   width: 100%;
   height: auto;
+}
+
+.green-btn::part(base) {
+  background: var(--web-color-green);
+  border: none;
 }
 
 .page-content {
@@ -367,7 +401,7 @@ sl-details::part(base) {
 
 .product-card::part(body) {
   background: #F0C4A1;
-  --border-radius: var(card--border-radius);
+  --border-radius: var(--card--border-radius);
 }
 
 .product-dialog {
