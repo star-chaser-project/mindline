@@ -15617,12 +15617,10 @@ class App {
   constructor() {
     this.name = "Mindline";
     this.version = "1.0.0";
-    this.apiBase = "http://localhost:3000";
+    this.apiBase = "https://mindlineau.onrender.com";
     this.rootEl = document.getElementById("root");
     this.version = "1.0.0";
   }
-  //https://cafe-minori-app-4d4dfdb9bbc1.herokuapp.com
-
   init() {
     console.log("App.init");
 
@@ -16196,7 +16194,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51552" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54259" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
