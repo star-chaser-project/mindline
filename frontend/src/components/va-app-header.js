@@ -279,6 +279,7 @@ sl-details::part(base) {
       <br>
       <nav class="app-side-menu-items">
       ${this.user.accessLevel == 1 ? html`
+        <a href="/" @click="${this.menuClick}">Home</a>
         <sl-details>
                 <div slot="summary" class="summary-content">
                   <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
@@ -321,7 +322,7 @@ sl-details::part(base) {
 
         ` : ''}
         ${this.user.accessLevel == 2 ? html`
-        
+        <a href="/" @click="${this.menuClick}">Home</a>
         <sl-details>
                 <div slot="summary" class="summary-content">
                   <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
