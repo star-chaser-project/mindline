@@ -19,8 +19,8 @@ class HomeView {
       <va-app-header user=${JSON.stringify(Auth.currentUser)}>
         <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo-mindline-no-wording-white-125.svg"></a>
       </va-app-header>
-    <div class="page-content">
-        <section class=" banner home">
+    <div class="page-content home-page">
+        <section class=" banner">
             <h1>Empower Your Life</h1>
             <img class="cloud" src="/images/home-hero-image-175.png" alt="Cloud Image">
             <h2>HARNESS YOUR POTENTIAL</h2>

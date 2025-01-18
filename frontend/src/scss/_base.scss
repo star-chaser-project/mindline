@@ -46,14 +46,6 @@ a {
   height: auto;
   overflow: hidden;
 
-  &.home {
-    background: var(--background-home);
-    img {
-
-      bottom: 2rem; 
-
-    }
-  }
   &.resources {
     background: var(--background-resources);
   }
@@ -195,6 +187,9 @@ a {
 // pages ---------------------
 
 // Home page ----------------------------------------------------------------------------------
+.home-page {
+  background:var(--background-home) ;
+}
 
 .blurb-container {
   position: relative;
@@ -347,10 +342,12 @@ sl-details::part(base) {
   }
 }
 
+//favorite-page-----------------
+.bookmarks-page {
+  background: var(--background-bookmarks);
+}
 
-
-
-// text only 
+// text only --------------------
 .blurb-text {
   position: absolute;
   top: 15%;

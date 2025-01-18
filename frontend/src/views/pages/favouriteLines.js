@@ -30,7 +30,7 @@ class FavouriteLinesView {
 
   render(){
     const template = html`
-      <va-app-header title="Favourites" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
+      <va-app-header title="Bookmarks" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
       <div class="page-content">   
         <div class="fav-container">     
         <h1>Favourites</h1>
