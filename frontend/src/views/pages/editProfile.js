@@ -158,7 +158,8 @@ class EditProfileView {
         background-color: #F4D35E;
         border-color: #F4D35E;
         color: #000000;
-        style= padding-bottom: 1em;
+        padding-bottom: 1em;
+        font-family: inherit;
       }
 
     .submit-btn::part(base):hover {
@@ -271,10 +272,13 @@ class EditProfileView {
     }
 
     .custom-file-upload {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold; 
     padding: 6px 12px;
     cursor: pointer;
-    background-color:rgb(255, 255, 255);
+    background-color:#FFFFFF;
     border-radius: 30px;
     color:rgb(0, 0, 0);
     width: 100%;
@@ -283,7 +287,7 @@ class EditProfileView {
   }
 
   .custom-file-upload:hover {
-    background-color:rgb(94, 203, 225);
+    background-color: #e2e8f0;
   }
 
   .avatar-image {
@@ -361,9 +365,11 @@ class EditProfileView {
               <a @click="${() => gotoRoute('/home')}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
           <div class="signinup-box">
 
-          ${(this.user.avatar) ? html`
-                  <sl-avatar style="--size: ${this.avatarSize}; margin-bottom: 1em;" class="avatar-image" image="${App.apiBase}/images/${this.user.avatar}"></sl-avatar>
-                      ` : ''}
+          
+                  <sl-avatar style="--size: 200px; margin-bottom: 1em;" 
+                    image="${Auth.currentUser.avatar ? `${App.apiBase}/images/${Auth.currentUser.avatar}` : ''}">
+                  </sl-avatar>
+                      
           <h1>My Details</h1>
           <p>Updated: ${moment(Auth.currentUser.updatedAt).format('D MMMM YYYY @ h:mm a')}</p>
           <sl-form class="page-form" @sl-submit=${this.updateProfileSubmitHandler.bind(this)}>
