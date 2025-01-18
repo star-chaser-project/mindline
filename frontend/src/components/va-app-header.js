@@ -151,9 +151,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
 
       /* active nav links */
       .app-top-nav a.active,
-      .app-side-menu-items a.active {
-        font-weight: bold;
-      }
+      
 
       .menu-item::part(label) :hover {
         color: #fff;
