@@ -79,7 +79,7 @@ class SignUpView{
   render(){
     const template = html`     
     <style>
-    .signin-background {
+      .signin-background {
         background-image: url('/images/login-background.png');
         background-size: cover;
         background-position: center;
@@ -90,8 +90,8 @@ class SignUpView{
         top: 0;
         left: 0;
         z-index: -1;
-    }
-    .page-content {
+      }
+      .page-content {
         display: flex;
         width: 100%;
         height: 100vh; /* Full viewport height */
@@ -127,26 +127,27 @@ class SignUpView{
       }
   
 
-    .submit-btn::part(base) {
+      .submit-btn::part(base) {
         background-color: #F4D35E;
         border-color: #F4D35E;
         color: #000000;
         style= padding-bottom: 1em;
       }
 
-    .submit-btn::part(base):hover {
+      .submit-btn::part(base):hover {
         background-color: #e5c654;
         border-color: #e5c654;
       }
 
-    .submit-btn::part(base):active {
+      .submit-btn::part(base):active {
         background-color: #d6b84a;
         border-color: #d6b84a;
       }
 
       h2 {
       text-align: left;
-      width:238.61px;
+      width:250.61px;
+      font-size: 5em;
       }
 
       p {
@@ -156,14 +157,12 @@ class SignUpView{
       
       .app-side-menu-logo {
       width: 150px !important; 
-        height: auto !important; /* Remove fixed height to maintain aspect ratio */
-        
-        top: 1em;
+      height: auto !important; /* Remove fixed height to maintain aspect ratio */  
+      top: 1em;
       display: block;
-      
-    }
+      }
 
-    .hamburger-btn::part(base) {
+      .hamburger-btn::part(base) {
         color: #fff;
         position: fixed;
         top: 1em;
@@ -194,6 +193,7 @@ class SignUpView{
       }
 
       .home-logo {
+        cursor: pointer;
         width: 150px !important; 
         height: auto !important; /* Remove fixed height to maintain aspect ratio */
         position: absolute;
@@ -209,41 +209,54 @@ class SignUpView{
       }
 
       sl-details::part(summary) {
-    transition: color 0.3s ease;
-  }
+        transition: color 0.3s ease;
+      }
 
-  sl-details::part(summary):hover {
-    color: var(--sl-color-primary-600);
-    cursor: pointer;
-  }
+      sl-details::part(summary):hover {
+        color: var(--sl-color-primary-600);
+        cursor: pointer;
+      }
 
-  .menu-expand {
-    transition: color 0.3s ease;
-    text-decoration: none;
-  }
+      .menu-expand {
+        transition: color 0.3s ease;
+        text-decoration: none;
+      }
 
-  .menu-expand:hover {
-    color: var(--sl-color-primary-600);
-    padding-left: 1.5em;
-    transition: all 0.5s ease;
-  }
+      .menu-expand:hover {
+        color: var(--sl-color-primary-600);
+        padding-left: 1.5em;
+        transition: all 0.5s ease;
+      }
 
       /* right side menu */
       .right-side-menu {
         --base-txt-color: #2F1E1F;
       }
 
-        .menu-expand {
+      .menu-expand {
         font-size: 1.3em;
         margin-left: 1em;
         margin-top: 0.5em;
       }
 
       sl-drawer::part(label) {
-    padding: 0.6em;
-    
-    
-  }
+        padding: 0.6em;
+      }
+
+      sl-menu {
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      sl-menu::part(base) {
+        padding: 8px 16px;
+        margin: 4px;
+        border-radius: 15px;
+      }
+
+      sl-menu-item:hover::part(base) {
+        background-color: #e2e8f0;
+      }
         
     </style>  
 
@@ -334,7 +347,7 @@ class SignUpView{
           </div>
         <div class="welcome-box">
                   <h2>Hi</h2>
-                  <h1>Let us know about you back!</h1>
+                  <h1 style= "width: 240px;">Tell us more about you!</h1>
           </div>
         </div>
     `;
