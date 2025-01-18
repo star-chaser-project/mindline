@@ -8,7 +8,7 @@ class App {
     this.name = "Mindline";
     this.version = "1.0.0";
     //this.apiBase = "https://mindlineau.onrender.com";
-    this.apiBase = "localhost:1234";
+    this.apiBase = "http://localhost:3000";
     this.rootEl = document.getElementById("root");
     this.version = "1.0.0";
   }
