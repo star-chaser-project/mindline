@@ -150,7 +150,8 @@ class SignInView {
 
       h2 {
       text-align: left;
-      width:238.61px;
+      width:250.61px;
+      font-size: 5em;
       }
 
       p {
@@ -198,6 +199,7 @@ class SignInView {
       }
 
       .home-logo {
+        cursor: pointer;
         width: 150px !important; 
         height: auto !important; /* Remove fixed height to maintain aspect ratio */
         position: absolute;
@@ -319,7 +321,7 @@ class SignInView {
               </div>
               <sl-button size="large" pill class="submit-btn" type="primary" submit style="width: 100%;">LOG IN</sl-button>
             </sl-form>
-            <p> <br>Don’ have an account?</br> <a href="/signup" @click=${anchorRoute}>Sign up</a></p>
+            <p> <br>Don’t have an account?</br> <a href="/signup" @click=${anchorRoute}>Sign up</a></p>
           </div>
           
 
