@@ -33,6 +33,7 @@ import Utils from '../../Utils'
           <sl-button type="primary" size="large" @click=${() => gotoRoute('')}>Meditation</sl-button>
           <sl-button type="primary" size="large" @click=${() => gotoRoute('')}>Mindfulness</sl-button>
           <sl-button type="primary" size="large" @click=${() => gotoRoute('')}>Motivation</sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('')}>Motivation</sl-button>
           </div>
        </section>
       </div>            
