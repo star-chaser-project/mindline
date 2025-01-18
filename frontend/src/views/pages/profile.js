@@ -313,15 +313,15 @@ class ProfileView {
                   <a class="menu-expand" href="">Guides</a>
               </sl-details>
               
-              <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
-              <a href="/about" @click="${this.menuClick}">About</a>
-              <a href="/profile" @click="${this.menuClick}">Profile</a>   
+              <a href="/favouriteLines" @click="${anchorRoute}">Bookmarks</a>
+              <a href="/about" @click="${anchorRoute}">About</a>
+              <a href="/profile" @click="${anchorRoute}">Profile</a>   
               
               <hr style="color: #fff width:10%" >
       
-              <a href="/products" @click="${this.menuClick}">Privacy</a>
-              <a href="/products" @click="${this.menuClick}">T&Cs</a>
-              <a href="/products" @click="${this.menuClick}">Socials</a>
+              <a href="/products" @click="${anchorRoute}">Privacy</a>
+              <a href="/products" @click="${anchorRoute}">T&Cs</a>
+              <a href="/products" @click="${anchorRoute}">Socials</a>
       
               <hr style="color: #fff width:10%" >
       
