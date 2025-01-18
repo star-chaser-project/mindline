@@ -124,6 +124,8 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         text-decoration: none;
         color: #fff;
       }
+
+      
       
       .app-side-menu-items a {
         display: block;
@@ -182,7 +184,12 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
 
       /* right side menu */
       .right-side-menu {
+        
         --base-txt-color: #2F1E1F;
+      }
+
+      .user-menu {
+        margin-right: 2em;
       }
 
         .menu-expand {
@@ -253,11 +260,11 @@ sl-details::part(base) {
         ` : ''}
         ${this.user.accessLevel == 1 ? html`
        
-          <a href="/about" @click="${anchorRoute}">About</a>       
+          
 
         ` : ''}
         
-        <sl-dropdown>
+        <sl-dropdown class="user-menu">
           <a slot="trigger" href="#" @click="${(e) => e.preventDefault()}">
             <sl-avatar style="--size: 40px;" image=${(this.user && this.user.avatar) ? `${App.apiBase}/images/${this.user.avatar}` : ''}></sl-avatar> ${this.user && this.user.firstName}
           </a>

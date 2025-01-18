@@ -9,6 +9,7 @@ class ProfileView {
   init(){
     console.log('ProfileView.init');
     document.title = 'Profile';
+    this.user = Auth.currentUser;
     this.render()    ;
     Utils.pageIntroAnim();
   }
@@ -76,7 +77,10 @@ class ProfileView {
             }); 
           }
 
+    
+
   render(){
+    console.log('Auth.currentUser:', Auth.currentUser);
     if (!Auth.currentUser) {
       console.error('No user data available')
       return
@@ -160,13 +164,12 @@ class ProfileView {
       }
       
       .app-side-menu-logo {
-      width: 150px !important; 
+        width: 150px !important; 
         height: auto !important; /* Remove fixed height to maintain aspect ratio */
-        
+        cursor: pointer;
         top: 1em;
-      display: block;
-      
-    }
+        display: block;
+      }
 
     .hamburger-btn::part(base) {
         color: #fff;
@@ -185,6 +188,11 @@ class ProfileView {
       .app-top-nav a {
         display: inline-block;
         padding: .8em;
+        text-decoration: none;
+        color: #fff;
+      }
+
+      .user-menu a {
         text-decoration: none;
         color: #fff;
       }
@@ -247,18 +255,37 @@ class ProfileView {
 
       sl-drawer::part(label) {
     padding: 0.6em;
-    
-    
-  }
+      }
+      
+      .user-menu {
+        position: absolute;
+        top: 1em;
+        right: 2em;
+        z-index: 9;
+      }
+
+      .right-side-menu {
         
+        --base-txt-color: #2F1E1F;
+      }
     </style>  
 
     <div class="signin-background"></div>
+    <sl-dropdown class="user-menu">
+              <a slot="trigger" href="#" @click="${(e) => e.preventDefault()}">
+                <sl-avatar style="--size: 40px;" image=${(this.user && this.user.avatar) ? `${App.apiBase}/images/${this.user.avatar}` : ''}></sl-avatar> ${this.user && this.user.firstName}
+              </a>
+              <sl-menu class="right-side-menu">            
+                <sl-menu-item @click="${() => gotoRoute('/profile')}">Profile</sl-menu-item>
+                <sl-menu-item @click="${() => gotoRoute('/editProfile')}">Edit Profile</sl-menu-item>
+                <sl-menu-item @click="${() => Auth.signOut()}">Sign Out</sl-menu-item>
+              </sl-menu>
+    </sl-dropdown>
     <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
-
+    
     <sl-drawer class="app-side-menu" placement="left">
         <div slot="label">  
-          <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
+          <a @click="${() => gotoRoute('/')}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
         </div>
         <nav class="app-side-menu-items">
               <sl-details>
@@ -308,7 +335,7 @@ class ProfileView {
       
       <div class="page-content page-centered">  
         <div class="signon2-container">
-              <a @click="${() => gotoRoute('/home')}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
+              <a @click="${() => gotoRoute('/')}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
               <div class="signinup-box">
                 <div class="avatar">
                   <sl-avatar style="--size: 200px; margin-bottom: 1em;" 
