@@ -11,7 +11,7 @@ class EditProfileView {
   init(){
     console.log('EditProfileView.init');
     document.title = 'Edit Profile';
-    this.user = null;
+    this.user = Auth.currentUser;
     this.render();
     Utils.pageIntroAnim();
     this.getUser();
@@ -212,6 +212,11 @@ class EditProfileView {
         color: #fff;
       }
 
+      .user-menu a {
+        text-decoration: none;
+        color: #fff;
+      }
+
       .app-side-menu-items a {
         display: block;
         padding: 0.5em;
@@ -222,6 +227,7 @@ class EditProfileView {
       }
 
       .home-logo {
+        cursor: pointer;
         width: 150px !important; 
         height: auto !important; /* Remove fixed height to maintain aspect ratio */
         position: absolute;
@@ -303,14 +309,35 @@ class EditProfileView {
   object-fit: cover;
 }
 
+.user-menu {
+        position: absolute;
+        top: 1em;
+        right: 2em;
+        z-index: 9;
+      }
+
+      .right-side-menu {
+        
+        --base-txt-color: #2F1E1F;
+      }
         
     </style>  
 
     <div class="signin-background"></div>
+    <sl-dropdown class="user-menu">
+                  <a slot="trigger" href="#" @click="${(e) => e.preventDefault()}">
+                    <sl-avatar style="--size: 40px;" image=${(this.user && this.user.avatar) ? `${App.apiBase}/images/${this.user.avatar}` : ''}></sl-avatar> ${this.user && this.user.firstName}
+                  </a>
+                  <sl-menu class="right-side-menu">            
+                    <sl-menu-item @click="${() => gotoRoute('/profile')}">Profile</sl-menu-item>
+                    <sl-menu-item @click="${() => gotoRoute('/editProfile')}">Edit Profile</sl-menu-item>
+                    <sl-menu-item @click="${() => Auth.signOut()}">Sign Out</sl-menu-item>
+                  </sl-menu>
+        </sl-dropdown>
     <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
      <sl-drawer class="app-side-menu" placement="left">
         <div slot="label">  
-          <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
+          <a @click="${() => gotoRoute('/')}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
         </div>
         <nav class="app-side-menu-items">
               <sl-details>
@@ -362,7 +389,7 @@ class EditProfileView {
           <sl-spinner></sl-spinner>
         `:html`
         <div class="signon2-container">
-              <a @click="${() => gotoRoute('/home')}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
+              <a @click="${() => gotoRoute('/')}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
           <div class="signinup-box">
 
           
