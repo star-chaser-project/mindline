@@ -350,7 +350,6 @@ sl-details::part(base) {
         <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
         <a href="/about" @click="${this.menuClick}">About</a>
         <a href="/profile" @click="${this.menuClick}">Profile</a>
-        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
 
         <hr style="color: #fff width:10%" >
 
