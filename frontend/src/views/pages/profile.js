@@ -131,26 +131,27 @@ class ProfileView {
       }
   
 
-    .submit-btn::part(base) {
+    .edit-btn::part(base) {
         background-color: #F4D35E;
         border-color: #F4D35E;
         color: #000000;
         style= padding-bottom: 1em;
       }
 
-    .submit-btn::part(base):hover {
+    .edit-btn::part(base):hover {
         background-color: #e5c654;
         border-color: #e5c654;
       }
 
-    .submit-btn::part(base):active {
+    .edit-btn::part(base):active {
         background-color: #d6b84a;
         border-color: #d6b84a;
       }
 
       h2 {
       text-align: left;
-      width:238.61px;
+      min-width:238.61px;
+      font-size: 5em;
       }
 
       p {
@@ -198,6 +199,7 @@ class ProfileView {
       }
 
       .home-logo {
+        cursor: pointer;
         width: 150px !important; 
         height: auto !important; /* Remove fixed height to maintain aspect ratio */
         position: absolute;
@@ -326,7 +328,7 @@ class ProfileView {
           </div>
         <div class="welcome-box">
                   <h2>Hi ${Auth.currentUser.firstName}</h2>
-                  <h1>All about you</h1>
+                  <h1 style= "min-width: 250.61px;" >All about you</h1>
           </div>
         </div>  
     `;
