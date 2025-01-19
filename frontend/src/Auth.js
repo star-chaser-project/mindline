@@ -83,7 +83,7 @@ class Auth {
       // no local token!
       //Toast.show("Please sign in");    
       // redirect to sign in page      
-      gotoRoute('/signin');
+      gotoRoute('/');
       return;
     }
     
