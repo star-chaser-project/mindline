@@ -236,6 +236,16 @@ class EditProfileView {
         z-index: 2;
       }
 
+      .header-logo {
+        cursor: pointer;
+        width: 120px !important; 
+        height: auto !important; /* Remove fixed height to maintain aspect ratio */
+        position: absolute;
+        top: 40px;
+        left: 21.5em;
+        z-index: 2;
+  }
+
       /* active nav links */
       .app-top-nav a.active,
       .app-side-menu-items a.active {
@@ -401,7 +411,7 @@ class EditProfileView {
           <sl-spinner></sl-spinner>
         `:html`
         <div class="signon2-container">
-              <a @click="${() => gotoRoute('/')}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
+              <a @click="${() => gotoRoute('/')}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
           <div class="signinup-box">
 
           

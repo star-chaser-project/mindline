@@ -204,7 +204,17 @@ class SignInView {
         height: auto !important; /* Remove fixed height to maintain aspect ratio */
         position: absolute;
         top: 30px;
-        left: 42%;
+        left: 5em;
+        z-index: 2;
+      }
+
+      .header-logo {
+        cursor: pointer;
+        width: 120px !important; 
+        height: auto !important; /* Remove fixed height to maintain aspect ratio */
+        position: absolute;
+        top: 40px;
+        left: 21.5em;
         z-index: 2;
       }
 
@@ -213,6 +223,7 @@ class SignInView {
       .app-side-menu-items a.active {
         font-weight: bold;
       }
+
 
       sl-details::part(summary) {
     transition: color 0.3s ease;
@@ -320,7 +331,7 @@ class SignInView {
       </sl-drawer>
       <div class="page-content page-centered">
         <div class="signon2-container">
-        <a href="/" @click="${anchorRoute}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
+        <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
           <div class="signinup-box">
             
             <h1 style= "padding-bottom: 1em;">LOG IN</h1>       
