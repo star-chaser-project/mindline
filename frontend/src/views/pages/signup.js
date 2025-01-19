@@ -202,6 +202,16 @@ class SignUpView{
         z-index: 2;
       }
 
+      .header-logo {
+        cursor: pointer;
+        width: 120px !important; 
+        height: auto !important; /* Remove fixed height to maintain aspect ratio */
+        position: absolute;
+        top: 40px;
+        left: 21.5em;
+        z-index: 2;
+      }
+
       /* active nav links */
       .app-top-nav a.active,
       .app-side-menu-items a.active {
@@ -326,7 +336,7 @@ class SignUpView{
        
         <div class="page-content page-centered">
           <div class="signon2-container">
-              <a href="/" @click="${anchorRoute}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
+              <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
               <div class="signinup-box">
                 
                 <h1 style= "padding-bottom: 1em;">LOG IN</h1>       

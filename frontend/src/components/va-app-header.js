@@ -236,12 +236,32 @@ sl-details::part(base) {
           display: none;
         }
       }
-
+        
+.home-logo {
+        cursor: pointer;
+        width: 150px !important; 
+        height: auto !important; /* Remove fixed height to maintain aspect ratio */
+        position: absolute;
+        top: 30px;
+        left: 42%;
+        z-index: 2;
+      }
+  .header-logo {
+    cursor: pointer;
+        width: 120px !important; 
+        height: auto !important; /* Remove fixed height to maintain aspect ratio */
+        position: absolute;
+        top: 15px;
+        left: 5em;
+        z-index: 2;
+  
+  }
 
     </style>
   
     <header class="app-header">
       <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>       
+      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
       
       <div class="app-header-main">
         ${this.title ? html`

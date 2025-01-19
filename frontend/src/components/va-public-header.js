@@ -210,10 +210,21 @@ sl-details::part(base) {
     transition: all 0.5s ease;
   }
 
+  .header-logo {
+        cursor: pointer;
+        width: 120px !important; 
+        height: auto !important; /* Remove fixed height to maintain aspect ratio */
+        position: absolute;
+        top: 15px;
+        left: 5em;
+        z-index: 2;
+  }
+
     </style>
     
     <header class="public-header">
-          <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>       
+          <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>      
+          <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/mindline-white-logo.png"></a> 
           
           <div class="public-header-main">
             ${this.title ? html`
