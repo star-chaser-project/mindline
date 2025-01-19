@@ -320,9 +320,20 @@ class ProfileView {
               
               <hr style="color: #fff width:10%" >
       
-              <a href="/products" @click="${anchorRoute}">Privacy</a>
-              <a href="/products" @click="${anchorRoute}">T&Cs</a>
-              <a href="/products" @click="${anchorRoute}">Socials</a>
+              <sl-details summary="Privacy">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </sl-details>
+            
+              <sl-details summary="T&Cs">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </sl-details>
+
+              <sl-details summary="Socials">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </sl-details>
       
               <hr style="color: #fff width:10%" >
       
