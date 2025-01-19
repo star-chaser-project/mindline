@@ -19,7 +19,7 @@ class HomeView {
       <va-app-header user=${JSON.stringify(Auth.currentUser)}>
         <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo-mindline-no-wording-white-125.svg"></a>
       </va-app-header>
-    <div class="page-content home-page">
+    <div class="page-content home-page  ">
         <section class=" banner">
             <h1>Empower Your Life</h1>
             <img class="cloud" src="/images/home-hero-image-175.png" alt="Cloud Image">
@@ -28,9 +28,9 @@ class HomeView {
        <section class="nav-page">
         <h3>Ways to deal with...</h3>
           <div class="button-group">
-            <sl-button class="green-btn" type="primary" size="large" @click=${() => gotoRoute('/mentalHealth')}>Mental Health</sl-button>
-            <sl-button type="primary" size="large" @click=${() => gotoRoute('/mindfulness')}>Mindfulness</sl-button>
-            <sl-button type="primary" size="large" @click=${() => gotoRoute('/resources')}>Resources</sl-button>
+            <sl-button variant="default"  size="large" @click=${() => gotoRoute('/mentalHealth')}>Mental Health</sl-button>
+            <sl-button variant="default" size="large" @click=${() => gotoRoute('/mindfulness')}>Mindfulness</sl-button>
+            <sl-button variant="default"  size="large" @click=${() => gotoRoute('/resources')}>Resources</sl-button>
           </div>
         </section> 
       </div>

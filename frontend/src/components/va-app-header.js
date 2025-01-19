@@ -251,7 +251,7 @@ sl-details::part(base) {
         
         ${this.user.accessLevel == 2 ? html`  
           <a href="/newProduct" @click="${anchorRoute}">Add Bookmarks</a> 
-          <a href="/orders" @click="${anchorRoute}">View Bookmarks</a>
+          <a href="/favourites" @click="${anchorRoute}">View favourites</a>
         ` : ''}
         ${this.user.accessLevel == 1 ? html`
        
@@ -304,11 +304,11 @@ sl-details::part(base) {
                   <a class="menu-expand" href="">Services</a>
                   <a class="menu-expand" href="">Guides</a>
               </sl-details>
-        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
+        <a href="/favouriteLines" @click="${this.menuClick}">favourites</a>
         <a href="/about" @click="${this.menuClick}">About</a>
         
         <a href="/profile" @click="${this.menuClick}">Profile</a>   
-         <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
+         <a href="/favouriteLines" @click="${this.menuClick}">favourites</a>
         <hr style="color: #fff width:10%" >
 
         <a href="/products" @click="${this.menuClick}">Privacy</a>
@@ -347,7 +347,7 @@ sl-details::part(base) {
                   <a class="menu-expand" href="">Services</a>
                   <a class="menu-expand" href="">Guides</a>
               </sl-details>
-        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
+        <a href="/favouriteLines" @click="${this.menuClick}">favourites</a>
         <a href="/about" @click="${this.menuClick}">About</a>
         <a href="/profile" @click="${this.menuClick}">Profile</a>
 

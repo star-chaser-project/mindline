@@ -171,8 +171,6 @@ class ProfileView {
     .hamburger-btn::part(base) {
         color: #fff;
         position: fixed;
-        top: 1em;
-        left: 1em;
         z-index: 100;
       }
 
@@ -255,13 +253,11 @@ class ProfileView {
 
     <div class="signin-background"></div>
     <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
-
     <sl-drawer class="app-side-menu" placement="left">
-        <div slot="label">  
-          <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
-        </div>
+        <div slot="label"> <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.svg"></a></div>
         <nav class="app-side-menu-items">
-              <sl-details>
+              <a href="/" @click="${this.menuClick}">Home</a>
+              <sl-details> 
                 <div slot="summary" class="summary-content">
                   <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
                 </div>
@@ -286,7 +282,7 @@ class ProfileView {
                   <a class="menu-expand" href="">Guides</a>
               </sl-details>
               
-              <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
+              <a href="/favouriteLines" @click="${this.menuClick}">favourites</a>
               <a href="/about" @click="${this.menuClick}">About</a>
               <a href="/profile" @click="${this.menuClick}">Profile</a>   
               

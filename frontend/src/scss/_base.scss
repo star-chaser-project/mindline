@@ -30,8 +30,6 @@ a {
   color: var(--link-color);
 }
 
-
-
 //banner ----------------
 
 .banner {
@@ -58,6 +56,7 @@ a {
   &.mental-health {
     background: var(--background-mental-health);
   }
+
  
   img {
     padding: 0px;
@@ -343,8 +342,8 @@ sl-details::part(base) {
 }
 
 //favorite-page-----------------
-.bookmarks-page {
-  background: var(--background-bookmarks);
+.favourites-page {
+  background: var(--background-favourites);
 }
 
 // text only --------------------
@@ -481,6 +480,7 @@ sl-details::part(base) {
 // favourites page ---------------------------------------------------------------------------
 
 .fav-container {
+  padding-top: 3rem;
   margin: 3em;
 }
 

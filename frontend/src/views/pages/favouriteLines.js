@@ -30,15 +30,15 @@ class FavouriteLinesView {
 
   render(){
     const template = html`
-      <va-app-header title="Bookmarks" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
-      <div class="page-content">   
-        <div class="fav-container">     
-        <h1>Favourites</h1>
-        
+      <va-app-header title="" user="${JSON.stringify(Auth.currentUser)}">
+      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo-mindline-no-wording-white-125.svg"></a>
+      </va-app-header>
+      <div class="page-content favourites-page">   
+        <div class="fav-container "> 
+        <h1>Favourites</h1>     
         <div class="fav-list">
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/orders')}>View Order</sl-button>
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/products')}>View Products</sl-button>
-          <sl-button class="red-btn" type="primary" size="large" @click=${() => gotoRoute('/orders')}>CHECKOUT</sl-button>      
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/favouriteLines')}>Add bookmarks </sl-button>
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/favouriteLines')}>View Favourite</sl-button>     
         </div>
 
         <hr>
