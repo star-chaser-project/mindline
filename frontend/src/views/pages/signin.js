@@ -260,6 +260,7 @@ class SignInView {
           <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
         </div>
             <nav class="app-side-menu-items">
+            <a href="/" @click="${this.menuClick}">Home</a>
               <sl-details>
                 <div slot="summary" class="summary-content">
                   <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
