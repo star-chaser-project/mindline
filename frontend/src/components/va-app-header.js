@@ -137,13 +137,11 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
       }
 
       .app-side-menu-logo {
-      width: 150px !important; 
+        width: 150px !important; 
         height: auto !important; /* Remove fixed height to maintain aspect ratio */
-        
         top: 1em;
-      display: block;
-      
-    }
+        display: block;
+      }
 
       .page-title {
         color: var(--app-header-txt-color);
@@ -309,7 +307,7 @@ sl-details::part(base) {
                   <a class="menu-expand" href="">Services</a>
                   <a class="menu-expand" href="">Guides</a>
               </sl-details>
-        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
+        
         <a href="/about" @click="${this.menuClick}">About</a>
         
         <a href="/profile" @click="${this.menuClick}">Profile</a>   

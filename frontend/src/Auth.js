@@ -7,7 +7,12 @@ import Toast from './Toast';
 class Auth {
 
   constructor(){
-    this.currentUser = {};
+    this.currentUser = null;
+  }
+
+  // New method to check if a user is logged in
+  isLoggedIn() {
+    return this.currentUser && Object.keys(this.currentUser).length > 0;
   }
   
   async signUp(userData, fail = false){  
@@ -56,7 +61,7 @@ class Auth {
     // save access token (jwt) to local storage
     localStorage.setItem('accessToken', data.accessToken);
     // set current user
-    this.currentUser = data.user;      
+    this.currentUser = data.user || null;      
     // console.log(this.currentUser)           
     Router.init();
     if(data.user.newUser == true){
@@ -107,19 +112,20 @@ class Auth {
     const data = await response.json();
     // console.log(data)
     // set currentUser obj
-    this.currentUser = data.user;
+    this.currentUser = data.user || null;
     // run success
     success();
   }
 
   signOut(){
     Toast.show("You are signed out");
+    // unset currentUser
+    this.currentUser = null;
     // delete local token
     localStorage.removeItem('accessToken');       
     // redirect to sign in    
-    gotoRoute('/signin');
-    // unset currentUser
-    this.currentUser = null;
+    gotoRoute('/');
+    
   }
 }
 
