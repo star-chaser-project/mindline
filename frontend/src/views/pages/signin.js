@@ -257,9 +257,10 @@ class SignInView {
 
       <sl-drawer class="app-side-menu" placement="left">
         <div slot="label">  
-          <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
+          <a href="/" @click="${anchorRoute}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
         </div>
             <nav class="app-side-menu-items">
+            <a href="/" @click="${anchorRoute}">Home</a>
               <sl-details>
                 <div slot="summary" class="summary-content">
                   <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
@@ -308,7 +309,7 @@ class SignInView {
       </sl-drawer>
       <div class="page-content page-centered">
         <div class="signon2-container">
-        <a @click="${() => gotoRoute('/home')}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
+        <a href="/" @click="${anchorRoute}"><img class="home-logo" src="/images/mindline-white-logo.png"></a>
           <div class="signinup-box">
             
             <h1 style= "padding-bottom: 1em;">LOG IN</h1>       
