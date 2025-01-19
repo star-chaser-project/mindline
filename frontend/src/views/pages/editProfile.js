@@ -337,10 +337,10 @@ class EditProfileView {
     <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
      <sl-drawer class="app-side-menu" placement="left">
         <div slot="label">  
-          <a @click="${() => gotoRoute('/')}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
+          <a href="/" @click="${anchorRoute}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
         </div>
         <nav class="app-side-menu-items">
-        <a href="/" @click="${this.menuClick}">Home</a>
+        <a href="/" @click="${anchorRoute}">Home</a>
               <sl-details>
                 <div slot="summary" class="summary-content">
                   <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
