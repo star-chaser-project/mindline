@@ -16,7 +16,6 @@ import productsView from './views/pages/products';
 import favouriteProductsView from './views/pages/favouriteProducts';
 import newProductView from './views/pages/newProduct';
 import locationView from './views/pages/location';
-import aboutUsView from './views/pages/aboutUs';
 import hairdressersView from './views/pages/hairdressers';
 
 // define routes
@@ -38,7 +37,6 @@ const routes = {
 	'/newProduct': newProductView,
 	'/favouriteProducts': favouriteProductsView,
 	'/location': locationView,
-	'/aboutUs': aboutUsView,
 	'/hairdressers': hairdressersView
 	
 	
