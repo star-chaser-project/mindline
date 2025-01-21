@@ -66,11 +66,12 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
 
   render(){    
     return html`
-    <style>      
-      * {
+   <style>
+    * {
         box-sizing: border-box;
-      }
-      .app-header {
+    }
+    
+    .app-header {
         background: transparent;
         position: fixed;
         top: 0;
@@ -80,123 +81,119 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         color: #fff;
         display: flex;
         z-index: 9;
-        box-shadow: 4px 0px 10px rgba(0,0,0,0.2);
+        box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.2);
         align-items: center;
-      }
-      
-
-      .app-header-main {
+    }
+    
+    .app-header-main {
         flex-grow: 1;
         display: flex;
         align-items: center;
-      }
-
-      .app-header-main::slotted(h1){
+    }
+    
+    .app-header-main::slotted(h1) {
         color: #fff;
-      }
-
-      .app-logo a {
+    }
+    
+    .app-logo a {
         color: #fff;
         text-decoration: none;
         font-weight: bold;
         font-size: 1.2em;
         padding: .6em;
-        display: inline-block;        
-      }
-
-      .app-logo img {
+        display: inline-block;
+    }
+    
+    .app-logo img {
         width: 90px;
-      }
-      
-      .hamburger-btn::part(base) {
+    }
+    
+    .hamburger-btn::part(base) {
         color: #fff;
-      }
-
-      .app-top-nav {
+    }
+    
+    .app-top-nav {
         display: flex;
         height: 100%;
         align-items: center;
-      }
-
-      .app-top-nav a {
+    }
+    
+    .app-top-nav a {
         display: inline-block;
         padding: .8em;
         text-decoration: none;
         color: #fff;
-      }
-      
-      .app-side-menu-items a {
+    }
+    
+    .app-side-menu-items a {
         display: block;
         padding: 0.5em;
         text-decoration: none;
         font-size: 1.3em;
         color: var(--app-header-txt-color);
         padding-bottom: 0.5em;
-      }
-
-      .app-side-menu-logo {
-      width: 150px !important; 
-        height: auto !important; /* Remove fixed height to maintain aspect ratio */
-        
-        top: 1em;
-      display: block;
-      
     }
-
-      .page-title {
+    
+    .app-side-menu-logo {
+        width: 150px !important;
+        height: auto !important;
+        /* Remove fixed height to maintain aspect ratio */
+        top: 1em;
+        display: block;
+    }
+    
+    .page-title {
         color: var(--app-header-txt-color);
         margin-right: 0.5em;
         font-size: var(--app-header-title-font-size);
-      }
-
-      /* active nav links */
-      .app-top-nav a.active,
-      .app-side-menu-items a.active {
-        font-weight: bold;
-      }
-
-      .menu-item::part(label) :hover {
+    }
+    /* active nav links */
+    
+    .app-top-nav a.active,
+    .menu-item::part(label):hover {
         color: #fff;
-      }
-
-
-  
-
-      sl-details::part(summary) {
-    transition: color 0.3s ease;
-  }
-
-  sl-details::part(summary):hover {
-    color: var(--sl-color-primary-600);
-    cursor: pointer;
-  }
-
-  .menu-expand {
-    transition: color 0.3s ease;
-    text-decoration: none;
-  }
-
-  .menu-expand:hover {
-    color: var(--sl-color-primary-600);
-    padding-left: 1.5em;
-    transition: all 0.5s ease;
-  }
-
-      /* right side menu */
-      .right-side-menu {
+    }
+    
+    sl-details::part(summary) {
+        transition: color 0.3s ease;
+    }
+    
+    sl-details::part(summary):hover {
+        color: var(--sl-color-primary-600);
+        cursor: pointer;
+    }
+    
+    .menu-expand {
+        transition: color 0.3s ease;
+        text-decoration: none;
+    }
+    
+    .menu-expand:hover {
+        color: var(--sl-color-primary-600);
+        padding-left: 1.5em;
+        transition: all 0.5s ease;
+    }
+    /* right side menu */
+    
+    .right-side-menu {
         --base-txt-color: #2F1E1F;
-      }
-
-        .menu-expand {
+    }
+    
+    .user-menu {
+        margin-right: 2em;
+    }
+    
+    .menu-expand {
         font-size: 1.3em;
         margin-left: 1em;
         margin-top: 0.5em;
-      }
+    }
+    
+    sl-drawer::part(label) {
+        padding: 0.6em;
+    }
+    
 
-      sl-drawer::part(label) {
-    padding: 0.6em;
-    
-    
   }
 
   sl-details::part(base) {
@@ -229,157 +226,173 @@ sl-details::part(base) {
       /* RESPONSIVE - MOBILE --------------------- */
       @media all and (max-width: 768px){       
         
+
+
         .app-top-nav {
-          display: none;
+            display: none;
         }
-      }
+    }
+    
+    .home-logo {
+        cursor: pointer;
+        width: 150px !important;
+        height: auto !important;
+        /* Remove fixed height to maintain aspect ratio */
+        position: absolute;
+        top: 30px;
+        left: 42%;
+        z-index: 2;
+    }
+    
+    .header-logo {
+        cursor: pointer;
+        width: 120px !important;
+        height: auto !important;
+        /* Remove fixed height to maintain aspect ratio */
+        position: absolute;
+        top: 15px;
+        left: 5em;
+        z-index: 2;
+    }
+</style>
 
+<header class="app-header">
+    <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
+    <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
 
-    </style>
-  
-    <header class="app-header">
-      <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>       
-      
-      <div class="app-header-main">
+    <div class="app-header-main">
         ${this.title ? html`
-          <h1 class="page-title">${this.title}</h1>
-        `:``}
+        <h1 class="page-title">${this.title}</h1> `:``}
         <slot></slot>
-      </div>
+    </div>
 
-      <nav class="app-top-nav">
-        
-        ${this.user.accessLevel == 2 ? html`  
-          <a href="/newProduct" @click="${anchorRoute}">Add Bookmarks</a> 
-          <a href="/orders" @click="${anchorRoute}">View Bookmarks</a>
-        ` : ''}
-        ${this.user.accessLevel == 1 ? html`
-       
-          <a href="/about" @click="${anchorRoute}">About</a>       
+    <nav class="app-top-nav">
 
-        ` : ''}
-        
-        <sl-dropdown>
-          <a slot="trigger" href="#" @click="${(e) => e.preventDefault()}">
-            <sl-avatar style="--size: 40px;" image=${(this.user && this.user.avatar) ? `${App.apiBase}/images/${this.user.avatar}` : ''}></sl-avatar> ${this.user && this.user.firstName}
-          </a>
-          <sl-menu class="right-side-menu">            
-            <sl-menu-item @click="${() => gotoRoute('/profile')}">Profile</sl-menu-item>
-            <sl-menu-item @click="${() => gotoRoute('/editProfile')}">Edit Profile</sl-menu-item>
-            <sl-menu-item @click="${() => Auth.signOut()}">Sign Out</sl-menu-item>
-          </sl-menu>
+        ${this.user.accessLevel == 2 ? html`
+        <a href="/newProduct" @click="${anchorRoute}">Add Bookmarks</a>
+        <a href="/orders" @click="${anchorRoute}">View Bookmarks</a> ` : ''} ${this.user.accessLevel == 1 ? html` ` : ''}
+
+        <sl-dropdown class="user-menu">
+            <a slot="trigger" href="#" @click="${(e) => e.preventDefault()}">
+                <sl-avatar style="--size: 40px;" image=${(this.user && this.user.avatar) ? `${App.apiBase}/images/${this.user.avatar}` : ''}></sl-avatar> ${this.user && this.user.firstName}
+            </a>
+            <sl-menu class="right-side-menu">
+                <sl-menu-item @click="${() => gotoRoute('/profile')}">Profile</sl-menu-item>
+                <sl-menu-item @click="${() => gotoRoute('/editProfile')}">Edit Profile</sl-menu-item>
+                <sl-menu-item @click="${() => Auth.signOut()}">Sign Out</sl-menu-item>
+            </sl-menu>
         </sl-dropdown>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    <sl-drawer class="app-side-menu" placement="left">
-    <div slot="label">  
-    <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.svg"></a>
-        </div>
-      <br>
-      <nav class="app-side-menu-items">
-      ${this.user.accessLevel == 1 ? html`
+<sl-drawer class="app-side-menu" placement="left">
+    <div slot="label">
+        <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.svg"></a>
+    </div>
+    <br>
+    <nav class="app-side-menu-items">
+        ${this.user.accessLevel == 1 ? html`
         <a href="/" @click="${this.menuClick}">Home</a>
         <sl-details>
-                <div slot="summary" class="summary-content">
-                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
-                </div>
-                  <a class="menu-expand" href="">Stress</a>
-                  <a class="menu-expand" href="">Anxiety</a>
-                  <a class="menu-expand" href="">Depression</a>
-              </sl-details>
-              <sl-details>
-                <div slot="summary" class="summary-content">
-                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
-                </div>
-                  <a class="menu-expand" href="">Meditation</a>
-                  <a class="menu-expand" href="">Breathing</a>
-                  <a class="menu-expand" href="">Motivation</a>
-              </sl-details>
-              <sl-details>
-                <div slot="summary" class="summary-content">
-                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
-                </div>
-                  <a class="menu-expand" href="">Support</a>
-                  <a class="menu-expand" href="">Services</a>
-                  <a class="menu-expand" href="">Guides</a>
-              </sl-details>
-        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
+            <div slot="summary" class="summary-content">
+                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
+            </div>
+            <a class="menu-expand" href="">Stress</a>
+            <a class="menu-expand" href="">Anxiety</a>
+            <a class="menu-expand" href="">Depression</a>
+        </sl-details>
+        <sl-details>
+            <div slot="summary" class="summary-content">
+                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
+            </div>
+            <a class="menu-expand" href="">Meditation</a>
+            <a class="menu-expand" href="">Breathing</a>
+            <a class="menu-expand" href="">Motivation</a>
+        </sl-details>
+        <sl-details>
+            <div slot="summary" class="summary-content">
+                <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
+            </div>
+            <a class="menu-expand" href="">Support</a>
+            <a class="menu-expand" href="">Services</a>
+            <a class="menu-expand" href="">Guides</a>
+        </sl-details>
+
         <a href="/about" @click="${this.menuClick}">About</a>
-        
-        <a href="/profile" @click="${this.menuClick}">Profile</a>   
-         <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
-        <hr style="color: #fff width:10%" >
 
-        <a href="/products" @click="${this.menuClick}">Privacy</a>
-        <a href="/products" @click="${this.menuClick}">T&Cs</a>
-        <a href="/products" @click="${this.menuClick}">Socials</a>
+        <a href="/profile" @click="${this.menuClick}">Profile</a>
+        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
+        <hr style="color: #fff width:10%">
 
-        <hr style="color: #fff width:10%" >
+        <sl-details summary="Privacy">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </sl-details>
+
+        <sl-details summary="T&Cs">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </sl-details>
+
+        <sl-details summary="Socials">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </sl-details>
+
+        <hr style="color: #fff width:10%">
 
         <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
-        <a href="tel:1800 034 034">1800 034 034</a>
-
-        ` : ''}
-        ${this.user.accessLevel == 2 ? html`
+        <a href="tel:1800 034 034">1800 034 034</a> ` : ''} ${this.user.accessLevel == 2 ? html`
         <a href="/" @click="${this.menuClick}">Home</a>
         <sl-details>
-                <div slot="summary" class="summary-content">
-                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
-                </div>
-                  <a class="menu-expand" href="">Stress</a>
-                  <a class="menu-expand" href="">Anxiety</a>
-                  <a class="menu-expand" href="">Depression</a>
-              </sl-details>
-              <sl-details>
-                <div slot="summary" class="summary-content">
-                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
-                </div>
-                  <a class="menu-expand" href="">Meditation</a>
-                  <a class="menu-expand" href="">Breathing</a>
-                  <a class="menu-expand" href="">Motivation</a>
-              </sl-details>
-              <sl-details>
-                <div slot="summary" class="summary-content">
-                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
-                </div>
-                  <a class="menu-expand" href="">Support</a>
-                  <a class="menu-expand" href="">Services</a>
-                  <a class="menu-expand" href="">Guides</a>
-              </sl-details>
+            <div slot="summary" class="summary-content">
+                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
+            </div>
+            <a class="menu-expand" href="">Stress</a>
+            <a class="menu-expand" href="">Anxiety</a>
+            <a class="menu-expand" href="">Depression</a>
+        </sl-details>
+        <sl-details>
+            <div slot="summary" class="summary-content">
+                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
+            </div>
+            <a class="menu-expand" href="">Meditation</a>
+            <a class="menu-expand" href="">Breathing</a>
+            <a class="menu-expand" href="">Motivation</a>
+        </sl-details>
+        <sl-details>
+            <div slot="summary" class="summary-content">
+                <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
+            </div>
+            <a class="menu-expand" href="">Support</a>
+            <a class="menu-expand" href="">Services</a>
+            <a class="menu-expand" href="">Guides</a>
+        </sl-details>
         <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
         <a href="/about" @click="${this.menuClick}">About</a>
         <a href="/profile" @click="${this.menuClick}">Profile</a>
 
-        <hr style="color: #fff width:10%" >
+        <hr style="color: #fff width:10%">
 
         <sl-details summary="Privacy">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </sl-details>
-      
-       <sl-details summary="T&Cs">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+        <sl-details summary="T&Cs">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </sl-details>
 
         <sl-details summary="Socials">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </sl-details>
 
-        <hr style="color: #fff width:10%" >
+        <hr style="color: #fff width:10%">
 
         <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
-        <a href="tel:1800 034 034">1800 034 034</a>
+        <a href="tel:1800 034 034">1800 034 034</a> ` : ''}
 
-        ` : ''}
-       
-        
-        
 
-      </nav>  
-    </sl-drawer>
+
+
+    </nav>
+</sl-drawer>
     `;
   }
   

@@ -4,6 +4,7 @@ import {gotoRoute, anchorRoute} from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
 
+
  // Image adapted from Canva – Accessed on December 18, 2024
 class mentalHealthView {
   init(){
@@ -11,10 +12,15 @@ class mentalHealthView {
     this.render()    
     Utils.pageIntroAnim()
   }
+  
 
   render(){
+    console.log('Auth.currentUser:', Auth.currentUser);
     const template = html`
-      <va-app-header user=${JSON.stringify(Auth.currentUser)}>
+    ${Auth.isLoggedIn() ? 
+      html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
+      html`<va-public-header></va-public-header>`
+    }
       <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo-mindline-no-wording-white-125.svg"></a>
       </va-app-header>      
       <div class="page-content"> 

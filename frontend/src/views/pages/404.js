@@ -11,7 +11,11 @@ class FourOFourView{
   }
 
   render(){
-    const template = html`;    
+    const template = html`;   
+    ${Auth.isLoggedIn() ? 
+          html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
+          html`<va-public-header></va-public-header>`
+        } 
       <div class="calign">
         <p></p>
         <h1>Oops!</h1>
