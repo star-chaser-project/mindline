@@ -48,7 +48,8 @@ body {
   color: var(--base-txt-color);
   font-family: var(--base-font-family);
   font-weight: 300;
-  height: 100%; /* Ensure body takes full height */
+  height: 100vh; /* Ensure body takes full height */
+  width: 100vw; /* Ensure body takes full width */
 }
 
 h1, h2 {

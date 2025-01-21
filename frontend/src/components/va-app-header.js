@@ -193,6 +193,7 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
     padding: 0.6em;
     
     
+
   }
 
   sl-details::part(base) {
@@ -225,6 +226,8 @@ sl-details::part(base) {
       /* RESPONSIVE - MOBILE --------------------- */
       @media all and (max-width: 768px){       
         
+
+
         .app-top-nav {
             display: none;
         }
