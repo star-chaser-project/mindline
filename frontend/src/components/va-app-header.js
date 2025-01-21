@@ -249,143 +249,143 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
     }
 </style>
 
-<header class="app-header">
-    <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
-    <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
+    <header class="app-header">
+        <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
+        <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
 
-    <div class="app-header-main">
-        ${this.title ? html`
-        <h1 class="page-title">${this.title}</h1> `:``}
-        <slot></slot>
-    </div>
+        <div class="app-header-main">
+            ${this.title ? html`
+            <h1 class="page-title">${this.title}</h1> `:``}
+            <slot></slot>
+        </div>
 
-    <nav class="app-top-nav">
+        <nav class="app-top-nav">
 
-        ${this.user.accessLevel == 2 ? html`
-        <a href="/newProduct" @click="${anchorRoute}">Add Bookmarks</a>
-        <a href="/orders" @click="${anchorRoute}">View Bookmarks</a> ` : ''} ${this.user.accessLevel == 1 ? html` ` : ''}
+            ${this.user.accessLevel == 2 ? html`
+            <a href="/newProduct" @click="${anchorRoute}">Add Bookmarks</a>
+            <a href="/orders" @click="${anchorRoute}">View Bookmarks</a> ` : ''} ${this.user.accessLevel == 1 ? html` ` : ''}
 
-        <sl-dropdown class="user-menu">
-            <a slot="trigger" href="#" @click="${(e) => e.preventDefault()}">
-                <sl-avatar style="--size: 40px;" image=${(this.user && this.user.avatar) ? `${App.apiBase}/images/${this.user.avatar}` : ''}></sl-avatar> ${this.user && this.user.firstName}
-            </a>
-            <sl-menu class="right-side-menu">
-                <sl-menu-item @click="${() => gotoRoute('/profile')}">Profile</sl-menu-item>
-                <sl-menu-item @click="${() => gotoRoute('/editProfile')}">Edit Profile</sl-menu-item>
-                <sl-menu-item @click="${() => Auth.signOut()}">Sign Out</sl-menu-item>
-            </sl-menu>
-        </sl-dropdown>
-    </nav>
-</header>
+            <sl-dropdown class="user-menu">
+                <a slot="trigger" href="#" @click="${(e) => e.preventDefault()}">
+                    <sl-avatar style="--size: 40px;" image=${(this.user && this.user.avatar) ? `${App.apiBase}/images/${this.user.avatar}` : ''}></sl-avatar> ${this.user && this.user.firstName}
+                </a>
+                <sl-menu class="right-side-menu">
+                    <sl-menu-item @click="${() => gotoRoute('/profile')}">Profile</sl-menu-item>
+                    <sl-menu-item @click="${() => gotoRoute('/editProfile')}">Edit Profile</sl-menu-item>
+                    <sl-menu-item @click="${() => Auth.signOut()}">Sign Out</sl-menu-item>
+                </sl-menu>
+            </sl-dropdown>
+        </nav>
+    </header>
 
-<sl-drawer class="app-side-menu" placement="left">
-    <div slot="label">
-        <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.svg"></a>
-    </div>
-    <br>
-    <nav class="app-side-menu-items">
-        ${this.user.accessLevel == 1 ? html`
-        <a href="/" @click="${this.menuClick}">Home</a>
-        <sl-details>
-            <div slot="summary" class="summary-content">
-                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
-            </div>
-            <a class="menu-expand" href="">Stress</a>
-            <a class="menu-expand" href="">Anxiety</a>
-            <a class="menu-expand" href="">Depression</a>
-        </sl-details>
-        <sl-details>
-            <div slot="summary" class="summary-content">
-                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
-            </div>
-            <a class="menu-expand" href="">Meditation</a>
-            <a class="menu-expand" href="">Breathing</a>
-            <a class="menu-expand" href="">Motivation</a>
-        </sl-details>
-        <sl-details>
-            <div slot="summary" class="summary-content">
-                <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
-            </div>
-            <a class="menu-expand" href="">Support</a>
-            <a class="menu-expand" href="">Services</a>
-            <a class="menu-expand" href="">Guides</a>
-        </sl-details>
+    <sl-drawer class="app-side-menu" placement="left">
+        <div slot="label">
+            <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.svg"></a>
+        </div>
+        <br>
+        <nav class="app-side-menu-items">
+            ${this.user.accessLevel == 1 ? html`
+            <a href="/" @click="${this.menuClick}">Home</a>
+            <sl-details>
+                <div slot="summary" class="summary-content">
+                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
+                </div>
+                <a class="menu-expand" href="">Stress</a>
+                <a class="menu-expand" href="">Anxiety</a>
+                <a class="menu-expand" href="">Depression</a>
+            </sl-details>
+            <sl-details>
+                <div slot="summary" class="summary-content">
+                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
+                </div>
+                <a class="menu-expand" href="">Meditation</a>
+                <a class="menu-expand" href="">Breathing</a>
+                <a class="menu-expand" href="">Motivation</a>
+            </sl-details>
+            <sl-details>
+                <div slot="summary" class="summary-content">
+                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
+                </div>
+                <a class="menu-expand" href="">Support</a>
+                <a class="menu-expand" href="">Services</a>
+                <a class="menu-expand" href="">Guides</a>
+            </sl-details>
 
-        <a href="/about" @click="${this.menuClick}">About</a>
+            <a href="/about" @click="${this.menuClick}">About</a>
 
-        <a href="/profile" @click="${this.menuClick}">Profile</a>
-        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
-        <hr style="color: #fff width:10%">
+            <a href="/profile" @click="${this.menuClick}">Profile</a>
+            <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
+            <hr style="color: #fff width:10%">
 
-        <sl-details summary="Privacy">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </sl-details>
+            <sl-details summary="Privacy">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </sl-details>
 
-        <sl-details summary="T&Cs">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </sl-details>
+            <sl-details summary="T&Cs">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </sl-details>
 
-        <sl-details summary="Socials">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </sl-details>
+            <sl-details summary="Socials">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </sl-details>
 
-        <hr style="color: #fff width:10%">
+            <hr style="color: #fff width:10%">
 
-        <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
-        <a href="tel:1800 034 034">1800 034 034</a> ` : ''} ${this.user.accessLevel == 2 ? html`
-        <a href="/" @click="${this.menuClick}">Home</a>
-        <sl-details>
-            <div slot="summary" class="summary-content">
-                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
-            </div>
-            <a class="menu-expand" href="">Stress</a>
-            <a class="menu-expand" href="">Anxiety</a>
-            <a class="menu-expand" href="">Depression</a>
-        </sl-details>
-        <sl-details>
-            <div slot="summary" class="summary-content">
-                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
-            </div>
-            <a class="menu-expand" href="">Meditation</a>
-            <a class="menu-expand" href="">Breathing</a>
-            <a class="menu-expand" href="">Motivation</a>
-        </sl-details>
-        <sl-details>
-            <div slot="summary" class="summary-content">
-                <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
-            </div>
-            <a class="menu-expand" href="">Support</a>
-            <a class="menu-expand" href="">Services</a>
-            <a class="menu-expand" href="">Guides</a>
-        </sl-details>
-        <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
-        <a href="/about" @click="${this.menuClick}">About</a>
-        <a href="/profile" @click="${this.menuClick}">Profile</a>
+            <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
+            <a href="tel:1800 034 034">1800 034 034</a> ` : ''} ${this.user.accessLevel == 2 ? html`
+            <a href="/" @click="${this.menuClick}">Home</a>
+            <sl-details>
+                <div slot="summary" class="summary-content">
+                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
+                </div>
+                <a class="menu-expand" href="">Stress</a>
+                <a class="menu-expand" href="">Anxiety</a>
+                <a class="menu-expand" href="">Depression</a>
+            </sl-details>
+            <sl-details>
+                <div slot="summary" class="summary-content">
+                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
+                </div>
+                <a class="menu-expand" href="">Meditation</a>
+                <a class="menu-expand" href="">Breathing</a>
+                <a class="menu-expand" href="">Motivation</a>
+            </sl-details>
+            <sl-details>
+                <div slot="summary" class="summary-content">
+                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
+                </div>
+                <a class="menu-expand" href="">Support</a>
+                <a class="menu-expand" href="">Services</a>
+                <a class="menu-expand" href="">Guides</a>
+            </sl-details>
+            <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
+            <a href="/about" @click="${this.menuClick}">About</a>
+            <a href="/profile" @click="${this.menuClick}">Profile</a>
 
-        <hr style="color: #fff width:10%">
+            <hr style="color: #fff width:10%">
 
-        <sl-details summary="Privacy">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </sl-details>
+            <sl-details summary="Privacy">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </sl-details>
 
-        <sl-details summary="T&Cs">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </sl-details>
+            <sl-details summary="T&Cs">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </sl-details>
 
-        <sl-details summary="Socials">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </sl-details>
+            <sl-details summary="Socials">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </sl-details>
 
-        <hr style="color: #fff width:10%">
+            <hr style="color: #fff width:10%">
 
-        <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
-        <a href="tel:1800 034 034">1800 034 034</a> ` : ''}
-
-
+            <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
+            <a href="tel:1800 034 034">1800 034 034</a> ` : ''}
 
 
-    </nav>
-</sl-drawer>
+
+
+        </nav>
+    </sl-drawer>
     `;
   }
   
