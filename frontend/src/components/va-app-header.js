@@ -226,7 +226,7 @@ sl-details::part(base) {
 }
 
 
-      /* RESPONSIVE - MOBILE ------------------- */
+      /* RESPONSIVE - MOBILE --------------------- */
       @media all and (max-width: 768px){       
         
         .app-top-nav {
