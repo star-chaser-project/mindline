@@ -79,7 +79,7 @@ class SignUpView{
   render(){
     const template = html`     
     <style>
-      .signin-background {
+    .signin-background {
         background-image: url('/images/login-background.png');
         background-size: cover;
         background-position: center;
@@ -90,16 +90,18 @@ class SignUpView{
         top: 0;
         left: 0;
         z-index: -1;
-      }
-      .page-content {
+    }
+    
+    .page-content {
         display: flex;
         width: 100%;
-        height: 100vh; /* Full viewport height */
+        height: 100vh;
+        /* Full viewport height */
         margin: 0;
         padding: 0;
-      }
-      
-      .signon2-container {
+    }
+    
+    .signon2-container {
         background-color: rgba(5, 166, 209, 0.8);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -110,9 +112,9 @@ class SignUpView{
         top: 0;
         margin: 0;
         padding: 0;
-      }
-      
-      .welcome-box {
+    }
+    
+    .welcome-box {
         width: 55%;
         height: 100%;
         position: fixed;
@@ -124,254 +126,252 @@ class SignUpView{
         align-items: center;
         flex-direction: column;
         color: #fff;
-      }
-  
-
-      .submit-btn::part(base) {
+    }
+    
+    .submit-btn::part(base) {
         background-color: #F4D35E;
         border-color: #F4D35E;
         color: #000000;
-        style= padding-bottom: 1em;
-      }
-
-      .submit-btn::part(base):hover {
+        style=padding-bottom: 1em;
+    }
+    
+    .submit-btn::part(base):hover {
         background-color: #e5c654;
         border-color: #e5c654;
-      }
-
-      .submit-btn::part(base):active {
+    }
+    
+    .submit-btn::part(base):active {
         background-color: #d6b84a;
         border-color: #d6b84a;
-      }
-
-      h2 {
-      text-align: left;
-      width:250.61px;
-      font-size: 5em;
-      }
-
-      p {
-      width: 100%;
-      margin-top: 1em;
-      }
-      
-      .app-side-menu-logo {
-      width: 150px !important; 
-      height: auto !important; /* Remove fixed height to maintain aspect ratio */  
-      top: 1em;
-      display: block;
-      }
-
-      .hamburger-btn::part(base) {
+    }
+    
+    h2 {
+        text-align: left;
+        width: 250.61px;
+        font-size: 5em;
+    }
+    
+    p {
+        width: 100%;
+        margin-top: 1em;
+    }
+    
+    .app-side-menu-logo {
+        width: 150px !important;
+        height: auto !important;
+        /* Remove fixed height to maintain aspect ratio */
+        top: 1em;
+        display: block;
+    }
+    
+    .hamburger-btn::part(base) {
         color: #fff;
         position: fixed;
         top: 1em;
         left: 1em;
         z-index: 100;
-      }
-
-      .app-top-nav {
+    }
+    
+    .app-top-nav {
         display: flex;
         height: 100%;
         align-items: center;
-      }
-
-      .app-top-nav a {
+    }
+    
+    .app-top-nav a {
         display: inline-block;
         padding: .8em;
         text-decoration: none;
         color: #fff;
-      }
-
-      .app-side-menu-items a {
+    }
+    
+    .app-side-menu-items a {
         display: block;
         padding: 0.5em;
         text-decoration: none;
         font-size: 1.3em;
         color: var(--app-header-txt-color);
         padding-bottom: 0.5em;
-      }
-
-      .home-logo {
+    }
+    
+    .home-logo {
         cursor: pointer;
-        width: 150px !important; 
-        height: auto !important; /* Remove fixed height to maintain aspect ratio */
+        width: 150px !important;
+        height: auto !important;
+        /* Remove fixed height to maintain aspect ratio */
         position: absolute;
         top: 30px;
         left: 42%;
         z-index: 2;
-      }
-
-      .header-logo {
+    }
+    
+    .header-logo {
         cursor: pointer;
-        width: 120px !important; 
-        height: auto !important; /* Remove fixed height to maintain aspect ratio */
+        width: 120px !important;
+        height: auto !important;
+        /* Remove fixed height to maintain aspect ratio */
         position: absolute;
         top: 40px;
         left: 21.5em;
         z-index: 2;
-      }
-
-      /* active nav links */
-      .app-top-nav a.active,
-      .app-side-menu-items a.active {
+    }
+    /* active nav links */
+    
+    .app-top-nav a.active,
+    .app-side-menu-items a.active {
         font-weight: bold;
-      }
-
-      sl-details::part(summary) {
+    }
+    
+    sl-details::part(summary) {
         transition: color 0.3s ease;
-      }
-
-      sl-details::part(summary):hover {
+    }
+    
+    sl-details::part(summary):hover {
         color: var(--sl-color-primary-600);
         cursor: pointer;
-      }
-
-      .menu-expand {
+    }
+    
+    .menu-expand {
         transition: color 0.3s ease;
         text-decoration: none;
-      }
-
-      .menu-expand:hover {
+    }
+    
+    .menu-expand:hover {
         color: var(--sl-color-primary-600);
         padding-left: 1.5em;
         transition: all 0.5s ease;
-      }
-
-      /* right side menu */
-      .right-side-menu {
+    }
+    /* right side menu */
+    
+    .right-side-menu {
         --base-txt-color: #2F1E1F;
-      }
-
-      .menu-expand {
+    }
+    
+    .menu-expand {
         font-size: 1.3em;
         margin-left: 1em;
         margin-top: 0.5em;
-      }
-
-      sl-drawer::part(label) {
+    }
+    
+    sl-drawer::part(label) {
         padding: 0.6em;
-      }
-
-      sl-menu {
+    }
+    
+    sl-menu {
         border-radius: 15px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      sl-menu::part(base) {
+    }
+    
+    sl-menu::part(base) {
         padding: 8px 16px;
         margin: 4px;
         border-radius: 15px;
-      }
-
-      sl-menu-item:hover::part(base) {
+    }
+    
+    sl-menu-item:hover::part(base) {
         background-color: #e2e8f0;
-      }
-        
-    </style>  
+    }
+</style>
 
-    <div class="signin-background"></div>
-      <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
+<div class="signin-background"></div>
+<sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
 
-      <sl-drawer class="app-side-menu" placement="left">
-        <div slot="label">  
-          <a href="/" @click="${anchorRoute}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
-        </div>
-        <nav class="app-side-menu-items">
+<sl-drawer class="app-side-menu" placement="left">
+    <div slot="label">
+        <a href="/" @click="${anchorRoute}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
+    </div>
+    <nav class="app-side-menu-items">
         <a href="/" @click="${anchorRoute}">Home</a>
-              <sl-details>
-                <div slot="summary" class="summary-content">
-                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
-                </div>
-                  <a class="menu-expand" href="">Stress</a>
-                  <a class="menu-expand" href="">Anxiety</a>
-                  <a class="menu-expand" href="">Depression</a>
-              </sl-details>
-              <sl-details>
-                <div slot="summary" class="summary-content">
-                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
-                </div>
-                  <a class="menu-expand" href="">Meditation</a>
-                  <a class="menu-expand" href="">Breathing</a>
-                  <a class="menu-expand" href="">Motivation</a>
-              </sl-details>
-              <sl-details>
-                <div slot="summary" class="summary-content">
-                  <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
-                </div>
-                  <a class="menu-expand" href="">Support</a>
-                  <a class="menu-expand" href="">Services</a>
-                  <a class="menu-expand" href="">Guides</a>
-              </sl-details>
-              
-              <a href="/favouriteLines" @click="${anchorRoute}">Bookmarks</a>
-              <a href="/about" @click="${anchorRoute}">About</a>
-              <a href="/profile" @click="${anchorRoute}">Profile</a>   
-              
-              <hr style="color: #fff width:10%" >
-      
-              <sl-details summary="Privacy">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </sl-details>
-            
-              <sl-details summary="T&Cs">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </sl-details>
+        <sl-details>
+            <div slot="summary" class="summary-content">
+                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
+            </div>
+            <a class="menu-expand" href="">Stress</a>
+            <a class="menu-expand" href="">Anxiety</a>
+            <a class="menu-expand" href="">Depression</a>
+        </sl-details>
+        <sl-details>
+            <div slot="summary" class="summary-content">
+                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
+            </div>
+            <a class="menu-expand" href="">Meditation</a>
+            <a class="menu-expand" href="">Breathing</a>
+            <a class="menu-expand" href="">Motivation</a>
+        </sl-details>
+        <sl-details>
+            <div slot="summary" class="summary-content">
+                <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
+            </div>
+            <a class="menu-expand" href="">Support</a>
+            <a class="menu-expand" href="">Services</a>
+            <a class="menu-expand" href="">Guides</a>
+        </sl-details>
 
-              <sl-details summary="Socials">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </sl-details>
-      
-              <hr style="color: #fff width:10%" >
-      
-              <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
-              <a href="tel:1800 034 034">1800 034 034</a>
-              
-      
-        </nav>  
-      </sl-drawer>
-       
-        <div class="page-content page-centered">
-          <div class="signon2-container">
-              <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
-              <div class="signinup-box">
-                
-                <h1 style= "padding-bottom: 1em;">LOG IN</h1>       
-                <sl-form class="form-signup" @sl-submit=${this.signUpSubmitHandler}>
-                  <div class="input-group">
-                    <sl-input size="large" pill style= "padding-bottom: 1em;" name="firstName" type="text" placeholder="First name" required></sl-input>
-                  </div>
-                  <div class="input-group">
-                    <sl-input size="large" pill style= "padding-bottom: 1em;" name="lastName" type="text" placeholder="Last name" required></sl-input>
-                  </div>
-                  <div class="input-group">
-                    <sl-input size="large" pill style= "padding-bottom: 1em;" name="email" type="email" placeholder="Email" required></sl-input>
-                  </div>
-                  <div class="input-group">
-                    <sl-input size="large" pill style= "padding-bottom: 1em;" name="password" type="password" placeholder="Password" required toggle-password></sl-input>
-                  </div>
-                  <div class="input-group">
-                    <sl-select size="large" pill style= "padding-bottom: 4em;" name="accessLevel" placeholder="I am a ..." placement="bottom">
-                      <sl-menu-item value="1">Customer</sl-menu-item>
-                      <sl-menu-item value="2">Mindline Admin</sl-menu-item>
+        <a href="/favouriteLines" @click="${anchorRoute}">Bookmarks</a>
+        <a href="/about" @click="${anchorRoute}">About</a>
+        <a href="/profile" @click="${anchorRoute}">Profile</a>
+
+        <hr style="color: #fff width:10%">
+
+        <sl-details summary="Privacy">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </sl-details>
+
+        <sl-details summary="T&Cs">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </sl-details>
+
+        <sl-details summary="Socials">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </sl-details>
+
+        <hr style="color: #fff width:10%">
+
+        <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
+        <a href="tel:1800 034 034">1800 034 034</a>
+
+
+    </nav>
+</sl-drawer>
+
+<div class="page-content page-centered">
+    <div class="signon2-container">
+        <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
+        <div class="signinup-box">
+
+            <h1 style="padding-bottom: 1em;">LOG IN</h1>
+            <sl-form class="form-signup" @sl-submit=${this.signUpSubmitHandler}>
+                <div class="input-group">
+                    <sl-input size="large" pill style="padding-bottom: 1em;" name="firstName" type="text" placeholder="First name" required></sl-input>
+                </div>
+                <div class="input-group">
+                    <sl-input size="large" pill style="padding-bottom: 1em;" name="lastName" type="text" placeholder="Last name" required></sl-input>
+                </div>
+                <div class="input-group">
+                    <sl-input size="large" pill style="padding-bottom: 1em;" name="email" type="email" placeholder="Email" required></sl-input>
+                </div>
+                <div class="input-group">
+                    <sl-input size="large" pill style="padding-bottom: 1em;" name="password" type="password" placeholder="Password" required toggle-password></sl-input>
+                </div>
+                <div class="input-group">
+                    <sl-select size="large" pill style="padding-bottom: 4em;" name="accessLevel" placeholder="I am a ..." placement="bottom">
+                        <sl-menu-item value="1">Customer</sl-menu-item>
+                        <sl-menu-item value="2">Mindline Admin</sl-menu-item>
                     </sl-select>
-                  </div>
-                  <div>         
-                  <sl-button size="large" pill class="submit-btn" type="primary" class="submit-btn" submit style="width: 100%;">SIGN UP</sl-button>
-                </sl-form>
-                <p>Already have an account? <a href="/signin" @click=${anchorRoute}>Sign in</a></p>
-              </div>
-            
-          </div>
-          </div>
-        <div class="welcome-box">
-                  <h2>Hi</h2>
-                  <h1 style= "width: 240px;">Tell us more about you!</h1>
-          </div>
+                </div>
+                <div>
+                    <sl-button size="large" pill class="submit-btn" type="primary" class="submit-btn" submit style="width: 100%;">SIGN UP</sl-button>
+            </sl-form>
+            <p>Already have an account? <a href="/signin" @click=${anchorRoute}>Sign in</a></p>
+            </div>
+
         </div>
+    </div>
+    <div class="welcome-box">
+        <h2>Hi</h2>
+        <h1 style="width: 240px;">Tell us more about you!</h1>
+    </div>
+</div>
     `;
     render(template, App.rootEl);
   }

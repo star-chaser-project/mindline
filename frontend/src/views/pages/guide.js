@@ -11,14 +11,18 @@ class GuideView {
     document.title = 'Guide';    
     this.render();    
     Utils.pageIntroAnim();
-    this.updateCurrentUser();
+    if (Auth.currentUser?.newUser) {
+      this.updateCurrentUser();
+    }
   }
 
   async updateCurrentUser(){
     try{
-      const updatedUser = await UserAPI.updateUser(Auth.currentUser._id, { newUser: false}); 'json';
+      const updatedUser = await UserAPI.updateUser(Auth.currentUser._id, { newUser: false});
+      Auth.currentUser = updatedUser;
       console.log('user updated');
-      console.log(updatedUser);
+
+      
     }catch(err){
         Toast.show(err, 'error');
     }
@@ -26,7 +30,10 @@ class GuideView {
   // Animation - from https://shoelace.style/components/animation/
   render(){
     const template = html`
-      <va-app-header title="Guide" user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
+      ${Auth.isLoggedIn() ? 
+                html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
+                html`<va-public-header></va-public-header>`
+              }
       <div class="page-content calign">     
       <br>
       <p></p>   
