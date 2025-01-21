@@ -312,7 +312,7 @@ sl-details::part(base) {
         <hr style="color: #fff width:10%" >
 
         <a href="/products" @click="${this.menuClick}">Privacy</a>
-        <a href="/products" @click="${this.menuClick}">T&Cs</a>
+        <a href="/products" @click="${this.menuClick}">T&C's</a>
         <a href="/products" @click="${this.menuClick}">Socials</a>
 
         <hr style="color: #fff width:10%" >

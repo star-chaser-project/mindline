@@ -38,7 +38,7 @@ class FavouriteLinesView {
         <h1>Favourites</h1>     
         <div class="fav-list">
           <sl-button type="primary" size="large" @click=${() => gotoRoute('/favouriteLines')}>Add bookmarks </sl-button>
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/favouriteLines')}>View Favourite</sl-button>     
+          <sl-button type="primary" size="large" @click=${() => gotoRoute('/favouriteLines')}>View My Favourite</sl-button>     
         </div>
 
         <hr>
