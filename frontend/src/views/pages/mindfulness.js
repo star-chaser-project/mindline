@@ -14,9 +14,10 @@ class mindfulnessView {
 
   render(){
     const template = html`
-      <va-app-header user=${JSON.stringify(Auth.currentUser)}>
-        <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo-mindline-no-wording-white-125.svg"></a>
-      </va-app-header>       
+      ${Auth.isLoggedIn() ? 
+            html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
+            html`<va-public-header></va-public-header>`
+          }       
       <div class="page-content">        
         <section class="banner mindfulness">  
         <img src="images/mindfulness-hero-image-837.png" class="responsive-img" >  
