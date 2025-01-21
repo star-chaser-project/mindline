@@ -187,40 +187,47 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         font-size: 1.3em;
         margin-left: 1em;
         margin-top: 0.5em;
-    }
+      }
+
+      sl-drawer::part(label) {
+    padding: 0.6em;
     
-    sl-drawer::part(label) {
-        padding: 0.6em;
-    }
     
-    sl-details::part(base) {
-        display: block;
-        border: none;
-        padding: 0.65em;
-    }
-    
-    sl-details::part(content) {
-        border: none;
-        padding: 0;
-    }
-    
-    sl-details::part(header) {
-        border: none;
-        padding: 0;
-    }
-    
-    sl-details::part(summary) {
-        color: var(--sl-color-neutral-600);
-        font-size: 1.3em;
-        color: var(--app-header-txt-color);
-    }
-    
-    sl-details::part(base) {
-        border: none;
-    }
-    /* RESPONSIVE - MOBILE ------------------- */
-    
-    @media all and (max-width: 768px) {
+
+  }
+
+  sl-details::part(base) {
+  display: block;
+  border: none;
+  padding: 0.65em;
+}
+
+sl-details::part(content) {
+  border: none;
+  padding: 0;
+}
+
+sl-details::part(header) {
+  border: none;
+  padding: 0;
+}
+
+sl-details::part(summary) {
+  color: var(--sl-color-neutral-600);
+  font-size: 1.3em;
+  color: var(--app-header-txt-color);
+}
+
+sl-details::part(base) {
+  border: none;
+}
+
+
+      /* RESPONSIVE - MOBILE --------------------- */
+      @media all and (max-width: 768px){       
+        
+
+
         .app-top-nav {
             display: none;
         }

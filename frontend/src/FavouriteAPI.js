@@ -23,7 +23,7 @@ class FavouriteAPI {
       throw new Error(message);
     }
     
-    // convert response payload into json - store as data
+    // convert response payload into json - store as data--
     const data = await response.json();
     
     // return data
