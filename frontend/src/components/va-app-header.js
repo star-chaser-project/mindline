@@ -167,7 +167,9 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         transition: color 0.3s ease;
         text-decoration: none;
     }
-    
+     .menu-static:hover {
+        color: var(--sl-color-primary-600);
+  }
     .menu-expand:hover {
         color: var(--sl-color-primary-600);
         padding-left: 1.5em;
@@ -287,12 +289,12 @@ sl-details::part(base) {
 
     <sl-drawer class="app-side-menu" placement="left">
         <div slot="label">
-            <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.svg"></a>
+            <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
         </div>
         <br>
         <nav class="app-side-menu-items">
             ${this.user.accessLevel == 1 ? html`
-            <a href="/" @click="${this.menuClick}">Home</a>
+            <a class="menu-static" href="/" @click="${this.menuClick}">Home</a>
             <sl-details>
                 <div slot="summary" class="summary-content">
                     <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
@@ -318,10 +320,10 @@ sl-details::part(base) {
                 <a class="menu-expand" href="">Guides</a>
             </sl-details>
 
-            <a href="/about" @click="${this.menuClick}">About</a>
+            <a class="menu-static" href="/about" @click="${this.menuClick}">About</a>
 
-            <a href="/profile" @click="${this.menuClick}">Profile</a>
-            <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
+            <a class="menu-static" href="/profile" @click="${this.menuClick}">Profile</a>
+            <a class="menu-static" href="/favouriteLines" @click="${this.menuClick}">favourites</a>
             <hr style="color: #fff width:10%">
 
             <sl-details summary="Privacy">
@@ -340,7 +342,7 @@ sl-details::part(base) {
 
             <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
             <a href="tel:1800 034 034">1800 034 034</a> ` : ''} ${this.user.accessLevel == 2 ? html`
-            <a href="/" @click="${this.menuClick}">Home</a>
+            <a class="menu-static" href="/" @click="${this.menuClick}">Home</a>
             <sl-details>
                 <div slot="summary" class="summary-content">
                     <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
@@ -365,9 +367,9 @@ sl-details::part(base) {
                 <a class="menu-expand" href="">Services</a>
                 <a class="menu-expand" href="">Guides</a>
             </sl-details>
-            <a href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
-            <a href="/about" @click="${this.menuClick}">About</a>
-            <a href="/profile" @click="${this.menuClick}">Profile</a>
+            <a class="menu-static" href="/favouriteLines" @click="${this.menuClick}">favourites</a>
+            <a class="menu-static" href="/about" @click="${this.menuClick}">About</a>
+            <a class="menu-static" href="/profile" @click="${this.menuClick}">Profile</a>
 
             <hr style="color: #fff width:10%">
 

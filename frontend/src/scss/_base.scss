@@ -259,6 +259,10 @@ sl-details::part(base) {
 
 
 
+
+
+
+
 // sign in + sign up pages --------------------------------------------------------------------
 
 .signinup-box,
@@ -312,8 +316,6 @@ sl-details::part(base) {
   }
 }
 
-
-
 .signinup-box {
   display: flex;
   flex-direction: column;
@@ -343,10 +345,64 @@ sl-details::part(base) {
   }
 }
 
+
 //favorite-page-----------------
-.bookmarks-page {
-  background: var(--background-bookmarks);
+.favourites-page {
+  background: var(--background-favourites);
 }
+
+//profile page --------------------------------------------------------------------------------
+
+.profile-container {
+  background: url('../../static/images/login-background.svg');
+  display: flex;
+  height: 100vh;
+
+  .profile-left,
+  .profile-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+  }
+ 
+  .profile-left {
+    background-color:var(--backround-left-log);
+    color: white;
+    text-align: center;
+
+    sl-avatar {
+      --size: 120px; // Adjust avatar size
+      margin-bottom: 1em;
+    }
+
+    .edit-button {
+      margin-top: 1em;
+    }
+  }
+
+  .profile-right {
+    color: #fff;
+    text-align: center;
+    p{
+      font-size: medium;
+      font-weight:400;
+    }
+  }
+  .edit-btn::part(base) {
+    background-color: #F4D35E;
+    border-color: #F4D35E;
+    color: #000000;
+}
+.edit-btn::part(base):hover {
+  background-color: #e5c654;
+  border-color: #e5c654;
+  color: #000000;
+}
+}
+
 
 // text only --------------------
 .blurb-text {
@@ -358,11 +414,7 @@ sl-details::part(base) {
   padding: 5px;
 }
 
-// edit profile page --------------------------------------------------------------------------
 
-.edit-profile-container {
-  margin: 3em;
-}
 
 
 // Products page ------------------------------------------------------------------------------
@@ -482,6 +534,7 @@ sl-details::part(base) {
 // favourites page ---------------------------------------------------------------------------
 
 .fav-container {
+  padding-top: 2rem;
   margin: 3em;
 }
 

@@ -4,8 +4,9 @@
   --heading-color: #ffffff;
   --base-font-family: "Work Sans", sans-serif;
   --body-bg: #ffffff;
+  --backround-left-log: #05A3CD;
   --background-profile: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
-  --background-bookmarks: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
+  --background-favourites: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
   --background-home: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
   --background-about: linear-gradient(to bottom,#78BE64, #A3DD92, #78BE64 );
   --background-mental-health: linear-gradient(to bottom,#6686E3, #83A4FD, #384A7D );
@@ -335,8 +336,53 @@ sl-details::part(base) {
   height: auto;
 }
 
-.bookmarks-page {
-  background: var(--background-bookmarks);
+.favourites-page {
+  background: var(--background-favourites);
+}
+
+.profile-container {
+  background: url("/login-background.d3bb324e.svg");
+  display: flex;
+  height: 100vh;
+}
+.profile-container .profile-left,
+.profile-container .profile-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+}
+.profile-container .profile-left {
+  background-color: var(--backround-left-log);
+  color: white;
+  text-align: center;
+}
+.profile-container .profile-left sl-avatar {
+  --size: 120px;
+  margin-bottom: 1em;
+}
+.profile-container .profile-left .edit-button {
+  margin-top: 1em;
+}
+.profile-container .profile-right {
+  color: #fff;
+  text-align: center;
+}
+.profile-container .profile-right p {
+  font-size: medium;
+  font-weight: 400;
+}
+.profile-container .edit-btn::part(base) {
+  background-color: #F4D35E;
+  border-color: #F4D35E;
+  color: #000000;
+}
+.profile-container .edit-btn::part(base):hover {
+  background-color: #e5c654;
+  border-color: #e5c654;
+  color: #000000;
 }
 
 .blurb-text {
@@ -346,10 +392,6 @@ sl-details::part(base) {
   text-align: center;
   transform: translate(-50%, -50%);
   padding: 5px;
-}
-
-.edit-profile-container {
-  margin: 3em;
 }
 
 .products-container {
@@ -455,6 +497,7 @@ sl-details::part(base) {
 }
 
 .fav-container {
+  padding-top: 2rem;
   margin: 3em;
 }
 
