@@ -7,8 +7,11 @@ import profileView from './views/pages/profile';
 import editProfileView from './views/pages/editProfile';
 import guideView from './views/pages/guide';
 import mentalHealthView from './views/pages/mentalHealth';
+import mentalHealthExpandedView from './views/pages/mentalHealthExpanded';
 import mindfulnessView from './views/pages/mindfulness';
+import mindfulnessExpandedView from './views/pages/mindfulnessExpanded';
 import resourcesView from './views/pages/resources';
+import resourcesExpandedView from './views/pages/resourcesExpanded';
 import favouriteLinesView from './views/pages/favouriteLines';
 import aboutView from './views/pages/about';
 
@@ -28,8 +31,11 @@ const routes = {
 	'/editProfile': editProfileView,
 	'/guide': guideView,
 	'/mentalHealth': mentalHealthView,
+	'/mentalHealthExpanded': mentalHealthExpandedView,
 	'/mindfulness': mindfulnessView,
+	'/mindfulnessExpanded': mindfulnessExpandedView,
 	'/resources': resourcesView,
+	'/resourcesExpanded': resourcesExpandedView,
 	'/favouriteLines': favouriteLinesView,
 	'/about': aboutView,
 
