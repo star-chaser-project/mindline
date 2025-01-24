@@ -5,9 +5,9 @@
   --base-font-family: "Work Sans", sans-serif;
   --body-bg: #ffffff;
   --backround-left-log: #05A3CD;
-  --background-profile: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
+  --background-profile: linear-gradient(to bottom,#00B6E7,#8de6ff, #009BC5);
   --background-favourites: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
-  --background-home: linear-gradient(to bottom,#00B6E7,#49D8FF, #009BC5);
+  --background-home: linear-gradient(to bottom,#129ec5, #8be6ff,#49D8FF, #009BC5);
   --background-about: linear-gradient(to bottom,#78BE64, #A3DD92, #78BE64 );
   --background-mental-health: linear-gradient(to bottom,#6686E3, #83A4FD, #384A7D );
   --background-mindfulness:linear-gradient(to bottom,#30AAF5, #5EBBF4, #0071B7 );
@@ -79,18 +79,6 @@ a {
   height: auto;
   overflow: hidden;
 }
-.banner.resources {
-  background: var(--background-resources);
-}
-.banner.about {
-  background: var(--background-about);
-}
-.banner.mindfulness {
-  background: var(--background-mindfulness);
-}
-.banner.mental-health {
-  background: var(--background-mental-health);
-}
 .banner img {
   padding: 0px;
   position: absolute;
@@ -111,13 +99,28 @@ a {
   font-size: 1.5rem;
   margin: 0;
 }
+.banner.resources {
+  background: var(--background-resources);
+}
+.banner.about {
+  background: var(--background-about);
+}
+.banner.mindfulness {
+  background: var(--background-mindfulness);
+}
+.banner.mental-health {
+  background: var(--background-mental-health);
+}
+.banner .banner-content {
+  position: relative; /* Ensures it stays on top of the image */
+  z-index: 2; /* Ensure content overlays the image */
+}
 .banner .button-group {
   bottom: 2rem;
   display: flex;
   gap: 1rem;
 }
-
-.nav-page {
+.banner .nav-page {
   padding: 2rem;
   display: flex;
   flex-direction: column; /* Stack content vertically */
@@ -126,13 +129,44 @@ a {
   height: auto; /* Adjust height based on content */
   text-align: center;
 }
-.nav-page h3 {
+.banner .nav-page h3 {
   margin-bottom: 2rem;
 }
-
-.button-group {
+.banner .button-group {
   display: flex;
   gap: 1rem; /* Add space between buttons */
+}
+
+.home-banner {
+  margin: 6rem;
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+.home-banner img {
+  margin: -3rem 0 2rem 0;
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 1;
+}
+.home-banner h1 {
+  color: #6D83F2;
+  font-size: 2.5rem;
+  margin-right: 13rem;
+  text-align: left;
+  z-index: 2;
+}
+.home-banner h2 {
+  color: #F2DE96;
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+  z-index: 2;
 }
 
 .cloud {
@@ -593,6 +627,22 @@ sl-details::part(base) {
     max-width: none;
   }
 }
+@media (max-width: 767px) {
+  .banner {
+    margin: 2rem;
+    align-items: normal; /* Align content to the left */
+  }
+  .banner img {
+    margin: 0 0 2rem 0;
+  }
+  .banner h1 {
+    font-size: 3rem;
+    margin: 3rem 0 0 0;
+  }
+  .banner h2 {
+    font-size: 2rem;
+  }
+}
 @media (max-width: 768px) {
   .orders-grid .order-card {
     flex-direction: column;
@@ -615,10 +665,10 @@ sl-details::part(base) {
   body {
     padding: 10px;
   }
-  h1 {
+  body h1 {
     font-size: 24px;
   }
-  p {
+  body p {
     font-size: 14px;
     color: #333;
   }
