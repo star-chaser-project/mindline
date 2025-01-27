@@ -474,42 +474,55 @@ sl-details::part(base) {
             <hr style="color: #fff width:10%">
 
             <sl-details summary="Privacy">
-                We care about your privacy. Mindline AU will not knowingly give away, sell or provide your personal information 
-                to a third party unless you conscent to that or it is required by law. The information that is collected about 
-                you allow you the user to bookmark information you would like to come back to at anytime. You can update or change 
-                your details at any time. If you wish to be removed from our database, please contact Mindline AU in writing. 
-
-                <strong>Security of Personal Information</strong>
-                Your Personal Information is stored in a manner that reasonably protects it from misuse and loss and from 
-                unauthorized access, modification or disclosure.
+                <p>
+                    We care about your privacy. Mindline AU will not knowingly give away, sell or provide your personal information 
+                    to a third party unless you conscent to that or it is required by law. The information that is collected about 
+                    you allow you the user to bookmark information you would like to come back to at anytime. You can update or change 
+                    your details at any time. If you wish to be removed from our database, please contact Mindline AU in writing. 
+                </p>
+                
+                <p>
+                    <strong>Security of Personal Information</strong>
+                    Your Personal Information is stored in a manner that reasonably protects it from misuse and loss and from 
+                    unauthorized access, modification or disclosure
+                </p>
 
             </sl-details>
 
             <sl-details summary="T&Cs">
                 
-            <p>
-                Ok we know this is boring stuff, but we need to let you know that the content and media on the Mindline AU 
-                web application are created and published online for informational purposes only. It is not intended to be 
-                a substitute for professional medical advice and should not be relied on as health or personal advice.
-            
-                Always seek the guidance of your doctor or other qualified health professional with any questions you may 
-                have regarding your health or a medical condition. Never disregard the advice of a medical professional, or 
-                delay in seeking it because of something you have read on this web application.
+                <p>
+                    Ok we know this is the boring stuff, but we need to let you know that the content and media on the Mindline AU 
+                    web application are created and published online for informational purposes only. It is not intended to be 
+                    a substitute for professional medical advice and should not be relied on as health or personal advice.
+                </p>
+                
+                <p>
+                    Always seek the guidance of your doctor or other qualified health professional with any questions you may 
+                    have regarding your health or a medical condition. Never disregard the advice of a medical professional, or 
+                    delay in seeking it because of something you have read on this web application.
+                </p>
 
-                If you think you may have a medical emergency, call your doctor, go to the nearest hospital emergency department, 
-                or call the emergency services immediately. If you choose to rely on any information provided by Mindline AU, you 
-                do so solely at your own risk.
+                <p>
+                    If you think you may have a medical emergency, call your doctor, go to the nearest hospital emergency department, 
+                    or call the emergency services immediately. If you choose to rely on any information provided by Mindline AU, you 
+                    do so solely at your own risk.
+                </p>
 
-                External (outbound) links to other web applications or educational material (e.g. video, audio, books, apps…) that 
-                are not explicitly created by Mindline AU are followed at your own risk. Under no circumstances is Mindline AU 
-                responsible for the claims of third-party web applications or educational providers.
+                <p>
+                    External (outbound) links to other web applications or educational material (e.g. video, audio, books, apps…) that 
+                    are not explicitly created by Mindline AU are followed at your own risk. Under no circumstances is Mindline AU 
+                    responsible for the claims of third-party web applications or educational providers.
+                </p>
 
-                If you wish to seek clarification on the above matters, please get in touch with Mindline AU.
-                        
+                <p>If you wish to seek clarification on the above matters, please get in touch with Mindline AU.</p>
+                            
+                <p> 
                 <strong>Use License</strong>
-                Permission is granted to download materials (information or software) on <i>Mindline</i> AU&apos;s web application 
-                for personal, non-commercial use only. This is the grant of a license, not a transfer of title, and under this license 
-                you may not:
+                    Permission is granted to download materials (information or software) on <i>Mindline</i> AU&apos;s web application 
+                    for personal, non-commercial use only. This is the grant of a license, not a transfer of title, and under this license 
+                    you may not:
+                </p>
                     <ul>
                         <li>modify or copy the materials;</li>
                         <li>use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
@@ -519,44 +532,57 @@ sl-details::part(base) {
                         </li> 
                         <li>or “mirror” the materials on any other server.</li>
                     </ul>    
-                
+                    
+                <p>
                 <strong>Materials Disclaimer</strong>
-                The materials on Mindline AU web application are provided on an as is basis. Clear Head makes no warranties, expressed 
-                or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or 
-                conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
-                            
-                Further, Mindline AU does not warrant or make any representations concerning the accuracy, likely results, or reliability 
-                of the use of the materials on its web application or otherwise relating to such materials or on any sites linked to this 
-                site.
+                    The materials on Mindline AU web application are provided on an as is basis. Clear Head makes no warranties, expressed 
+                    or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or 
+                    conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+                </p>
+                                
+                <p>
+                    Further, Mindline AU does not warrant or make any representations concerning the accuracy, likely results, or reliability 
+                    of the use of the materials on its web application or otherwise relating to such materials or on any sites linked to this 
+                    site.
+                </p>
 
-                <strong>Limitations</strong>
-                In no event shall Mindline AU or its suppliers be liable for any damages (including, without limitation, damages 
-                for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials 
-                on Mindline AU&apos;s web application, even if Mindline AU or a Mindline AU authorised representative has been notified 
-                orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied 
-                warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
+                <p>
+                    <strong>Limitations</strong>
+                    In no event shall Mindline AU or its suppliers be liable for any damages (including, without limitation, damages 
+                    for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials 
+                    on Mindline AU&apos;s web application, even if Mindline AU or a Mindline AU authorised representative has been notified 
+                    orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied 
+                    warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
+                </p>
 
-                <strong>Accuracy of materials</strong>
-                The materials appearing on Mindline AU web application could include technical, typographical, or photographic 
-                errors. Mindline AU does not warrant that any of the materials on its web application are accurate, complete or 
-                current. Mindline AU may make changes to the materials contained on its web application at any time without notice. 
-                However, Mindline AU is not able to make any commitment when materials are updated.
+                <p>    
+                    <strong>Accuracy of materials</strong>
+                    The materials appearing on Mindline AU web application could include technical, typographical, or photographic 
+                    errors. Mindline AU does not warrant that any of the materials on its web application are accurate, complete or 
+                    current. Mindline AU may make changes to the materials contained on its web application at any time without notice. 
+                    However, Mindline AU is not able to make any commitment when materials are updated.
+                </p>
 
+                <p> 
                 <strong>Links</strong>        
-                Mindline AU has not reviewed all of the sites linked to its web application and is not responsible for 
-                the contents of any such linked site. The inclusion of any link does not imply endorsement by Mindline AU 
-                of the site. Use of any such linked web application is at the user’s own risk.
+                    Mindline AU has not reviewed all of the sites linked to its web application and is not responsible for 
+                    the contents of any such linked site. The inclusion of any link does not imply endorsement by Mindline AU 
+                    of the site. Use of any such linked web application is at the user&apos;s own risk.
+                </p>
 
+                </p>
                 <strong>Modifications</strong>
-                Mindline AU may revise these terms and conditions for its web application at any time without notice. 
-                By using this web application, you are agreeing to be bound by the then current version of these terms 
-                and conditions.
+                    Mindline AU may revise these terms and conditions for its web application at any time without notice. 
+                    By using this web application, you are agreeing to be bound by the then current version of these terms 
+                    and conditions.
+                </p>
 
-            </p>
             </sl-details>
 
             <sl-details summary="Socials">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+                <p>We've done something different and skipped the socials to let you focus on YOU!</p>
+           
             </sl-details>
 
             <hr style="color: #fff width:10%">

@@ -50,10 +50,10 @@ class aboutUsView {
           <h2>Contact Info</h2>
           <address>
             <p>
-              <strong>Address:</strong> 143 Brookland Avenue, Merryville QLD 4506<br>
-              <strong>Phone:</strong> <a href="tel:0406090996">1800 034 034</a><br>
-              <strong>Email:</strong> <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a><br>
-              <strong>Web:</strong> <a href="/">www.mindline-au.netlify.com.au</a>
+              <strong><sl-icon name="mailbox"></sl-icon> &nbsp;Address:</strong> 10-20 Walkers Rd, Morayfield QLD 4506 (We share our space with Youth Justice)<br>
+              <strong><sl-icon name="telephone"></sl-icon> &nbsp;Phone:</strong> <a href="tel:1800 034 034"></a><br>
+              <strong><sl-icon name="envelope"></sl-icon> &nbsp;Email:</strong> <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a><br>
+              <strong><sl-icon name="globe"></sl-icon> &nbsp;Web:</strong> <a href="https://mindlineau-a3.netlify.app/">www.mindlineau-A3.netlify.app</a>
             </p>
           </address>
         </article>
