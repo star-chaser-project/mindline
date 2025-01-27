@@ -338,7 +338,7 @@ sl-details::part(base) {
                 <p>
                     <strong>Security of Personal Information</strong>
                     Your Personal Information is stored in a manner that reasonably protects it from misuse and loss and from 
-                    unauthorized access, modification or disclosure.
+                    unauthorized access, modification or disclosure
                 </p>
                 
             </sl-details>
