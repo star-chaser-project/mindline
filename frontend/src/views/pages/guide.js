@@ -41,17 +41,17 @@ class GuideView {
         <p>Here's a quick tour of Mindline AU</p>
 
         <div class="guide-step">
-          <h4>Search wellbeing information</h4>
+          <h4>Search for information about mental health.</h4>
           <img src="images/guide-page-young-lady-holding-mobile-w-bg-360.png" class="responsive-img" >
         </div>
 
         <div class="guide-step">
-          <h4>Save articles, audio and video to favourites</h4>
+          <h4>Save articles, audio and video to Bookmarks.</h4>
           <img src="images/guide-page--young-lady-scratching-head-360.png" class="responsive-img">
         </div>
 
         <div class="guide-step">
-          <h4>Find resources</h4>
+          <h4>Find resources and other options for assistance and support.</h4>
           <img src="images/guide-page-happy-young-lady-on-yellow-bg-360.png" class="responsive-img" >
         </div>
 
