@@ -21,15 +21,15 @@ class HomeView {
           html`<va-public-header></va-public-header>`
         }
     <div class="page-content home-page">
-        <section class=" banner">
-            <h1>Empower Your Life</h1>
+        <section class="home-banner">
+            <h1>Empower </br>Your </br>Life</h1>
             <img class="cloud" src="/images/home-hero-image-175.png" alt="Cloud Image">
             <h2>HARNESS YOUR POTENTIAL</h2>
         </section>
        <section class="nav-page">
         <h3>Ways to deal with...</h3>
           <div class="button-group">
-            <sl-button class="green-btn" type="primary" size="large" @click=${() => gotoRoute('/mentalHealth')}>Mental Health</sl-button>
+            <sl-button class="primary" type="primary" size="large" @click=${() => gotoRoute('/mentalHealth')}>Mental Health</sl-button>
             <sl-button type="primary" size="large" @click=${() => gotoRoute('/mindfulness')}>Mindfulness</sl-button>
             <sl-button type="primary" size="large" @click=${() => gotoRoute('/resources')}>Resources</sl-button>
           </div>
