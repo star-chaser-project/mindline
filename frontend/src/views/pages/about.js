@@ -24,7 +24,7 @@ class aboutUsView {
         <!-- Banner Section -->
       <section class="banner about">
         <div class="bg-img responsive-img">
-          <img src="/images/about-group-hero-image-no-bg-768.png" alt="Group of people">
+          <img src="/images/about-group-hero-image-no-bg-1024.png" alt="Group of people">
         </div>
         <div class="banner-text">      
           <h1>About Us</h1>

@@ -21,7 +21,6 @@ class mentalHealthView {
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
       html`<va-public-header></va-public-header>`
     }
-      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo-mindline-no-wording-white-125.svg"></a>
       </va-app-header>      
       <div class="page-content"> 
         <section class="banner mental-health">

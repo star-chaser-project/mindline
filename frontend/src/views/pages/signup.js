@@ -307,7 +307,7 @@ class SignUpView{
             <a class="menu-expand" href="">Guides</a>
         </sl-details>
 
-        <a href="/favouriteLines" @click="${anchorRoute}">Bookmarks</a>
+        <a href="/favouriteLines" @click="${anchorRoute}">favourites</a>
         <a href="/about" @click="${anchorRoute}">About</a>
         <a href="/profile" @click="${anchorRoute}">Profile</a>
 
