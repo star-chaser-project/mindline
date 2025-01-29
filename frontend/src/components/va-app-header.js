@@ -586,7 +586,9 @@ sl-details::part(base) {
             <hr style="color: #fff width:10%">
 
             <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
-            <a href="tel:1800 034 034">1800 034 034</a> ` : ''}
+            <a href="tel:1800 034 034">1800 034 034</a> 
+            
+        ` : ''}
 
 
 
