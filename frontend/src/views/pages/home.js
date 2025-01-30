@@ -29,7 +29,7 @@ class HomeView {
        <section class="nav-page">
         <h3>Ways to deal with...</h3>
           <div class="button-group">
-            <sl-button class="primary" type="primary" size="large" @click=${() => gotoRoute('/mentalHealth')}>Mental Health</sl-button>
+            <sl-button type="primary" size="large" @click=${() => gotoRoute('/mentalHealth')}>Mental Health</sl-button>
             <sl-button type="primary" size="large" @click=${() => gotoRoute('/mindfulness')}>Mindfulness</sl-button>
             <sl-button type="primary" size="large" @click=${() => gotoRoute('/resources')}>Resources</sl-button>
           </div>

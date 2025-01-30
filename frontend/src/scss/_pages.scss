@@ -1,0 +1,98 @@
+@use 'vars' as *;
+
+/*-----------All pages-----------------*/
+// Home page ----------------------------------------------------------------------------------
+.home-page {
+    background:var(--background-home) ;
+  
+    h3{
+      color: #ffffff;
+      text-align: left;
+    }
+  
+ 
+    .button-group{
+    display: flex;
+    justify-content: center; /* Center align */
+    width: 100%;
+   
+    sl-button::part(base) {
+        color: var(--base-txt-color);
+        background-color: #ffffff;
+        font-size: 1rem; /* Increase text size */
+        padding: 0 4rem; /* Make it larger */
+        width: 100%; /* Full width */
+        border-radius: 12px; /* Adjust for rounded corners */
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+  }
+ 
+
+  ///------home-banner--------
+  .home-banner {
+    margin: 6rem auto 0;
+    position: relative;
+    color: white;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center; 
+    overflow: hidden;
+  
+    img {
+      margin: -3rem 0 2rem 0;
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+      z-index: 1;
+    }
+  
+    h1 {
+      color: #6D83F2;
+      font-size: 2.5rem; // Adjust size to be responsive 
+      margin-right: 13rem;    
+      text-align: left;
+      z-index: 2; // Ensure it’s above any background elements
+    }
+  
+    h2 {
+      color: #F2DE96;
+      font-size: 1.5rem; // Adjust size to be responsive /
+      margin: 0; // Remove external margins/
+      text-align: center; // Center-align h2 text /
+      z-index: 2; // Ensure it’s above any background elements /
+    }
+  
+    .blurb-container {
+        position: relative;
+        display: center;
+        img {
+          width: 100%;
+          height: auto;
+        }
+  }
+}
+  
+  // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
+  
+  .cloud {
+    animation: float 5s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+     
+      transform: translateY(0px);
+    }
+    50% {
+    
+      transform: translateY(-20px);
+    }
+    100% {
+     
+      transform: translateY(0px);
+    }
+  }
+  
+  
