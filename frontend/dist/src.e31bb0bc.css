@@ -303,12 +303,51 @@ sl-details::part(base) {
 }
 
 .profile-container {
-  background: url("/login-background.d3bb324e.svg");
   display: flex;
   height: 100vh;
 }
-.profile-container .profile-left,
-.profile-container .profile-right {
+
+.profile-left {
+  flex: 1;
+  background-color: var(--backround-left-log);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  background-color: var(--backround-left-log);
+  color: white;
+  text-align: center;
+}
+.profile-left sl-avatar {
+  --size: 120px;
+  margin-bottom: 1em;
+}
+.profile-left .edit-button {
+  margin-top: 1em;
+}
+
+.profile-right {
+  flex: 1;
+  background: url("/login-background.d3bb324e.svg") no-repeat center center;
+  background-size: cover; /* Ensures the image stretches to cover the entire right side */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  color: #fff;
+  text-align: center;
+}
+.profile-right p {
+  font-size: medium;
+  font-weight: 400;
+}
+
+.profile-left,
+.profile-right {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -316,32 +355,14 @@ sl-details::part(base) {
   align-items: center;
   padding: 2em;
 }
-.profile-container .profile-left {
-  background-color: var(--backround-left-log);
-  color: white;
-  text-align: center;
-}
-.profile-container .profile-left sl-avatar {
-  --size: 120px;
-  margin-bottom: 1em;
-}
-.profile-container .profile-left .edit-button {
-  margin-top: 1em;
-}
-.profile-container .profile-right {
-  color: #fff;
-  text-align: center;
-}
-.profile-container .profile-right p {
-  font-size: medium;
-  font-weight: 400;
-}
-.profile-container .edit-btn::part(base) {
+
+.edit-btn::part(base) {
   background-color: #F4D35E;
   border-color: #F4D35E;
   color: #000000;
 }
-.profile-container .edit-btn::part(base):hover {
+
+.edit-btn::part(base):hover {
   background-color: #e5c654;
   border-color: #e5c654;
   color: #000000;
