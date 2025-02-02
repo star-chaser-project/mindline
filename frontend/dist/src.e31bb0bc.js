@@ -7282,7 +7282,7 @@ class HomeView {
   // Image adapted from Canva – Accessed on December 18, 2024
   // Animation - from https://shoelace.style/components/animation
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    ", "\n    <div class=\"page-content home-page\">\n        <section class=\"home-banner\">\n            <h1>Empower </br>Your </br>Life</h1>\n            <img class=\"cloud\" src=\"/images/home-hero-768.webp\" alt=\"Cloud Image\">\n            <h2>HARNESS YOUR POTENTIAL</h2>\n        </section>\n       <section class=\"nav-page\">\n        <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Mental Health</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Mindfulness</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Resources</sl-button>\n          </div>\n        </section> \n      </div>\n     \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), () => (0, _Router.gotoRoute)('/mentalHealth'), () => (0, _Router.gotoRoute)('/mindfulness'), () => (0, _Router.gotoRoute)('/resources'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    ", "\n    <div class=\"page-content home-page\">\n        <section class=\"home-banner\">\n            <h1>Empower </br>Your </br>Life</h1>\n            <source srcset=\"home-hero-360.webp\" media=\"(max-width: 768px)\">\n            <img class=\"cloud\" src=\"/images/home-hero-768.webp\" alt=\"Cloud Image\">\n            <h2>HARNESS YOUR POTENTIAL</h2>\n        </section>\n       <section class=\"nav-page\">\n        <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Mental Health</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Mindfulness</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Resources</sl-button>\n          </div>\n        </section> \n      </div>\n     \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), () => (0, _Router.gotoRoute)('/mentalHealth'), () => (0, _Router.gotoRoute)('/mindfulness'), () => (0, _Router.gotoRoute)('/resources'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -16169,7 +16169,7 @@ module.exports = reloadCSS;
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../../static/images/login-background.svg":[["login-background.d3bb324e.svg","../static/images/login-background.svg"],"../static/images/login-background.svg"],"./../../static/images/home-bg-graphics.svg":[["home-bg-graphics.3ddd412a.svg","../static/images/home-bg-graphics.svg"],"../static/images/home-bg-graphics.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./../../static/images/login-background.svg":[["login-background.d3bb324e.svg","../static/images/login-background.svg"],"../static/images/login-background.svg"],"./../../static/images/home/home-bg-graphics.svg":[["home-bg-graphics.e19972cb.svg","../static/images/home/home-bg-graphics.svg"],"../static/images/home/home-bg-graphics.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _App = _interopRequireDefault(require("./App.js"));
@@ -16217,7 +16217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55982" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54737" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

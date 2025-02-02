@@ -30,7 +30,7 @@
 
   ///------home-banner--------
   .home-banner {
-    background: url('../../static/images/home-bg-graphics.svg');
+    background: url('../../static/images/home/home-bg-graphics.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -45,7 +45,7 @@
     overflow: hidden;
   
     img {
-      margin: -3rem 0 2rem 0;
+      margin: -4rem 0 2rem 0;
       position: relative;
       max-width: 100%;
       max-height: 100%;
@@ -55,7 +55,7 @@
     h1 {
       color: #6D83F2;
       font-size: 2.5rem; // Adjust size to be responsive 
-      margin-right: 13rem;    
+      margin-right: 10rem;
       text-align: left;
       z-index: 2; // Ensure it’s above any background elements
     }
@@ -63,6 +63,7 @@
     h2 {
       color: #F2DE96;
       font-size: 1.5rem; // Adjust size to be responsive /
+      padding: 5px;
       margin: 0; // Remove external margins/
       text-align: center; // Center-align h2 text /
       z-index: 2; // Ensure it’s above any background elements /
@@ -102,24 +103,29 @@
   // ---------Responsive design-----------------
 
   @media (max-width: 768px) { // Tablets & smaller screens
-    .home-page {
-      background-size: contain; // Prevents cropping on small screens
-      background-position: top;
+   
+
+  .home-banner {
+    h1 {
+      font-size: 2.5rem;
+      margin-right: 7rem;
     }
-  }
-  
-  @media (max-width: 480px) { // Mobile screens
-    .home-page {
-      background-size: 100% auto; // Ensures full width without cropping
-      background-position: center top;
+   
+    img{
+     margin:-5rem 0 0rem 0;
     }
+    }
+   
   }
+
 
 
   // Small devices (landscape phones, 576px and up)
   @media (min-width: 768px) and (max-width: 991px) {
-    .responsive-image {
-      width: 75%;
+    .home-page{
+      .home-banner h1 {
+        font-size: 2.5rem;
+        margin-right: 10rem;
     }
     .button-group {
       display: flex;
@@ -128,18 +134,19 @@
       gap: 1rem; 
       width: 100%;
       flex-wrap: nowrap; 
-    }
+    
     sl-button::part(base) {
       font-size: 1rem; /* Increase text size */
       padding: 0 2rem; /* Make it larger */
       width: 100%; /* Full width */
   }
   }
-  
-  // Large devices (desktops, 992px and up)
-  @media (min-width: 992px) {
+    }
+  }
 
-    .responsive-image {
-      width: 50%;
+  @media (max-width: 420px) { 
+    .home-page .home-banner h1 {
+      font-size: 1.8rem;
+      margin-right: 5rem;
     }
   }
