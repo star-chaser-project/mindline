@@ -647,7 +647,8 @@ sl-details::part(base) {
     font-size: 24px; 
   } 
   p { 
-    font-size: 14px; color: #333; 
+    font-size: 14px; 
+    color: #333; 
   } 
 }
 }
@@ -695,5 +696,19 @@ sl-details::part(base) {
 @media (min-width: 992px) {
   .responsive-image {
       width: 50%;
+  }
+}
+//profile page responsive design
+@media (max-width: 767px) {
+  .profile-left {
+    p {
+      font-size: 1rem;
+      color: white;
+    }
+    flex-direction: column;
+  }
+
+  .profile-right {
+    display: none;
   }
 }

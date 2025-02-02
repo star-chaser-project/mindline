@@ -624,6 +624,18 @@ sl-details::part(base) {
     width: 50%;
   }
 }
+@media (max-width: 767px) {
+  .profile-left {
+    flex-direction: column;
+  }
+  .profile-left p {
+    font-size: 1rem;
+    color: white;
+  }
+  .profile-right {
+    display: none;
+  }
+}
 .home-page {
   background: var(--background-home);
   background-size: cover;
