@@ -88,7 +88,6 @@ a {
 }
 .banner h1 {
   font-size: 3rem;
-  margin: 0 0 10px;
 }
 .banner h2 {
   font-size: 1.5rem;
@@ -304,12 +303,51 @@ sl-details::part(base) {
 }
 
 .profile-container {
-  background: url("/login-background.d3bb324e.svg");
   display: flex;
   height: 100vh;
 }
-.profile-container .profile-left,
-.profile-container .profile-right {
+
+.profile-left {
+  flex: 1;
+  background-color: var(--backround-left-log);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  background-color: var(--backround-left-log);
+  color: white;
+  text-align: center;
+}
+.profile-left sl-avatar {
+  --size: 120px;
+  margin-bottom: 1em;
+}
+.profile-left .edit-button {
+  margin-top: 1em;
+}
+
+.profile-right {
+  flex: 1;
+  background: url("/login-background.d3bb324e.svg") no-repeat center center;
+  background-size: cover; /* Ensures the image stretches to cover the entire right side */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  color: #fff;
+  text-align: center;
+}
+.profile-right p {
+  font-size: medium;
+  font-weight: 400;
+}
+
+.profile-left,
+.profile-right {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -317,32 +355,14 @@ sl-details::part(base) {
   align-items: center;
   padding: 2em;
 }
-.profile-container .profile-left {
-  background-color: var(--backround-left-log);
-  color: white;
-  text-align: center;
-}
-.profile-container .profile-left sl-avatar {
-  --size: 120px;
-  margin-bottom: 1em;
-}
-.profile-container .profile-left .edit-button {
-  margin-top: 1em;
-}
-.profile-container .profile-right {
-  color: #fff;
-  text-align: center;
-}
-.profile-container .profile-right p {
-  font-size: medium;
-  font-weight: 400;
-}
-.profile-container .edit-btn::part(base) {
+
+.edit-btn::part(base) {
   background-color: #F4D35E;
   border-color: #F4D35E;
   color: #000000;
 }
-.profile-container .edit-btn::part(base):hover {
+
+.edit-btn::part(base):hover {
   background-color: #e5c654;
   border-color: #e5c654;
   color: #000000;
@@ -529,70 +549,33 @@ sl-details::part(base) {
   color: var(--web-color-green);
 }
 
-/* Responsive layout for mobile screens */
-@media screen and (max-width: 768px) {
-  .about-content {
-    flex-direction: column; /* Stacks the sections vertically */
-    gap: 30px; /* Adds more space between sections */
-  }
-  .about-content > section {
-    max-width: 100%; /* Makes sections take full width */
-  }
-}
-.owner-bio-text {
-  position: absolute;
-  top: 55%;
-  left: 30%;
-  transform: translate(-50%, -50%);
-  background-color: #F0C4A1;
-  background: rgba(249, 250, 253, 0.8); /* background opacity */
-  border-radius: 25px;
-  padding: 20px;
-}
-
-@media all and (max-width: 768px) {
-  .signinup-box {
-    width: 90%;
-    max-width: none;
-  }
-}
 @media (max-width: 767px) {
   .banner {
     margin: 2rem;
-    align-items: normal; /* Align content to the left */
   }
   .banner img {
-    margin: 0 0 2rem 0;
+    margin: 0;
   }
   .banner h1 {
     font-size: 3rem;
-    margin: 3rem 0 0 0;
   }
   .banner h2 {
     font-size: 2rem;
-  }
-  .home-banner h1 {
-    margin-left: 9rem;
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.5rem;
-    margin: 0.5rem;
-  }
-  .blurb-container img {
-    width: 100%;
-    height: auto;
   }
 }
 @media (max-width: 768px) {
   .orders-grid .order-card {
     flex-direction: column;
   }
+}
+@media (max-width: 768px) {
   .products-grid {
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
   }
+}
+@media (max-width: 768px) {
   .favourites-grid {
     flex-direction: column;
     align-items: column;
@@ -641,6 +624,18 @@ sl-details::part(base) {
     width: 50%;
   }
 }
+@media (max-width: 767px) {
+  .profile-left {
+    flex-direction: column;
+  }
+  .profile-left p {
+    font-size: 1rem;
+    color: white;
+  }
+  .profile-right {
+    display: none;
+  }
+}
 .home-page {
   background: var(--background-home);
   background-size: cover;
@@ -664,7 +659,7 @@ sl-details::part(base) {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 .home-page .home-banner {
-  background: url("/home-bg-graphics.3ddd412a.svg");
+  background: url("/home-bg-graphics.e19972cb.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -679,7 +674,7 @@ sl-details::part(base) {
   overflow: hidden;
 }
 .home-page .home-banner img {
-  margin: -3rem 0 2rem 0;
+  margin: -4rem 0 2rem 0;
   position: relative;
   max-width: 100%;
   max-height: 100%;
@@ -688,13 +683,14 @@ sl-details::part(base) {
 .home-page .home-banner h1 {
   color: #6D83F2;
   font-size: 2.5rem;
-  margin-right: 13rem;
+  margin-right: 10rem;
   text-align: left;
   z-index: 2;
 }
 .home-page .home-banner h2 {
   color: #F2DE96;
   font-size: 1.5rem;
+  padding: 5px;
   margin: 0;
   text-align: center;
   z-index: 2;
@@ -724,22 +720,20 @@ sl-details::part(base) {
   }
 }
 @media (max-width: 768px) {
-  .home-page {
-    background-size: contain;
-    background-position: top;
+  .home-banner h1 {
+    font-size: 2.5rem;
+    margin-right: 7rem;
   }
-}
-@media (max-width: 480px) {
-  .home-page {
-    background-size: 100% auto;
-    background-position: center top;
+  .home-banner img {
+    margin: -5rem 0 0rem 0;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .responsive-image {
-    width: 75%;
+  .home-page .home-banner h1 {
+    font-size: 2.5rem;
+    margin-right: 10rem;
   }
-  .button-group {
+  .home-page .button-group {
     display: flex;
     justify-content: space-between;
     margin: 2rem auto;
@@ -747,15 +741,16 @@ sl-details::part(base) {
     width: 100%;
     flex-wrap: nowrap;
   }
-  sl-button::part(base) {
+  .home-page .button-group sl-button::part(base) {
     font-size: 1rem; /* Increase text size */
     padding: 0 2rem; /* Make it larger */
     width: 100%; /* Full width */
   }
 }
-@media (min-width: 992px) {
-  .responsive-image {
-    width: 50%;
+@media (max-width: 420px) {
+  .home-page .home-banner h1 {
+    font-size: 1.8rem;
+    margin-right: 5rem;
   }
 }
 .input-group {

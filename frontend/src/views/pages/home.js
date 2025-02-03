@@ -23,6 +23,7 @@ class HomeView {
     <div class="page-content home-page">
         <section class="home-banner">
             <h1>Empower </br>Your </br>Life</h1>
+            <source srcset="home-hero-360.webp" media="(max-width: 768px)">
             <img class="cloud" src="/images/home-hero-768.webp" alt="Cloud Image">
             <h2>HARNESS YOUR POTENTIAL</h2>
         </section>
