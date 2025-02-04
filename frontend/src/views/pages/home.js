@@ -23,13 +23,14 @@ class HomeView {
     <div class="page-content home-page">
         <section class="home-banner">
             <h1>Empower </br>Your </br>Life</h1>
-            <img class="cloud" src="/images/home-hero-image-175.png" alt="Cloud Image">
+            <source srcset="home-hero-360.webp" media="(max-width: 768px)">
+            <img class="cloud" src="/images/home-hero-768.webp" alt="Cloud Image">
             <h2>HARNESS YOUR POTENTIAL</h2>
         </section>
        <section class="nav-page">
         <h3>Ways to deal with...</h3>
           <div class="button-group">
-            <sl-button class="primary" type="primary" size="large" @click=${() => gotoRoute('/mentalHealth')}>Mental Health</sl-button>
+            <sl-button type="primary" size="large" @click=${() => gotoRoute('/mentalHealth')}>Mental Health</sl-button>
             <sl-button type="primary" size="large" @click=${() => gotoRoute('/mindfulness')}>Mindfulness</sl-button>
             <sl-button type="primary" size="large" @click=${() => gotoRoute('/resources')}>Resources</sl-button>
           </div>
