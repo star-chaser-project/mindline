@@ -2,29 +2,36 @@
 
 // Home page ----------------------------------------------------------------------------------
 .home-page {
-  background: 
-    var(--background-home);
-    background-size: cover;
+  background:var(--background-home);
+
     h3{
       color: #ffffff;
-      text-align: left;
     }
   
-  
-    .button-group{
-    display: flex;
-    justify-content: center; /* Center align */
-    width: 100%;
-   
     sl-button::part(base) {
-        color: var(--base-txt-color);
-        background-color: #ffffff;
-        font-size: 1rem; /* Increase text size */
-        padding: 0 4rem; /* Make it larger */
-        width: 100%; /* Full width */
-        border-radius: 12px; /* Adjust for rounded corners */
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      width: 14rem;
+      padding: 3rem auto;
+      text-align: center;
+      white-space: nowrap;
+      color: var(--base-txt-color);
+      font-size: 1rem;
+      border-radius: 12px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease; /* Smooth transition */
     }
+    sl-button:hover::part(base) {
+      border: none; /* Border appears */
+      color:#fff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow intensifies */
+      transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  /* Active Effect (when button is pressed) */
+  sl-button:active::part(base) {
+    color:#333;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); /* Smaller shadow for pressed effect */
+    transform: scale(0.98); /* Slight shrink effect */
+  }
   }
  
 
@@ -78,7 +85,7 @@
         }
   }
 }
-}  
+
   // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
   
   .cloud {
@@ -104,49 +111,60 @@
 
   @media (max-width: 768px) { // Tablets & smaller screens
    
-
   .home-banner {
+
+    background-size: contain; /* Shrinks the SVG to fit */
+    background-attachment: scroll; /* Fix scrolling issues on mobile */
+   
     h1 {
       font-size: 2.5rem;
       margin-right: 7rem;
     }
    
     img{
-     margin:-5rem 0 0rem 0;
+     margin:-4rem 0 0rem 0;
     }
-    }
-   
-  }
-
-
-
-  // Small devices (landscape phones, 576px and up)
-  @media (min-width: 768px) and (max-width: 991px) {
-    .home-page{
-      .home-banner h1 {
-        font-size: 2.5rem;
-        margin-right: 10rem;
-    }
-    .button-group {
-      display: flex;
-      justify-content: space-between; 
-      margin: 2rem auto; 
-      gap: 1rem; 
-      width: 100%;
-      flex-wrap: nowrap; 
     
-    sl-button::part(base) {
-      font-size: 1rem; /* Increase text size */
-      padding: 0 2rem; /* Make it larger */
-      width: 100%; /* Full width */
+      
   }
-  }
-    }
   }
 
-  @media (max-width: 420px) { 
-    .home-page .home-banner h1 {
-      font-size: 1.8rem;
-      margin-right: 5rem;
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .home-page {
+      .home-banner {
+        h1 {
+          font-size: 2.5rem;
+          margin-right: 10rem;
+        }
+      }
+  
+      .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin: 2rem auto;
+        gap: 1rem;
+        width: 100%;
+        flex-wrap: nowrap;
+  
+        sl-button::part(base) {
+          font-size: 1rem; /* Increase text size */
+          padding: 0 2rem; /* Make it larger */
+          width: 100%; /* Full width */
+        }
+      }
     }
+  }
+  
+  @media (max-width: 480px) {
+    .home-page {
+    .home-banner {
+          background-size: 31rem;
+          background-position: top center;
+        h1 {
+          font-size: 1.8rem;
+          margin-right: 5rem;
+        }
+      }
+    }  
   }

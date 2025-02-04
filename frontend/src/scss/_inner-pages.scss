@@ -1,0 +1,93 @@
+@use 'vars' as *;
+
+// Mental-health----------------------------------------------------------------------------------
+.mental-health {
+    background: var(--background-mental-health);
+
+    .banner {
+        position: relative;
+        background: url('../../static/images/mental-health/mental-health-bg-graphics.svg') no-repeat center center;
+        background-size: contain;
+        padding: 2rem;
+        height: 70vh; /* Ensures enough space for text & image */
+        
+       .banner-content  
+        {
+            position: absolute;
+            left: 50%; /* Keep text centered */
+            transform: translateX(-50%);
+            text-align: center;
+            white-space: nowrap; /* Prevents text from wrapping */
+            font-size: 2rem;
+
+            h1, h2{
+            margin-right: 20rem;
+}
+}
+
+
+    }
+        img {
+        position: absolute;
+        left: 60%;
+        bottom: 0%;
+        transform: translateX(-50%);
+        height: auto;
+        z-index: 1;
+        }
+    }       
+
+/* Base button style */
+.nav-mental-health sl-button::part(base) {
+    width: 14rem;
+    height: 4rem;
+    text-align: start;
+    //text-align: center;
+    white-space: nowrap;
+    color: var(--base-txt-color);
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Hover Effect */
+.nav-mental-health sl-button:hover::part(base) {
+    border: none; /* Remove border */ 
+    color: #333; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow intensifies */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Active Effect (when button is pressed) */
+.nav-mental-health sl-button:active::part(base) {
+    color: #fff;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Smaller shadow for pressed effect */
+    transform: scale(0.98); /* Slight shrink effect */
+}
+
+/* Button Colors */
+.nav-mental-health .Stress::part(base) {
+    background-color: var(--web-color-lilch);
+    color: white;
+}
+
+.nav-mental-health .Anxiety::part(base) {
+    background-color: var(--web-color-blue);
+    color: white;
+}
+
+.nav-mental-health .Depression::part(base) {
+    background-color: var(--web-color-green);
+    color: white;
+}
+@media (max-width: 768px) {
+    .mental-health {
+     
+   .banner {
+        background-size: contain; /* Ensures visibility on smaller screens */
+        background-position: center center;
+    }
+    }
+}

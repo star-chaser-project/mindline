@@ -12,12 +12,13 @@
   --background-mental-health: linear-gradient(to bottom,#6686E3, #83A4FD, #384A7D );
   --background-mindfulness:linear-gradient(to bottom,#30AAF5, #5EBBF4, #0071B7 );
   --background-resources:linear-gradient(to bottom,#B26DCB, #C992DD, #6C4F77 );
-  --brand-color: #0BB7C0;
+  --brand-color-dark:#085966;
+  --brand-color: #0b99c0;
   --link-color: --brand-color;
   --web-color-yelow: #F3C728;
   --web-color-purple: #6587E3;
-  --web-color-blue: #6587E3;
-  --web-color-lilac: #C992DD;
+  --web-color-blue: #5EBBF4;
+  --web-color-lilch: #C992DD;
   --web-color-green: #8ED479;
   --app-header-height: 60px;
   --app-header-txt-color: #2F1E1F;
@@ -26,16 +27,16 @@
   --public-header-txt-color: #2F1E1F;
   --public-title-font-size: 1.6em;
   --sl-color-primary-50: #047E9F;
-  --sl-color-primary-100: rgb(157.5812807882, 244.8522167488, 249.4187192118);
-  --sl-color-primary-200: rgb(109.3448275862, 239.8275862069, 246.6551724138);
-  --sl-color-primary-300: rgb(61.1083743842, 234.802955665, 243.8916256158);
-  --sl-color-primary-400: rgb(13.763546798, 228.9753694581, 240.236453202);
-  --sl-color-primary-500: #0BB7C0;
-  --sl-color-primary-600: rgb(8.236453202, 137.0246305419, 143.763546798);
-  --sl-color-primary-700: rgb(5.4729064039, 91.0492610837, 95.5270935961);
-  --sl-color-primary-800: rgb(2.7093596059, 45.0738916256, 47.2906403941);
-  --sl-color-primary-900: hsl(182.9834254144, 89.1625615764%, -0.1960784314%);
-  --sl-focus-ring-color-primary: rgba(11, 183, 192, 0.1);
+  --sl-color-primary-100: rgb(157.5812807882, 229.6305418719, 249.4187192118);
+  --sl-color-primary-200: rgb(109.3448275862, 217.0689655172, 246.6551724138);
+  --sl-color-primary-300: rgb(61.1083743842, 204.5073891626, 243.8916256158);
+  --sl-color-primary-400: rgb(13.763546798, 191.4384236453, 240.236453202);
+  --sl-color-primary-500: #0b99c0;
+  --sl-color-primary-600: rgb(8.236453202, 114.5615763547, 143.763546798);
+  --sl-color-primary-700: rgb(5.4729064039, 76.1231527094, 95.5270935961);
+  --sl-color-primary-800: rgb(2.7093596059, 37.684729064, 47.2906403941);
+  --sl-color-primary-900: hsl(192.9281767956, 89.1625615764%, -0.1960784314%);
+  --sl-focus-ring-color-primary: rgba(11, 153, 192, 0.1);
 }
 
 body {
@@ -62,36 +63,14 @@ a {
   color: var(--link-color);
 }
 
+/* banner styles */
 .banner {
-  padding: 270px;
   position: relative;
   color: white;
-  text-align: left;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: auto;
+  height: 70vh; /* Full viewport height */
+  min-height: 300px; /* Prevents the banner from getting too small */
   overflow: hidden;
-}
-.banner img {
-  padding: 0px;
-  position: absolute;
-  max-width: 100%;
-  max-height: 100%;
-  z-index: 1;
-  bottom: 0px;
-}
-.banner .banner-content {
-  position: relative; /* Ensures it stays on top of the image */
-  z-index: 2; /* Ensure content overlays the image */
-}
-.banner h1 {
-  font-size: 3rem;
-}
-.banner h2 {
-  font-size: 1.5rem;
-  margin: 0;
 }
 .banner.resources {
   background: var(--background-resources);
@@ -102,12 +81,31 @@ a {
 .banner.mindfulness {
   background: var(--background-mindfulness);
 }
-.banner.mental-health {
-  background: var(--background-mental-health);
+.banner img {
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 1;
+  bottom: 0;
 }
 .banner .banner-content {
-  position: relative; /* Ensures it stays on top of the image */
-  z-index: 2; /* Ensure content overlays the image */
+  justify-content: flex-start; /* Aligns content to the left */
+  padding-left: 5%; /* Adjusts left spacing */
+  position: relative; /* Ensures content stays on top of the image */
+  z-index: 2; /* Ensures content overlays the image */
+  text-align: left; /* Aligns text to the left */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers vertically */
+  align-items: flex-start; /* Aligns content to the left */
+  height: 100%; /* Ensures full height */
+  padding: 20px; /* Adds spacing from the edges */
+}
+.banner h1 {
+  font-size: 2rem;
+}
+.banner h2 {
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 .nav-page {
@@ -126,39 +124,7 @@ a {
   display: flex;
   justify-content: center; /* Center align */
   width: 100%;
-  bottom: 2rem;
   gap: 1rem;
-}
-
-.app-splash {
-  position: fixed;
-  background: #fff;
-  color: #777;
-  display: flex;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.app-splash .app-logo {
-  width: 180px;
-  display: block;
-  margin-bottom: 1em;
-}
-
-.calign {
-  text-align: center;
-}
-
-.large-text {
-  font-size: 1.6em;
-}
-
-.brand-color {
-  color: var(--brand-color);
 }
 
 .generic-entry {
@@ -550,9 +516,6 @@ sl-details::part(base) {
 }
 
 @media (max-width: 767px) {
-  .banner {
-    margin: 2rem;
-  }
   .banner img {
     margin: 0;
   }
@@ -638,27 +601,35 @@ sl-details::part(base) {
 }
 .home-page {
   background: var(--background-home);
-  background-size: cover;
+  /* Active Effect (when button is pressed) */
 }
 .home-page h3 {
   color: #ffffff;
-  text-align: left;
 }
-.home-page .button-group {
-  display: flex;
-  justify-content: center; /* Center align */
-  width: 100%;
-}
-.home-page .button-group sl-button::part(base) {
+.home-page sl-button::part(base) {
+  width: 14rem;
+  padding: 3rem auto;
+  text-align: center;
+  white-space: nowrap;
   color: var(--base-txt-color);
-  background-color: #ffffff;
-  font-size: 1rem; /* Increase text size */
-  padding: 0 4rem; /* Make it larger */
-  width: 100%; /* Full width */
-  border-radius: 12px; /* Adjust for rounded corners */
+  font-size: 1rem;
+  border-radius: 12px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Smooth transition */
 }
-.home-page .home-banner {
+.home-page sl-button:hover::part(base) {
+  border: none; /* Border appears */
+  color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow intensifies */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+.home-page sl-button:active::part(base) {
+  color: #333;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); /* Smaller shadow for pressed effect */
+  transform: scale(0.98); /* Slight shrink effect */
+}
+
+.home-banner {
   background: url("/home-bg-graphics.e19972cb.svg");
   background-size: cover;
   background-position: center;
@@ -673,21 +644,21 @@ sl-details::part(base) {
   align-items: center;
   overflow: hidden;
 }
-.home-page .home-banner img {
+.home-banner img {
   margin: -4rem 0 2rem 0;
   position: relative;
   max-width: 100%;
   max-height: 100%;
   z-index: 1;
 }
-.home-page .home-banner h1 {
+.home-banner h1 {
   color: #6D83F2;
   font-size: 2.5rem;
   margin-right: 10rem;
   text-align: left;
   z-index: 2;
 }
-.home-page .home-banner h2 {
+.home-banner h2 {
   color: #F2DE96;
   font-size: 1.5rem;
   padding: 5px;
@@ -695,11 +666,11 @@ sl-details::part(base) {
   text-align: center;
   z-index: 2;
 }
-.home-page .home-banner .blurb-container {
+.home-banner .blurb-container {
   position: relative;
   display: center;
 }
-.home-page .home-banner .blurb-container img {
+.home-banner .blurb-container img {
   width: 100%;
   height: auto;
 }
@@ -720,12 +691,16 @@ sl-details::part(base) {
   }
 }
 @media (max-width: 768px) {
+  .home-banner {
+    background-size: contain; /* Shrinks the SVG to fit */
+    background-attachment: scroll; /* Fix scrolling issues on mobile */
+  }
   .home-banner h1 {
     font-size: 2.5rem;
     margin-right: 7rem;
   }
   .home-banner img {
-    margin: -5rem 0 0rem 0;
+    margin: -4rem 0 0rem 0;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -747,10 +722,95 @@ sl-details::part(base) {
     width: 100%; /* Full width */
   }
 }
-@media (max-width: 420px) {
+@media (max-width: 480px) {
+  .home-page .home-banner {
+    background-size: 31rem;
+    background-position: top center;
+  }
   .home-page .home-banner h1 {
     font-size: 1.8rem;
     margin-right: 5rem;
+  }
+}
+.mental-health {
+  background: var(--background-mental-health);
+}
+.mental-health .banner {
+  position: relative;
+  background: url("/mental-health-bg-graphics.016614e7.svg") no-repeat center center;
+  background-size: contain;
+  padding: 2rem;
+  height: 70vh; /* Ensures enough space for text & image */
+}
+.mental-health .banner .banner-content {
+  position: absolute;
+  left: 50%; /* Keep text centered */
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap; /* Prevents text from wrapping */
+  font-size: 2rem;
+}
+.mental-health .banner .banner-content h1, .mental-health .banner .banner-content h2 {
+  margin-right: 20rem;
+}
+.mental-health img {
+  position: absolute;
+  left: 60%;
+  bottom: 0%;
+  transform: translateX(-50%);
+  height: auto;
+  z-index: 1;
+}
+
+/* Base button style */
+.nav-mental-health sl-button::part(base) {
+  width: 14rem;
+  height: 4rem;
+  text-align: start;
+  white-space: nowrap;
+  color: var(--base-txt-color);
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Hover Effect */
+.nav-mental-health sl-button:hover::part(base) {
+  border: none; /* Remove border */
+  color: #333;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow intensifies */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Active Effect (when button is pressed) */
+.nav-mental-health sl-button:active::part(base) {
+  color: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Smaller shadow for pressed effect */
+  transform: scale(0.98); /* Slight shrink effect */
+}
+
+/* Button Colors */
+.nav-mental-health .Stress::part(base) {
+  background-color: var(--web-color-lilch);
+  color: white;
+}
+
+.nav-mental-health .Anxiety::part(base) {
+  background-color: var(--web-color-blue);
+  color: white;
+}
+
+.nav-mental-health .Depression::part(base) {
+  background-color: var(--web-color-green);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .mental-health .banner {
+    background-size: contain; /* Ensures visibility on smaller screens */
+    background-position: center center;
   }
 }
 .input-group {

@@ -1,7 +1,6 @@
 // Base
 @use 'vars' as *;
 
-
 body {
   padding: 0;  
   margin: 0;
@@ -27,44 +26,16 @@ a {
   color: var(--link-color);
 }
 
-
 //banner ----------------
+/* banner styles */
+.banner {
+  position: relative;
+  color: white;
+  display: flex;
+  height: 70vh; /* Full viewport height */
+  min-height: 300px; /* Prevents the banner from getting too small */
+  overflow: hidden;
 
-  .banner {
-    padding: 270px;
-    position: relative; 
-    color: white;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    overflow: hidden;
-
-    img {
-      padding: 0px;
-      position: absolute;
-      max-width: 100%;
-      max-height: 100%;
-      z-index: 1;
-      bottom: 0px; 
-    }
-  
-    .banner-content {
-      position: relative; /* Ensures it stays on top of the image */
-      z-index: 2; /* Ensure content overlays the image */
-    }
-  
-    h1 {
-      font-size: 3rem;
-    }
-  
-    h2 {
-      font-size: 1.5rem;
-      margin: 0;
-    }
-  
   &.resources {
     background: var(--background-resources);
   }
@@ -74,16 +45,40 @@ a {
   &.mindfulness {
     background: var(--background-mindfulness);
   }
-  &.mental-health {
-    background: var(--background-mental-health);
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 1;
+    bottom: 0; 
+
   }
 
-  .banner-content {
-    position: relative; /* Ensures it stays on top of the image */
-    z-index: 2; /* Ensure content overlays the image */
-  }
+
+    .banner-content {
+      justify-content: flex-start; /* Aligns content to the left */
+      padding-left: 5%; /* Adjusts left spacing */
+      position: relative; /* Ensures content stays on top of the image */
+      z-index: 2; /* Ensures content overlays the image */
+      text-align: left; /* Aligns text to the left */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Centers vertically */
+      align-items: flex-start; /* Aligns content to the left */
+      height: 100%; /* Ensures full height */
+      padding: 20px; /* Adds spacing from the edges */
+
   }
 
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+}
 
 .nav-page {
   padding: 2rem;
@@ -94,51 +89,18 @@ a {
   height: auto; /* Adjust height based on content */
   text-align: center;
 
-  h3{
+  h3 {
     margin-bottom: 2rem;
   }
-  .button-group{
+
+  .button-group {
     display: flex;
     justify-content: center; /* Center align */
     width: 100%;
-    bottom: 2rem;
     gap: 1rem;
   }
 }
 
-// app splash screen -------
-.app-splash {
-  position: fixed;
-  background: #fff;
-  color: #777;
-  display: flex;
-  left: 0;
-  top:0;
-  right: 0;
-  bottom: 0;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  .app-logo {
-    width: 180px;
-    display: block;
-    margin-bottom: 1em;
-  }
-}
-
-
-// helper classes ---------
-.calign {
-  text-align: center;
-}
-
-.large-text {
-  font-size: 1.6em;
-}
-
-.brand-color {
-  color: var(--brand-color);
-}
 
 // generic-entry ------------
 .generic-entry {
@@ -160,7 +122,6 @@ a {
 }
 
 // pages ----------------------
-
 
 // All pages 
 // fallback background colour = Peach from https://coolors.co/ ---------
@@ -596,7 +557,6 @@ sl-details::part(base) {
 //responsive banner ----------------
 @media (max-width: 767px) {
   .banner {
-    margin: 2rem;
     img {
       margin:0
     }
