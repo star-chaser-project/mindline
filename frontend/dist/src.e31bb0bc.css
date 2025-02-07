@@ -699,13 +699,15 @@ sl-details::part(base) {
 .banner .banner-content {
   position: relative; /* Ensures it stays on top of the image */
   z-index: 2; /* Ensure content overlays the image */
+  padding-top: 6rem; /* Adjust this to create space from the top */
 }
 .banner h1 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 0;
+  padding: 1rem;
 }
 .banner h2 {
-  font-size: 1rem;
+  font-size: 2rem;
   margin: 0;
 }
 
