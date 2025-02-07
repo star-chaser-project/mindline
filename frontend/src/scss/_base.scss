@@ -342,7 +342,7 @@ sl-details::part(base) {
 
 .profile-right {
   flex: 1;
-  background: url('../../static/images/login-background.svg') no-repeat center center;
+  background: url('../../static/images/login/login-background.svg') no-repeat center center;
   background-size: cover; /* Ensures the image stretches to cover the entire right side */
   display: flex;
   flex-direction: column;
