@@ -708,12 +708,6 @@ sl-details::part(base) {
   font-size: 1rem;
   margin: 0;
 }
-.banner .button-group {
-  display: flex;
-  justify-content: center; /* Centers the buttons horizontally */
-  gap: 1rem; /* Optional: Adds space between buttons */
-  margin: 2rem 0; /* Optional: Adjusts margin around the button group */
-}
 
 .nav-page {
   padding: 2rem;
@@ -732,7 +726,9 @@ sl-details::part(base) {
 }
 .nav-page .button-group {
   display: flex;
-  gap: 1rem; /* Add space between buttons */
+  justify-content: center; /* Centers the buttons horizontally */
+  gap: 1rem; /* Optional: Adds space between buttons */
+  margin: 2rem 0; /* Optional: Adjusts margin around the button group */
 }
 .nav-page sl-button::part(base) {
   width: 14rem;
@@ -786,25 +782,34 @@ sl-details::part(base) {
     margin: 0;
   }
 }
-.mental-health {
-  background: var(--background-mental-health);
-}
-.mental-health .banner {
+.mental-health .banner-content {
   background: url("/mental-health-bg-graphics.016614e7.svg") no-repeat center center;
   background-size: contain;
-  align-items: flex-start; /* Aligns text to the left */
-  padding-left: 25%; /* Adds left padding to move text slightly */
-  flex-direction: column;
 }
-.mental-health .banner img {
+.mental-health .banner-content img {
   position: relative;
   max-width: 100%;
 }
-.mental-health .banner h1 {
+.mental-health .banner-content h1 {
   font-size: 2.5rem;
   margin-right: 10rem;
   text-align: left;
   z-index: 2;
+}
+
+.mindfulness .banner-content {
+  background: url("/mindfulness-bg-graphics.79a1ec02.svg") no-repeat center center;
+  background-size: contain;
+}
+
+.resources .banner-content {
+  background: url("/resources-bg-graphics.e9b7dbb9.svg") no-repeat center center;
+  background-size: contain;
+}
+
+.about .banner-content {
+  background: url("/about-bg-graphics.8f312ed0.svg") no-repeat center center;
+  background-size: contain;
 }
 
 .input-group {

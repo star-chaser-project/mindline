@@ -43,12 +43,7 @@
     margin: 0;
   }
 
-  .button-group {
-    display: flex;
-    justify-content: center; /* Centers the buttons horizontally */
-    gap: 1rem; /* Optional: Adds space between buttons */
-    margin: 2rem 0; /* Optional: Adjusts margin around the button group */
-  }
+  
 }
 
 .nav-page {
@@ -64,12 +59,13 @@
     margin-bottom: 2rem;
   }
 
+  .button-group {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    gap: 1rem; /* Optional: Adds space between buttons */
+    margin: 2rem 0; /* Optional: Adjusts margin around the button group */
+  }
 
-.button-group {
-  display: flex;
-  gap: 1rem; /* Add space between buttons */
-
-}
 /* Base button style */
 sl-button::part(base) {
     width: 14rem;
@@ -119,6 +115,7 @@ sl-button:active::part(base) {
 }
 }
 //responsive banner ----------------
+
 @media (max-width: 767px) {
     .banner {
       img {
@@ -136,16 +133,17 @@ sl-button:active::part(base) {
     }
     
   }
-// Mental-health----------------------------------------------------------------------------------
-.mental-health {
-  background: var(--background-mental-health);
 
-  .banner {
+
+
+// Mental-health----------------------------------------------------------------------------------
+
+.mental-health {
+
+  .banner-content {
     background: url('../../static/images/mental-health/mental-health-bg-graphics.svg') no-repeat center center;
     background-size: contain;
-    align-items: flex-start; /* Aligns text to the left */
-    padding-left: 25%; /* Adds left padding to move text slightly */
-    flex-direction: column;
+   
 
     img {
       position: relative;
@@ -163,8 +161,31 @@ sl-button:active::part(base) {
     }
  }
 
+//// mindfulness---------------------------------------------------------------------------------
 
+.mindfulness {
+  .banner-content {
+    background: url('../../static/images/mindfulness/mindfulness-bg-graphics.svg') no-repeat center center;
+    background-size: contain;
+   
+    }
+ }
 
+// Resources----------------------------------------------------------------------------------
+.resources {
+  .banner-content {
+    background: url('../../static/images/resources/resources-bg-graphics.svg') no-repeat center center;
+    background-size: contain;
+   
+    }
+ }
 
-
+//about----------------------------------------------------------------------------------
   
+.about {
+  .banner-content {
+    background: url('../../static/images/about/about-bg-graphics.svg') no-repeat center center;
+    background-size: contain;
+   
+    }
+ }

@@ -21,7 +21,6 @@ class aboutUsView {
             html`<va-public-header></va-public-header>`
           } 
       <div class="page-content"> 
-        <!-- Banner Section -->
       <section class="banner about">
         <div class="banner-content"> 
           <h1>About Us</h1>
