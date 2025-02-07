@@ -35,10 +35,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
-  bookmarkArticle: {
+  bookmarkArticle: [{
      type: Schema.ObjectId, 
      ref: 'Article' 
-  }
+  }]
   
 }, { timestamps: true })
 

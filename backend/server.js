@@ -47,8 +47,8 @@ const articleRouter = require('./routes/article')
 app.use('/article', articleRouter)
 
 // order
-const orderRouter = require('./routes/bookmark')
-app.use('/order', orderRouter)
+const bookmarkRouter = require('./routes/bookmark')
+app.use('/bookmark', bookmarkRouter)
 
 // run app listen on port --------------------
 app.listen(port, () => {

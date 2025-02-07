@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const Utils = require('../utils')
+const User = require('../models/User')  // ✅ Missing import fixed
 const Article = require('../models/Article')
 
-// GET - get user's bookmarked articles
+// ✅ GET - Fetch user's bookmarked articles
 router.get('/', Utils.authenticateToken, async (req, res) => {
   try {
     const userId = req.user._id
@@ -12,45 +13,41 @@ router.get('/', Utils.authenticateToken, async (req, res) => {
       .populate('bookmarkArticle')
       .select('bookmarkArticle')
 
-    if (!user || !user.bookmarkArticle.length) {
-      return res.status(404).json({
-        message: "No bookmarked articles found"
-      })
+    if (!user) {
+      return res.status(404).json({ message: "User not found" })
     }
 
-    res.json(user.bookmarkArticle)
+    res.json(user.bookmarkArticle || []) // ✅ Always return 200 with an array
   } catch (err) {
     console.error(err)
-    res.status(500).json({
-      message: "Problem getting bookmarked articles"
-    })
+    res.status(500).json({ message: "Problem getting bookmarked articles" })
   }
 })
 
-// PUT - Update the favourite field of an order
-// Endpoint: /user/bookmarkArticle/:id
-router.put('/bookmark/:articleId', Utils.authenticateToken, async (req, res) => {
+// ✅ PUT - Add an article to bookmarks
+router.put('/:articleId', Utils.authenticateToken, async (req, res) => {
   try {
-    const userId = req.user._id
-    const articleId = req.params.articleId
-
+    const userId = req.user._id;
+    const articleId = req.params.articleId;
+    
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { $addToSet: { bookmarkArticle: articleId } },
+      { $addToSet: { bookmarkArticle: articleId } }, // This prevents duplicates
       { new: true }
-    ).populate('bookmarkArticle')
-
-
-    res.json(updatedUser)
+    ).populate('bookmarkArticle');
+    
+    res.json({
+      message: "Article bookmarked successfully",
+      bookmarks: updatedUser.bookmarkArticle
+    });
   } catch (err) {
-    console.error(err)
-    res.status(500).json({ message: "Problem bookmarking article"})
+    console.error(err);
+    res.status(500).json({ message: "Problem bookmarking article" });
   }
-})
+});
 
-
-// DELETE - remove an article from the bookmark list
-router.delete('/bookmark/:articleId', Utils.authenticateToken, async (req, res) => {
+// ✅ DELETE - Remove an article from bookmarks
+router.delete('/:articleId', Utils.authenticateToken, async (req, res) => {
   try {
     const userId = req.user._id
     const articleId = req.params.articleId
@@ -59,15 +56,16 @@ router.delete('/bookmark/:articleId', Utils.authenticateToken, async (req, res) 
       userId,
       { $pull: { bookmarkArticle: articleId } },
       { new: true }
-    ).populate('bookmarkArticle')   
+    ).populate('bookmarkArticle')
 
-    res.json(updatedUser)
+    res.json({
+      message: "Article removed from bookmarks",
+      bookmarks: updatedUser.bookmarkArticle
+    })
   } catch (err) {
     console.error(err)
-    res.status(500).json({ message: "Problem removing article from bookmark"})
+    res.status(500).json({ message: "Problem removing article from bookmarks" })
   }
 })
 
-
-// export
 module.exports = router

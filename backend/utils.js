@@ -25,25 +25,32 @@ class Utils {
         return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '7d'})
     }
 
-    authenticateToken(req, res, next){
-        const authHeader = req.headers['authorization']        
-        const token = authHeader && authHeader.split(' ')[1]
+    generateRefreshToken(user) {
+        // Refresh token valid for 30 days (adjust as needed)
+        return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '30d' });
+      }
 
+      authenticateToken(req, res, next) {
+        console.log("All request headers:", req.headers); // Debug log
+      
+        const authHeader = req.headers['authorization'];
+        console.log("Authorization header received:", authHeader); // Debug log
+      
+        const token = authHeader && authHeader.split(' ')[1];
+      
         if (!token) {
-            return res.status(401).json({ error: 'Token not found' })
+          return res.status(401).json({ error: 'Token not found' });
         }
         
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-
-            if(err) {
-                return res.status(403).json({
-                    error: "Invalid or expired token" 
-                })
-            }
-            req.user = user
-            next()
-        })
-    }
+          if (err) {
+            console.log("Token verification error:", err);
+            return res.status(403).json({ error: "Invalid or expired token" });
+          }
+          req.user = user;
+          next();
+        });
+      }
 
     uploadFile(file, uploadPath, callback){        
         // get file extension (.jpg, .png etc)
