@@ -13,6 +13,7 @@
   "dependencies": {
     "@polymer/lit-element": "^0.7.1",
     "@shoelace-style/shoelace": "^2.19.1",
+    "feather-icons": "^4.29.2",
     "gsap": "^3.6.0",
     "lit": "^3.2.1",
     "lit-html": "^1.4.1",

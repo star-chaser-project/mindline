@@ -3,6 +3,9 @@ const router = express.Router()
 const Utils = require('./../utils')
 const User = require('../models/User')
 const path = require('path')
+const mongoose = require('mongoose')
+
+
 
 //GET - get all users ----------------------------------------------
 // endpoint: /user 
@@ -17,58 +20,6 @@ router.get('/', (req, res) => {
       })
 })
 
-// PUT - add favouriteArticle --------------------------------------
-// endpoint = /user/addFavArticle
-router.put('/bookmarkArticle/', Utils.authenticateToken, (req, res) => {  
-  // validate check
-  if(!req.body.articleId){
-    return res.status(400).json({
-      message: "No article specified"
-    })
-  }
-  // add articleId to favouriteArticles field (array - push)
-  // push = method that can add an item to an array
-  User.updateOne({
-    _id: req.user._id
-  }, {
-    $push: {
-      bookmarkedArticles: req.body.articleId
-    }
-  })
-    .then((user) => {            
-      res.json({
-        message: "Article bookmarked"
-      })
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(500).json({
-        message: "Problem bookmarking article"
-      })
-    })
-})
-
-
-// GET - get single user -------------------------------------------------------
-// router.get("/:id", Utils.authenticateToken, (req, res) => {
-//   if (req.user._id != req.params.id) {
-//     return res.status(401).json({
-//       message: "Not authorised",
-//     });
-//   }
-
-//   User.findById(req.params.id)
-//     .then((user) => {
-//       res.json(user);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json({
-//         message: "Couldn't get user",
-//         error: err,
-//       });
-//     });
-// });
 
 
 // GET - get single user -------------------------------------------------------
@@ -165,5 +116,7 @@ router.post('/', (req, res) => {
     })
   })
 })
+
+
 
 module.exports = router

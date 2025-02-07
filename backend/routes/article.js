@@ -25,6 +25,21 @@ router.get('/', (req, res) => {
     })  
 })
 
+router.get("/:id", (req, res) => {
+  
+     Article.findById(req.params.id)
+       .then((article) => {
+         res.json(article);
+       })
+       .catch((err) => {
+         console.log(err);
+         res.status(500).json({
+           message: "Couldn't get article",
+           error: err,
+         });
+       });
+   });
+
 // POST - create new article --------------------------------------
 // endpoint - /article
 router.post('/', (req, res) => {

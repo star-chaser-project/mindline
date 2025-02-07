@@ -25,17 +25,20 @@ const articleSchema = new mongoose.Schema({
 
 //middleware
 articleSchema.pre('save', function(next){
-  console.log('document saved')
-  if(this.Title) {
-    this.Title = this.Title.toUpperCase();
-  }
-  next();
-  if(this.type) {
-    this.type = this.type.trim();
-  }
-  next();
-  if(this.Content) {
-    this.Content = this.Content.trim();
+  try {
+    // Standardize field names and cleanup
+    if(this.title) {
+      this.title = this.title.trim()
+    }
+    if(this.type) {
+      this.type = this.type.trim()
+    }
+    if(this.bodyContent) {
+      this.bodyContent = this.bodyContent.trim()
+    }
+    next()
+  } catch(err) {
+    next(err)
   }
 })
 
