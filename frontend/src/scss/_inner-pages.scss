@@ -1,0 +1,170 @@
+@use 'vars' as *;
+
+/// Inner pages
+.banner {
+    height: 70vh; 
+    position: relative; 
+    color: white;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+
+  &.resources {
+    background: var(--background-resources);
+  }
+  &.about {
+    background: var(--background-about);
+  }
+  &.mindfulness {
+    background: var(--background-mindfulness);
+  }
+  &.mental-health {
+    background: var(--background-mental-health);
+  }
+ 
+  img {
+    z-index: 1;
+    bottom: 0;
+  }
+
+  .banner-content {
+    position: relative; /* Ensures it stays on top of the image */
+    z-index: 2; /* Ensure content overlays the image */
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin: 0
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    gap: 1rem; /* Optional: Adds space between buttons */
+    margin: 2rem 0; /* Optional: Adjusts margin around the button group */
+  }
+}
+
+.nav-page {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; 
+  align-items: center; /* Center horizontally */
+  height: auto; /* Adjust height based on content */
+  text-align: center;
+
+  h3{
+    margin-bottom: 2rem;
+  }
+
+
+.button-group {
+  display: flex;
+  gap: 1rem; /* Add space between buttons */
+
+}
+/* Base button style */
+sl-button::part(base) {
+    width: 14rem;
+    height: 4rem;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* Smooth transition */
+    padding: 0.5rem 1rem; /* Optional: Adjust padding for better button size */
+    font-size: 1rem; /* Optional: Adjust font size */
+}
+
+/* Hover Effect */
+sl-button:hover::part(base) {
+    border: none; /* Remove border */ 
+    color: #333; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow intensifies */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Active Effect (when button is pressed) */
+sl-button:active::part(base) {
+    color: #fff;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Smaller shadow for pressed effect */
+    transform: scale(0.98); /* Slight shrink effect */
+
+}
+
+.meditation::part(base),
+.stress::part(base),
+.support::part(base) {
+    background-color: var(--web-color-lilch);
+    color: white;
+}
+
+.anxiety::part(base),
+.breathing::part(base),
+.services::part(base) {
+    background-color: var(--web-color-blue);
+    color: white;
+}
+
+.depression::part(base),
+.motivation::part(base),
+.guides::part(base) {
+    background-color: var(--web-color-green);
+    color: white;
+}
+}
+//responsive banner ----------------
+@media (max-width: 767px) {
+    .banner {
+      img {
+        margin:0
+      }
+      h1 {
+        font-size: 2rem;
+        margin: 0 0 10px;
+      }
+    
+      h2 {
+        font-size: 1rem;
+        margin: 0;
+      }
+    }
+    
+  }
+// Mental-health----------------------------------------------------------------------------------
+.mental-health {
+  background: var(--background-mental-health);
+
+  .banner {
+    background: url('../../static/images/mental-health/mental-health-bg-graphics.svg') no-repeat center center;
+    background-size: contain;
+    align-items: flex-start; /* Aligns text to the left */
+    padding-left: 25%; /* Adds left padding to move text slightly */
+    flex-direction: column;
+
+    img {
+      position: relative;
+      max-width: 100%;
+    }
+
+
+    
+      h1 {
+        font-size: 2.5rem; // Adjust size to be responsive 
+        margin-right: 10rem;
+        text-align: left;
+        z-index: 2; // Ensure it’s above any background elements
+      }
+    }
+ }
+
+
+
+
+
+  

@@ -1,0 +1,162 @@
+@use 'vars' as *;
+
+// Home page ----------------------------------------------------------------------------------
+.home-page {
+  background:var(--background-home);
+
+    h3{
+      color: #ffffff;
+    }
+    .button-group {
+      display: flex;
+      justify-content: center; /* Centers the buttons horizontally */
+      gap: 1rem; /* Optional: Adds space between buttons */
+      margin: 2rem 0; /* Optional: Adjusts margin around the button group */
+    }
+    
+    sl-button::part(base) {
+      color: var(--base-txt-color); /* Set text color */
+      background-color: #ffffff; /* Set background color */
+      border-radius: 12px; /* Adjust for rounded corners */
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+      padding: 0.5rem 1rem; /* Optional: Adjust padding for better button size */
+      font-size: 1rem; 
+      transition: background-color 0.3s ease, transform 0.2s; /* Optional: Add smooth transition */
+    }
+    
+    sl-button::part(base):hover {
+      background-color: #f2f2f2; /* Optional: Change color on hover */
+      transform: scale(1.05); /* Optional: Slightly increase size on hover */
+    }
+    
+    }
+  
+
+
+  ///------home-banner--------
+  .home-banner {
+    background: url('../../static/images/home/home-bg-graphics.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 5rem auto 0;
+    position: relative;
+    color: white;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center; 
+    overflow: hidden;
+  
+    img {
+      margin: -4rem 0 2rem 0;
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+      z-index: 1;
+    }
+  
+    h1 {
+      color: #6D83F2;
+      font-size: 2.5rem; // Adjust size to be responsive 
+      margin-right: 10rem;
+      text-align: left;
+      z-index: 2; // Ensure it’s above any background elements
+    }
+  
+    h2 {
+      color: #F2DE96;
+      font-size: 1.5rem; // Adjust size to be responsive /
+      padding: 5px;
+      margin: 0; // Remove external margins/
+      text-align: center; // Center-align h2 text /
+      z-index: 2; // Ensure it’s above any background elements /
+    }
+  
+    .blurb-container {
+        position: relative;
+        display: center;
+  }
+}
+
+  // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
+  
+  .cloud {
+    animation: float 5s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+     
+      transform: translateY(0px);
+    }
+    50% {
+    
+      transform: translateY(-20px);
+    }
+    100% {
+     
+      transform: translateY(0px);
+    }
+  }
+
+  // ---------Responsive design-----------------
+
+  @media (max-width: 768px) { // Tablets & smaller screens
+   
+  .home-banner {
+
+    background-size: contain; /* Shrinks the SVG to fit */
+    background-attachment: scroll; /* Fix scrolling issues on mobile */
+   
+    h1 {
+      font-size: 2.5rem;
+      margin-right: 7rem;
+    }
+   
+    img{
+     margin:-4rem 0 0rem 0;
+    }
+    
+      
+  }
+  }
+
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .home-page {
+      .home-banner {
+        h1 {
+          font-size: 2.5rem;
+          margin-right: 10rem;
+        }
+      }
+  
+      .button-group {
+        display: flex;
+        justify-content: center; /* Centers the buttons horizontally */
+        gap: 1rem; /* Optional: Adds space between buttons */
+        margin: 2rem 0; /* Optional: Adjusts margin around the button group */
+    
+  
+        sl-button::part(base) {
+          font-size: 1rem; /* Increase text size */
+          width: 100%; /* Full width */
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .home-page {
+    .home-banner {
+          background-size: 31rem;
+          background-position: top center;
+        h1 {
+          font-size: 1.8rem;
+          margin-right: 5rem;
+        }
+      }
+    }  
+  }

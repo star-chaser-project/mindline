@@ -21,22 +21,25 @@ class mentalHealthView {
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
       html`<va-public-header></va-public-header>`
     }
-      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo-mindline-no-wording-white-125.svg"></a>
       </va-app-header>      
       <div class="page-content"> 
         <section class="banner mental-health">
-        <img src="images/mental-health-hero-image.png" class="responsive-img" >    
-        <div class="banner-content">     
-          <h1>Mental Health</h1>
-          <h2>Because it Matters</p>
-        </div>
+          <div class="banner-content">  
+            <h1>Mental Health</h1>
+            <picture>
+            <img src="images/mental-health/mental-health-hero-768.webp" class="responsive-img" >    
+            </picture>  
+            <h2>Because it Matters</p>
+          </div>
         </section>
         <section class="nav-page">
         <h3>Ways to deal with...</h3>
           <div class="button-group">
-            <sl-button type="primary" size="large" @click=${() => gotoRoute('/mentalHealthExpanded')}>Stress</sl-button>
-            <sl-button type="primary" size="large" @click=${() => gotoRoute('/Anxiety')}>Anxiety</sl-button>
-            <sl-button type="primary" size="large" @click=${() => gotoRoute('/Depression')}>Depression</sl-button>
+
+            <sl-button class="stress" type="primary" size="large" @click=${() => gotoRoute('/mentalHealthExpanded')}>Stress</sl-button>
+            <sl-button class="anxiety" type="primary" size="large" @click=${() => gotoRoute('/Anxiety')}>Anxiety</sl-button>
+            <sl-button class="depression" type="primary" size="large" @click=${() => gotoRoute('/Depression')}>Depression</sl-button>
+
             </div>
        </section>
       
