@@ -26,7 +26,7 @@ class aboutUsView {
         <div class="banner-content"> 
           <h1>About Us</h1>
           <picture>
-            <img src="/images/about/about-group-hero-image-no-bg-768.webp" alt="Group of people">
+            <img src="/images/about/about-hero-image-768.webp" alt="Group of people">
           </picture> 
         </div>
       </section>

@@ -27,7 +27,7 @@ class mentalHealthView {
           <div class="banner-content">  
             <h1>Mental Health</h1>
             <picture>
-            <img src="images/mental-health/mental-health-hero-image-768.webp" class="responsive-img" >    
+            <img src="images/mental-health/mental-health-hero-768.webp" class="responsive-img" >    
             </picture>  
             <h2>Because it Matters</p>
           </div>
