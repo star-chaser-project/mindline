@@ -147,21 +147,7 @@ sl-button:active::part(base) {
   .banner-content {
     background: url('../../static/images/mental-health/mental-health-bg-graphics.svg') no-repeat center center;
     background-size: contain;
-   
 
-    img {
-      position: relative;
-      max-width: 100%;
-    }
-
-
-    
-      h1 {
-        font-size: 2.5rem; // Adjust size to be responsive 
-        margin-right: 10rem;
-        text-align: left;
-        z-index: 2; // Ensure it’s above any background elements
-      }
     }
  }
 
