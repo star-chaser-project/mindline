@@ -24,18 +24,20 @@ class mentalHealthView {
       </va-app-header>      
       <div class="page-content"> 
         <section class="banner mental-health">
-        <img src="images/mental-health/mental-health-hero-768.webp" class="responsive-img" >    
-        <div class="banner-content">     
-          <h1>Mental Health</h1>
-          <h2>Because it Matters</p>
-        </div>
+          <div class="banner-content">  
+            <h1>Mental Health</h1>
+            <picture>
+            <img src="images/mental-health/mental-health-hero-image-768.webp" class="responsive-img" >    
+            </picture>  
+            <h2>Because it Matters</p>
+          </div>
         </section>
         <section class="nav-page">
         <h3>Ways to deal with...</h3>
           <div class="button-group">
-            <sl-button type="primary" size="large" @click=${() => gotoRoute('/Stress')}>Stress</sl-button>
-            <sl-button type="primary" size="large" @click=${() => gotoRoute('/Anxiety')}>Anxiety</sl-button>
-            <sl-button type="primary" size="large" @click=${() => gotoRoute('/Depression')}>Depression</sl-button>
+            <sl-button class="stress" @click=${() => gotoRoute('/stress')}>Stress</sl-button>
+            <sl-button class="anxiety" @click=${() => gotoRoute('/anxiety')}>Anxiety</sl-button>
+            <sl-button class="depression" @click=${() => gotoRoute('/depression')}>Depression</sl-button>
             </div>
        </section>
       

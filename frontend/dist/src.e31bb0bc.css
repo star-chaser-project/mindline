@@ -17,7 +17,7 @@
   --web-color-yelow: #F3C728;
   --web-color-purple: #6587E3;
   --web-color-blue: #6587E3;
-  --web-color-lilac: #C992DD;
+  --web-color-lilch: #C992DD;
   --web-color-green: #8ED479;
   --app-header-height: 60px;
   --app-header-txt-color: #2F1E1F;
@@ -60,74 +60,6 @@ h3 {
 
 a {
   color: var(--link-color);
-}
-
-.banner {
-  padding: 270px;
-  position: relative;
-  color: white;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  overflow: hidden;
-}
-.banner img {
-  padding: 0px;
-  position: absolute;
-  max-width: 100%;
-  max-height: 100%;
-  z-index: 1;
-  bottom: 0px;
-}
-.banner .banner-content {
-  position: relative; /* Ensures it stays on top of the image */
-  z-index: 2; /* Ensure content overlays the image */
-}
-.banner h1 {
-  font-size: 3rem;
-}
-.banner h2 {
-  font-size: 1.5rem;
-  margin: 0;
-}
-.banner.resources {
-  background: var(--background-resources);
-}
-.banner.about {
-  background: var(--background-about);
-}
-.banner.mindfulness {
-  background: var(--background-mindfulness);
-}
-.banner.mental-health {
-  background: var(--background-mental-health);
-}
-.banner .banner-content {
-  position: relative; /* Ensures it stays on top of the image */
-  z-index: 2; /* Ensure content overlays the image */
-}
-
-.nav-page {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column; /* Stack content vertically */
-  justify-content: center; /* Center vertically within the container */
-  align-items: center; /* Center horizontally */
-  height: auto; /* Adjust height based on content */
-  text-align: center;
-}
-.nav-page h3 {
-  margin-bottom: 2rem;
-}
-.nav-page .button-group {
-  display: flex;
-  justify-content: center; /* Center align */
-  width: 100%;
-  bottom: 2rem;
-  gap: 1rem;
 }
 
 .app-splash {
@@ -306,8 +238,7 @@ sl-details::part(base) {
   display: flex;
   height: 100vh;
 }
-
-.profile-left {
+.profile-container .profile-left {
   flex: 1;
   background-color: var(--backround-left-log);
   color: white;
@@ -321,15 +252,14 @@ sl-details::part(base) {
   color: white;
   text-align: center;
 }
-.profile-left sl-avatar {
+.profile-container .profile-left sl-avatar {
   --size: 120px;
   margin-bottom: 1em;
 }
-.profile-left .edit-button {
+.profile-container .profile-left .edit-button {
   margin-top: 1em;
 }
-
-.profile-right {
+.profile-container .profile-right {
   flex: 1;
   background: url("/login-background.bccf9b27.svg") no-repeat center center;
   background-size: cover; /* Ensures the image stretches to cover the entire right side */
@@ -341,13 +271,12 @@ sl-details::part(base) {
   color: #fff;
   text-align: center;
 }
-.profile-right p {
+.profile-container .profile-right p {
   font-size: medium;
   font-weight: 400;
 }
-
-.profile-left,
-.profile-right {
+.profile-container .profile-left,
+.profile-container .profile-right {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -355,14 +284,12 @@ sl-details::part(base) {
   align-items: center;
   padding: 2em;
 }
-
-.edit-btn::part(base) {
+.profile-container .edit-btn::part(base) {
   background-color: #F4D35E;
   border-color: #F4D35E;
   color: #000000;
 }
-
-.edit-btn::part(base):hover {
+.profile-container .edit-btn::part(base):hover {
   background-color: #e5c654;
   border-color: #e5c654;
   color: #000000;
@@ -549,20 +476,6 @@ sl-details::part(base) {
   color: var(--web-color-green);
 }
 
-@media (max-width: 767px) {
-  .banner {
-    margin: 2rem;
-  }
-  .banner img {
-    margin: 0;
-  }
-  .banner h1 {
-    font-size: 3rem;
-  }
-  .banner h2 {
-    font-size: 2rem;
-  }
-}
 @media (max-width: 768px) {
   .orders-grid .order-card {
     flex-direction: column;
@@ -638,33 +551,37 @@ sl-details::part(base) {
 }
 .home-page {
   background: var(--background-home);
-  background-size: cover;
 }
 .home-page h3 {
   color: #ffffff;
-  text-align: left;
 }
 .home-page .button-group {
   display: flex;
-  justify-content: center; /* Center align */
-  width: 100%;
+  justify-content: center; /* Centers the buttons horizontally */
+  gap: 1rem; /* Optional: Adds space between buttons */
+  margin: 2rem 0; /* Optional: Adjusts margin around the button group */
 }
-.home-page .button-group sl-button::part(base) {
-  color: var(--base-txt-color);
-  background-color: #ffffff;
-  font-size: 1rem; /* Increase text size */
-  padding: 0 4rem; /* Make it larger */
-  width: 100%; /* Full width */
+.home-page sl-button::part(base) {
+  color: var(--base-txt-color); /* Set text color */
+  background-color: #ffffff; /* Set background color */
   border-radius: 12px; /* Adjust for rounded corners */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 0.5rem 1rem; /* Optional: Adjust padding for better button size */
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s; /* Optional: Add smooth transition */
 }
-.home-page .home-banner {
+.home-page sl-button::part(base):hover {
+  background-color: #f2f2f2; /* Optional: Change color on hover */
+  transform: scale(1.05); /* Optional: Slightly increase size on hover */
+}
+
+.home-banner {
   background: url("/home-bg-graphics.e19972cb.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  margin: 4rem auto 0;
+  margin: 5rem auto 0;
   position: relative;
   color: white;
   display: flex;
@@ -673,22 +590,21 @@ sl-details::part(base) {
   align-items: center;
   overflow: hidden;
 }
-.home-page .home-banner img {
-  margin: -5rem 0 2rem 0;
+.home-banner img {
+  margin: -4rem 0 2rem 0;
   position: relative;
   max-width: 100%;
   max-height: 100%;
   z-index: 1;
 }
-.home-page .home-banner h1 {
-  padding-left: 2rem;
+.home-banner h1 {
   color: #6D83F2;
   font-size: 2.5rem;
-  margin-right: 15rem;
+  margin-right: 10rem;
   text-align: left;
   z-index: 2;
 }
-.home-page .home-banner h2 {
+.home-banner h2 {
   color: #F2DE96;
   font-size: 1.5rem;
   padding: 5px;
@@ -696,13 +612,9 @@ sl-details::part(base) {
   text-align: center;
   z-index: 2;
 }
-.home-page .home-banner .blurb-container {
+.home-banner .blurb-container {
   position: relative;
   display: center;
-}
-.home-page .home-banner .blurb-container img {
-  width: 100%;
-  height: auto;
 }
 
 .cloud {
@@ -721,12 +633,16 @@ sl-details::part(base) {
   }
 }
 @media (max-width: 768px) {
+  .home-banner {
+    background-size: contain; /* Shrinks the SVG to fit */
+    background-attachment: scroll; /* Fix scrolling issues on mobile */
+  }
   .home-banner h1 {
     font-size: 2.5rem;
     margin-right: 7rem;
   }
   .home-banner img {
-    margin: -5rem 0 0rem 0;
+    margin: -4rem 0 0rem 0;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -736,36 +652,161 @@ sl-details::part(base) {
   }
   .home-page .button-group {
     display: flex;
-    justify-content: space-between;
-    margin: 2rem auto;
-    gap: 1rem;
-    width: 100%;
-    flex-wrap: nowrap;
+    justify-content: center; /* Centers the buttons horizontally */
+    gap: 1rem; /* Optional: Adds space between buttons */
+    margin: 2rem 0; /* Optional: Adjusts margin around the button group */
   }
   .home-page .button-group sl-button::part(base) {
     font-size: 1rem; /* Increase text size */
-    padding: 0 2rem; /* Make it larger */
     width: 100%; /* Full width */
   }
 }
-@media (max-width: 768px) {
-  .home-page .home-banner h1 {
-    font-size: 3rem;
-    margin: 2rem 13rem 0 1rem;
+@media (max-width: 480px) {
+  .home-page .home-banner {
+    background-size: 31rem;
+    background-position: top center;
   }
-  .home-page .home-banner img {
-    margin: -6rem 0 1rem 0;
+  .home-page .home-banner h1 {
+    font-size: 1.8rem;
+    margin-right: 5rem;
   }
 }
-@media (max-width: 420px) {
-  .home-page .home-banner h1 {
+.banner {
+  height: 70vh;
+  position: relative;
+  color: white;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.banner.resources {
+  background: var(--background-resources);
+}
+.banner.about {
+  background: var(--background-about);
+}
+.banner.mindfulness {
+  background: var(--background-mindfulness);
+}
+.banner.mental-health {
+  background: var(--background-mental-health);
+}
+.banner img {
+  z-index: 1;
+  bottom: 0;
+}
+.banner .banner-content {
+  position: relative; /* Ensures it stays on top of the image */
+  z-index: 2; /* Ensure content overlays the image */
+}
+.banner h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+.banner h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+.banner .button-group {
+  display: flex;
+  justify-content: center; /* Centers the buttons horizontally */
+  gap: 1rem; /* Optional: Adds space between buttons */
+  margin: 2rem 0; /* Optional: Adjusts margin around the button group */
+}
+
+.nav-page {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center;
+  align-items: center; /* Center horizontally */
+  height: auto; /* Adjust height based on content */
+  text-align: center;
+  /* Base button style */
+  /* Hover Effect */
+  /* Active Effect (when button is pressed) */
+}
+.nav-page h3 {
+  margin-bottom: 2rem;
+}
+.nav-page .button-group {
+  display: flex;
+  gap: 1rem; /* Add space between buttons */
+}
+.nav-page sl-button::part(base) {
+  width: 14rem;
+  height: 4rem;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Smooth transition */
+  padding: 0.5rem 1rem; /* Optional: Adjust padding for better button size */
+  font-size: 1rem; /* Optional: Adjust font size */
+}
+.nav-page sl-button:hover::part(base) {
+  border: none; /* Remove border */
+  color: #333;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow intensifies */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+.nav-page sl-button:active::part(base) {
+  color: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Smaller shadow for pressed effect */
+  transform: scale(0.98); /* Slight shrink effect */
+}
+.nav-page .meditation::part(base),
+.nav-page .stress::part(base),
+.nav-page .support::part(base) {
+  background-color: var(--web-color-lilch);
+  color: white;
+}
+.nav-page .anxiety::part(base),
+.nav-page .breathing::part(base),
+.nav-page .services::part(base) {
+  background-color: var(--web-color-blue);
+  color: white;
+}
+.nav-page .depression::part(base),
+.nav-page .motivation::part(base),
+.nav-page .guides::part(base) {
+  background-color: var(--web-color-green);
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .banner img {
+    margin: 0;
+  }
+  .banner h1 {
     font-size: 2rem;
-    margin: 2rem 9rem 0 1rem;
+    margin: 0 0 10px;
   }
-  .home-page .home-banner img {
-    margin: -3rem 0 1rem 0;
+  .banner h2 {
+    font-size: 1rem;
+    margin: 0;
   }
 }
+.mental-health {
+  background: var(--background-mental-health);
+}
+.mental-health .banner {
+  background: url("/mental-health-bg-graphics.016614e7.svg") no-repeat center center;
+  background-size: contain;
+  align-items: flex-start; /* Aligns text to the left */
+  padding-left: 25%; /* Adds left padding to move text slightly */
+  flex-direction: column;
+}
+.mental-health .banner img {
+  position: relative;
+  max-width: 100%;
+}
+.mental-health .banner h1 {
+  font-size: 2.5rem;
+  margin-right: 10rem;
+  text-align: left;
+  z-index: 2;
+}
+
 .input-group {
   margin-bottom: 0.5em;
 }
