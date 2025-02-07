@@ -24,7 +24,7 @@ class mentalHealthView {
       </va-app-header>      
       <div class="page-content"> 
         <section class="banner mental-health">
-        <img src="images/mental-health-hero-image.png" class="responsive-img" >    
+        <img src="images/mental-health/mental-health-hero-768.webp" class="responsive-img" >    
         <div class="banner-content">     
           <h1>Mental Health</h1>
           <h2>Because it Matters</p>
