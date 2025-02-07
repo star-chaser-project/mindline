@@ -1,6 +1,7 @@
 @use 'vars';
 @use 'base';
-@use '_home-page';
+@use 'home-page';
+@use 'inner-pages';
 @use 'forms';
 @use 'shoelace';
 @use 'toast';

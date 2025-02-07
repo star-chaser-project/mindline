@@ -23,11 +23,11 @@ class aboutUsView {
       <div class="page-content"> 
         <!-- Banner Section -->
       <section class="banner about">
-        <div class="bg-img responsive-img">
-          <img src="/images/about-group-hero-image-no-bg-1024.png" alt="Group of people">
-        </div>
-        <div class="banner-text">      
+        <div class="banner-content"> 
           <h1>About Us</h1>
+          <picture>
+            <img src="/images/about/about-group-hero-image-no-bg-768.webp" alt="Group of people">
+          </picture> 
         </div>
       </section>
       <section class="about-content">

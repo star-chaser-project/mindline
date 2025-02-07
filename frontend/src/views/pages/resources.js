@@ -20,18 +20,19 @@ class resourcesView {
            } 
       <div class="page-content"> 
       <section class="banner resources">
-        <img src="images/resources-hero-image-837.png" class="responsive-img" >    
-        <div class ="banner-text">      
+        <div class ="banner-content">  
           <h1>Resources</h1>
+          <picture>
+            <img src="images/resources/resources-hero-image-768.webp" class="responsive-img" >    
           <h2>Supporting You Every Step of the Way.</p>
         </div>
       </section>
       <section class="nav-page">
         <h3>Ways to deal with...</h3>
           <div class="button-group">
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Support')}>Support</sl-button>
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Services')}>Services</sl-button>
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Guides')}>Guides</sl-button>
+          <sl-button class="support" @click=${() => gotoRoute('/support')}>Support</sl-button>
+          <sl-button class="services" @click=${() => gotoRoute('/services')}>Services</sl-button>
+          <sl-button class="guides" @click=${() => gotoRoute('/guides')}>Guides</sl-button>
         </div>
       </section>
       </div>      

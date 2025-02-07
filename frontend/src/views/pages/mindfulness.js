@@ -19,20 +19,21 @@ class mindfulnessView {
             html`<va-public-header></va-public-header>`
           }       
       <div class="page-content">        
-        <section class="banner mindfulness">  
-        <img src="images/mindfulness-hero-image-837.png" class="responsive-img" >  
-          <div class="banner-content"> 
-            <h2 class="quote">Be Present</h2>
-            <h2 class="quote">Be Peaceful</h2>
-            <h2 class="quote">Be You</h2>
+        <section class="banner mindfulness"> 
+        <div class="banner-content"> 
+          <h1>Mindfulness</h1> 
+          <picture>
+            <img src="images/mindfulness/mindfulness-hero-image-768.webp" class="responsive-img" >   
+          </picture>
+          <h2 class="quote">Be Present</br> Be Peaceful</br> Be You</h2>
           </div>
         </section>
         <section class="nav-page">
         <h3>Ways to Practice...</h3>
           <div class="button-group">
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Meditation')}>Meditation</sl-button>
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/mindfulness')}>mindfulness</sl-button>
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/Meditation')}>Meditation</sl-button>
+          <sl-button class="meditation" @click=${() => gotoRoute('/meditation')}>Meditation</sl-button>
+          <sl-button class="breathing" @click=${() => gotoRoute('/breathing')}>Breathing</sl-button>
+          <sl-button class="motivation" @click=${() => gotoRoute('/motivation')}>Motivation</sl-button>
           </div>
        </section>
       </div>            
