@@ -23,13 +23,13 @@ class mindfulnessView {
         <section class="banner mindfulness"> 
         <div class="banner-content"> 
           <h1>Mindfulness</h1> 
+          <h2 class="quote">Be Present</br> Be Peaceful</br> Be You</h2>
           <picture>
               <source srcset="images/mindfulness/mindfulness-hero-image-360.webp" media="(max-width: 480px)">
               <source srcset="images/mindfulness/mindfulness-hero-image-768.webp" media="(max-width: 768px)">
               <source srcset="images/mindfulness/mindfulness-hero-image-1024.webp" media="(min-width: 769px)">
               <img id="heroImage" src="images/mindfulness/mindfulness-hero-1024.webp" alt="Mental Health banner image of a girl meditating">
             </picture>
-          <h2 class="quote">Be Present</br> Be Peaceful</br> Be You</h2>
           </div>
         </section>
         <section class="nav-page">
