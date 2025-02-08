@@ -123,12 +123,6 @@ a {
   padding: 0;
 }
 
-.page-centered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 sl-details::part(base) {
   display: block;
   border: none;
@@ -527,16 +521,21 @@ sl-details::part(base) {
     flex-direction: column; /* Stack buttons and heading vertically */
   }
 }
+/*
+// Medium devices (tablets, 768px and up)
 @media (min-width: 768px) and (max-width: 991px) {
   .responsive-image {
-    width: 75%;
+      width: 75%;
   }
 }
+
+// Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .responsive-image {
-    width: 50%;
+      width: 50%;
   }
 }
+  */
 @media (max-width: 767px) {
   .profile-left {
     flex-direction: column;
@@ -692,23 +691,18 @@ sl-details::part(base) {
 .banner.mental-health {
   background: var(--background-mental-health);
 }
-.banner img {
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 6rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+picture img {
   z-index: 1;
   bottom: 0;
-}
-.banner .banner-content {
-  position: relative; /* Ensures it stays on top of the image */
-  z-index: 2; /* Ensure content overlays the image */
-  padding-top: 6rem; /* Adjust this to create space from the top */
-}
-.banner h1 {
-  font-size: 3rem;
-  margin: 0;
-  padding: 1rem;
-}
-.banner h2 {
-  font-size: 2rem;
-  margin: 0;
 }
 
 .nav-page {
@@ -771,19 +765,10 @@ sl-details::part(base) {
   color: white;
 }
 
+/*
 @media (max-width: 767px) {
-  .banner img {
-    margin: 0;
-  }
-  .banner h1 {
-    font-size: 2rem;
-    margin: 0 0 10px;
-  }
-  .banner h2 {
-    font-size: 1rem;
-    margin: 0;
-  }
 }
+*/
 .mental-health .banner-content {
   background: url("/mental-health-bg-graphics.016614e7.svg") no-repeat center center;
   background-size: contain;
@@ -797,11 +782,12 @@ sl-details::part(base) {
 .resources .banner-content {
   background: url("/resources-bg-graphics.e9b7dbb9.svg") no-repeat center center;
   background-size: contain;
+  background-size: 17%;
 }
 
 .about .banner-content {
   background: url("/about-bg-graphics.8f312ed0.svg") no-repeat center center;
-  background-size: contain;
+  background-size: cover;
 }
 
 .input-group {

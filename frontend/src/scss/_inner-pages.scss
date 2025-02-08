@@ -23,32 +23,18 @@
     background: var(--background-mental-health);
   }
  
-  img {
-    z-index: 1;
-    bottom: 0;
-  }
-
-  .banner-content {
-    position: relative; /* Ensures it stays on top of the image */
-    z-index: 2; /* Ensure content overlays the image */
-    padding-top: 6rem; /* Adjust this to create space from the top */
-
-  }
-
-  h1 {
-    font-size: 3rem;
-    margin: 0;
-    padding: 1rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-    margin: 0;
-
-  }
-
-  
 }
+  .banner-content {
+    position: relative; // Ensures it stays on top of the image 
+    z-index: 2; // Ensure content overlays the image
+    padding-top: 6rem; // Adjust this to create space from the top 
+    background-position: center;
+    background-repeat: no-repeat;
+ }
+    picture img {
+      z-index: 1;
+      bottom: 0;
+    }
 
 .nav-page {
   padding: 2rem;
@@ -119,25 +105,10 @@ sl-button:active::part(base) {
 }
 }
 //responsive banner ----------------
-
+/*
 @media (max-width: 767px) {
-    .banner {
-      img {
-        margin:0
-      }
-      h1 {
-        font-size: 2rem;
-        margin: 0 0 10px;
-      }
-    
-      h2 {
-        font-size: 1rem;
-        margin: 0;
-      }
-    }
-    
-  }
-
+}
+*/
 
 
 // Mental-health----------------------------------------------------------------------------------
@@ -159,6 +130,7 @@ sl-button:active::part(base) {
     background-size: contain;
    
     }
+   
  }
 
 // Resources----------------------------------------------------------------------------------
@@ -166,16 +138,15 @@ sl-button:active::part(base) {
   .banner-content {
     background: url('../../static/images/resources/resources-bg-graphics.svg') no-repeat center center;
     background-size: contain;
-   
+    background-size: 17%;
     }
  }
 
 //about----------------------------------------------------------------------------------
-  
 .about {
   .banner-content {
     background: url('../../static/images/about/about-bg-graphics.svg') no-repeat center center;
-    background-size: contain;
-   
-    }
- }
+    background-size: cover;
+  }
+  
+}

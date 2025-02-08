@@ -14,19 +14,23 @@ class aboutUsView {
   // Image adapted from Canva – Accessed on December 18, 2024
   // Animation from Shoelace - access September 23, 2024. https://shoelace.style/components/animation
   // <sl-animation name="fadeIn" duration="2000" play iterations="1"></sl-animation>
-  render(){
+ render() {
     const template = html`
       ${Auth.isLoggedIn() ? 
-            html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
-            html`<va-public-header></va-public-header>`
-          } 
+        html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
+        html`<va-public-header></va-public-header>`
+      }
+
       <div class="page-content"> 
       <section class="banner about">
         <div class="banner-content"> 
           <h1>About Us</h1>
           <picture>
-            <img src="/images/about/about-hero-image-768.webp" alt="Group of people">
-          </picture> 
+              <source srcset="images/about/about-hero-image-360.webp" media="(max-width: 480px)">
+              <source srcset="images/about/about-hero-image-768.webp" media="(max-width: 768px)">
+              <source srcset="images/about/about-hero-image-1024.webp" media="(min-width: 769px)">
+              <img id="heroImage" src="images/about/about-hero-1024.webp" alt="about/about us banner image of a group of young people">
+            </picture>
         </div>
       </section>
       <section class="about-content">
