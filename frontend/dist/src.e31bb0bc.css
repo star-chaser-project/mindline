@@ -489,28 +489,49 @@ sl-details::part(base) {
   }
 }
 @media (max-width: 767px) {
-  body h1 {
-    font-size: 24px;
+  body {
+    font-size: 0.875rem; /* 14px (0.875 * 16px) */
   }
-  body p {
-    font-size: 14px;
+  h1 {
+    font-size: 1.5rem; /* 24px */
+  }
+  h2 {
+    font-size: 1.25rem; /* 20px */
+  }
+  p {
+    font-size: 0.875rem; /* 14px */
     color: #333;
+    line-height: 1.5;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    font-size: 1rem; /* 16px */
+  }
   h1 {
-    font-size: 28px;
+    font-size: 2rem; /* 32px */
+  }
+  h2 {
+    font-size: 1.5rem; /* 24px */
   }
   p {
-    font-size: 15px;
+    font-size: 1rem; /* 16px */
+    line-height: 1.6;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1025px) {
+  body {
+    font-size: 1.125rem; /* 18px */
+  }
   h1 {
-    font-size: 32px;
+    font-size: 2.5rem; /* 40px */
+  }
+  h2 {
+    font-size: 1.75rem; /* 28px */
   }
   p {
-    font-size: 16px;
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.8;
   }
 }
 @media (max-width: 767px) {
@@ -521,21 +542,16 @@ sl-details::part(base) {
     flex-direction: column; /* Stack buttons and heading vertically */
   }
 }
-/*
-// Medium devices (tablets, 768px and up)
 @media (min-width: 768px) and (max-width: 991px) {
   .responsive-image {
-      width: 75%;
+    width: 75%;
   }
 }
-
-// Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .responsive-image {
-      width: 50%;
+    width: 50%;
   }
 }
-  */
 @media (max-width: 767px) {
   .profile-left {
     flex-direction: column;
@@ -544,7 +560,7 @@ sl-details::part(base) {
     font-size: 1rem;
     color: white;
   }
-  .profile-right {
+  .profile-left .profile-right {
     display: none;
   }
 }
@@ -671,13 +687,17 @@ sl-details::part(base) {
   }
 }
 .banner {
-  height: 70vh;
-  position: relative;
+  min-height: 50vh;
+  padding-top: 3rem;
+  min-height: fit-content;
+  position: relative; /* This allows for positioning of inner elements */
   color: white;
   text-align: left;
   display: flex;
   justify-content: center;
+  align-items: center; /* Vertically centers content */
   overflow: hidden;
+  background-size: cover; /* Stretch the background image across the banner */
 }
 .banner.resources {
   background: var(--background-resources);
@@ -691,18 +711,32 @@ sl-details::part(base) {
 .banner.mental-health {
   background: var(--background-mental-health);
 }
-
-.banner-content {
+.banner .banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align the text and image properly */
+  gap: 1rem;
   position: relative;
-  z-index: 2;
-  padding-top: 6rem;
-  background-position: center;
-  background-repeat: no-repeat;
+  max-width: 100%;
+  padding: 0 2rem; /* Optional: Add some padding to ensure content doesn't touch the edges */
+  overflow: hidden; /* Prevent any overflow beyond the container */
 }
-
-picture img {
-  z-index: 1;
+.banner .banner-image {
+  width: 40%;
+  position: relative;
   bottom: 0;
+}
+.banner .banner-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensures image covers the area without stretching */
+}
+.banner .banner-text {
+  top: 3rem;
+  position: absolute;
+  z-index: 3;
+  box-sizing: border-box;
+  left: 3rem;
 }
 
 .nav-page {
@@ -765,13 +799,11 @@ picture img {
   color: white;
 }
 
-/*
-@media (max-width: 767px) {
-}
-*/
 .mental-health .banner-content {
+  padding: 0 7rem 0rem 18rem;
   background: url("/mental-health-bg-graphics.016614e7.svg") no-repeat center center;
-  background-size: contain;
+  background-size: 100% 100%;
+  background-position: center center;
 }
 
 .mindfulness .banner-content {
@@ -781,7 +813,6 @@ picture img {
 
 .resources .banner-content {
   background: url("/resources-bg-graphics.e9b7dbb9.svg") no-repeat center center;
-  background-size: contain;
   background-size: 17%;
 }
 
