@@ -2,13 +2,17 @@
 
 /// Inner pages
 .banner {
-    height: 70vh; 
-    position: relative; 
-    color: white;
-    text-align: left;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
+  min-height: 50vh;
+  padding-top: 3rem;
+  min-height: fit-content;
+  position: relative; /* This allows for positioning of inner elements */
+  color: white;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically centers content */
+  overflow: hidden;
+  background-size: cover; /* Stretch the background image across the banner */
 
   &.resources {
     background: var(--background-resources);
@@ -22,19 +26,37 @@
   &.mental-health {
     background: var(--background-mental-health);
   }
- 
-}
   .banner-content {
-    position: relative; // Ensures it stays on top of the image 
-    z-index: 2; // Ensure content overlays the image
-    padding-top: 6rem; // Adjust this to create space from the top 
-    background-position: center;
-    background-repeat: no-repeat;
- }
-    picture img {
-      z-index: 1;
-      bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align the text and image properly */
+    gap: 1rem;
+    position: relative;
+    max-width: 100%;
+    padding: 0 2rem; /* Optional: Add some padding to ensure content doesn't touch the edges */
+    overflow: hidden; /* Prevent any overflow beyond the container */
+  }
+ 
+  .banner-image {
+    width: 40%; 
+    position: relative; 
+    bottom: 0; 
+    
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover; /* Ensures image covers the area without stretching */
     }
+  }
+  .banner-text {
+    top: 3rem;
+    position: absolute;
+    z-index: 3;
+    box-sizing: border-box;
+    left: 3rem;
+  }
+
+}
 
 .nav-page {
   padding: 2rem;
@@ -105,23 +127,19 @@ sl-button:active::part(base) {
 }
 }
 //responsive banner ----------------
-/*
-@media (max-width: 767px) {
-}
-*/
-
-
-// Mental-health----------------------------------------------------------------------------------
-
+// Mental-health ----------------------------------------------------------------------------------
 .mental-health {
-
   .banner-content {
+    padding: 0 7rem 0rem 18rem;        
     background: url('../../static/images/mental-health/mental-health-bg-graphics.svg') no-repeat center center;
-    background-size: contain;
-
+    background-size: 100% 100%;
+    background-position: center center;
+  }
+  
     }
- }
 
+
+ 
 //// mindfulness---------------------------------------------------------------------------------
 
 .mindfulness {
@@ -137,7 +155,6 @@ sl-button:active::part(base) {
 .resources {
   .banner-content {
     background: url('../../static/images/resources/resources-bg-graphics.svg') no-repeat center center;
-    background-size: contain;
     background-size: 17%;
     }
  }

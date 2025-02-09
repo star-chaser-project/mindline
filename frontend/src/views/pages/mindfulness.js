@@ -22,8 +22,10 @@ class mindfulnessView {
       <div class="page-content page-centered">        
         <section class="banner mindfulness"> 
         <div class="banner-content"> 
+         <div class="banner-text"> 
           <h1>Mindfulness</h1> 
           <h2 class="quote">Be Present</br> Be Peaceful</br> Be You</h2>
+          </div>
           <picture>
               <source srcset="images/mindfulness/mindfulness-hero-image-360.webp" media="(max-width: 480px)">
               <source srcset="images/mindfulness/mindfulness-hero-image-768.webp" media="(max-width: 768px)">

@@ -21,9 +21,11 @@ class mentalHealthView {
       
       <div class="page-content page-centered"> 
         <section class="banner mental-health">
-          <div class="banner-content">  
+          <div class="banner-content"> 
+          <div class="banner-text"> 
             <h1>Mental Health</h1>
             <h2>Because it Matters</h2>
+            </div>
            <picture>
             <source srcset="images/mental-health/mental-health-hero-360.webp" media="(max-width: 480px)">
             <source srcset="images/mental-health/mental-health-hero-768.webp" media="(max-width: 768px)">
