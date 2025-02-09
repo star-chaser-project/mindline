@@ -125,13 +125,14 @@ sl-button:active::part(base) {
  }
 
 // Resources----------------------------------------------------------------------------------
-.resources {
-  .banner-content {
-    background: url('../../static/images/resources/resources-bg-graphics.svg') no-repeat center center;
-    background-size: 17%;
-    background-position-y: 13rem;
-}
+
+  .resources {
+    .banner-content {
+      background: url('../../static/images/resources/resources-bg-graphics.svg') no-repeat center top; // Center the images
+      background-size: 14%;
+      background-position: 65% 40%;
   }
+    }
 
 
 //about----------------------------------------------------------------------------------
@@ -181,17 +182,100 @@ sl-button:active::part(base) {
   }
 
 }
-@media(max-width: 767px) {
+
+
+// Responsive resources banner
+
+
+@media (max-width: 930px) and (min-width: 768px) {
   .resources {
     .banner-content {
-      background-position-y: 13rem;
-      h1{
-        font-size: 1.8rem;
+      background-size: 16%;  // Slightly increase background size
+      background-position: 60% 38%; // Adjust position to align properly
+      .banner-text {
+        padding: 0 0 0 2rem;
       }
-      h2 {
-        font-size: 1.2rem;
-          text-align: left;
+      h1{
+        font-size: 1.5rem;
+      }
+      h2{
+        font-size: 1rem;
+      }
+      picture {
+        width: 100%; // Ensures image fills container properly
+        display: flex;
+        justify-content: center;
+      }
+  
+      img {
+        width: 80%; // Prevents image from being too small
+        height: auto; // Maintains aspect ratio
       }
     }
   }
 }
+
+@media (max-width: 768px) and (min-width: 500px) {
+  .resources {
+    .banner-content {
+      background-size: 14%; // Size the background image appropriately
+      background-position: 61% 41%; // Adjust background position for alignment
+      padding-bottom: 0; // Ensure no extra padding at the bottom
+    }
+    
+    picture {
+      width: 100%; // Ensure image container is full width
+      display: flex;
+      justify-content: center; // Center image horizontally
+      margin: 0 auto; // Ensures picture has no extra margin
+    }
+
+    img {
+      width: 70%;      height: auto; // Maintain aspect ratio
+      object-fit: contain; // Keep image contained without stretching
+      max-width: 100%; // Prevent overflow
+      display: block; // Make sure the image behaves as a block element
+      margin: 0 auto; // Center image horizontally
+    }
+
+    
+    h1 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem; // Optional: Adds space below h1
+    }
+    
+    h2 {
+      font-size: 0.8rem;
+      margin-bottom: 2rem; // Optional: Adds space below h2
+    }
+
+    .banner-text {
+      padding: 0 0 0 2rem;    }
+  }
+}
+
+
+@media (max-width: 500px) {
+  .resources {
+    .banner-content {
+      background-size: 13%;
+      background-position: 67% 54%;
+    }
+    .banner-text {
+      text-align: left;
+      align-items: center;
+      padding: 0 0 0 2rem;
+    }
+  }
+  picture {
+    width: 100%; // Ensures image fills the width properly
+    display: flex;
+    justify-content: center;
+  }
+  img {
+    width: 50%;
+    height: auto;
+}
+  }
+
+
