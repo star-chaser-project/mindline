@@ -687,17 +687,13 @@ sl-details::part(base) {
   }
 }
 .banner {
-  min-height: 50vh;
-  padding-top: 3rem;
-  min-height: fit-content;
-  position: relative; /* This allows for positioning of inner elements */
+  height: auto;
+  position: relative;
   color: white;
   text-align: left;
   display: flex;
   justify-content: center;
-  align-items: center; /* Vertically centers content */
   overflow: hidden;
-  background-size: cover; /* Stretch the background image across the banner */
 }
 .banner.resources {
   background: var(--background-resources);
@@ -711,32 +707,18 @@ sl-details::part(base) {
 .banner.mental-health {
   background: var(--background-mental-health);
 }
-.banner .banner-content {
+
+.banner-content {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start; /* Align the text and image properly */
-  gap: 1rem;
-  position: relative;
-  max-width: 100%;
-  padding: 0 2rem; /* Optional: Add some padding to ensure content doesn't touch the edges */
-  overflow: hidden; /* Prevent any overflow beyond the container */
+  z-index: 2;
+  padding-top: 6rem;
 }
-.banner .banner-image {
-  width: 40%;
-  position: relative;
+
+picture img {
+  z-index: 1;
   bottom: 0;
-}
-.banner .banner-image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Ensures image covers the area without stretching */
-}
-.banner .banner-text {
-  top: 3rem;
-  position: absolute;
-  z-index: 3;
-  box-sizing: border-box;
-  left: 3rem;
 }
 
 .nav-page {
@@ -800,9 +782,11 @@ sl-details::part(base) {
 }
 
 .mental-health .banner-content {
-  padding: 0 7rem 0rem 18rem;
-  background: url("/mental-health-bg-graphics.016614e7.svg") no-repeat center center;
-  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/mental-health-bg-graphics.016614e7.svg") no-repeat center center !important;
+  background-size: cover;
   background-position: center center;
 }
 
@@ -813,6 +797,7 @@ sl-details::part(base) {
 
 .resources .banner-content {
   background: url("/resources-bg-graphics.e9b7dbb9.svg") no-repeat center center;
+  background-size: contain;
   background-size: 17%;
 }
 
@@ -821,6 +806,35 @@ sl-details::part(base) {
   background-size: cover;
 }
 
+@media (max-width: 400px) {
+  .banner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 4rem;
+    background-size: cover;
+  }
+  .banner-text {
+    position: relative;
+    max-width: 100%;
+    text-align: center;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+  }
+  picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
 .input-group {
   margin-bottom: 0.5em;
 }
