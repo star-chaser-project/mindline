@@ -791,9 +791,9 @@ picture img {
 }
 
 .resources .banner-content {
-  background: url("/resources-bg-graphics.e9b7dbb9.svg") no-repeat center center;
-  background-size: 17%;
-  background-position-y: 13rem;
+  background: url("/resources-bg-graphics.e9b7dbb9.svg") no-repeat center top;
+  background-size: 14%;
+  background-position: 65% 40%;
 }
 
 .about .grphics {
@@ -832,16 +832,80 @@ picture img {
     height: auto;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 930px) and (min-width: 768px) {
   .resources .banner-content {
-    background-position-y: 13rem;
+    background-size: 16%;
+    background-position: 60% 38%;
+  }
+  .resources .banner-content .banner-text {
+    padding: 0 0 0 2rem;
   }
   .resources .banner-content h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   .resources .banner-content h2 {
+    font-size: 1rem;
+  }
+  .resources .banner-content picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .resources .banner-content img {
+    width: 80%;
+    height: auto;
+  }
+}
+@media (max-width: 768px) and (min-width: 500px) {
+  .resources .banner-content {
+    background-size: 14%;
+    background-position: 61% 41%;
+    padding-bottom: 0;
+  }
+  .resources picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .resources img {
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+  .resources h1 {
     font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .resources h2 {
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  .resources .banner-text {
+    padding: 0 0 0 2rem;
+  }
+}
+@media (max-width: 500px) {
+  .resources .banner-content {
+    background-size: 13%;
+    background-position: 67% 54%;
+  }
+  .resources .banner-text {
     text-align: left;
+    align-items: center;
+    padding: 0 0 0 2rem;
+  }
+  picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  img {
+    width: 50%;
+    height: auto;
   }
 }
 .input-group {
