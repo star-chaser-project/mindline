@@ -21,20 +21,21 @@ class mentalHealthView {
       
       <div class="page-content page-centered"> 
         <section class="banner mental-health">
+        <div class="grphics">
           <div class="banner-content"> 
-          <div class="banner-text"> 
-            <h1>Mental Health</h1>
-            <h2>Because it Matters</h2>
-            </div>
+            <div class="banner-text"> 
+              <h1>Mental Health</h1>
+              <h2>Because it Matters</h2>
+              </div>
            <picture>
-            <source srcset="images/mental-health/mental-health-hero-360.webp" media="(max-width: 480px)">
-            <source srcset="images/mental-health/mental-health-hero-768.webp" media="(max-width: 768px)">
-            <source srcset="images/mental-health/mental-health-hero-1024.webp" media="(min-width: 769px)">
-            <img id="heroImage" src="images/mental-health/mental-health-hero-1024.webp" alt="Mental Health banner image of a boy meditating">
-          </picture>  
+              <source srcset="images/mental-health/mental-health-hero-360.webp" media="(max-width: 480px)">
+              <source srcset="images/mental-health/mental-health-hero-768.webp" media="(max-width: 768px)">
+              <source srcset="images/mental-health/mental-health-hero-1024.webp" media="(min-width: 769px)">
+              <img id="heroImage" src="images/mental-health/mental-health-hero-1024.webp" alt="Mental Health banner image of a boy meditating">
+            </picture>  
           </div>
         </section>
-        
+  
         <section class="nav-page">
           <h3>Ways to deal with...</h3>
           <div class="button-group">

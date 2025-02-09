@@ -23,14 +23,16 @@ class aboutUsView {
 
       <div class="page-content"> 
       <section class="banner about">
-        <div class="banner-content"> 
-          <h1>About Us</h1>
-          <picture>
-              <source srcset="images/about/about-hero-image-360.webp" media="(max-width: 480px)">
-              <source srcset="images/about/about-hero-image-768.webp" media="(max-width: 768px)">
-              <source srcset="images/about/about-hero-image-1024.webp" media="(min-width: 769px)">
-              <img id="heroImage" src="images/about/about-hero-1024.webp" alt="about/about us banner image of a group of young people">
-            </picture>
+      <div class="grphics">
+          <div class="banner-content"> 
+            <h1>About Us</h1>
+            <picture>
+                <source srcset="images/about/about-hero-image-360.webp" media="(max-width: 480px)">
+                <source srcset="images/about/about-hero-image-768.webp" media="(max-width: 768px)">
+                <source srcset="images/about/about-hero-image-1024.webp" media="(min-width: 769px)">
+                <img id="heroImage" src="images/about/about-hero-1024.webp" alt="about/about us banner image of a group of young people">
+              </picture>
+          </div>
         </div>
       </section>
       <section class="about-content">
