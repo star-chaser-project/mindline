@@ -27,7 +27,7 @@
   .banner-content {
     display: flex;
     justify-content: center;
-    align-items: center;
+   // align-items: center;
     z-index: 2; // Ensure content overlays the image
     padding-top: 6rem; // Adjust this to create space from the top 
    
@@ -54,7 +54,6 @@
     display: flex;
     justify-content: center; /* Centers the buttons horizontally */
     gap: 1rem; /* Optional: Adds space between buttons */
-    margin: 2rem 0; /* Optional: Adjusts margin around the button group */
   }
 
 /* Base button style */
@@ -107,15 +106,11 @@ sl-button:active::part(base) {
 }
 
 // Mental-health----------------------------------------------------------------------------------
-
-.mental-health {
-  .banner-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: url('../../static/images/mental-health/mental-health-bg-graphics.svg') no-repeat center center !important;
-  background-size: cover ;
-  background-position: center center 
+.mental-health{
+.grphics {
+  background: url('../../static/images/mental-health/mental-health-bg-graphics.svg') no-repeat center center;
+  background-size: 100%;
+  width: 90%;
 }
 }
 
@@ -127,23 +122,25 @@ sl-button:active::part(base) {
     background-size: contain;
    
     }
-   
  }
 
 // Resources----------------------------------------------------------------------------------
 .resources {
   .banner-content {
     background: url('../../static/images/resources/resources-bg-graphics.svg') no-repeat center center;
-    background-size: contain;
     background-size: 17%;
-    }
- }
+    background-position-y: 13rem;
+}
+  }
+
 
 //about----------------------------------------------------------------------------------
-.about {
-  .banner-content {
+.about{
+.grphics {
     background: url('../../static/images/about/about-bg-graphics.svg') no-repeat center center;
-    background-size: cover;
+    background-size: 100%;
+    width: 100%;
+    margin-top: 3rem;
   }
   
 }
@@ -177,9 +174,24 @@ sl-button:active::part(base) {
     display: flex;
     justify-content: center;
   }
+  
+    img {
+      width: 70%;
+      height: auto;
+  }
 
-  img {
-    width: 100%;
-    height: auto;
+}
+@media(max-width: 767px) {
+  .resources {
+    .banner-content {
+      background-position-y: 13rem;
+      h1{
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+          text-align: left;
+      }
+    }
   }
 }
