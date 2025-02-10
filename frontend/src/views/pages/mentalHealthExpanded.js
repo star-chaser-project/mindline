@@ -33,19 +33,33 @@ async fetchArticle(id) {
   async init(){
     document.title = 'Mental Health Expanded'    
     this.articleIds = {
-      // these are the articles for the first tab group "stress" //
-      why: '677dcb34a6cdde9083351d76',
-      deal: '677dcc1c4aea9c354dbd3103',
-      signs: '677e60b05c759160209d1111',
-      practices: '679af473ccbfff59ce1a142e',
-      triggers: '679af4330b0bab1805167cae', 
-      seek: '679af494ccbfff59ce1a1430',
-      questions: '679af4b9ccbfff59ce1a1432'
+      // Stress - articles for the first tab group "stress" //
+      why: '679dc4c5640ec34e3c22a28b', // 679dc4c5640ec34e3c22a28b Why Mental Health Matters
+      deal: '679dc7cc640ec34e3c22a28d', // 679dc7cc640ec34e3c22a28d Ways to Deal with Stress
+      signs: '679dc8c8640ec34e3c22a28e', // 679dc8c8640ec34e3c22a28e Signs & Symptoms of Stress
+      practices: '679dc9da640ec34e3c22a290', // 679dc9da640ec34e3c22a290 Daily Practices for Stress
+      triggers: '679dc964640ec34e3c22a28f', // 679dc964640ec34e3c22a28f Common Triggers of Stress
+      seek: '679dcac3640ec34e3c22a291', // 679dcac3640ec34e3c22a291 When to Seek Help for Stress
+      questions: '679dce00640ec34e3c22a292', // 679dce00640ec34e3c22a292 Common Questions About Stress
 
-      // these are the articles for the second tab group "anxiety" //
+      // Anxiety - articles for the second tab group "anxiety" //
+      why_anxiety: '67a9aadc1fbc4cadae86e685', // 67a9aadc1fbc4cadae86e685 Why Anxiety Matters
+      deal_anxiety: '679dce85640ec34e3c22a293', // 679dce85640ec34e3c22a293 Ways to Deal with Feeling Anxious
+      signs_anxiety: '679dcf0f640ec34e3c22a294', // 679dcf0f640ec34e3c22a294 Signs & Symptoms of Anxiety
+      practices_anxiety: '679dcfe7640ec34e3c22a296', // 679dcfe7640ec34e3c22a296 Daily Practices for Anxiety
+      triggers_anxiety: '679dcf93640ec34e3c22a295', // 679dcf93640ec34e3c22a295 Common Triggers of Anxiety
+      seek_anxiety: '679dd040640ec34e3c22a297', // 679dd040640ec34e3c22a297 When to Seek Help for Anxiety
+      questions_anxiety: '679dd099640ec34e3c22a298', // 679dd099640ec34e3c22a298 Common Questions About Anxiety
 
+      // Depression - articles fr the third tab group "Depression" //
+      why_depression: '679dd307640ec34e3c22a299', // 679dd307640ec34e3c22a299 Why Depression Matters
+      deal_depression: '679dd573640ec34e3c22a29a', // 679dd573640ec34e3c22a29a Ways to Deal with Feeling Depressed
+      signs_depression: '679dd6ae640ec34e3c22a29c', // 679dd6ae640ec34e3c22a29c Signs & Symptoms of Depression
+      practices_depression: '679dd719640ec34e3c22a29d', // 679dd6ae640ec34e3c22a29c Daily Practices to help with Depression
+      triggers_depression: '679dd653640ec34e3c22a29b', // 679dd653640ec34e3c22a29b Common Triggers of Depression 
+      seek_depression: '679dd80d640ec34e3c22a29e', // 679dd80d640ec34e3c22a29e When to Seek Help about Depression
+      questions_depression: '679dd864640ec34e3c22a29f' // 679dd864640ec34e3c22a29f Common Questions About Depression
 
-      // these are te articles fr the thrid tab group "Depression" //
     } 
     
     try {
@@ -154,12 +168,13 @@ async fetchArticle(id) {
     const template = html`
    
 
+    
+
     ${Auth.isLoggedIn() ? 
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
       html`<va-public-header></va-public-header>`
     }
       <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png"></a>      
-      
       <div class="page-content"> 
         <section class="banner mental-health-expanded">
         
@@ -177,8 +192,8 @@ async fetchArticle(id) {
        
                 <div class="stress">
                 
-                  <div class="why" @click=${this.openDialog}>
-                    <img src="/images/why-box.png" class="why-img">
+                  <div class="why why-stress" @click=${this.openDialog}>
+                    <img src="/images/mental-health/stress/stress-why-mental-health-matters-360.webp" class="why-img">
                     <p>${this.articles.get('why')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
                     <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
@@ -193,7 +208,7 @@ async fetchArticle(id) {
                     </sl-dialog>
                   </div>
 
-                  <div class="deal" @click=${this.openDialog}>
+                  <div class="deal deal-stress" @click=${this.openDialog}>
                     <img src="/images/stress-box.png" class="stress-img">
                     <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-full.svg" class="bookmark">
@@ -203,7 +218,7 @@ async fetchArticle(id) {
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="signs" @click=${this.openDialog}>
+                  <div class="signs signs-stress" @click=${this.openDialog}>
                     <img src="/images/signs-box.png" class="signs-img">
                     <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -220,7 +235,7 @@ async fetchArticle(id) {
                   </div>
                 
                 
-                  <div class="triggers" @click=${this.openDialog}>
+                  <div class="triggers triggers-stress" @click=${this.openDialog}>
                     <img src="/images/triggers-box.png" class="triggers-img">
                     <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -230,7 +245,7 @@ async fetchArticle(id) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="practices" @click=${this.openDialog}>
+                  <div class="practices practices-stress" @click=${this.openDialog}>
                     <img src="/images/practices-box.png" class="practices-img">
                       <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -240,7 +255,7 @@ async fetchArticle(id) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
-                  <div class="seek" @click=${this.openDialog}>
+                  <div class="seek seek-stress" @click=${this.openDialog}>
                   <img src="/images/seek-box.png" class="seek-img">
                  <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -265,78 +280,78 @@ async fetchArticle(id) {
 
               </sl-tab-panel>
 
-               <!-- this is the second tab content of the menal health page -->
+               <!-- this is the second tab content of the mental health page -->
               <sl-tab-panel name="anxiety">
                 <div class="stress">
                 
-                  <div class="why" @click=${this.openDialog}>
+                  <div class="why why-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="why-img">
-                    <p>${this.articles.get('why')?.title || 'Loading...'}</p>
+                    <p>${this.articles.get('why_anxiety')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                      ${this.articles.get('why')?.bodyContent || 'Loading content...'}
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('why_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                      ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
+                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark.</sl-button>
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
 
-                  <div class="deal" @click=${this.openDialog}>
+                  <div class="deal deal-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="stress-img">
-                    <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
+                    <p>${this.articles.get('deal_anxiety')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-full.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('deal')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('deal_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('deal_anxiety')?.bodyContent || 'Loading content...'}
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="signs" @click=${this.openDialog}>
+                  <div class="signs signs-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="signs-img">
-                    <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
+                    <p>${this.articles.get('signs_anxiety')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('signs')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('signs')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('signs_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('signs_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                 
-                  <div class="triggers" @click=${this.openDialog}>
+                  <div class="triggers triggers-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="triggers-img">
-                    <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
+                    <p>${this.articles.get('triggers_anxiety')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('triggers')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('triggers')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('triggers_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('triggers_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="practices" @click=${this.openDialog}>
+                  <div class="practices practices-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="practices-img">
-                      <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
+                      <p>${this.articles.get('practices_anxiety')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('practices')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('practices_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('practices_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
-                  <div class="seek" @click=${this.openDialog}>
+                  <div class="seek seek-anxiety" @click=${this.openDialog}>
                   <img src="/images/" class="seek-img">
-                 <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
+                 <p>${this.articles.get('seek_anxiety')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('seek_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('see_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="questions" @click=${this.openDialog}>
+                  <div class="questions questions-anxiety" @click=${this.openDialog}>
                   <img src="/images/" class="questions-img">
-                      <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
+                      <p>${this.articles.get('questions_anxiety')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('questions')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('questions_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('questions_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
@@ -349,10 +364,10 @@ async fetchArticle(id) {
                 
                   <div class="why" @click=${this.openDialog}>
                     <img src="/images/why-box.png" class="why-img">
-                    <p>${this.articles.get('why')?.title || 'Loading...'}</p>
+                    <p>${this.articles.get('why_depression')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                      ${this.articles.get('why')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('why_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                      ${this.articles.get('why_depression')?.bodyContent || 'Loading content...'}
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
@@ -360,20 +375,20 @@ async fetchArticle(id) {
 
                   <div class="deal" @click=${this.openDialog}>
                     <img src="/images/stress-box.png" class="stress-img">
-                    <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
+                    <p>${this.articles.get('deal_depression')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-full.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('deal')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('deal_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('deal_depression')?.bodyContent || 'Loading content...'}
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="signs" @click=${this.openDialog}>
                     <img src="/images/signs-box.png" class="signs-img">
-                    <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
+                    <p>${this.articles.get('signs_depression')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('signs')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('signs')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('signs_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('signs_depression')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
@@ -381,40 +396,40 @@ async fetchArticle(id) {
                 
                   <div class="triggers" @click=${this.openDialog}>
                     <img src="/images/triggers-box.png" class="triggers-img">
-                    <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
+                    <p>${this.articles.get('triggers_depression')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('triggers')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('triggers')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('triggers_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('triggers_depression')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="practices" @click=${this.openDialog}>
                     <img src="/images/practices-box.png" class="practices-img">
-                      <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
+                      <p>${this.articles.get('practices_depression')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('practices')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('practices_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('practices_depression')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                   <div class="seek" @click=${this.openDialog}>
                   <img src="/images/seek-box.png" class="seek-img">
-                 <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
+                 <p>${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('seek_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('seek_depression')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="questions" @click=${this.openDialog}>
+                  <div class="questions_depression" @click=${this.openDialog}>
                   <img src="/images/questions-box.png" class="questions-img">
-                      <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
+                      <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                    <sl-dialog label="${this.articles.get('questions')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('questions_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('questions_depression')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
