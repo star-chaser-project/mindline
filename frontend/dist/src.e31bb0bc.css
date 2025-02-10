@@ -791,11 +791,99 @@ picture img {
 }
 
 .resources .banner-content {
-  background: url("/resources-bg-graphics.e9b7dbb9.svg") no-repeat center top;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: top;
+  text-align: left;
+}
+.resources .banner-text {
+  text-align: left;
+  padding: 0 0 0 2rem;
+  max-width: 30%;
+}
+.resources .banner-text h1 {
+  font-size: 1.5rem;
+}
+.resources .banner-text h2 {
+  font-size: 0.8rem;
+}
+.resources picture {
+  background: url("/resources-bg-graphics.e9b7dbb9.svg") no-repeat center center;
   background-size: 14%;
-  background-position: 65% 40%;
+  background-position-y: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.resources picture img {
+  height: auto;
+  display: block;
 }
 
+@media (min-width: 1024px) {
+  .resources .text-banner {
+    padding: 0px 0rem 2rem 2rem;
+  }
+  .resources .text-banner h1 {
+    font-size: 2rem;
+  }
+  .resources .text-banner h2 {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 768px) and (min-width: 500px) {
+  .resources .banner-content {
+    text-align: left;
+    background-size: 20%;
+  }
+  .resources text-banner {
+    padding: 0px 0rem 2rem 2rem;
+  }
+  .resources text-banner h1 {
+    font-size: 1.5rem;
+  }
+  .resources text-banner h2 {
+    font-size: 0.8rem;
+  }
+  .resources picture {
+    width: 70%;
+    background-size: 19%;
+    background-position-y: 1rem;
+  }
+  .resources picture img {
+    width: 90%;
+  }
+}
+@media (max-width: 500px) {
+  .resources .banner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 4rem;
+    background-size: cover;
+  }
+  .resources .banner-text {
+    position: relative;
+    max-width: 100%;
+    text-align: center;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+  }
+  .resources picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .resources img {
+    width: 100%;
+    height: auto;
+  }
+}
 .about .grphics {
   background: url("/about-bg-graphics.8f312ed0.svg") no-repeat center center;
   background-size: 100%;
@@ -831,81 +919,11 @@ picture img {
     width: 70%;
     height: auto;
   }
-}
-@media (max-width: 930px) and (min-width: 768px) {
-  .resources .banner-content {
-    background-size: 16%;
-    background-position: 60% 38%;
-  }
-  .resources .banner-content .banner-text {
-    padding: 0 0 0 2rem;
-  }
-  .resources .banner-content h1 {
-    font-size: 1.5rem;
-  }
-  .resources .banner-content h2 {
-    font-size: 1rem;
-  }
-  .resources .banner-content picture {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .resources .banner-content img {
-    width: 80%;
-    height: auto;
-  }
-}
-@media (max-width: 768px) and (min-width: 500px) {
-  .resources .banner-content {
-    background-size: 14%;
-    background-position: 61% 41%;
-    padding-bottom: 0;
-  }
-  .resources picture {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-  }
-  .resources img {
-    width: 70%;
-    height: auto;
-    object-fit: contain;
-    max-width: 100%;
-    display: block;
-    margin: 0 auto;
-  }
-  .resources h1 {
+  .banner-text h1 {
     font-size: 1.2rem;
-    margin-bottom: 1rem;
   }
-  .resources h2 {
+  .banner-text h2 {
     font-size: 0.8rem;
-    margin-bottom: 2rem;
-  }
-  .resources .banner-text {
-    padding: 0 0 0 2rem;
-  }
-}
-@media (max-width: 500px) {
-  .resources .banner-content {
-    background-size: 13%;
-    background-position: 67% 54%;
-  }
-  .resources .banner-text {
-    text-align: left;
-    align-items: center;
-    padding: 0 0 0 2rem;
-  }
-  picture {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  img {
-    width: 50%;
-    height: auto;
   }
 }
 .input-group {
