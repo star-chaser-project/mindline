@@ -28,7 +28,7 @@ class mindfulnessView {
           </div>
           <picture>
               <source srcset="images/mindfulness/mindfulness-hero-image-360.webp" media="(max-width: 480px)">
-              <source srcset="images/mindfulness/mindfulness-hero-image-768.webp" media="(max-width: 768px)">
+              <source srcset="images/mindfulness/mindfulness-hero-image-500.webp" media="(max-width: 768px)">
               <source srcset="images/mindfulness/mindfulness-hero-image-1024.webp" media="(min-width: 769px)">
               <img id="heroImage" src="images/mindfulness/mindfulness-hero-1024.webp" alt="Mental Health banner image of a girl meditating">
             </picture>

@@ -902,7 +902,7 @@ picture img {
   .banner-text {
     position: relative;
     max-width: 100%;
-    text-align: center;
+    text-align: left;
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
