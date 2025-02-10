@@ -36,9 +36,9 @@ class mentalHealthView {
         <h3>Ways to deal with...</h3>
           <div class="button-group">
 
-            <sl-button class="stress" type="primary" size="large" @click=${() => gotoRoute('/mentalHealthExpanded')}>Stress</sl-button>
-            <sl-button class="anxiety" type="primary" size="large" @click=${() => gotoRoute('/Anxiety')}>Anxiety</sl-button>
-            <sl-button class="depression" type="primary" size="large" @click=${() => gotoRoute('/Depression')}>Depression</sl-button>
+            <sl-button class="stress" type="primary" size="large" @click=${() => gotoRoute('/mentalHealthExpanded?tab=stress')}>Stress</sl-button>
+            <sl-button class="anxiety" type="primary" size="large" @click=${() => gotoRoute('/mentalHealthExpanded?tab=anxiety')}>Anxiety</sl-button>
+            <sl-button class="depression" type="primary" size="large" @click=${() => gotoRoute('/mentalHealthExpanded?tab=depression')}>Depression</sl-button>
 
             </div>
        </section>

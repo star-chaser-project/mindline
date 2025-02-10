@@ -69,7 +69,7 @@ async fetchArticle(id) {
     }
   }
 
-  async bookmarkArticle(e) {
+  async bookmarkArticle(e, id) {
     e.preventDefault();
     e.stopPropagation();
     
@@ -148,10 +148,14 @@ async fetchArticle(id) {
 
   render(){
     console.log('Auth.currentUser:', Auth.currentUser);
+     // Get tab from URL params
+  const urlParams = new URLSearchParams(window.location.search);
+  const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
     const template = html`
     <style>
       .banner.mental-health-expanded {
       height: 100vh; 
+      background-color: #6686E3;
       /*padding-top: 15%;*/
     }
 
@@ -380,20 +384,20 @@ sl-tab[active]::part(base) {
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
       html`<va-public-header></va-public-header>`
     }
-      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo-mindline-no-wording-white-125.svg"></a>      
+      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png"></a>      
       <div class="page-content"> 
         <section class="banner mental-health-expanded">
         
         <div class="banner-content">     
           <h1>Mental Health</h1>
           <div id="bento-tabs">
-            <sl-tab-group>
-              <sl-tab slot="nav" panel="Stress">Stress</sl-tab>
-              <sl-tab slot="nav" panel="Anxiety">Anxiety</sl-tab>
-              <sl-tab slot="nav" panel="Depression">Depression</sl-tab>
+            <sl-tab-group ?active="${activeTab}">
+              <sl-tab slot="nav" panel="stress" ?active="${activeTab === 'stress'}">Stress</sl-tab>
+              <sl-tab slot="nav" panel="anxiety" ?active="${activeTab === 'anxiety'}">Anxiety</sl-tab>
+              <sl-tab slot="nav" panel="depression" ?active="${activeTab === 'depression'}">Depression</sl-tab>
 
               <!-- this is the first tab content of the menal health page -->
-              <sl-tab-panel name="Stress">
+              <sl-tab-panel name="stress">
                 
        
                 <div class="stress">
@@ -485,7 +489,7 @@ sl-tab[active]::part(base) {
               </sl-tab-panel>
 
                <!-- this is the second tab content of the menal health page -->
-              <sl-tab-panel name="Anxiety">
+              <sl-tab-panel name="anxiety">
                 <div class="stress">
                 
                   <div class="why" @click=${this.openDialog}>
@@ -563,7 +567,7 @@ sl-tab[active]::part(base) {
               </sl-tab-panel>
 
                <!-- this is the third tab content of the menal health page -->
-              <sl-tab-panel name="Depression">
+              <sl-tab-panel name="depression">
                 <div class="stress">
                 
                   <div class="why" @click=${this.openDialog}>
