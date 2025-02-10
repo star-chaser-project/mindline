@@ -33,19 +33,33 @@ async fetchArticle(id) {
   async init(){
     document.title = 'Mental Health Expanded'    
     this.articleIds = {
-      // these are the articles for the first tab group "stress" //
-      why: '677dcb34a6cdde9083351d76',
-      deal: '677dcc1c4aea9c354dbd3103',
-      signs: '677e60b05c759160209d1111',
-      practices: '679af473ccbfff59ce1a142e',
-      triggers: '679af4330b0bab1805167cae', 
-      seek: '679af494ccbfff59ce1a1430',
-      questions: '679af4b9ccbfff59ce1a1432'
+      // Stress - articles for the first tab group "stress" //
+      why: '679dc4c5640ec34e3c22a28b',
+      deal: '679dc7cc640ec34e3c22a28d',
+      signs: '679dc8c8640ec34e3c22a28e',
+      practices: '679dc9da640ec34e3c22a290',
+      triggers: '679dc964640ec34e3c22a28f', 
+      seek: '679dcac3640ec34e3c22a291',
+      questions: '679dce00640ec34e3c22a292',
 
-      // these are the articles for the second tab group "anxiety" //
+      // Anxiety - articles for the second tab group "anxiety" //
+      why: '67a9aadc1fbc4cadae86e685',
+      deal: '679dce85640ec34e3c22a293',
+      signs: '679dcf0f640ec34e3c22a294',
+      practices: '679dcfe7640ec34e3c22a296',
+      triggers: '679dcf93640ec34e3c22a295', 
+      seek: '679dd040640ec34e3c22a297',
+      questions: '679dd099640ec34e3c22a298',
 
+      // Depression - articles fr the thrid tab group "Depression" //
+      why: '679dd307640ec34e3c22a299',
+      deal: '679dd573640ec34e3c22a29a',
+      signs: '679dd6ae640ec34e3c22a29c',
+      practices: '679dd719640ec34e3c22a29d',
+      triggers: '679dd653640ec34e3c22a29b', 
+      seek: '679dd80d640ec34e3c22a29e',
+      questions: '679dd864640ec34e3c22a29f'
 
-      // these are te articles fr the thrid tab group "Depression" //
     } 
     
     try {
@@ -402,7 +416,7 @@ sl-tab[active]::part(base) {
        
                 <div class="stress">
                 
-                  <div class="why" @click=${this.openDialog}>
+                  <div class="why why-stress" @click=${this.openDialog}>
                     <img src="/images/why-box.png" class="why-img">
                     <p>${this.articles.get('why')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -418,7 +432,7 @@ sl-tab[active]::part(base) {
                     </sl-dialog>
                   </div>
 
-                  <div class="deal" @click=${this.openDialog}>
+                  <div class="deal deal-stress" @click=${this.openDialog}>
                     <img src="/images/stress-box.png" class="stress-img">
                     <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-full.svg" class="bookmark">
@@ -428,7 +442,7 @@ sl-tab[active]::part(base) {
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="signs" @click=${this.openDialog}>
+                  <div class="signs signs-stress" @click=${this.openDialog}>
                     <img src="/images/signs-box.png" class="signs-img">
                     <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -445,7 +459,7 @@ sl-tab[active]::part(base) {
                   </div>
                 
                 
-                  <div class="triggers" @click=${this.openDialog}>
+                  <div class="triggers triggers-stress" @click=${this.openDialog}>
                     <img src="/images/triggers-box.png" class="triggers-img">
                     <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -455,7 +469,7 @@ sl-tab[active]::part(base) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="practices" @click=${this.openDialog}>
+                  <div class="practices practices-stress" @click=${this.openDialog}>
                     <img src="/images/practices-box.png" class="practices-img">
                       <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -465,7 +479,7 @@ sl-tab[active]::part(base) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
-                  <div class="seek" @click=${this.openDialog}>
+                  <div class="seek seek-stress" @click=${this.openDialog}>
                   <img src="/images/seek-box.png" class="seek-img">
                  <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -475,7 +489,7 @@ sl-tab[active]::part(base) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="questions" @click=${this.openDialog}>
+                  <div class="questions-stress" @click=${this.openDialog}>
                   <img src="/images/questions-box.png" class="questions-img">
                       <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -494,7 +508,7 @@ sl-tab[active]::part(base) {
               <sl-tab-panel name="anxiety">
                 <div class="stress">
                 
-                  <div class="why" @click=${this.openDialog}>
+                  <div class="why why-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="why-img">
                     <p>${this.articles.get('why')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -505,7 +519,7 @@ sl-tab[active]::part(base) {
                     </sl-dialog>
                   </div>
 
-                  <div class="deal" @click=${this.openDialog}>
+                  <div class="deal deal-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="stress-img">
                     <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-full.svg" class="bookmark">
@@ -515,7 +529,7 @@ sl-tab[active]::part(base) {
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="signs" @click=${this.openDialog}>
+                  <div class="signs signs-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="signs-img">
                     <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -526,7 +540,7 @@ sl-tab[active]::part(base) {
                   </div>
                 
                 
-                  <div class="triggers" @click=${this.openDialog}>
+                  <div class="triggers triggers-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="triggers-img">
                     <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -536,7 +550,7 @@ sl-tab[active]::part(base) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="practices" @click=${this.openDialog}>
+                  <div class="practices practices-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="practices-img">
                       <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -546,7 +560,7 @@ sl-tab[active]::part(base) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
-                  <div class="seek" @click=${this.openDialog}>
+                  <div class="seek seek-anxiety" @click=${this.openDialog}>
                   <img src="/images/" class="seek-img">
                  <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
@@ -556,7 +570,7 @@ sl-tab[active]::part(base) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="questions" @click=${this.openDialog}>
+                  <div class="questions questions-anxiety" @click=${this.openDialog}>
                   <img src="/images/" class="questions-img">
                       <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">

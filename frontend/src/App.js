@@ -7,8 +7,8 @@ class App {
   constructor(){
     this.name = "Mindline";
     this.version = "1.0.0";
-    this.apiBase = "https://mindlineau.onrender.com";
-    //this.apiBase = "http://localhost:3000";
+    // this.apiBase = "https://mindlineau.onrender.com";
+    this.apiBase = "http://localhost:3000";
     this.rootEl = document.getElementById("root");
     this.version = "1.0.0";
   }
