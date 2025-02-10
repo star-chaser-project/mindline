@@ -126,13 +126,123 @@ sl-button:active::part(base) {
 
 // Resources----------------------------------------------------------------------------------
 
+.resources {
+  .banner-content {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: top;
+    text-align: left;
+    
+  }
+
+  .banner-text {
+    text-align: left;
+    padding: 0 0 0 2rem;
+    max-width: 30%;
+    h1{
+      font-size: 1.5rem;
+    }
+    h2{
+      font-size: 0.8rem;
+    }
+  }
+
+  picture {
+    background: url('../../static/images/resources/resources-bg-graphics.svg') no-repeat center center;
+    background-size: 14%;
+    background-position-y: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+      height: auto;
+      display: block;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (min-width: 1024px) {
+  .resources {
+    .text-banner {
+      padding: 0px 0rem 2rem 2rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px) and (min-width: 500px) {
   .resources {
     .banner-content {
-      background: url('../../static/images/resources/resources-bg-graphics.svg') no-repeat center top; // Center the images
-      background-size: 14%;
-      background-position: 65% 40%;
+    text-align: left;
+    background-size: 20%;
   }
+ text-banner{
+  padding: 0px 0rem 2rem 2rem;
+  h1{
+    font-size: 1.5rem;
+   }
+    h2 {
+      font-size: 0.8rem;
+   }
+ }
+  picture {
+    width: 70%;
+    background-size: 19%;
+    background-position-y: 1rem;
+    img{
+      width: 90%;
     }
+  }
+}
+}
+@media (max-width: 500px) {
+    .resources {
+    .banner-content {
+      display: flex;
+      flex-direction: column; // Stack text and image
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 4rem;        
+      background-size: cover;
+    }
+
+    .banner-text {
+      position: relative;
+      max-width: 100%;
+      text-align: center;
+      padding: 0 1rem; // Prevents text from touching the screen edges
+      display: flex;
+      flex-direction: column;
+      align-items: top;
+
+    }
+
+    picture {
+      width: 100%; // Ensures image fills the width properly
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+
+}
 
 
 //about----------------------------------------------------------------------------------
@@ -180,102 +290,14 @@ sl-button:active::part(base) {
       width: 70%;
       height: auto;
   }
+  .banner-text {
+    h1{
+     font-size: 1.2rem;
+    }
+     h2 {
+       font-size: 0.8rem;
+    }
+   }
 
 }
-
-
-// Responsive resources banner
-
-
-@media (max-width: 930px) and (min-width: 768px) {
-  .resources {
-    .banner-content {
-      background-size: 16%;  // Slightly increase background size
-      background-position: 60% 38%; // Adjust position to align properly
-      .banner-text {
-        padding: 0 0 0 2rem;
-      }
-      h1{
-        font-size: 1.5rem;
-      }
-      h2{
-        font-size: 1rem;
-      }
-      picture {
-        width: 100%; // Ensures image fills container properly
-        display: flex;
-        justify-content: center;
-      }
-  
-      img {
-        width: 80%; // Prevents image from being too small
-        height: auto; // Maintains aspect ratio
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) and (min-width: 500px) {
-  .resources {
-    .banner-content {
-      background-size: 14%; // Size the background image appropriately
-      background-position: 61% 41%; // Adjust background position for alignment
-      padding-bottom: 0; // Ensure no extra padding at the bottom
-    }
-    
-    picture {
-      width: 100%; // Ensure image container is full width
-      display: flex;
-      justify-content: center; // Center image horizontally
-      margin: 0 auto; // Ensures picture has no extra margin
-    }
-
-    img {
-      width: 70%;      height: auto; // Maintain aspect ratio
-      object-fit: contain; // Keep image contained without stretching
-      max-width: 100%; // Prevent overflow
-      display: block; // Make sure the image behaves as a block element
-      margin: 0 auto; // Center image horizontally
-    }
-
-    
-    h1 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem; // Optional: Adds space below h1
-    }
-    
-    h2 {
-      font-size: 0.8rem;
-      margin-bottom: 2rem; // Optional: Adds space below h2
-    }
-
-    .banner-text {
-      padding: 0 0 0 2rem;    }
-  }
-}
-
-
-@media (max-width: 500px) {
-  .resources {
-    .banner-content {
-      background-size: 13%;
-      background-position: 67% 54%;
-    }
-    .banner-text {
-      text-align: left;
-      align-items: center;
-      padding: 0 0 0 2rem;
-    }
-  }
-  picture {
-    width: 100%; // Ensures image fills the width properly
-    display: flex;
-    justify-content: center;
-  }
-  img {
-    width: 50%;
-    height: auto;
-}
-  }
-
 
