@@ -712,6 +712,9 @@ sl-details::part(base) {
   z-index: 2;
   padding-top: 6rem;
 }
+.banner-content .banner-text {
+  text-align: left;
+}
 
 picture img {
   z-index: 1;
