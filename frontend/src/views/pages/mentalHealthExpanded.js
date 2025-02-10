@@ -210,8 +210,8 @@ async fetchArticle(id) {
                     <img src="/images/bookmark/bookmark-full.svg" class="bookmark">
                     <sl-dialog label="${this.articles.get('deal')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark.</sl-button>
+                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close.</sl-button>
                   </div>
 
                   <div class="signs signs-stress" @click=${this.openDialog}>
