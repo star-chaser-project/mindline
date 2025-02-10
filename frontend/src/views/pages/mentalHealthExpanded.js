@@ -408,16 +408,12 @@ sl-tab[active]::part(base) {
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
                     <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                       ${this.articles.get('why')?.bodyContent || 'Loading content...'}
-                      <sl-button 
-                        slot="footer" 
-                        variant="primary" 
+                      <sl-button slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('why')?._id;
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
-                        }}>
-                                              Bookmark
-                      </sl-button>
+                        }}>Bookmark</sl-button>
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
@@ -438,7 +434,13 @@ sl-tab[active]::part(base) {
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
                     <sl-dialog label="${this.articles.get('signs')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     ${this.articles.get('signs')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
+                    <sl-button slot="footer" variant="primary" 
+                    @click=${(e) => {
+                          const articleId = this.articles.get('signs')?._id;
+                          console.log("Bookmarking article ID:", articleId);
+                          this.bookmarkArticle(e, articleId);
+                        }}>Bookmark</sl-button>
+                    
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
