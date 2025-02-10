@@ -5,46 +5,49 @@ const User = require('./../models/User')
 const Utils = require('./../utils')
 const jwt = require('jsonwebtoken')
 
-// GET /signIn ---------------------------------------
+// POST /signin ---------------------------------------
 router.post('/signin', (req, res) => {
+  // Debug logging
+  console.log('Signin request body:', req.body)
+
   // 1. check if email and password are empty
-  if( !req.body.email || !req.body.password ){     
+  if (!req.body.email || !req.body.password) {     
     return res.status(400).json({message: "Please provide email and password"})
   }
   // 2. continue to check credentials
-  // find the user in the database
   User.findOne({email: req.body.email})
-  .then(async user => {
-     // account doesn't exist
-     if(user == null) return res.status(400).json({message: 'No account found'})     
-     // user exists, now check password
-     if( Utils.verifyHash(req.body.password, user.password) ){
-        // credentials match - create JWT token
-        let payload = {
-          _id: user._id          
+    .then(async user => {
+      if (!user) return res.status(400).json({message: 'No account found'})     
+      
+      try {
+        if (Utils.verifyHash(req.body.password, user.password)) {
+          let payload = { _id: user._id }
+          let accessToken = Utils.generateAccessToken(payload)        
+          user.password = undefined
+          return res.json({
+            accessToken: accessToken,
+            user: user
+          })
+        } else {
+          return res.status(400).json({
+            message: "Password / Email incorrect"
+          })        
         }
-        let accessToken = Utils.generateAccessToken(payload)        
-        // strip the password from our user object        
-        user.password = undefined
-        // send back response
-        return res.json({
-          accessToken: accessToken,
-          user: user
+      } catch (error) {
+        console.log('Password verification error:', error)
+        return res.status(500).json({
+          message: "Error during authentication",
+          error: error.message
         })
-     }else{
-        // Password didn't match!
-        return res.status(400).json({
-           message: "Password / Email incorrect"
-        })        
-     }
-  })
-  .catch(err => {
-    console.log(err)
-    res.status(500).json({
-      message: "account doesn't exist",
-      error: err
+      }
     })
-  })
+    .catch(err => {
+      console.log('Database error:', err)
+      res.status(500).json({
+        message: "Error finding account",
+        error: err.message
+      })
+    })
 })
 
 
