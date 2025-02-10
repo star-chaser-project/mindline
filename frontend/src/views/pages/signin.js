@@ -63,17 +63,27 @@ class SignInView {
       }
     }
   
-    signInSubmitHandler(e){
-      e.preventDefault();
-      const formData = e.detail.formData;
-      const submitBtn = document.querySelector('.submit-btn');
-      submitBtn.setAttribute('loading', '');    
-      
-      // sign in using Auth    
-      Auth.signIn(formData, () => {
-        submitBtn.removeAttribute('loading');
-      });
-    }
+    signInSubmitHandler(e) {
+        e.preventDefault();
+        // Get the FormData from the event
+        const formData = e.detail.formData;
+        
+        // Convert FormData to a plain object
+        const data = {};
+        formData.forEach((value, key) => {
+          data[key] = value;
+        });
+        
+        console.log('Converted form data:', data); // Debug: check the converted data
+        
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.setAttribute('loading', '');
+        
+        // Sign in using Auth with the plain object data
+        Auth.signIn(data, () => {
+          submitBtn.removeAttribute('loading');
+        });
+      }
   
 
 

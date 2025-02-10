@@ -43,10 +43,11 @@ class Auth {
   }
 
   async signIn(userData, fail = false){
+    console.log('userData being sent:', userData); // Debug log
     const response = await fetch(`${App.apiBase}/auth/signin`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: userData
+      body: JSON.stringify(userData)
     });
 
     if(!response.ok){
