@@ -12,6 +12,7 @@ body {
   width: 100vw; /* Ensure body takes full width */
 }
 // headings ------------
+
 h1,h2{
   margin: 0 0 .5em;
   color: var(--heading-color);
@@ -41,6 +42,7 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
+
   .app-logo {
     width: 180px;
     display: block;
@@ -101,12 +103,6 @@ a {
   }
 }
 
-.page-centered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 //menu drop down styling
 
 sl-details::part(base) {
@@ -134,12 +130,6 @@ sl-details::part(summary) {
 sl-details::part(base) {
   border: none;
 }
-
-
-
-
-
-
 
 // sign in + sign up pages --------------------------------------------------------------------
 
@@ -169,6 +159,7 @@ sl-details::part(base) {
 .signin-container {
   position: relative;
   display: center;
+
   img {
     width: 100%;
     height: auto;
@@ -303,9 +294,6 @@ sl-details::part(base) {
 }
 }
   
-
-
-
 // text only --------------------
 .blurb-text {
   position: absolute;
@@ -315,9 +303,6 @@ sl-details::part(base) {
   transform: translate(-50%, -50%);
   padding: 5px;
 }
-
-
-
 
 // Products page ------------------------------------------------------------------------------
 
@@ -512,13 +497,7 @@ sl-details::part(base) {
 }
 
 
-// 
 // Responsive layouts ------------------------------------------------- 
-
-
-
-
-
 // makes a one column layout instead of a two-column layout
 @media (max-width: 768px) {
   .orders-grid 
@@ -544,38 +523,70 @@ sl-details::part(base) {
   }
 }
 
-// Small devices (landscape phones, less than 768px)
+// Small Devices (Phones, < 768px)
 @media (max-width: 767px) { 
   body { 
-
-
+    font-size: 0.875rem; /* 14px (0.875 * 16px) */
+  }
+  
   h1 { 
-    font-size: 24px; 
+    font-size: 1.5rem;  /* 24px */
   } 
+
+  h2 { 
+    font-size: 1.25rem;  /* 20px */
+  } 
+
   p { 
-    font-size: 14px; 
+    font-size: 0.875rem; /* 14px */
     color: #333; 
+    line-height: 1.5;
   } 
-}
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) and (max-width: 991px) { 
-  h1 { 
-    font-size: 28px; 
-  } p { 
-    font-size: 15px; 
-  } 
-} 
 
-// Large devices (desktops, 992px and up) 
-@media (min-width: 992px) {
+
+// Medium Devices (Tablets, 768px - 1024px)
+@media (min-width: 768px) and (max-width: 1024px) { 
+  body { 
+    font-size: 1rem; /* 16px */
+  }
+
   h1 { 
-    font-size: 32px; 
+    font-size: 2rem; /* 32px */
   } 
-  p { font-size: 16px; 
+
+  h2 { 
+    font-size: 1.5rem; /* 24px */
+  } 
+
+  p { 
+    font-size: 1rem; /* 16px */
+    line-height: 1.6;
   } 
 }
+
+// Large Devices (Desktops, > 1024px)
+@media (min-width: 1025px) { 
+  body { 
+    font-size: 1.125rem; /* 18px */
+  }
+
+  h1 { 
+    font-size: 2.5rem; /* 40px */
+  } 
+
+  h2 { 
+    font-size: 1.75rem; /* 28px */
+  } 
+
+  p { 
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.8;
+  } 
+}
+
+
 
 // responsive images -------------------------------------------------
 
@@ -604,6 +615,7 @@ sl-details::part(base) {
       width: 50%;
   }
 }
+
 //profile page responsive design
 @media (max-width: 767px) {
   .profile-left {
@@ -612,9 +624,10 @@ sl-details::part(base) {
       color: white;
     }
     flex-direction: column;
-  }
+ 
 
   .profile-right {
     display: none;
+  }
   }
 }

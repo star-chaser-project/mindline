@@ -7105,12 +7105,26 @@ var _Toast = _interopRequireDefault(require("./Toast"));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 class Auth {
   constructor() {
-    this.currentUser = null;
+    // 1. Initialize currentUser from localStorage
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
   }
 
-  // New method to check if a user is logged in
+  // Store userData in currentUser and localStorage
+  setCurrentUser(userData) {
+    this.currentUser = userData;
+    localStorage.setItem('currentUser', JSON.stringify(userData));
+  }
+  clearCurrentUser() {
+    this.currentUser = null;
+    localStorage.removeItem('currentUser');
+  }
   isLoggedIn() {
     return this.currentUser && Object.keys(this.currentUser).length > 0;
   }
@@ -7120,106 +7134,92 @@ class Auth {
       method: 'POST',
       body: userData
     });
-
-    // if response not ok
     if (!response.ok) {
-      // console log error
       const err = await response.json();
       if (err) console.log(err);
-      // show error      
       _Toast.default.show("Problem getting user: ".concat(response.status));
-      // run fail() functon if set
       if (typeof fail == 'function') fail();
     }
-    /// sign up success - show toast and redirect to sign in page
     _Toast.default.show('Account created, please sign in');
-    // redirect to signin
     (0, _Router.gotoRoute)('/signin');
   }
   async signIn(userData) {
     let fail = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     const response = await fetch("".concat(_App.default.apiBase, "/auth/signin"), {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: userData
     });
-
-    // if response not ok
     if (!response.ok) {
-      // console log error
       const err = await response.json();
       if (err) console.log(err);
-      // show error      
       _Toast.default.show("Problem signing in: ".concat(err.message), 'error');
-      // run fail() functon if set
       if (typeof fail == 'function') fail();
+      return;
     }
 
     // sign in success
     const data = await response.json();
-    _Toast.default.show("Welcome  ".concat(data.user.firstName));
-    // save access token (jwt) to local storage
+    _Toast.default.show("Welcome ".concat(data.user.firstName));
+
+    // 2. Save access token to localStorage
     localStorage.setItem('accessToken', data.accessToken);
-    // set current user
-    this.currentUser = data.user || null;
-    // console.log(this.currentUser)           
+
+    // 3. Set currentUser to include both user details AND the token
+    this.setCurrentUser(_objectSpread(_objectSpread({}, data.user), {}, {
+      token: data.accessToken // <--- Include the token property
+    }));
     _Router.default.init();
-    if (data.user.newUser == true) {
-      // new user! redirect to guide page (/guide)
+    if (data.user.newUser === true) {
       (0, _Router.gotoRoute)('/guide');
     } else {
-      // existing user - redirect to home page (/)
       (0, _Router.gotoRoute)('/');
     }
   }
   async check(success) {
-    // show splash screen while loading ...   
+    // 4. Show splash screen while loading
     (0, _litHtml.render)(_splash.default, _App.default.rootEl);
 
-    // check local token is there
+    // 5. If there's no accessToken in localStorage, redirect to home
     if (!localStorage.accessToken) {
-      // no local token!
-      //Toast.show("Please sign in");    
-      // redirect to sign in page      
       (0, _Router.gotoRoute)('/');
       return;
     }
 
-    // token must exist - validate token via the backend
+    // 6. Validate token via backend
     const response = await fetch("".concat(_App.default.apiBase, "/auth/validate"), {
       method: 'GET',
       headers: {
         "Authorization": "Bearer ".concat(localStorage.accessToken)
       }
     });
-
-    // if response not ok
     if (!response.ok) {
-      // console log error
       const err = await response.json();
       if (err) console.log(err);
-      // delete local token
       localStorage.removeItem('accessToken');
       _Toast.default.show("session expired, please sign in");
-      // redirect to sign in      
       (0, _Router.gotoRoute)('/signin');
       return;
     }
 
-    // token is valid!
+    // 7. Token is valid; get user data
     const data = await response.json();
-    // console.log(data)
-    // set currentUser obj
-    this.currentUser = data.user || null;
-    // run success
+
+    // 8. Merge user data with the existing token from localStorage
+    //    so currentUser still has the token.
+    this.currentUser = _objectSpread(_objectSpread({}, data.user), {}, {
+      token: localStorage.getItem('accessToken')
+    }) || null;
+
+    // 9. Run success callback
     success();
   }
   signOut() {
     _Toast.default.show("You are signed out");
-    // unset currentUser
     this.currentUser = null;
-    // delete local token
     localStorage.removeItem('accessToken');
-    // redirect to sign in    
     (0, _Router.gotoRoute)('/');
   }
 }
@@ -7282,7 +7282,7 @@ class HomeView {
   // Image adapted from Canva – Accessed on December 18, 2024
   // Animation - from https://shoelace.style/components/animation
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    ", "\n    <div class=\"page-content home-page\">\n        <section class=\"home-banner\">\n            <h1>Empower </br>Your </br>Life</h1>\n            <picture>\n            <img class=\"cloud\" src=\"images/home/home-hero-image-768.webp\" alt=\"Image of a woman meditating on a cloud while wearing headphone.\">\n            </picture>\n            <h2>HARNESS YOUR POTENTIAL</h2>\n        </section>\n       <section class=\"nav-page\">\n        <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n            <sl-button class=\"home-bth-Mental-Health\" @click=", ">Mental Health</sl-button>\n            <sl-button class=\"home-bth-mindfulness\" @click=", ">Mindfulness</sl-button>\n            <sl-button class=\"home-bth-resources\" @click=", ">Resources</sl-button>\n          </div>\n        </section> \n      </div>\n     \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), () => (0, _Router.gotoRoute)('/mentalHealth'), () => (0, _Router.gotoRoute)('/mindfulness'), () => (0, _Router.gotoRoute)('/resources'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      ", "\n\n    <div class=\"page-content home-page\">\n        <section class=\"home-banner\">\n            <h1>Empower </br>Your </br>Life</h1>\n            <picture>\n              <source srcset=\"images/home/home-hero-image-360.webp\" media=\"(max-width: 480px)\">\n              <source srcset=\"images/home/home-hero-image-768.webp\" media=\"(max-width: 768px)\">\n              <source srcset=\"images/home/home-hero-image-1024.webp\" media=\"(min-width: 769px)\">\n              <img id=\"heroImage\" src=\"images/home/home-hero-image-1024.webp\" alt=\"banner image of a girl meditating\">\n            </picture>\n            <h2>HARNESS YOUR POTENTIAL</h2>\n        </section>\n       <section class=\"nav-page\">\n        <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n            <sl-button class=\"home-bth-Mental-Health\" @click=", ">Mental Health</sl-button>\n            <sl-button class=\"home-bth-mindfulness\" @click=", ">Mindfulness</sl-button>\n            <sl-button class=\"home-bth-resources\" @click=", ">Resources</sl-button>\n          </div>\n        </section> \n      </div>\n     \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), () => (0, _Router.gotoRoute)('/mentalHealth'), () => (0, _Router.gotoRoute)('/mindfulness'), () => (0, _Router.gotoRoute)('/resources'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -15037,14 +15037,13 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
 function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
 // Image adapted from Canva – Accessed on December 18, 2024
 class mentalHealthView {
-  init() {
+  async init() {
     document.title = 'Mental Health';
-    this.render();
+    await this.render();
     _Utils.default.pageIntroAnim();
   }
   render() {
-    console.log('Auth.currentUser:', _Auth.default.currentUser);
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    ", "\n      </va-app-header>      \n      <div class=\"page-content\"> \n        <section class=\"banner mental-health\">\n          <div class=\"banner-content\">  \n            <h1>Mental Health</h1>\n            <picture>\n            <img src=\"images/mental-health/mental-health-hero-768.webp\" class=\"responsive-img\" >    \n            </picture>  \n            <h2>Because it Matters</p>\n          </div>\n        </section>\n        <section class=\"nav-page\">\n        <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n            <sl-button class=\"stress\" @click=", ">Stress</sl-button>\n            <sl-button class=\"anxiety\" @click=", ">Anxiety</sl-button>\n            <sl-button class=\"depression\" @click=", ">Depression</sl-button>\n            </div>\n       </section>\n      \n      </div>  \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), () => (0, _Router.gotoRoute)('/stress'), () => (0, _Router.gotoRoute)('/anxiety'), () => (0, _Router.gotoRoute)('/depression'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      ", "\n      \n      <div class=\"page-content page-centered\"> \n        <section class=\"banner mental-health\">\n        <div class=\"grphics\">\n          <div class=\"banner-content\"> \n            <div class=\"banner-text\"> \n              <h1>Mental Health</h1>\n              <h2>Because it Matters</h2>\n              </div>\n           <picture>\n              <source srcset=\"images/mental-health/mental-health-hero-360.webp\" media=\"(max-width: 480px)\">\n              <source srcset=\"images/mental-health/mental-health-hero-768.webp\" media=\"(max-width: 768px)\">\n              <source srcset=\"images/mental-health/mental-health-hero-1024.webp\" media=\"(min-width: 769px)\">\n              <img id=\"heroImage\" src=\"images/mental-health/mental-health-hero-1024.webp\" alt=\"Mental Health banner image of a boy meditating\">\n            </picture>  \n          </div>\n        </section>\n  \n        <section class=\"nav-page\">\n          <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n          \n            <sl-button class=\"stress\" @click=", ">Stress</sl-button>\n            <sl-button class=\"anxiety\" @click=", ">Anxiety</sl-button>\n            <sl-button class=\"depression\" @click=", ">Depression</sl-button>\n          </div>\n        </section>\n\n      </div>  \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), () => (0, _Router.gotoRoute)('/stress'), () => (0, _Router.gotoRoute)('/anxiety'), () => (0, _Router.gotoRoute)('/depression'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -15066,14 +15065,132 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
 function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
 // Image adapted from Canva – Accessed on December 18, 2024
 class mentalHealthExpandedView {
-  init() {
+  constructor() {
+    this.articles = new Map(); // Initialize Map
+  }
+  async fetchArticle(id) {
+    try {
+      console.log('Fetching article:', id);
+      const response = await fetch("".concat(_App.default.apiBase, "/article/").concat(id));
+      if (!response.ok) {
+        throw new Error("HTTP error! status: ".concat(response.status));
+      }
+      const data = await response.json();
+      console.log('Fetched data:', data);
+      // Store the article id in localStorage
+      localStorage.setItem("article-".concat(id), data._id);
+      return data;
+    } catch (err) {
+      console.error('Fetch error:', err);
+      return null;
+    }
+  }
+  async init() {
     document.title = 'Mental Health Expanded';
-    this.render();
-    _Utils.default.pageIntroAnim();
+    this.articleIds = {
+      // these are the articles for the first tab group "stress" //
+      why: '677dcb34a6cdde9083351d76',
+      deal: '677dcc1c4aea9c354dbd3103',
+      signs: '677e60b05c759160209d1111',
+      practices: '679af473ccbfff59ce1a142e',
+      triggers: '679af4330b0bab1805167cae',
+      seek: '679af494ccbfff59ce1a1430',
+      questions: '679af4b9ccbfff59ce1a1432'
+
+      // these are the articles for the second tab group "anxiety" //
+
+      // these are te articles fr the thrid tab group "Depression" //
+    };
+    try {
+      await Promise.all(Object.entries(this.articleIds).filter(_ref => {
+        let [_, id] = _ref;
+        return id;
+      }).map(async _ref2 => {
+        let [key, id] = _ref2;
+        const article = await this.fetchArticle(id);
+        if (article) {
+          this.articles.set(key, article);
+          console.log("Set ".concat(key, " article:"), article);
+        }
+      }));
+      this.render();
+      _Utils.default.pageIntroAnim();
+      this.setupDialogHandlers();
+    } catch (err) {
+      console.error('Init error:', err);
+    }
+  }
+  async bookmarkArticle(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("Current user:", _Auth.default.currentUser);
+    console.log("Using token:", _Auth.default.currentUser.token);
+    if (!_Auth.default.currentUser || !_Auth.default.currentUser.token) {
+      alert("You must be logged in to bookmark articles!");
+      return;
+    }
+    try {
+      const response = await fetch("".concat(_App.default.apiBase, "/bookmark/").concat(id), {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer ".concat(_Auth.default.currentUser.token)
+        }
+      });
+      const result = await response.json();
+      if (response.ok) {
+        alert("Article bookmarked!");
+      } else {
+        const errMsg = result.message || result.error || "Bookmark failed";
+        console.error("Bookmark failed:", errMsg);
+        alert(errMsg);
+      }
+    } catch (err) {
+      console.error("Bookmark error:", err);
+      alert("An error occurred while bookmarking the article.");
+    }
+  }
+  setupDialogHandlers() {
+    document.querySelectorAll('.dialog-width').forEach(dialog => {
+      dialog.addEventListener('sl-request-close', () => {
+        dialog.hide();
+      });
+      dialog.addEventListener('sl-after-hide', () => {
+        const closeButton = dialog.querySelector('sl-button[slot="footer"]');
+        if (closeButton) {
+          closeButton.addEventListener('click', e => {
+            e.stopPropagation();
+            dialog.hide();
+          });
+        }
+      });
+    });
+  }
+  openDialog(e) {
+    e.stopPropagation();
+
+    // Find the closest sl-dialog inside the clicked element
+    const dialog = e.currentTarget.querySelector('sl-dialog');
+    if (dialog) {
+      dialog.show();
+    }
+  }
+  closeDialog(e) {
+    e.stopPropagation();
+
+    // Get the closest sl-dialog to the button clicked
+    const dialog = e.target.closest('sl-dialog');
+    if (dialog) dialog.hide();
   }
   render() {
+    var _this$articles$get, _this$articles$get2, _this$articles$get3, _this$articles$get5, _this$articles$get6, _this$articles$get7, _this$articles$get8, _this$articles$get9, _this$articles$get10, _this$articles$get11, _this$articles$get12, _this$articles$get13, _this$articles$get14, _this$articles$get15, _this$articles$get16, _this$articles$get17, _this$articles$get18, _this$articles$get19, _this$articles$get20, _this$articles$get21, _this$articles$get22, _this$articles$get23, _this$articles$get24, _this$articles$get25, _this$articles$get26, _this$articles$get27, _this$articles$get28, _this$articles$get29, _this$articles$get30, _this$articles$get31, _this$articles$get32, _this$articles$get33, _this$articles$get34, _this$articles$get35, _this$articles$get36, _this$articles$get37, _this$articles$get38, _this$articles$get39, _this$articles$get40, _this$articles$get41, _this$articles$get42, _this$articles$get43, _this$articles$get44, _this$articles$get45, _this$articles$get46, _this$articles$get47, _this$articles$get48, _this$articles$get49, _this$articles$get50, _this$articles$get51, _this$articles$get52, _this$articles$get53, _this$articles$get54, _this$articles$get55, _this$articles$get56, _this$articles$get57, _this$articles$get58, _this$articles$get59, _this$articles$get60, _this$articles$get61, _this$articles$get62, _this$articles$get63, _this$articles$get64;
     console.log('Auth.currentUser:', _Auth.default.currentUser);
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    ", "\n      <a href=\"/\" @click=\"", "\"><img class=\"header-logo\" src=\"/images/logo-mindline-no-wording-white-125.svg\"></a>\n      </va-app-header>      \n      <div class=\"page-content\"> \n        <section class=\"banner mental-health\">\n        <img src=\"images/mental-health-hero-image.png\" class=\"responsive-img\" >    \n        <div class=\"banner-content\">     \n          <h1>Mental Health</h1>\n          <h2>Because it Matters</p>\n        </div>\n        </section>\n        <section class=\"nav-page\">\n        <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Stress</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Anxiety</sl-button>\n            <sl-button type=\"primary\" size=\"large\" @click=", ">Depression</sl-button>\n            </div>\n       </section>\n      \n      </div>  \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), _Router.anchorRoute, () => (0, _Router.gotoRoute)('/Stress'), () => (0, _Router.gotoRoute)('/Anxiety'), () => (0, _Router.gotoRoute)('/Depression'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    <style>\n      .banner.mental-health-expanded {\n      height: 100vh; \n      /*padding-top: 15%;*/\n    }\n\n    .banner-content {\n      height: 80%;\n      width: 60%;\n    }\n\n    sl-tab-group::part(base) {\n      display: flex;\n      align-items: center;\n      gap: 32px;\n    \n    }\n\n  \n    sl-tab-group::part(nav) {\n    border-bottom: none;\n  }\n\n  sl-tab-group::part(active-tab-indicator) {\n    display: none !important;\n    opacity: 0;\n    visibility: hidden;\n  }\n\n  sl-tab-group::part(tabs) {\n    border-bottom: none;\n  }\n\n  sl-tab::part(base) {\n    border-bottom: none;\n    margin: 0 12px;\n    padding: 12px 24px;\n    font-size: 18px;\n  font-weight: 500;\n  transition: all 0.2s ease;\n  }\n\n  sl-tab:not([active])::part(base):hover {\n  font-size: 20px;\n}\n\nsl-tab[active]::part(base) {\n  font-size: 20px;\n  color: #F3C728 !important;\n}\n\n    #bento-tabs {\n      width: 100%;\n      display: flex;\n      justify-content: center;\n      align-items: left;\n    }\n    \n    h1 {\n      margin-bottom: 50px !important;\n      width: 50% !important;\n      margin-left: 13% !important;\n    }\n    \n\n    .why {\n      grid-area: why;\n      width: 193px;\n      height: 193px;\n      border-radius: 35px;\n      background-color: #FFFFFF;\n      position: relative;\n      display: flex;\n      overflow: hidden;\n      cursor: pointer;\n    }\n    \n    .deal {\n      grid-area: deal;\n      width: 361px;\n      height: 193px;\n      border-radius: 35px;\n      background-color: #FFFFFF;\n      position: relative;\n      display: flex;\n      overflow: hidden;\n      cursor: pointer;\n    }\n    \n    .signs {\n      grid-area: signs;\n      width: 193px;\n      height: 411px;\n      border-radius: 35px;\n      background-color: #FFFFFF;\n      position: relative;\n      display: flex;\n      overflow: hidden;\n      cursor: pointer;\n    }\n    \n    .triggers {\n      grid-area: triggers;\n      width: 361px;\n      height: 193px;\n      border-radius: 35px;\n      background-color: #FFFFFF;\n      position: relative;\n      display: flex;\n      overflow: hidden;\n      cursor: pointer;\n    }\n    \n    .practices {\n      grid-area: practices;\n      width: 193px;\n      height: 411px;\n      border-radius: 35px;\n      background-color: #FFFFFF;\n      margin-left: 168px;\n      position: relative;\n      display: flex;\n      overflow: hidden;\n      cursor: pointer;\n    }\n    \n    .seek {\n      grid-area: seek;\n      width: 361px;\n      height: 193px;\n      border-radius: 35px;\n      background-color: #FFFFFF;\n      position: relative;\n      display: flex;\n      overflow: hidden;\n      cursor: pointer;\n    }\n    \n    .questions {\n      grid-area: questions;\n      width: 193px;\n      height: 193px;\n      border-radius: 35px;\n      background-color: #FFFFFF;\n      margin-left: 385px;\n      position: relative;\n      display: flex;\n      overflow: hidden;\n      cursor: pointer;\n    }\n\n.stress {\n  display: grid;\n  grid-template-areas: \n    \"why deal signs\"\n    \"triggers practices practices\"\n    \"seek questions questions\";\n  grid-template-columns: 193px 361px 193px; /* Explicit column widths */\n  grid-template-rows: 193px 193px 193px; /* Fixed row heights */\n  gap: 24px; /* Minimal gap */\n  align-items: start; /* Align items to top */\n  margin-top: 8px;\n}\n\n\n    p {\n      color: #000000;\n    }\n\n    .bookmark, .bookmark-full {\n    position: absolute;\n    width: auto;\n    height: 30px;\n    top: -0.5px;\n    right: 35px;\n    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));\n  }\n    \n\n  sl-dialog::part(base) {\n    color: #000000;\n  }\n\n  sl-dialog::part(overlay) {\n    backdrop-filter: blur(8px);\n    background-color: rgba(0, 0, 0, 0.5);\n  }\n\n\n  sl-dialog::part(panel) {\n    border-radius: 35px;\n    z-index: 1000;\n  }\n\n  sl-dialog::part(close-button) {\n    display: none;\n  }\n\n    .why-img {\n      width: 400px; /* Much larger than parent */\n      height: 400px; /* Much larger than parent */\n      position: absolute;\n      z-index: 0;\n      object-fit: cover;\n      transform: translate(-50%, -50%);\n      top: 60%;\n      left: 60%;\n      border-radius: 35px;\n      transition: transform 0.3s ease;\n    }\n\n    .why:hover .why-img {\n      transform: translate(-50%, -50%) scale(1.1);\n    }\n\n    .why p {\n      width: 30%;\n      font-size: 20px;\n      font-weight: 300;\n      margin-left: 10%;\n      z-index: 1;\n    }\n\n    </style>\n\n    \n\n    ", "\n      <a href=\"/\" @click=\"", "\"><img class=\"header-logo\" src=\"/images/logo-mindline-no-wording-white-125.svg\"></a>      \n      <div class=\"page-content\"> \n        <section class=\"banner mental-health-expanded\">\n        \n        <div class=\"banner-content\">     \n          <h1>Mental Health</h1>\n          <div id=\"bento-tabs\">\n            <sl-tab-group>\n              <sl-tab slot=\"nav\" panel=\"Stress\">Stress</sl-tab>\n              <sl-tab slot=\"nav\" panel=\"Anxiety\">Anxiety</sl-tab>\n              <sl-tab slot=\"nav\" panel=\"Depression\">Depression</sl-tab>\n\n              <!-- this is the first tab content of the menal health page -->\n              <sl-tab-panel name=\"Stress\">\n                \n       \n                <div class=\"stress\">\n                \n                  <div class=\"why\" @click=", ">\n                    <img src=\"/images/why-box.png\" class=\"why-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                      ", "\n                      <sl-button \n                        slot=\"footer\" \n                        variant=\"primary\" \n                        @click=", ">\n                                              Bookmark\n                      </sl-button>\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                    </sl-dialog>\n                  </div>\n\n                  <div class=\"deal\" @click=", ">\n                    <img src=\"/images/stress-box.png\" class=\"stress-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-full.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n\n                  <div class=\"signs\" @click=", ">\n                    <img src=\"/images/signs-box.png\" class=\"signs-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n                \n                \n                  <div class=\"triggers\" @click=", ">\n                    <img src=\"/images/triggers-box.png\" class=\"triggers-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n\n                  <div class=\"practices\" @click=", ">\n                    <img src=\"/images/practices-box.png\" class=\"practices-img\">\n                      <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n                \n                  <div class=\"seek\" @click=", ">\n                  <img src=\"/images/seek-box.png\" class=\"seek-img\">\n                 <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n\n                  <div class=\"questions\" @click=", ">\n                  <img src=\"/images/questions-box.png\" class=\"questions-img\">\n                      <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n                </div>\n\n\n\n              </sl-tab-panel>\n\n               <!-- this is the second tab content of the menal health page -->\n              <sl-tab-panel name=\"Anxiety\">\n                <div class=\"stress\">\n                \n                  <div class=\"why\" @click=", ">\n                    <img src=\"/images/\" class=\"why-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                      ", "\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                    </sl-dialog>\n                  </div>\n\n                  <div class=\"deal\" @click=", ">\n                    <img src=\"/images/\" class=\"stress-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-full.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n\n                  <div class=\"signs\" @click=", ">\n                    <img src=\"/images/\" class=\"signs-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n                \n                \n                  <div class=\"triggers\" @click=", ">\n                    <img src=\"/images/\" class=\"triggers-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n\n                  <div class=\"practices\" @click=", ">\n                    <img src=\"/images/\" class=\"practices-img\">\n                      <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n                \n                  <div class=\"seek\" @click=", ">\n                  <img src=\"/images/\" class=\"seek-img\">\n                 <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n\n                  <div class=\"questions\" @click=", ">\n                  <img src=\"/images/\" class=\"questions-img\">\n                      <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n                </div>\n              </sl-tab-panel>\n\n               <!-- this is the third tab content of the menal health page -->\n              <sl-tab-panel name=\"Depression\">\n                <div class=\"stress\">\n                \n                  <div class=\"why\" @click=", ">\n                    <img src=\"/images/why-box.png\" class=\"why-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                      ", "\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                    </sl-dialog>\n                  </div>\n\n                  <div class=\"deal\" @click=", ">\n                    <img src=\"/images/stress-box.png\" class=\"stress-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-full.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                      <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n\n                  <div class=\"signs\" @click=", ">\n                    <img src=\"/images/signs-box.png\" class=\"signs-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n                \n                \n                  <div class=\"triggers\" @click=", ">\n                    <img src=\"/images/triggers-box.png\" class=\"triggers-img\">\n                    <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n\n                  <div class=\"practices\" @click=", ">\n                    <img src=\"/images/practices-box.png\" class=\"practices-img\">\n                      <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n                \n                  <div class=\"seek\" @click=", ">\n                  <img src=\"/images/seek-box.png\" class=\"seek-img\">\n                 <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n\n                  <div class=\"questions\" @click=", ">\n                  <img src=\"/images/questions-box.png\" class=\"questions-img\">\n                      <p>", "</p>\n                    <img src=\"/images/bookmark/bookmark-4.svg\" class=\"bookmark\">\n                    <sl-dialog label=\"", "\" class=\"dialog-width\" style=\"--width: 50vw; --height: 60vh;\">\n                    ", "\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Bookmark</sl-button>\n                    <sl-button slot=\"footer\" variant=\"primary\" @click=", ">Close</sl-button>\n                  </div>\n                </div>\n              </sl-tab-panel>\n\n            </sl-tab-group>\n          </div>\n        </div>\n        </section>\n          \n      \n      </div>  \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), _Router.anchorRoute, this.openDialog, ((_this$articles$get = this.articles.get('why')) === null || _this$articles$get === void 0 ? void 0 : _this$articles$get.title) || 'Loading...', (_this$articles$get2 = this.articles.get('why')) === null || _this$articles$get2 === void 0 ? void 0 : _this$articles$get2.title, ((_this$articles$get3 = this.articles.get('why')) === null || _this$articles$get3 === void 0 ? void 0 : _this$articles$get3.bodyContent) || 'Loading content...', e => {
+      var _this$articles$get4;
+      const articleId = (_this$articles$get4 = this.articles.get('why')) === null || _this$articles$get4 === void 0 ? void 0 : _this$articles$get4._id;
+      console.log("Bookmarking article ID:", articleId);
+      this.bookmarkArticle(e, articleId);
+    }, this.closeDialog, this.openDialog, ((_this$articles$get5 = this.articles.get('deal')) === null || _this$articles$get5 === void 0 ? void 0 : _this$articles$get5.title) || 'Loading...', (_this$articles$get6 = this.articles.get('deal')) === null || _this$articles$get6 === void 0 ? void 0 : _this$articles$get6.title, ((_this$articles$get7 = this.articles.get('deal')) === null || _this$articles$get7 === void 0 ? void 0 : _this$articles$get7.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get8 = this.articles.get('signs')) === null || _this$articles$get8 === void 0 ? void 0 : _this$articles$get8.title) || 'Loading...', (_this$articles$get9 = this.articles.get('signs')) === null || _this$articles$get9 === void 0 ? void 0 : _this$articles$get9.title, ((_this$articles$get10 = this.articles.get('signs')) === null || _this$articles$get10 === void 0 ? void 0 : _this$articles$get10.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get11 = this.articles.get('triggers')) === null || _this$articles$get11 === void 0 ? void 0 : _this$articles$get11.title) || 'Loading...', (_this$articles$get12 = this.articles.get('triggers')) === null || _this$articles$get12 === void 0 ? void 0 : _this$articles$get12.title, ((_this$articles$get13 = this.articles.get('triggers')) === null || _this$articles$get13 === void 0 ? void 0 : _this$articles$get13.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get14 = this.articles.get('practices')) === null || _this$articles$get14 === void 0 ? void 0 : _this$articles$get14.title) || 'Loading...', (_this$articles$get15 = this.articles.get('practices')) === null || _this$articles$get15 === void 0 ? void 0 : _this$articles$get15.title, ((_this$articles$get16 = this.articles.get('practices')) === null || _this$articles$get16 === void 0 ? void 0 : _this$articles$get16.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get17 = this.articles.get('seek')) === null || _this$articles$get17 === void 0 ? void 0 : _this$articles$get17.title) || 'Loading...', (_this$articles$get18 = this.articles.get('seek')) === null || _this$articles$get18 === void 0 ? void 0 : _this$articles$get18.title, ((_this$articles$get19 = this.articles.get('seek')) === null || _this$articles$get19 === void 0 ? void 0 : _this$articles$get19.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get20 = this.articles.get('questions')) === null || _this$articles$get20 === void 0 ? void 0 : _this$articles$get20.title) || 'Loading...', (_this$articles$get21 = this.articles.get('questions')) === null || _this$articles$get21 === void 0 ? void 0 : _this$articles$get21.title, ((_this$articles$get22 = this.articles.get('questions')) === null || _this$articles$get22 === void 0 ? void 0 : _this$articles$get22.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get23 = this.articles.get('why')) === null || _this$articles$get23 === void 0 ? void 0 : _this$articles$get23.title) || 'Loading...', (_this$articles$get24 = this.articles.get('why')) === null || _this$articles$get24 === void 0 ? void 0 : _this$articles$get24.title, ((_this$articles$get25 = this.articles.get('why')) === null || _this$articles$get25 === void 0 ? void 0 : _this$articles$get25.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get26 = this.articles.get('deal')) === null || _this$articles$get26 === void 0 ? void 0 : _this$articles$get26.title) || 'Loading...', (_this$articles$get27 = this.articles.get('deal')) === null || _this$articles$get27 === void 0 ? void 0 : _this$articles$get27.title, ((_this$articles$get28 = this.articles.get('deal')) === null || _this$articles$get28 === void 0 ? void 0 : _this$articles$get28.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get29 = this.articles.get('signs')) === null || _this$articles$get29 === void 0 ? void 0 : _this$articles$get29.title) || 'Loading...', (_this$articles$get30 = this.articles.get('signs')) === null || _this$articles$get30 === void 0 ? void 0 : _this$articles$get30.title, ((_this$articles$get31 = this.articles.get('signs')) === null || _this$articles$get31 === void 0 ? void 0 : _this$articles$get31.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get32 = this.articles.get('triggers')) === null || _this$articles$get32 === void 0 ? void 0 : _this$articles$get32.title) || 'Loading...', (_this$articles$get33 = this.articles.get('triggers')) === null || _this$articles$get33 === void 0 ? void 0 : _this$articles$get33.title, ((_this$articles$get34 = this.articles.get('triggers')) === null || _this$articles$get34 === void 0 ? void 0 : _this$articles$get34.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get35 = this.articles.get('practices')) === null || _this$articles$get35 === void 0 ? void 0 : _this$articles$get35.title) || 'Loading...', (_this$articles$get36 = this.articles.get('practices')) === null || _this$articles$get36 === void 0 ? void 0 : _this$articles$get36.title, ((_this$articles$get37 = this.articles.get('practices')) === null || _this$articles$get37 === void 0 ? void 0 : _this$articles$get37.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get38 = this.articles.get('seek')) === null || _this$articles$get38 === void 0 ? void 0 : _this$articles$get38.title) || 'Loading...', (_this$articles$get39 = this.articles.get('seek')) === null || _this$articles$get39 === void 0 ? void 0 : _this$articles$get39.title, ((_this$articles$get40 = this.articles.get('seek')) === null || _this$articles$get40 === void 0 ? void 0 : _this$articles$get40.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get41 = this.articles.get('questions')) === null || _this$articles$get41 === void 0 ? void 0 : _this$articles$get41.title) || 'Loading...', (_this$articles$get42 = this.articles.get('questions')) === null || _this$articles$get42 === void 0 ? void 0 : _this$articles$get42.title, ((_this$articles$get43 = this.articles.get('questions')) === null || _this$articles$get43 === void 0 ? void 0 : _this$articles$get43.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get44 = this.articles.get('why')) === null || _this$articles$get44 === void 0 ? void 0 : _this$articles$get44.title) || 'Loading...', (_this$articles$get45 = this.articles.get('why')) === null || _this$articles$get45 === void 0 ? void 0 : _this$articles$get45.title, ((_this$articles$get46 = this.articles.get('why')) === null || _this$articles$get46 === void 0 ? void 0 : _this$articles$get46.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get47 = this.articles.get('deal')) === null || _this$articles$get47 === void 0 ? void 0 : _this$articles$get47.title) || 'Loading...', (_this$articles$get48 = this.articles.get('deal')) === null || _this$articles$get48 === void 0 ? void 0 : _this$articles$get48.title, ((_this$articles$get49 = this.articles.get('deal')) === null || _this$articles$get49 === void 0 ? void 0 : _this$articles$get49.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get50 = this.articles.get('signs')) === null || _this$articles$get50 === void 0 ? void 0 : _this$articles$get50.title) || 'Loading...', (_this$articles$get51 = this.articles.get('signs')) === null || _this$articles$get51 === void 0 ? void 0 : _this$articles$get51.title, ((_this$articles$get52 = this.articles.get('signs')) === null || _this$articles$get52 === void 0 ? void 0 : _this$articles$get52.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get53 = this.articles.get('triggers')) === null || _this$articles$get53 === void 0 ? void 0 : _this$articles$get53.title) || 'Loading...', (_this$articles$get54 = this.articles.get('triggers')) === null || _this$articles$get54 === void 0 ? void 0 : _this$articles$get54.title, ((_this$articles$get55 = this.articles.get('triggers')) === null || _this$articles$get55 === void 0 ? void 0 : _this$articles$get55.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get56 = this.articles.get('practices')) === null || _this$articles$get56 === void 0 ? void 0 : _this$articles$get56.title) || 'Loading...', (_this$articles$get57 = this.articles.get('practices')) === null || _this$articles$get57 === void 0 ? void 0 : _this$articles$get57.title, ((_this$articles$get58 = this.articles.get('practices')) === null || _this$articles$get58 === void 0 ? void 0 : _this$articles$get58.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get59 = this.articles.get('seek')) === null || _this$articles$get59 === void 0 ? void 0 : _this$articles$get59.title) || 'Loading...', (_this$articles$get60 = this.articles.get('seek')) === null || _this$articles$get60 === void 0 ? void 0 : _this$articles$get60.title, ((_this$articles$get61 = this.articles.get('seek')) === null || _this$articles$get61 === void 0 ? void 0 : _this$articles$get61.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog, this.openDialog, ((_this$articles$get62 = this.articles.get('questions')) === null || _this$articles$get62 === void 0 ? void 0 : _this$articles$get62.title) || 'Loading...', (_this$articles$get63 = this.articles.get('questions')) === null || _this$articles$get63 === void 0 ? void 0 : _this$articles$get63.title, ((_this$articles$get64 = this.articles.get('questions')) === null || _this$articles$get64 === void 0 ? void 0 : _this$articles$get64.bodyContent) || 'Loading content...', this.closeDialog, this.closeDialog);
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -15101,7 +15218,7 @@ class mindfulnessView {
     _Utils.default.pageIntroAnim();
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      ", "       \n      <div class=\"page-content\">        \n        <section class=\"banner mindfulness\"> \n        <div class=\"banner-content\"> \n          <h1>Mindfulness</h1> \n          <picture>\n            <img src=\"images/mindfulness/mindfulness-hero-image-768.webp\" class=\"responsive-img\" >   \n          </picture>\n          <h2 class=\"quote\">Be Present</br> Be Peaceful</br> Be You</h2>\n          </div>\n        </section>\n        <section class=\"nav-page\">\n        <h3>Ways to Practice...</h3>\n          <div class=\"button-group\">\n          <sl-button class=\"meditation\" @click=", ">Meditation</sl-button>\n          <sl-button class=\"breathing\" @click=", ">Breathing</sl-button>\n          <sl-button class=\"motivation\" @click=", ">Motivation</sl-button>\n          </div>\n       </section>\n      </div>            \n           \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), () => (0, _Router.gotoRoute)('/meditation'), () => (0, _Router.gotoRoute)('/breathing'), () => (0, _Router.gotoRoute)('/motivation'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      ", "\n\n      <div class=\"page-content page-centered\">        \n        <section class=\"banner mindfulness\"> \n        <div class=\"banner-content\"> \n         <div class=\"banner-text\"> \n          <h1>Mindfulness</h1> \n          <h2 class=\"quote\">Be Present</br> Be Peaceful</br> Be You</h2>\n          </div>\n          <picture>\n              <source srcset=\"images/mindfulness/mindfulness-hero-image-360.webp\" media=\"(max-width: 480px)\">\n              <source srcset=\"images/mindfulness/mindfulness-hero-image-768.webp\" media=\"(max-width: 768px)\">\n              <source srcset=\"images/mindfulness/mindfulness-hero-image-1024.webp\" media=\"(min-width: 769px)\">\n              <img id=\"heroImage\" src=\"images/mindfulness/mindfulness-hero-1024.webp\" alt=\"Mental Health banner image of a girl meditating\">\n            </picture>\n          </div>\n        </section>\n        <section class=\"nav-page\">\n        <h3>Ways to Practice...</h3>\n          <div class=\"button-group\">\n          <sl-button class=\"meditation\" @click=", ">Meditation</sl-button>\n          <sl-button class=\"breathing\" @click=", ">Breathing</sl-button>\n          <sl-button class=\"motivation\" @click=", ">Motivation</sl-button>\n          </div>\n       </section>\n      </div>            \n           \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), () => (0, _Router.gotoRoute)('/meditation'), () => (0, _Router.gotoRoute)('/breathing'), () => (0, _Router.gotoRoute)('/motivation'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -15157,7 +15274,7 @@ class resourcesView {
     _Utils.default.pageIntroAnim();
   }
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n       ", " \n      <div class=\"page-content\"> \n      <section class=\"banner resources\">\n        <div class =\"banner-content\">  \n          <h1>Resources</h1>\n          <picture>\n            <img src=\"images/resources/resources-hero-image-768.webp\" class=\"responsive-img\" >    \n          <h2>Supporting You Every Step of the Way.</p>\n        </div>\n      </section>\n      <section class=\"nav-page\">\n        <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n          <sl-button class=\"support\" @click=", ">Support</sl-button>\n          <sl-button class=\"services\" @click=", ">Services</sl-button>\n          <sl-button class=\"guides\" @click=", ">Guides</sl-button>\n        </div>\n      </section>\n      </div>      \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), () => (0, _Router.gotoRoute)('/support'), () => (0, _Router.gotoRoute)('/services'), () => (0, _Router.gotoRoute)('/guides'));
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      ", "\n\n      <div class=\"page-content page-centered\"> \n      <section class=\"banner resources\">\n        <div class =\"banner-content\"> \n          <div class=\"banner-text\"> \n          <h1>Resources</h1>\n          <h2>Supporting You </br>Every Step of</br> the Way.</h2>\n          </div>\n          <picture>\n            <source srcset=\"images/resources/resources-hero-image-360.webp\" media=\"(max-width: 480px)\">\n            <source srcset=\"images/resources/resources-hero-image-768.webp\" media=\"(max-width: 768px)\">\n            <source srcset=\"images/resources/resources-hero-image-1024.webp\" media=\"(min-width: 769px)\">\n            <img id=\"heroImage\" src=\"images/resources/resources-hero-1024.webp\" alt=\"resources banner image of a two women supporting each other\">\n          </picture>\n        </div>\n      </section>\n      <section class=\"nav-page\">\n        <h3>Ways to deal with...</h3>\n          <div class=\"button-group\">\n          <sl-button class=\"support\" @click=", ">Support</sl-button>\n          <sl-button class=\"services\" @click=", ">Services</sl-button>\n          <sl-button class=\"guides\" @click=", ">Guides</sl-button>\n        </div>\n      </section>\n      </div>      \n    "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), () => (0, _Router.gotoRoute)('/support'), () => (0, _Router.gotoRoute)('/services'), () => (0, _Router.gotoRoute)('/guides'));
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -15259,7 +15376,7 @@ class aboutUsView {
   // Animation from Shoelace - access September 23, 2024. https://shoelace.style/components/animation
   // <sl-animation name="fadeIn" duration="2000" play iterations="1"></sl-animation>
   render() {
-    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      ", " \n      <div class=\"page-content\"> \n      <section class=\"banner about\">\n        <div class=\"banner-content\"> \n          <h1>About Us</h1>\n          <picture>\n            <img src=\"/images/about/about-hero-image-768.webp\" alt=\"Group of people\">\n          </picture> \n        </div>\n      </section>\n      <section class=\"about-content\">\n        <article class=\"how-we-are\">\n          <h2>How We Are</h2>\n          <p>\n            As a not-for-profit organisation, the team at Mindline AU aims to raise awareness\n            and support for young people to reach their full potential mentally, physically,\n            and emotionally.\n          </p>\n        </article>\n        <article class=\"our-mission\">    \n          <h2>Our Mission</h2>\n          <p>\n            Mindline AU's mission is for young users to have a safe web space to hang out and explore information, resources, \n            and tools that empower them to manage their wellbeing interactively and in a fun way! \n          </p>\n        </article>\n        <article class=\"contact-info\">\n          <h2>Contact Info</h2>\n          <address>\n            <p>\n              <strong><sl-icon name=\"mailbox\"></sl-icon> &nbsp;Address:&nbsp;</strong>10-20 Walkers Rd, Morayfield QLD 4506 (We share our space with Youth Justice) &nbsp;<a href=\"/\" @click=\"", "\"><sl-icon name=\"geo-alt\"><div class=\"location-map\" class=\"responsive-img\" >  \n                <div><iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d677.7431096476914!2d152.94963042937584!3d-27.11253173219729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93f165fe831745%3A0x644423865a59d123!2sYouth%20Justice!5e1!3m2!1sen!2sau!4v1737785324838!5m2!1sen!2sau\" \n                  width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" \n                  loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\">\n                </iframe></div></sl-icon></a><br>              \n              <strong><sl-icon name=\"telephone\"></sl-icon> &nbsp;Phone:</strong> <a href=\"tel:1800 034 034\"></a><br>\n              <strong><sl-icon name=\"envelope\"></sl-icon> &nbsp;Email:</strong> <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a><br>\n              <strong><sl-icon name=\"globe\"></sl-icon> &nbsp;Web:</strong> <a href=\"https://mindlineau-a3.netlify.app/\">www.mindlineau-A3.netlify.app</a>\n            </p>\n          </address>\n        </article>\n        \n      </section>\n    </div>\n  "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), _Router.anchorRoute);
+    const template = (0, _litHtml.html)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      ", "\n\n      <div class=\"page-content\"> \n      <section class=\"banner about\">\n      <div class=\"grphics\">\n          <div class=\"banner-content\"> \n            <h1>About Us</h1>\n            <picture>\n                <source srcset=\"images/about/about-hero-image-360.webp\" media=\"(max-width: 480px)\">\n                <source srcset=\"images/about/about-hero-image-768.webp\" media=\"(max-width: 768px)\">\n                <source srcset=\"images/about/about-hero-image-1024.webp\" media=\"(min-width: 769px)\">\n                <img id=\"heroImage\" src=\"images/about/about-hero-1024.webp\" alt=\"about/about us banner image of a group of young people\">\n              </picture>\n          </div>\n        </div>\n      </section>\n      <section class=\"about-content\">\n        <article class=\"how-we-are\">\n          <h2>How We Are</h2>\n          <p>\n            As a not-for-profit organisation, the team at Mindline AU aims to raise awareness\n            and support for young people to reach their full potential mentally, physically,\n            and emotionally.\n          </p>\n        </article>\n        <article class=\"our-mission\">    \n          <h2>Our Mission</h2>\n          <p>\n            Mindline AU's mission is for young users to have a safe web space to hang out and explore information, resources, \n            and tools that empower them to manage their wellbeing interactively and in a fun way! \n          </p>\n        </article>\n        <article class=\"contact-info\">\n          <h2>Contact Info</h2>\n          <address>\n            <p>\n              <strong><sl-icon name=\"mailbox\"></sl-icon> &nbsp;Address:&nbsp;</strong>10-20 Walkers Rd, Morayfield QLD 4506 (We share our space with Youth Justice) &nbsp;<a href=\"/\" @click=\"", "\"><sl-icon name=\"geo-alt\"><div class=\"location-map\" class=\"responsive-img\" >  \n                <div><iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d677.7431096476914!2d152.94963042937584!3d-27.11253173219729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93f165fe831745%3A0x644423865a59d123!2sYouth%20Justice!5e1!3m2!1sen!2sau!4v1737785324838!5m2!1sen!2sau\" \n                  width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" \n                  loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\">\n                </iframe></div></sl-icon></a><br>              \n              <strong><sl-icon name=\"telephone\"></sl-icon> &nbsp;Phone:</strong> <a href=\"tel:1800 034 034\"></a><br>\n              <strong><sl-icon name=\"envelope\"></sl-icon> &nbsp;Email:</strong> <a href=\"mailto:hello@mindline.telstra.com.au\">hello@mindline.telstra.com.au</a><br>\n              <strong><sl-icon name=\"globe\"></sl-icon> &nbsp;Web:</strong> <a href=\"https://mindlineau-a3.netlify.app/\">www.mindlineau-A3.netlify.app</a>\n            </p>\n          </address>\n        </article>\n        \n      </section>\n    </div>\n  "])), _Auth.default.isLoggedIn() ? (0, _litHtml.html)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<va-app-header user=", "></va-app-header>"])), JSON.stringify(_Auth.default.currentUser)) : (0, _litHtml.html)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["<va-public-header></va-public-header>"]))), _Router.anchorRoute);
     (0, _litHtml.render)(template, _App.default.rootEl);
   }
 }
@@ -15637,8 +15754,8 @@ class App {
   constructor() {
     this.name = "Mindline";
     this.version = "1.0.0";
-    this.apiBase = "https://mindlineau.onrender.com";
-    //this.apiBase = "http://localhost:3000";
+    //this.apiBase = "https://mindlineau.onrender.com";
+    this.apiBase = "http://localhost:3000";
     this.rootEl = document.getElementById("root");
     this.version = "1.0.0";
   }
@@ -16217,7 +16334,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62233" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63272" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

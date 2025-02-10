@@ -12,19 +12,26 @@ class resourcesView {
     Utils.pageIntroAnim()
   }
 
-  render(){
+ render() {
     const template = html`
-       ${Auth.isLoggedIn() ? 
-             html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
-             html`<va-public-header></va-public-header>`
-           } 
-      <div class="page-content"> 
+      ${Auth.isLoggedIn() ? 
+        html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
+        html`<va-public-header></va-public-header>`
+      }
+
+      <div class="page-content page-centered"> 
       <section class="banner resources">
-        <div class ="banner-content">  
+        <div class ="banner-content"> 
+          <div class="banner-text"> 
           <h1>Resources</h1>
+          <h2>Supporting You </br>Every Step of</br> the Way.</h2>
+          </div>
           <picture>
-            <img src="images/resources/resources-hero-image-768.webp" class="responsive-img" >    
-          <h2>Supporting You Every Step of the Way.</p>
+            <source srcset="images/resources/resources-hero-image-360.webp" media="(max-width: 480px)">
+            <source srcset="images/resources/resources-hero-image-768.webp" media="(max-width: 768px)">
+            <source srcset="images/resources/resources-hero-image-1024.webp" media="(min-width: 769px)">
+            <img id="heroImage" src="images/resources/resources-hero-1024.webp" alt="resources banner image of a two women supporting each other">
+          </picture>
         </div>
       </section>
       <section class="nav-page">
