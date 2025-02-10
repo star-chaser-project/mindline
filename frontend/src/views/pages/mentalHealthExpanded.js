@@ -514,7 +514,7 @@ sl-tab[active]::part(base) {
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
                     <sl-dialog label="${this.articles.get('why_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                       ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
+                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark.</sl-button>
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
