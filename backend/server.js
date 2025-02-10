@@ -19,10 +19,14 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // express app setup -----------------------
 const app = express()
+// Apply CORS as early as possible
+app.use(cors()) // You can also restrict the origin if needed, e.g., cors({ origin: 'http://localhost:1234' })
+
+// Then static files, body parsers, etc.
 app.use(express.static('public'))
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
-app.use('*', cors())
+app.use(express.urlencoded({ extended: true }))
+
 app.use(fileUpload({
   limits: { fileSize: 50 * 1024 * 1024 }
 }))

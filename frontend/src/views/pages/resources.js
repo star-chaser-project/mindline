@@ -24,7 +24,7 @@ class resourcesView {
         <div class ="banner-content"> 
           <div class="banner-text"> 
           <h1>Resources</h1>
-          <h2>Supporting You </br>Every Step of</br> the Way.</h2>
+          <h2>Supporting You Every Step of the Way.</h2>
           </div>
           <picture>
             <source srcset="images/resources/resources-hero-image-360.webp" media="(max-width: 480px)">
