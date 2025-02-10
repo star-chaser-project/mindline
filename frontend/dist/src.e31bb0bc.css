@@ -975,21 +975,21 @@ picture img {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Smaller shadow for pressed effect */
   transform: scale(0.98); /* Slight shrink effect */
 }
-.nav-page .meditation::part(base),
-.nav-page .stress::part(base),
-.nav-page .support::part(base) {
+.nav-page .meditation-page::part(base),
+.nav-page .stress-page::part(base),
+.nav-page .suppor-paget::part(base) {
   background-color: var(--web-color-lilch);
   color: white;
 }
-.nav-page .anxiety::part(base),
-.nav-page .breathing::part(base),
-.nav-page .services::part(base) {
+.nav-page .anxiety-page::part(base),
+.nav-page .breathing-page::part(base),
+.nav-page .services-page::part(base) {
   background-color: var(--web-color-blue);
   color: white;
 }
-.nav-page .depression::part(base),
-.nav-page .motivation::part(base),
-.nav-page .guides::part(base) {
+.nav-page .depression-page::part(base),
+.nav-page .motivation-page::part(base),
+.nav-page .guides-page::part(base) {
   background-color: var(--web-color-green);
   color: white;
 }

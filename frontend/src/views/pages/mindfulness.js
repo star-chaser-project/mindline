@@ -37,9 +37,9 @@ class mindfulnessView {
         <section class="nav-page">
         <h3>Ways to Practice...</h3>
           <div class="button-group">
-          <sl-button class="meditation" @click=${() => gotoRoute('/mindfulnessExpanded?tab=meditation')}>Meditation</sl-button>
-          <sl-button class="breathing" @click=${() => gotoRoute('/mindfulnessExpanded?tab=breathing')}>Breathing</sl-button>
-          <sl-button class="motivation" @click=${() => gotoRoute('/mindfulnessExpanded?tab=motivation')}>Motivation</sl-button>
+          <sl-button class="meditation-page" @click=${() => gotoRoute('/mindfulnessExpanded?tab=meditation')}>Meditation</sl-button>
+          <sl-button class="breathing-page" @click=${() => gotoRoute('/mindfulnessExpanded?tab=breathing')}>Breathing</sl-button>
+          <sl-button class="motivation-page" @click=${() => gotoRoute('/mindfulnessExpanded?tab=motivation')}>Motivation</sl-button>
           </div>
        </section>
       </div>            

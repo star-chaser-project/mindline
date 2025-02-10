@@ -86,23 +86,23 @@ sl-button:active::part(base) {
 
 }
 
-.meditation::part(base),
-.stress::part(base),
-.support::part(base) {
+.meditation-page::part(base),
+.stress-page::part(base),
+.suppor-paget::part(base) {
     background-color: var(--web-color-lilch);
     color: white;
 }
 
-.anxiety::part(base),
-.breathing::part(base),
-.services::part(base) {
+.anxiety-page::part(base),
+.breathing-page::part(base),
+.services-page::part(base) {
     background-color: var(--web-color-blue);
     color: white;
 }
 
-.depression::part(base),
-.motivation::part(base),
-.guides::part(base) {
+.depression-page::part(base),
+.motivation-page::part(base),
+.guides-page::part(base) {
     background-color: var(--web-color-green);
     color: white;
 }
