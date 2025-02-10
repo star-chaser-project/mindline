@@ -166,7 +166,6 @@ async fetchArticle(id) {
   const urlParams = new URLSearchParams(window.location.search);
   const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
     const template = html`
-
     ${Auth.isLoggedIn() ? 
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
       html`<va-public-header></va-public-header>`
