@@ -34,31 +34,31 @@ async fetchArticle(id) {
     document.title = 'Mental Health Expanded'    
     this.articleIds = {
       // Stress - articles for the first tab group "stress" //
-      why: '679dc4c5640ec34e3c22a28b', // 679dc4c5640ec34e3c22a28b Why Mental Health Matters
-      deal: '679dc7cc640ec34e3c22a28d', // 679dc7cc640ec34e3c22a28d Ways to Deal with Stress
-      signs: '679dc8c8640ec34e3c22a28e', // 679dc8c8640ec34e3c22a28e Signs & Symptoms of Stress
-      practices: '679dc9da640ec34e3c22a290', // 679dc9da640ec34e3c22a290 Daily Practices for Stress
-      triggers: '679dc964640ec34e3c22a28f', // 679dc964640ec34e3c22a28f Common Triggers of Stress
-      seek: '679dcac3640ec34e3c22a291', // 679dcac3640ec34e3c22a291 When to Seek Help for Stress
-      questions: '679dce00640ec34e3c22a292', // 679dce00640ec34e3c22a292 Common Questions About Stress
+      why: '679dc4c5640ec34e3c22a28b', // Why Mental Health Matters
+      deal: '679dc7cc640ec34e3c22a28d', // Ways to Deal with Stress
+      signs: '679dc8c8640ec34e3c22a28e', // Signs & Symptoms of Stress
+      practices: '679dc9da640ec34e3c22a290', // Daily Practices for Stress
+      triggers: '679dc964640ec34e3c22a28f', // Common Triggers of Stress
+      seek: '679dcac3640ec34e3c22a291', // When to Seek Help for Stress
+      questions: '679dce00640ec34e3c22a292', // Common Questions About Stress
 
       // Anxiety - articles for the second tab group "anxiety" //
-      why_anxiety: '67a9aadc1fbc4cadae86e685', // 67a9aadc1fbc4cadae86e685 Why Anxiety Matters
-      deal_anxiety: '679dce85640ec34e3c22a293', // 679dce85640ec34e3c22a293 Ways to Deal with Feeling Anxious
-      signs_anxiety: '679dcf0f640ec34e3c22a294', // 679dcf0f640ec34e3c22a294 Signs & Symptoms of Anxiety
-      practices_anxiety: '679dcfe7640ec34e3c22a296', // 679dcfe7640ec34e3c22a296 Daily Practices for Anxiety
-      triggers_anxiety: '679dcf93640ec34e3c22a295', // 679dcf93640ec34e3c22a295 Common Triggers of Anxiety
-      seek_anxiety: '679dd040640ec34e3c22a297', // 679dd040640ec34e3c22a297 When to Seek Help for Anxiety
-      questions_anxiety: '679dd099640ec34e3c22a298', // 679dd099640ec34e3c22a298 Common Questions About Anxiety
+      why_anxiety: '67a9aadc1fbc4cadae86e685', // Why Anxiety Matters
+      deal_anxiety: '679dce85640ec34e3c22a293', // Ways to Deal with Feeling Anxious
+      signs_anxiety: '679dcf0f640ec34e3c22a294', // Signs & Symptoms of Anxiety
+      practices_anxiety: '679dcfe7640ec34e3c22a296', // Daily Practices for Anxiety
+      triggers_anxiety: '679dcf93640ec34e3c22a295', // Common Triggers of Anxiety
+      seek_anxiety: '679dd040640ec34e3c22a297', // When to Seek Help for Anxiety
+      questions_anxiety: '679dd099640ec34e3c22a298', // Common Questions About Anxiety
 
       // Depression - articles fr the third tab group "Depression" //
-      why_depression: '679dd307640ec34e3c22a299', // 679dd307640ec34e3c22a299 Why Depression Matters
-      deal_depression: '679dd573640ec34e3c22a29a', // 679dd573640ec34e3c22a29a Ways to Deal with Feeling Depressed
-      signs_depression: '679dd6ae640ec34e3c22a29c', // 679dd6ae640ec34e3c22a29c Signs & Symptoms of Depression
-      practices_depression: '679dd719640ec34e3c22a29d', // 679dd6ae640ec34e3c22a29c Daily Practices to help with Depression
-      triggers_depression: '679dd653640ec34e3c22a29b', // 679dd653640ec34e3c22a29b Common Triggers of Depression 
-      seek_depression: '679dd80d640ec34e3c22a29e', // 679dd80d640ec34e3c22a29e When to Seek Help about Depression
-      questions_depression: '679dd864640ec34e3c22a29f' // 679dd864640ec34e3c22a29f Common Questions About Depression
+      why_depression: '679dd307640ec34e3c22a299', // Why Depression Matters
+      deal_depression: '679dd573640ec34e3c22a29a', // Ways to Deal with Feeling Depressed
+      signs_depression: '679dd6ae640ec34e3c22a29c', // Signs & Symptoms of Depression
+      practices_depression: '679dd719640ec34e3c22a29d', // Daily Practices to help with Depression
+      triggers_depression: '679dd653640ec34e3c22a29b', // Common Triggers of Depression 
+      seek_depression: '679dd80d640ec34e3c22a29e', // When to Seek Help about Depression
+      questions_depression: '679dd864640ec34e3c22a29f' // Common Questions About Depression
 
     } 
     
@@ -175,7 +175,7 @@ async fetchArticle(id) {
         <section class="banner mental-health-expanded">
         
         <div class="banner-content">     
-          <h1>Mental Health</h1>
+        <h1>Mental Health</h1>
           <div id="bento-tabs">
             <sl-tab-group ?active="${activeTab}">
               <sl-tab slot="nav" panel="stress" ?active="${activeTab === 'stress'}">Stress</sl-tab>
@@ -215,7 +215,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="signs signs-stress" @click=${this.openDialog}>
-                    <img src="/images/signs-box.png" class="signs-img">
+                    <img src="/images/mental-health/stress/stress-signs_symptoms-360.webp" class="signs-img">
                     <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
                     <sl-dialog label="${this.articles.get('signs')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
@@ -420,7 +420,7 @@ async fetchArticle(id) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="questions_depression" @click=${this.openDialog}>
+                  <div class="questions" @click=${this.openDialog}>
                   <img src="/images/questions-box.png" class="questions-img">
                       <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
