@@ -3,6 +3,7 @@ import {html, render } from 'lit-html'
 import {gotoRoute, anchorRoute} from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
+import Toast from '../../Toast';
 
 
 
@@ -76,7 +77,7 @@ async fetchArticle(id) {
     console.log("Current user:", Auth.currentUser);
     console.log("Using token:", Auth.currentUser.token);
     if (!Auth.currentUser || !Auth.currentUser.token) {
-      alert("You must be logged in to bookmark articles!");
+      Toast.show("You must be logged in to bookmark articles!");
       return;
     }
     
@@ -93,15 +94,15 @@ async fetchArticle(id) {
     
       const result = await response.json();
       if (response.ok) {
-        alert("Article bookmarked!");
+        Toast.show("Article bookmarked!");
       } else {
         const errMsg = result.message || result.error || "Bookmark failed";
         console.error("Bookmark failed:", errMsg);
-        alert(errMsg);
+        Toast.show(errMsg);
       }
     } catch (err) {
       console.error("Bookmark error:", err);
-      alert("An error occurred while bookmarking the article.");
+      Toast.show("An error occurred while bookmarking the article.");
     }
   }
 
@@ -303,18 +304,18 @@ sl-tab[active]::part(base) {
       cursor: pointer;
     }
 
-.stress {
-  display: grid;
-  grid-template-areas: 
-    "why deal signs"
-    "triggers practices practices"
-    "seek questions questions";
-  grid-template-columns: 193px 361px 193px; /* Explicit column widths */
-  grid-template-rows: 193px 193px 193px; /* Fixed row heights */
-  gap: 24px; /* Minimal gap */
-  align-items: start; /* Align items to top */
-  margin-top: 8px;
-}
+    .stress {
+      display: grid;
+      grid-template-areas: 
+        "why deal signs"
+        "triggers practices practices"
+        "seek questions questions";
+      grid-template-columns: 193px 361px 193px; /* Explicit column widths */
+      grid-template-rows: 193px 193px 193px; /* Fixed row heights */
+      gap: 24px; /* Minimal gap */
+      align-items: start; /* Align items to top */
+      margin-top: 8px;
+    }
 
 
     p {
