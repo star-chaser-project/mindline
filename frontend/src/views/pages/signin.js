@@ -94,7 +94,7 @@ class SignInView {
     const template = html`    
     <style>
     .signin-background {
-        background-image: url('/images/login/login-background.png');
+        background-image: url('/images/login/login-background.svg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -276,7 +276,7 @@ class SignInView {
 
 <sl-drawer class="app-side-menu" placement="left">
     <div slot="label">
-        <a href="/" @click="${anchorRoute}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
+        <a href="/" @click="${anchorRoute}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.svg"></a>
     </div>
     <nav class="app-side-menu-items">
         <a href="/" @click="${anchorRoute}">Home</a>

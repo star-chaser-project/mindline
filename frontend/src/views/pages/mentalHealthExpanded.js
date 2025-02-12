@@ -57,19 +57,33 @@ async fetchArticle(id) {
     }
     document.title = 'Mental Health Expanded'    
     this.articleIds = {
-      // these are the articles for the first tab group "stress" //
-      why: '677dcb34a6cdde9083351d76',
-      deal: '677dcc1c4aea9c354dbd3103',
-      signs: '677e60b05c759160209d1111',
-      practices: '679af473ccbfff59ce1a142e',
-      triggers: '679af4330b0bab1805167cae', 
-      seek: '679af494ccbfff59ce1a1430',
-      questions: '679af4b9ccbfff59ce1a1432'
+      // Stress - articles for the first tab group "stress" //
+      why: '679dc4c5640ec34e3c22a28b', // 679dc4c5640ec34e3c22a28b Why Mental Health Matters
+      deal: '679dc7cc640ec34e3c22a28d', // 679dc7cc640ec34e3c22a28d Ways to Deal with Stress
+      signs: '679dc8c8640ec34e3c22a28e', // 679dc8c8640ec34e3c22a28e Signs & Symptoms of Stress
+      practices: '679dc9da640ec34e3c22a290', // 679dc9da640ec34e3c22a290 Daily Practices for Stress
+      triggers: '679dc964640ec34e3c22a28f', // 679dc964640ec34e3c22a28f Common Triggers of Stress
+      seek: '679dcac3640ec34e3c22a291', // 679dcac3640ec34e3c22a291 When to Seek Help for Stress
+      questions: '679dce00640ec34e3c22a292', // 679dce00640ec34e3c22a292 Common Questions About Stress
 
-      // these are the articles for the second tab group "anxiety" //
+      // Anxiety - articles for the second tab group "anxiety" //
+      why_anxiety: '67a9aadc1fbc4cadae86e685', // 67a9aadc1fbc4cadae86e685 Why Anxiety Matters
+      deal_anxiety: '679dce85640ec34e3c22a293', // 679dce85640ec34e3c22a293 Ways to Deal with Feeling Anxious
+      signs_anxiety: '679dcf0f640ec34e3c22a294', // 679dcf0f640ec34e3c22a294 Signs & Symptoms of Anxiety
+      practices_anxiety: '679dcfe7640ec34e3c22a296', // 679dcfe7640ec34e3c22a296 Daily Practices for Anxiety
+      triggers_anxiety: '679dcf93640ec34e3c22a295', // 679dcf93640ec34e3c22a295 Common Triggers of Anxiety
+      seek_anxiety: '679dd040640ec34e3c22a297', // 679dd040640ec34e3c22a297 When to Seek Help for Anxiety
+      questions_anxiety: '679dd099640ec34e3c22a298', // 679dd099640ec34e3c22a298 Common Questions About Anxiety
 
+      // Depression - articles fr the third tab group "Depression" //
+      why_depression: '679dd307640ec34e3c22a299', // 679dd307640ec34e3c22a299 Why Depression Matters
+      deal_depression: '679dd573640ec34e3c22a29a', // 679dd573640ec34e3c22a29a Ways to Deal with Feeling Depressed
+      signs_depression: '679dd6ae640ec34e3c22a29c', // 679dd6ae640ec34e3c22a29c Signs & Symptoms of Depression
+      practices_depression: '679dd719640ec34e3c22a29d', // 679dd6ae640ec34e3c22a29c Daily Practices to help with Depression
+      triggers_depression: '679dd653640ec34e3c22a29b', // 679dd653640ec34e3c22a29b Common Triggers of Depression 
+      seek_depression: '679dd80d640ec34e3c22a29e', // 679dd80d640ec34e3c22a29e When to Seek Help about Depression
+      questions_depression: '679dd864640ec34e3c22a29f' // 679dd864640ec34e3c22a29f Common Questions About Depression
 
-      // these are te articles fr the thrid tab group "Depression" //
     } 
     
     try {
@@ -189,234 +203,6 @@ async fetchArticle(id) {
     const urlParams = new URLSearchParams(window.location.search);
     const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
     const template = html`
-    <style>
-      .banner.mental-health-expanded {
-      height: 100vh; 
-      background-color: #6686E3;
-      /*padding-top: 15%;*/
-    }
-
-    .banner-content {
-      height: 80%;
-      width: 60%;
-    }
-
-    sl-tab-group::part(base) {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    
-    }
-
-  
-    sl-tab-group::part(nav) {
-    border-bottom: none;
-  }
-
-  sl-tab-group::part(active-tab-indicator) {
-    display: none !important;
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  sl-tab-group::part(tabs) {
-    border-bottom: none;
-  }
-
-  sl-tab::part(base) {
-    border-bottom: none;
-    margin: 0 12px;
-    padding: 12px 24px;
-    font-size: 18px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  }
-
-  sl-tab:not([active])::part(base):hover {
-  font-size: 20px;
-}
-
-sl-tab[active]::part(base) {
-  font-size: 20px;
-  color: #F3C728 !important;
-}
-
-    #bento-tabs {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: left;
-    }
-    
-    h1 {
-      margin-bottom: 50px !important;
-      width: 50% !important;
-      margin-left: 13% !important;
-    }
-    
-
-    .why {
-      grid-area: why;
-      width: 193px;
-      height: 193px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .deal {
-      grid-area: deal;
-      width: 361px;
-      height: 193px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .signs {
-      grid-area: signs;
-      width: 193px;
-      height: 411px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .triggers {
-      grid-area: triggers;
-      width: 361px;
-      height: 193px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .practices {
-      grid-area: practices;
-      width: 193px;
-      height: 411px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      margin-left: 168px;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .seek {
-      grid-area: seek;
-      width: 361px;
-      height: 193px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .questions {
-      grid-area: questions;
-      width: 193px;
-      height: 193px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      margin-left: 385px;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-.stress {
-  display: grid;
-  grid-template-areas: 
-    "why deal signs"
-    "triggers practices practices"
-    "seek questions questions";
-  grid-template-columns: 193px 361px 193px; /* Explicit column widths */
-  grid-template-rows: 193px 193px 193px; /* Fixed row heights */
-  gap: 24px; /* Minimal gap */
-  align-items: start; /* Align items to top */
-  margin-top: 8px;
-}
-
-
-    p {
-      color: #000000;
-    }
-
-    .bookmark, .bookmark-full {
-    position: absolute;
-    width: auto;
-    height: 30px;
-    top: -0.5px;
-    right: 35px;
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
-    z-index: 10;
-  }
-    
-
-  sl-dialog::part(base) {
-    color: #000000;
-  }
-
-  sl-dialog::part(overlay) {
-    backdrop-filter: blur(8px);
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-
-  sl-dialog::part(panel) {
-    border-radius: 35px;
-    z-index: 1000;
-  }
-
-  sl-dialog::part(close-button) {
-    display: none;
-  }
-
-    .why-img {
-      width: 400px; /* Much larger than parent */
-      height: 400px; /* Much larger than parent */
-      position: absolute;
-      z-index: 0;
-      object-fit: cover;
-      transform: translate(-50%, -50%);
-      top: 60%;
-      left: 60%;
-      border-radius: 35px;
-      transition: transform 0.3s ease;
-    }
-
-    .why:hover .why-img {
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    .why p {
-      width: 30%;
-      font-size: 20px;
-      font-weight: 300;
-      margin-left: 10%;
-      z-index: 1;
-    }
-
-    </style>
-
-    
 
     ${Auth.isLoggedIn() ? 
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
@@ -440,8 +226,8 @@ sl-tab[active]::part(base) {
        
                 <div class="stress">
                 
-                  <div class="why" @click=${this.openDialog}>
-                    <img src="/images/why-box.png" class="why-img">
+                  <div class="why why-stress" @click=${this.openDialog}>
+                    <img src="/images/mental-health/stress/stress-why-mental-health-matters-360.webp" class="why-img">
                     <p>${this.articles.get('why')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
                       ? html`
@@ -466,7 +252,7 @@ sl-tab[active]::part(base) {
                     </sl-dialog>
                   </div>
 
-                  <div class="deal" @click=${this.openDialog}>
+                  <div class="deal deal-stress" @click=${this.openDialog}>
                     <img src="/images/stress-box.png" class="stress-img">
                     <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal') && this.userBookmarks.has(this.articles.get('deal')._id)
@@ -491,7 +277,7 @@ sl-tab[active]::part(base) {
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="signs" @click=${this.openDialog}>
+                  <div class="signs signs-stress" @click=${this.openDialog}>
                     <img src="/images/signs-box.png" class="signs-img">
                     <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('signs') && this.userBookmarks.has(this.articles.get('signs')._id)
@@ -517,7 +303,7 @@ sl-tab[active]::part(base) {
                   </div>
                 
                 
-                  <div class="triggers" @click=${this.openDialog}>
+                  <div class="triggers triggers-stress" @click=${this.openDialog}>
                     <img src="/images/triggers-box.png" class="triggers-img">
                     <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('triggers') && this.userBookmarks.has(this.articles.get('triggers')._id)
@@ -542,7 +328,7 @@ sl-tab[active]::part(base) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="practices" @click=${this.openDialog}>
+                  <div class="practices practices-stress" @click=${this.openDialog}>
                     <img src="/images/practices-box.png" class="practices-img">
                       <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
@@ -567,7 +353,7 @@ sl-tab[active]::part(base) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
-                  <div class="seek" @click=${this.openDialog}>
+                  <div class="seek seek-stress" @click=${this.openDialog}>
                   <img src="/images/seek-box.png" class="seek-img">
                     <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
@@ -622,12 +408,13 @@ sl-tab[active]::part(base) {
 
               </sl-tab-panel>
 
-               <!-- this is the second tab content of the menal health page -->
+               <!-- this is the second tab content of the mental health page -->
               <sl-tab-panel name="anxiety">
                 <div class="stress">
                 
-                  <div class="why" @click=${this.openDialog}>
+                  <div class="why why-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="why-img">
+
                     <p>${this.articles.get('why')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
                       ? html`
@@ -646,12 +433,14 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
 
-                  <div class="deal" @click=${this.openDialog}>
+                  <div class="deal deal-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="stress-img">
+
                     <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal') && this.userBookmarks.has(this.articles.get('deal')._id)
                       ? html`
@@ -670,11 +459,13 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="signs" @click=${this.openDialog}>
+                  <div class="signs signs-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="signs-img">
+
                     <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('signs') && this.userBookmarks.has(this.articles.get('signs')._id)
                       ? html`
@@ -693,12 +484,14 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                 
-                  <div class="triggers" @click=${this.openDialog}>
+                  <div class="triggers triggers-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="triggers-img">
+
                     <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('triggers') && this.userBookmarks.has(this.articles.get('triggers')._id)
                       ? html`
@@ -717,11 +510,13 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="practices" @click=${this.openDialog}>
+                  <div class="practices practices-anxiety" @click=${this.openDialog}>
                     <img src="/images/" class="practices-img">
+
                       <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
                       ? html`
@@ -740,11 +535,13 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
-                  <div class="seek" @click=${this.openDialog}>
+                  <div class="seek seek-anxiety" @click=${this.openDialog}>
                   <img src="/images/" class="seek-img">
+
                  <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
                       ? html`
@@ -763,11 +560,13 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="questions" @click=${this.openDialog}>
+                  <div class="questions questions-anxiety" @click=${this.openDialog}>
                   <img src="/images/" class="questions-img">
+
                       <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
                       ? html`
@@ -786,6 +585,7 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 </div>
@@ -797,6 +597,7 @@ sl-tab[active]::part(base) {
                 
                   <div class="why" @click=${this.openDialog}>
                     <img src="/images/why-box.png" class="why-img">
+
                     <p>${this.articles.get('why')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
                       ? html`
@@ -815,12 +616,14 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
 
                   <div class="deal" @click=${this.openDialog}>
                     <img src="/images/stress-box.png" class="stress-img">
+
                     <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal') && this.userBookmarks.has(this.articles.get('deal')._id)
                       ? html`
@@ -839,11 +642,13 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="signs" @click=${this.openDialog}>
                     <img src="/images/signs-box.png" class="signs-img">
+
                     <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('signs') && this.userBookmarks.has(this.articles.get('signs')._id)
                       ? html`
@@ -862,12 +667,14 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                 
                   <div class="triggers" @click=${this.openDialog}>
                     <img src="/images/triggers-box.png" class="triggers-img">
+
                     <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('triggers') && this.userBookmarks.has(this.articles.get('triggers')._id)
                       ? html`
@@ -886,11 +693,13 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="practices" @click=${this.openDialog}>
                     <img src="/images/practices-box.png" class="practices-img">
+
                       <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
                       ? html`
@@ -909,11 +718,13 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                   <div class="seek" @click=${this.openDialog}>
                   <img src="/images/seek-box.png" class="seek-img">
+
                  <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
                       ? html`
@@ -932,11 +743,13 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="questions" @click=${this.openDialog}>
+                  <div class="questions_depression" @click=${this.openDialog}>
                   <img src="/images/questions-box.png" class="questions-img">
+
                       <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
                       ? html`
@@ -955,6 +768,7 @@ sl-tab[active]::part(base) {
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>Bookmark</sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 </div>

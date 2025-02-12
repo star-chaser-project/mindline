@@ -2,7 +2,7 @@
 
 /// Inner pages
 .banner {
-    height: 70vh; 
+    height: auto; 
     position: relative; 
     color: white;
     text-align: left;
@@ -23,32 +23,22 @@
     background: var(--background-mental-health);
   }
  
-  img {
-    z-index: 1;
-    bottom: 0;
-  }
-
-  .banner-content {
-    position: relative; /* Ensures it stays on top of the image */
-    z-index: 2; /* Ensure content overlays the image */
-    padding-top: 6rem; /* Adjust this to create space from the top */
-
-  }
-
-  h1 {
-    font-size: 3rem;
-    margin: 0;
-    padding: 1rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-    margin: 0;
-
-  }
-
-  
 }
+  .banner-content {
+    display: flex;
+    justify-content: center;
+   // align-items: center;
+    z-index: 2; // Ensure content overlays the image
+    padding-top: 6rem; // Adjust this to create space from the top 
+   
+    .banner-text {
+      text-align: left;
+    }
+ }
+    picture img {
+      z-index: 1;
+      bottom: 0;
+    }
 
 .nav-page {
   padding: 2rem;
@@ -67,7 +57,6 @@
     display: flex;
     justify-content: center; /* Centers the buttons horizontally */
     gap: 1rem; /* Optional: Adds space between buttons */
-    margin: 2rem 0; /* Optional: Adjusts margin around the button group */
   }
 
 /* Base button style */
@@ -97,59 +86,36 @@ sl-button:active::part(base) {
 
 }
 
-.meditation::part(base),
-.stress::part(base),
-.support::part(base) {
+.meditation-page::part(base),
+.stress-page::part(base),
+.suppor-paget::part(base) {
     background-color: var(--web-color-lilch);
     color: white;
 }
 
-.anxiety::part(base),
-.breathing::part(base),
-.services::part(base) {
+.anxiety-page::part(base),
+.breathing-page::part(base),
+.services-page::part(base) {
     background-color: var(--web-color-blue);
     color: white;
 }
 
-.depression::part(base),
-.motivation::part(base),
-.guides::part(base) {
+.depression-page::part(base),
+.motivation-page::part(base),
+.guides-page::part(base) {
     background-color: var(--web-color-green);
     color: white;
 }
 }
-//responsive banner ----------------
-
-@media (max-width: 767px) {
-    .banner {
-      img {
-        margin:0
-      }
-      h1 {
-        font-size: 2rem;
-        margin: 0 0 10px;
-      }
-    
-      h2 {
-        font-size: 1rem;
-        margin: 0;
-      }
-    }
-    
-  }
-
-
 
 // Mental-health----------------------------------------------------------------------------------
-
-.mental-health {
-
-  .banner-content {
-    background: url('../../static/images/mental-health/mental-health-bg-graphics.svg') no-repeat center center;
-    background-size: contain;
-
-    }
- }
+.mental-health{
+.grphics {
+  background: url('../../static/images/mental-health/mental-health-bg-graphics.svg') no-repeat center center;
+  background-size: 100%;
+  width: 90%;
+}
+}
 
 //// mindfulness---------------------------------------------------------------------------------
 
@@ -162,20 +128,179 @@ sl-button:active::part(base) {
  }
 
 // Resources----------------------------------------------------------------------------------
+
 .resources {
   .banner-content {
-    background: url('../../static/images/resources/resources-bg-graphics.svg') no-repeat center center;
-    background-size: contain;
-   
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: top;
+    text-align: left;
+    
+  }
+
+  .banner-text {
+    text-align: left;
+    padding: 0 0 0 2rem;
+    max-width: 30%;
+    h1{
+      font-size: 1.5rem;
     }
+    h2{
+      font-size: 0.8rem;
+    }
+  }
+
+  picture {
+    background: url('../../static/images/resources/resources-bg-graphics.svg') no-repeat center center;
+    background-size: 14%;
+    background-position-y: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+      height: auto;
+      display: block;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (min-width: 1024px) {
+  .resources {
+    .text-banner {
+      padding: 0px 0rem 2rem 2rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px) and (min-width: 500px) {
+  .resources {
+    .banner-content {
+    text-align: left;
+    background-size: 20%;
+  }
+ text-banner{
+  padding: 0px 0rem 2rem 2rem;
+  h1{
+    font-size: 1.5rem;
+   }
+    h2 {
+      font-size: 0.8rem;
+   }
  }
+  picture {
+    width: 70%;
+    background-size: 19%;
+    background-position-y: 1rem;
+    img{
+      width: 90%;
+    }
+  }
+}
+}
+@media (max-width: 500px) {
+    .resources {
+    .banner-content {
+      display: flex;
+      flex-direction: column; // Stack text and image
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 4rem;        
+      background-size: cover;
+    }
+
+    .banner-text {
+      position: relative;
+      max-width: 100%;
+      text-align: center;
+      padding: 0 1rem; // Prevents text from touching the screen edges
+      display: flex;
+      flex-direction: column;
+      align-items: top;
+
+    }
+
+    picture {
+      width: 100%; // Ensures image fills the width properly
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+
+}
+
 
 //about----------------------------------------------------------------------------------
-  
-.about {
-  .banner-content {
+.about{
+.grphics {
     background: url('../../static/images/about/about-bg-graphics.svg') no-repeat center center;
-    background-size: contain;
-   
+    background-size: 100%;
+    width: 100%;
+    margin-top: 3rem;
+  }
+  
+}
+//responsive banner ----------------
+ //small screen 400px and below
+ @media (max-width: 400px) {
+
+  .banner-content {
+    display: flex;
+    flex-direction: column; // Stack text and image
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 4rem;        
+    background-size: cover;
+  }
+
+  .banner-text {
+    position: relative;
+    max-width: 100%;
+    text-align: left;
+    padding: 0 1rem; // Prevents text from touching the screen edges
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+
+  }
+
+  picture {
+    width: 100%; // Ensures image fills the width properly
+    display: flex;
+    justify-content: center;
+  }
+  
+    img {
+      width: 70%;
+      height: auto;
+  }
+  .banner-text {
+    h1{
+     font-size: 1.2rem;
     }
- }
+     h2 {
+       font-size: 0.8rem;
+    }
+   }
+
+}
+
