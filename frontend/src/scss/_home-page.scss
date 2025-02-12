@@ -51,12 +51,11 @@
     }
   
     h1 {
-
-      color: #6D83F2;
-      font-size: 2.5rem;
-      text-align: left;
-      align-items: center;
-      z-index: 2;
+        color: #6D83F2;
+        font-size: 2.5rem; // Adjust size to be responsive 
+        margin-right: 10rem;
+        text-align: left;
+        z-index: 2;
   }
   
     h2 {
@@ -75,7 +74,6 @@
 }
 
   // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
- // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
   
  .cloud {
   animation: float 5s ease-in-out infinite;
