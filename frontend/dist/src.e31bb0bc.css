@@ -564,32 +564,32 @@ sl-details::part(base) {
     display: none;
   }
 }
-.mental-health-expanded .banner {
+.mental-health-expanded-page .banner.mental-health-expanded {
   height: 100vh;
   background-color: #6686E3;
   /*padding-top: 15%;*/
 }
-.mental-health-expanded .banner-content {
+.mental-health-expanded-page .banner-content {
   height: 80%;
   width: 60%;
 }
-.mental-health-expanded sl-tab-group::part(base) {
+.mental-health-expanded-page sl-tab-group::part(base) {
   display: flex;
   align-items: center;
   gap: 32px;
 }
-.mental-health-expanded sl-tab-group::part(nav) {
+.mental-health-expanded-page sl-tab-group::part(nav) {
   border-bottom: none;
 }
-.mental-health-expanded sl-tab-group::part(active-tab-indicator) {
+.mental-health-expanded-page sl-tab-group::part(active-tab-indicator) {
   display: none !important;
   opacity: 0;
   visibility: hidden;
 }
-.mental-health-expanded sl-tab-group::part(tabs) {
+.mental-health-expanded-page sl-tab-group::part(tabs) {
   border-bottom: none;
 }
-.mental-health-expanded sl-tab::part(base) {
+.mental-health-expanded-page sl-tab::part(base) {
   border-bottom: none;
   margin: 0 12px;
   padding: 12px 24px;
@@ -597,25 +597,25 @@ sl-details::part(base) {
   font-weight: 500;
   transition: all 0.2s ease;
 }
-.mental-health-expanded sl-tab:not([active])::part(base):hover {
+.mental-health-expanded-page sl-tab:not([active])::part(base):hover {
   font-size: 20px;
 }
-.mental-health-expanded sl-tab[active]::part(base) {
+.mental-health-expanded-page sl-tab[active]::part(base) {
   font-size: 20px;
   color: #F3C728 !important;
 }
-.mental-health-expanded #bento-tabs {
+.mental-health-expanded-page #bento-tabs {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: left;
 }
-.mental-health-expanded h1 {
+.mental-health-expanded-page h1 {
   margin-bottom: 50px !important;
   width: 50% !important;
   margin-left: 13% !important;
 }
-.mental-health-expanded .why {
+.mental-health-expanded-page .why {
   grid-area: why;
   width: 193px;
   height: 193px;
@@ -626,7 +626,7 @@ sl-details::part(base) {
   overflow: hidden;
   cursor: pointer;
 }
-.mental-health-expanded .deal {
+.mental-health-expanded-page .deal {
   grid-area: deal;
   width: 361px;
   height: 193px;
@@ -637,7 +637,7 @@ sl-details::part(base) {
   overflow: hidden;
   cursor: pointer;
 }
-.mental-health-expanded .signs {
+.mental-health-expanded-page .signs {
   grid-area: signs;
   width: 193px;
   height: 411px;
@@ -648,7 +648,7 @@ sl-details::part(base) {
   overflow: hidden;
   cursor: pointer;
 }
-.mental-health-expanded .triggers {
+.mental-health-expanded-page .triggers {
   grid-area: triggers;
   width: 361px;
   height: 193px;
@@ -659,7 +659,7 @@ sl-details::part(base) {
   overflow: hidden;
   cursor: pointer;
 }
-.mental-health-expanded .practices {
+.mental-health-expanded-page .practices {
   grid-area: practices;
   width: 193px;
   height: 411px;
@@ -671,7 +671,7 @@ sl-details::part(base) {
   overflow: hidden;
   cursor: pointer;
 }
-.mental-health-expanded .seek {
+.mental-health-expanded-page .seek {
   grid-area: seek;
   width: 361px;
   height: 193px;
@@ -682,7 +682,7 @@ sl-details::part(base) {
   overflow: hidden;
   cursor: pointer;
 }
-.mental-health-expanded .questions {
+.mental-health-expanded-page .questions {
   grid-area: questions;
   width: 193px;
   height: 193px;
@@ -694,7 +694,7 @@ sl-details::part(base) {
   overflow: hidden;
   cursor: pointer;
 }
-.mental-health-expanded .stress {
+.mental-health-expanded-page .stress {
   display: grid;
   grid-template-areas: "why deal signs" "triggers practices practices" "seek questions questions";
   grid-template-columns: 193px 361px 193px; /* Explicit column widths */
@@ -703,10 +703,10 @@ sl-details::part(base) {
   align-items: start; /* Align items to top */
   margin-top: 8px;
 }
-.mental-health-expanded p {
+.mental-health-expanded-page p {
   color: #000000;
 }
-.mental-health-expanded .bookmark, .mental-health-expanded .bookmark-full {
+.mental-health-expanded-page .bookmark, .mental-health-expanded-page .bookmark-full {
   position: absolute;
   width: auto;
   height: 30px;
@@ -714,21 +714,21 @@ sl-details::part(base) {
   right: 35px;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
-.mental-health-expanded sl-dialog::part(base) {
+.mental-health-expanded-page sl-dialog::part(base) {
   color: #000000;
 }
-.mental-health-expanded sl-dialog::part(overlay) {
+.mental-health-expanded-page sl-dialog::part(overlay) {
   backdrop-filter: blur(8px);
   background-color: rgba(0, 0, 0, 0.5);
 }
-.mental-health-expanded sl-dialog::part(panel) {
+.mental-health-expanded-page sl-dialog::part(panel) {
   border-radius: 35px;
   z-index: 1000;
 }
-.mental-health-expanded sl-dialog::part(close-button) {
+.mental-health-expanded-page sl-dialog::part(close-button) {
   display: none;
 }
-.mental-health-expanded .why-img {
+.mental-health-expanded-page .why-img {
   width: 400px; /* Much larger than parent */
   height: 400px; /* Much larger than parent */
   position: absolute;
@@ -740,10 +740,10 @@ sl-details::part(base) {
   border-radius: 35px;
   transition: transform 0.3s ease;
 }
-.mental-health-expanded .why:hover .why-img {
+.mental-health-expanded-page .why:hover .why-img {
   transform: translate(-50%, -50%) scale(1.1);
 }
-.mental-health-expanded .why p {
+.mental-health-expanded-page .why p {
   width: 30%;
   font-size: 20px;
   font-weight: 300;
