@@ -193,7 +193,9 @@ async fetchArticle(id) {
                     <p>${this.articles.get('why')?.title || 'Loading...'}</p>
                     <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
                     <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                      ${this.articles.get('why')?.bodyContent || 'Loading content...'}
+                      <div style="white-space: pre-line;">
+                        ${this.articles.get('why')?.bodyContent || 'Loading content...'}
+                      </div>
                       <sl-button slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('why')?._id;
