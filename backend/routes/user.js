@@ -31,6 +31,7 @@ router.get("/:id", Utils.authenticateToken, (req, res) => {
   }
 
   User.findById(req.params.id)
+    .populate('bookmarkArticle')
     .then((user) => {
       res.json(user);
     })
