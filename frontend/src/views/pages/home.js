@@ -13,7 +13,6 @@ class HomeView {
     Utils.pageIntroAnim();    
   }
    // Image adapted from Canva – Accessed on December 18, 2024
-  // Animation - from https://shoelace.style/components/animation
  render() {
     const template = html`
       ${Auth.isLoggedIn() ? 

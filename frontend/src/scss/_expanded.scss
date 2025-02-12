@@ -1,7 +1,7 @@
 @use 'vars' as *;
 
-
-.banner.mental-health-expanded {
+.mental-health-expanded{
+.banner {
 height: 100vh; 
 background-color: #6686E3;
 /*padding-top: 15%;*/
@@ -224,4 +224,4 @@ margin-left: 10%;
 z-index: 1;
 }
 
-
+}
