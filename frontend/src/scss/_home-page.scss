@@ -31,8 +31,8 @@
   ///------home-banner--------
   .home-banner {
     background: url('../../static/images/home/home-bg-graphics.svg');
-    background-size: cover;
-    background-position: center;
+    background-size: 100%;
+    background-position: top;
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 5rem auto 0;
@@ -45,26 +45,27 @@
     overflow: hidden;
   
     img {
-      margin: -4rem 0 2rem 0;
+      margin: -5rem 0 2rem 0;
       position: relative;
       z-index: 1;
     }
   
     h1 {
+
       color: #6D83F2;
-      font-size: 2.5rem; // Adjust size to be responsive 
-      margin-right: 10rem;
+      font-size: 2.5rem;
       text-align: left;
-      z-index: 2; // Ensure it’s above any background elements
-    }
+      align-items: center;
+      z-index: 2;
+  }
   
     h2 {
       color: #F2DE96;
-      font-size: 1.5rem; // Adjust size to be responsive /
+      font-size: 1.5rem; 
       padding: 5px;
-      margin: 0; // Remove external margins/
-      text-align: center; // Center-align h2 text /
-      z-index: 2; // Ensure it’s above any background elements /
+      margin: 0; 
+      text-align: center; 
+      z-index: 2; 
     }
   
     .blurb-container {
@@ -74,34 +75,34 @@
 }
 
   // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
+ // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
   
-  .cloud {
-    animation: float 5s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0% {
-     
-      transform: translateY(0px);
-    }
-    50% {
-    
-      transform: translateY(-20px);
-    }
-    100% {
-     
-      transform: translateY(0px);
-    }
-  }
+ .cloud {
+  animation: float 5s ease-in-out infinite;
+}
 
+@keyframes float {
+  0% {
+   
+    transform: translateY(0px);
+  }
+  50% {
+  
+    transform: translateY(-20px);
+  }
+  100% {
+   
+    transform: translateY(0px);
+  }
+}
   // ---------Responsive design-----------------
 
   @media (max-width: 768px) { // Tablets & smaller screens
    
   .home-banner {
 
-    background-size: contain; /* Shrinks the SVG to fit */
-    background-attachment: scroll; /* Fix scrolling issues on mobile */
+    background-size: contain; // Ensure the background image fits the container
+    background-attachment: scroll; // Fix scrolling issues on mobile
    
     h1 {
       font-size: 2.5rem;
