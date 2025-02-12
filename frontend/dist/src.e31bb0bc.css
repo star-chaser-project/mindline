@@ -14,7 +14,7 @@
   --background-resources:linear-gradient(to bottom,#B26DCB, #C992DD, #6C4F77 );
   --brand-color: #0BB7C0;
   --link-color: --brand-color;
-  --web-color-yelow: #F3C728;
+  --web-color-yellow: #F3C728;
   --web-color-purple: #6587E3;
   --web-color-blue: #6587E3;
   --web-color-lilch: #C992DD;
@@ -459,11 +459,11 @@ sl-details::part(base) {
 
 /* Color customization for headings */
 .our-mission h2 {
-  color: var(--web-color-yelow);
+  color: var(--web-color-yellow);
 }
 
 .contact-info h2 {
-  color: var(--web-color-lilac);
+  color: var(--web-color-lilch);
 }
 
 .how-we-are h2 {
@@ -782,26 +782,23 @@ sl-dialog::part(close-button) {
   background: var(--background-home);
 }
 .home-page h3 {
+  margin-bottom: 0;
   color: #ffffff;
 }
 .home-page .button-group {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin: 2rem 0;
+  width: 100%;
 }
-.home-page sl-button::part(base) {
+.home-page .button-group sl-button::part(base) {
   color: var(--base-txt-color);
   background-color: #ffffff;
+  font-size: 1rem;
+  padding: 1rem 4rem 1rem;
+  width: 100%;
   border-radius: 12px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s;
-}
-.home-page sl-button::part(base):hover {
-  background-color: #f2f2f2;
-  transform: scale(1.05);
 }
 
 .home-banner {
@@ -879,13 +876,18 @@ sl-dialog::part(close-button) {
   }
   .home-page .button-group {
     display: flex;
-    justify-content: center; /* Centers the buttons horizontally */
-    gap: 1rem; /* Optional: Adds space between buttons */
-    margin: 2rem 0; /* Optional: Adjusts margin around the button group */
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
   }
   .home-page .button-group sl-button::part(base) {
-    font-size: 1rem; /* Increase text size */
-    width: 100%; /* Full width */
+    color: var(--base-txt-color);
+    background-color: #ffffff;
+    font-size: 1rem;
+    padding: 1rem 2rem 1rem;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
 }
 @media (max-width: 480px) {
