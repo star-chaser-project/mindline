@@ -46,7 +46,7 @@ async fetchArticle(id) {
       why_breath: '67ab274607163965f66e57f7', // 67ab274607163965f66e57f7 Why Breath Awareness Matters for Mental Health 
       how_breath: '67ab40c807163965f66e57fa', // 67ab40c807163965f66e57fa How Does Breathing Consciously help
       benefits_breath: '67ab38cf07163965f66e57f9', // 67ab38cf07163965f66e57f9 Benefits of Breath Awareness
-      practice_breath: '679b567904f7c1b1216d5410, 679dc065640ec34e3c22a28a', // Breathing Techniques for Calm and Clarity: 679b567904f7c1b1216d5410 A pep me up for mind and body, 679dc065640ec34e3c22a28a A practice to clear your headspace 
+      practices_breath: '679b567904f7c1b1216d5410, 679dc065640ec34e3c22a28a', // Breathing Techniques for Calm and Clarity: 679b567904f7c1b1216d5410 A pep me up for mind and body, 679dc065640ec34e3c22a28a A practice to clear your headspace 
       seek_breath: '679dcac3640ec34e3c22a291', // ?
       questions_breath: '67ab47da07163965f66e57fc', // 67ab47da07163965f66e57fc Common Questions About Breathing Techniques
       tips_breath: '67ab44b707163965f66e57fb', // 67ab44b707163965f66e57fb Breath Awareness Tips
