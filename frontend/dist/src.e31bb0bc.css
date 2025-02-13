@@ -862,11 +862,9 @@ sl-dialog::part(close-button) {
   background-color: #f2f2f2;
   transform: scale(1.05);
 }
-
-.cloud {
+.home-page .cloud {
   animation: float 5s ease-in-out infinite;
 }
-
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -879,11 +877,11 @@ sl-dialog::part(close-button) {
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .home-page .home-banner h1 {
+  .home-page .home-page .home-banner h1 {
     font-size: 2.5rem;
     margin-right: 10rem;
   }
-  .home-page .button-group {
+  .home-page .home-page .button-group {
     padding: 0 9rem;
     display: flex;
     justify-content: space-between;
@@ -892,7 +890,7 @@ sl-dialog::part(close-button) {
     width: 100%;
     flex-wrap: nowrap;
   }
-  .home-page .button-group sl-button::part(base) {
+  .home-page .home-page .button-group sl-button::part(base) {
     font-size: 1rem; /* Increase text size */
     padding: 1rem 2rem; /* Make it larger */
     width: 100%; /* Full width */
@@ -942,10 +940,10 @@ sl-dialog::part(close-button) {
     font-size: 1.8rem;
     margin-right: 5rem;
   }
-  .nav-page {
+  .home-page .nav-page {
     margin: 0 2rem;
   }
-  .nav-page .button-group {
+  .home-page .nav-page .button-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -954,17 +952,18 @@ sl-dialog::part(close-button) {
     gap: 1rem;
     width: 100%;
   }
-  .nav-page sl-button {
+  .home-page .nav-page sl-button {
     width: 100%;
   }
-  .nav-page sl-button::part(base) {
-    font-size: 1rem !important;
-    padding: 1rem 3rem !important;
-    width: 100% !important;
-    display: block !important;
-    text-align: center !important;
+  .home-page .nav-page sl-button::part(base) {
+    font-size: 1rem;
+    padding: 1rem 3rem;
+    width: 100%;
+    display: block;
+    text-align: center;
   }
 }
+
 .inner-wrap .banner {
   height: auto;
   position: relative;

@@ -2,10 +2,9 @@
 
 // Home page ----------------------------------------------------------------------------------
 .home-page {
-  background:var(--background-home);
-  
+  background: var(--background-home);
+
   ///------home-banner--------
-  
   .home-banner {
     background: url('../../static/images/home/home-bg-graphics.svg');
     background-size: cover;
@@ -16,69 +15,68 @@
     position: relative;
     color: white;
     display: flex;
-    flex-direction: column; 
-    justify-content: flex-start; 
-    align-items: center; 
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     overflow: hidden;
-  
+
     img {
       margin: -4rem 0 2rem 0;
       position: relative;
       z-index: 1;
     }
-   
+
     h1 {
       color: #6D83F2;
-      font-size: 2.5rem; // Adjust size to be responsive 
+      font-size: 2.5rem; // Adjust size to be responsive
       text-align: left;
-      z-index: 2; 
+      z-index: 2;
     }
-  
+
     h2 {
       color: #F2DE96;
-      font-size: 1.5rem; // Adjust size to be responsive /
+      font-size: 1.5rem; // Adjust size to be responsive
       padding: 5px;
-      margin: 0; // Remove external margins/
-      text-align: center; // Center-align h2 text /
-      z-index: 2; 
+      margin: 0; // Remove external margins
+      text-align: center; // Center-align h2 text
+      z-index: 2;
     }
-  
+
     .blurb-container {
-        position: relative;
-        display: center;
+      position: relative;
+      display: center;
+    }
   }
 
-}
   //bottom section of home page
-.secondary-content{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .secondary-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .nav-page {
-    flex-direction: column;  // Stack buttons vertically
-    display: flex; 
-    justify-content: center; 
+    flex-direction: column; // Stack buttons vertically
+    display: flex;
+    justify-content: center;
     align-items: center;
     margin-top: 2rem;
- 
 
     h3 {
       color: #ffffff;
-      margin: 0 0 1rem 0;  // Space below the h3
-      align-self: flex-start;  // Align the h3 to the left
+      margin: 0 0 1rem 0; // Space below the h3
+      align-self: flex-start; // Align the h3 to the left
     }
-  
+
     .button-group {
       display: flex;
-        justify-content: space-between;
-        margin: 2rem auto;
-        gap: 1rem;
-        width: 100%;
-        flex-wrap: nowrap;
-      
+      justify-content: space-between;
+      margin: 2rem auto;
+      gap: 1rem;
+      width: 100%;
+      flex-wrap: nowrap;
     }
-  
+
     sl-button::part(base) {
       display: flex;
       align-items: center;
@@ -93,38 +91,29 @@
       height: auto;
       transition: background-color 0.3s ease, transform 0.2s;
     }
-  
+
     sl-button::part(base):hover {
       background-color: #f2f2f2;
       transform: scale(1.05);
     }
   }
-}
 
-  
- // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
-  
- .cloud {
-  animation: float 5s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% {
-   
-    transform: translateY(0px);
+  // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
+  .cloud {
+    animation: float 5s ease-in-out infinite;
   }
-  50% {
-  
-    transform: translateY(-20px);
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
   }
-  100% {
-   
-    transform: translateY(0px);
-  }
-}
-
-
-
 
   // Responsive Design ----------------------------------------------------------------------------------
   @media (min-width: 768px) and (max-width: 991px) {
@@ -153,51 +142,50 @@
       }
     }
   }
-  
-@media (max-width: 768px) { // Tablets & smaller screens
-  .home-page {
-  .home-banner {
-    background-size: contain;
-    background-attachment: scroll;
 
-    h1 {
-      font-size: 2.5rem;
-      margin-right: 7rem;
+  @media (max-width: 768px) { // Tablets & smaller screens
+    .home-banner {
+      background-size: contain;
+      background-attachment: scroll;
+
+      h1 {
+        font-size: 2.5rem;
+        margin-right: 7rem;
+      }
+
+      img {
+        margin: -4rem 0 0rem 0;
+      }
     }
 
-    img {
-      margin: -4rem 0 0rem 0;
+    .nav-page {
+      margin: 0 2rem;
+
+      .button-group {
+        display: flex;
+        flex-direction: column; // Stack buttons vertically
+        justify-content: center;
+        align-items: center;
+        margin: 6% auto;
+        gap: 1rem;
+        width: 100%; // Ensure full width
+      }
+
+      sl-button {
+        width: 100%; // Ensure Shoelace buttons are full width
+      }
+
+      sl-button::part(base) {
+        font-size: 1rem !important;
+        padding: 1rem 3rem !important;
+        width: 100% !important;
+        display: block !important; // Force buttons to be full width
+        text-align: center !important;
+      }
     }
   }
-  .nav-page{
-    margin: 0 2rem;
-  .button-group {
-    display: flex;
-    flex-direction: column;  // Stack buttons vertically
-    justify-content: center;
-    align-items: center;
-    margin: 6% auto;
-    gap: 1rem;
-    width: 100%; // Ensure full width
-  }
 
-  sl-button {
-    width: 100%; // Ensure Shoelace buttons are full width
-  }
-
-  sl-button::part(base) {
-    font-size: 1rem !important;
-    padding: 1rem 3rem !important;
-    width: 100% !important;
-    display: block !important; // Force buttons to be full width
-    text-align: center !important;
-  }
-}
-}
-}
-
-@media (max-width: 480px) {
-  .home-page {
+  @media (max-width: 480px) {
     .home-banner {
       background-size: 31rem;
       background-position: top center;
@@ -207,30 +195,31 @@
         margin-right: 5rem;
       }
     }
-  }
-  .nav-page{
-    margin: 0 2rem;
-  .button-group {
-    display: flex;
-    flex-direction: column;  // Stack buttons vertically
-    justify-content: center;
-    align-items: center;
-    margin: 6% auto;
-    gap: 1rem;
-    width: 100%; // Ensure full width
-  }
 
-  sl-button {
-    width: 100%; // Ensure Shoelace buttons are full width
-  }
+    .nav-page {
+      margin: 0 2rem;
 
-  sl-button::part(base) {
-    font-size: 1rem !important;
-    padding: 1rem 3rem !important;
-    width: 100% !important;
-    display: block !important; // Force buttons to be full width
-    text-align: center !important;
+      .button-group {
+        display: flex;
+        flex-direction: column; // Stack buttons vertically
+        justify-content: center;
+        align-items: center;
+        margin: 6% auto;
+        gap: 1rem;
+        width: 100%; // Ensure full width
+      }
+
+      sl-button {
+        width: 100%; // Ensure Shoelace buttons are full width
+      }
+
+      sl-button::part(base) {
+        font-size: 1rem ;
+        padding: 1rem 3rem ;
+        width: 100% ;
+        display: block ; 
+        text-align: center ;
+      }
+    }
   }
 }
-}
-

@@ -4,7 +4,6 @@ import {gotoRoute, anchorRoute } from './../../Router';
 import Auth from './../../Auth';
 import Utils from './../../Utils';
 
-
 class HomeView {
   init(){    
     console.log('HomeView.init');
@@ -20,7 +19,6 @@ class HomeView {
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`
       }
-
     <div class="page-content home-page">
         <section class="home-banner">
             <h1>Empower </br>Your </br>Life</h1>
