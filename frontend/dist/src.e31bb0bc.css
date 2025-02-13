@@ -983,6 +983,7 @@ sl-details::part(base) {
   }
 }
 .inner-wrap .banner {
+  padding-top: 3rem;
   height: auto;
   position: relative;
   color: white;
