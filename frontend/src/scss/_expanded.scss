@@ -1,21 +1,31 @@
+//scss mental-health-expanded-page
 @use 'vars' as *;
 
+.expanded-page {
+.banner.expanded {
+padding-top: 3rem;
+align-items: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
 
-.banner.mental-health-expanded {
-height: 100vh; 
-background-color: #6686E3;
-/*padding-top: 15%;*/
+
+h1{
+    margin-top: 3rem;
+    font-size:2rem;
 }
 
+
 .banner-content {
-height: 80%;
-width: 60%;
+    padding-top: 0; 
+}
 }
 
 sl-tab-group::part(base) {
 display: flex;
 align-items: center;
 gap: 32px;
+
 
 }
 
@@ -57,14 +67,7 @@ width: 100%;
 display: flex;
 justify-content: center;
 align-items: left;
-padding-top: 6rem;
 }
-
-h1 {
-font-size: 2rem;
-align-items: center;
-}
-
 
 .why {
 grid-area: why;
@@ -76,9 +79,7 @@ position: relative;
 display: flex;
 overflow: hidden;
 cursor: pointer;
-align-items: center;
 }
-
 
 .deal {
 grid-area: deal;
@@ -202,6 +203,8 @@ display: none;
 }
 
 .why-img {
+width: 400px; /* Much larger than parent */
+height: 400px; /* Much larger than parent */
 position: absolute;
 z-index: 0;
 object-fit: cover;
@@ -223,20 +226,4 @@ font-weight: 300;
 margin-left: 10%;
 z-index: 1;
 }
-
-.signs-img {
-    position: absolute;
-    z-index: 0;
-    object-fit: cover;
-    transform: translate(-50%, -50%);
-    top: 60%;
-    left: 60%;
-    border-radius: 35px;
-    transition: transform 0.3s ease;
-    }
-    
-    .signs:hover .signs-img {
-    transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    
+}

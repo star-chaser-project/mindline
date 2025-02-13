@@ -19,7 +19,7 @@ class mindfulnessView {
         html`<va-public-header></va-public-header>`
       }
 
-      <div class="page-content page-centered">        
+      <div class="page-content page-centered inner-wrap">        
         <section class="banner mindfulness"> 
         <div class="banner-content"> 
          <div class="banner-text"> 

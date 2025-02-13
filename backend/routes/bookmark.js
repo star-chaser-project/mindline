@@ -27,22 +27,25 @@ router.get('/', Utils.authenticateToken, async (req, res) => {
 // ✅ PUT - Add an article to bookmarks
 router.put('/:articleId', Utils.authenticateToken, async (req, res) => {
   try {
-    const userId = req.user._id;
+    const { action } = req.body;
     const articleId = req.params.articleId;
-    
+    const userId = req.user._id;
+
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { $addToSet: { bookmarkArticle: articleId } }, // This prevents duplicates
+      action === 'remove' 
+        ? { $pull: { bookmarkArticle: articleId } }
+        : { $addToSet: { bookmarkArticle: articleId } },
       { new: true }
     ).populate('bookmarkArticle');
-    
+
     res.json({
-      message: "Article bookmarked successfully",
+      message: action === 'remove' ? 'Article removed from bookmarks' : 'Article bookmarked successfully',
       bookmarks: updatedUser.bookmarkArticle
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Problem bookmarking article" });
+    res.status(500).json({ message: "Problem updating bookmark", error: err.message });
   }
 });
 
