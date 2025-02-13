@@ -215,10 +215,10 @@ async fetchArticle(id) {
         <div class="banner-content">     
           <h1>Mental Health</h1>
           <div id="bento-tabs">
-            <sl-tab-group ?active="${activeTab}">
-              <sl-tab slot="nav" panel="stress" ?active="${activeTab === 'stress'}">Stress</sl-tab>
-              <sl-tab slot="nav" panel="anxiety" ?active="${activeTab === 'anxiety'}">Anxiety</sl-tab>
-              <sl-tab slot="nav" panel="depression" ?active="${activeTab === 'depression'}">Depression</sl-tab>
+            <sl-tab-group .active="${activeTab}">
+              <sl-tab slot="nav" panel="stress" .active="${activeTab === 'stress'}">Stress</sl-tab>
+              <sl-tab slot="nav" panel="anxiety" .active="${activeTab === 'anxiety'}">Anxiety</sl-tab>
+              <sl-tab slot="nav" panel="depression" .active="${activeTab === 'depression'}">Depression</sl-tab>
 
               <!-- this is the first tab content of the menal health page -->
               <sl-tab-panel name="stress">
@@ -239,7 +239,9 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                      <div style="white-space: pre-line;">
                       ${this.articles.get('why')?.bodyContent || 'Loading content...'}
+                      </div>
                       <sl-button slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('why')?._id;
@@ -403,20 +405,20 @@ async fetchArticle(id) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 </div>
-
-
-
               </sl-tab-panel>
+
+
+
 
                <!-- this is the second tab content of the mental health page -->
               <sl-tab-panel name="anxiety">
                 <div class="stress">
                 
                   <div class="why why-anxiety" @click=${this.openDialog}>
-                    <img src="/images/" class="why-img">
+                   <img src="/images/mental-health/anxiety/anxiety-why.webp" class="why-img">
 
-                    <p>${this.articles.get('why')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
+                    <p>${this.articles.get('why_anxiety')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('why_anxiety') && this.userBookmarks.has(this.articles.get('why_anxiety')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -425,24 +427,26 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                      ${this.articles.get('why')?.bodyContent || 'Loading content...'}
+                    <sl-dialog label="${this.articles.get('why_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                      ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
                       <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('why')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                      @click=${(e) => {
+                        const articleId = this.articles.get('why_anxiety')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}>
+                      ${this.userBookmarks.has(this.articles.get('why_anxiety')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                    </sl-button>
 
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
 
                   <div class="deal deal-anxiety" @click=${this.openDialog}>
-                    <img src="/images/" class="stress-img">
+                   <img src="/images/mental-health/anxiety/anxiety-deal-360.webp">
 
-                    <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
-                    ${this.userBookmarks && this.articles.get('deal') && this.userBookmarks.has(this.articles.get('deal')._id)
+                    <p>${this.articles.get('deal_anxiety')?.title || 'Loading...'}</p>
+                    ${this.userBookmarks && this.articles.get('deal_anxiety') && this.userBookmarks.has(this.articles.get('deal_anxiety')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -451,23 +455,31 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('deal')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
-                      <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('deal')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('deal_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('deal_anxiety')?.bodyContent || 'Loading content...'}
+                      <sl-button
+                          slot="footer"
+                          variant="primary"
+                          @click=${(e) => {
+                            const articleId = this.articles.get('deal_anxiety')?._id;
+                            console.log("Bookmarking article ID:", articleId);
+                            this.bookmarkArticle(e, articleId);
+                          }}
+                        >
+                          ${this.userBookmarks.has(this.articles.get('deal_anxiety')?._id)
+                            ? 'Remove Bookmark'
+                            : 'Bookmark'
+                          }
+                        </sl-button>
 
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="signs signs-anxiety" @click=${this.openDialog}>
-                    <img src="/images/" class="signs-img">
+                   <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="signs-img">
 
-                    <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('signs') && this.userBookmarks.has(this.articles.get('signs')._id)
+                    <p>${this.articles.get('signs_anxiety')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('signs_anxiety') && this.userBookmarks.has(this.articles.get('signs_anxiety')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -476,24 +488,32 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('signs')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('signs')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('signs')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('signs_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('signs_anxiety')?.bodyContent || 'Loading content...'}
+                    <sl-button
+                      slot="footer"
+                      variant="primary"
+                      @click=${(e) => {
+                        const articleId = this.articles.get('signs_anxiety')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}
+                    >
+                      ${this.userBookmarks.has(this.articles.get('signs_anxiety')?._id)
+                        ? 'Remove Bookmark'
+                        : 'Bookmark'
+                      }
+                    </sl-button>
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                 
                   <div class="triggers triggers-anxiety" @click=${this.openDialog}>
-                    <img src="/images/" class="triggers-img">
+                   <img src="static/images/mental-health/anxiety/anxiety-triggers-360.webp" class="triggers-img">
 
-                    <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('triggers') && this.userBookmarks.has(this.articles.get('triggers')._id)
+                    <p>${this.articles.get('triggers_anxiety')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('triggers_anxiety') && this.userBookmarks.has(this.articles.get('triggers_anxiety')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -502,23 +522,31 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('triggers')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('triggers')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('triggers')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('triggers_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('triggers_anxiety')?.bodyContent || 'Loading content...'}
+                    <sl-button
+                      slot="footer"
+                      variant="primary"
+                      @click=${(e) => {
+                        const articleId = this.articles.get('triggers_anxiety')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}
+                    >
+                      ${this.userBookmarks.has(this.articles.get('triggers_anxiety')?._id)
+                        ? 'Remove Bookmark'
+                        : 'Bookmark'
+                      }
+                    </sl-button>
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="practices practices-anxiety" @click=${this.openDialog}>
-                    <img src="/images/" class="practices-img">
+                   <img src="/images/mental-health/anxiety/anxiety-practices-360.webp" class="practices-img">
 
-                      <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
+                      <p>${this.articles.get('practices_anxiety')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('practices_anxiety') && this.userBookmarks.has(this.articles.get('practices_anxiety')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -527,23 +555,31 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('practices')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('practices')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('practices_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('practices_anxiety')?.bodyContent || 'Loading content...'}
+                    <sl-button
+                      slot="footer"
+                      variant="primary"
+                      @click=${(e) => {
+                        const articleId = this.articles.get('practices_anxiety')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}
+                    >
+                      ${this.userBookmarks.has(this.articles.get('practices_anxiety')?._id)
+                        ? 'Remove Bookmark'
+                        : 'Bookmark'
+                      }
+                    </sl-button>
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                   <div class="seek seek-anxiety" @click=${this.openDialog}>
-                  <img src="/images/" class="seek-img">
+                 <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp" class="seek-img">
 
-                 <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
+                 <p>${this.articles.get('seek_anxiety')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('seek_anxiety') && this.userBookmarks.has(this.articles.get('seek_anxiety')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -552,23 +588,31 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('seek')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('seek_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('seek_anxiety')?.bodyContent || 'Loading content...'}
+                    <sl-button
+                      slot="footer"
+                      variant="primary"
+                      @click=${(e) => {
+                        const articleId = this.articles.get('seek_anxiety')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}
+                    >
+                      ${this.userBookmarks.has(this.articles.get('seek_anxiety')?._id)
+                        ? 'Remove Bookmark'
+                        : 'Bookmark'
+                      }
+                    </sl-button>
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="questions questions-anxiety" @click=${this.openDialog}>
-                  <img src="/images/" class="questions-img">
+                 <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-img">
 
-                      <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
+                      <p>${this.articles.get('questions_anxiety')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('questions_anxiety') && this.userBookmarks.has(this.articles.get('questions_anxiety')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -577,29 +621,41 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('questions')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('questions')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('questions_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('questions_anxiety')?.bodyContent || 'Loading content...'}
+                    <sl-button
+                      slot="footer"
+                      variant="primary"
+                      @click=${(e) => {
+                        const articleId = this.articles.get('questions_anxiety')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}
+                    >
+                      ${this.userBookmarks.has(this.articles.get('questions_anxiety')?._id)
+                        ? 'Remove Bookmark'
+                        : 'Bookmark'
+                      }
+                    </sl-button>
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 </div>
               </sl-tab-panel>
 
+
+
+
+              
                <!-- this is the third tab content of the menal health page -->
               <sl-tab-panel name="depression">
                 <div class="stress">
                 
                   <div class="why" @click=${this.openDialog}>
-                    <img src="/images/why-box.png" class="why-img">
+                   <img src="/images/mental-health/stress/stress-why-mental-health-matters-360.webp" class="why-img">
 
-                    <p>${this.articles.get('why')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
+                    <p>${this.articles.get('why_depression')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('why_depression') && this.userBookmarks.has(this.articles.get('why_depression')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -608,24 +664,32 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                      ${this.articles.get('why')?.bodyContent || 'Loading content...'}
-                      <sl-button slot="footer" variant="primary" 
+                    <sl-dialog label="${this.articles.get('why_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                      ${this.articles.get('why_depression')?.bodyContent || 'Loading content...'}
+                      <sl-button
+                        slot="footer"
+                        variant="primary"
                         @click=${(e) => {
-                          const articleId = this.articles.get('why')?._id;
+                          const articleId = this.articles.get('why_depression')?._id;
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                        }}
+                      >
+                        ${this.userBookmarks.has(this.articles.get('why_depression')?._id)
+                          ? 'Remove Bookmark'
+                          : 'Bookmark'
+                        }
+                      </sl-button>
 
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
 
                   <div class="deal" @click=${this.openDialog}>
-                    <img src="/images/stress-box.png" class="stress-img">
+                    <img src="/images/mental-health/stress/stress-why-mental-health-matters-360.webp" class="stress-img">
 
-                    <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
-                    ${this.userBookmarks && this.articles.get('deal') && this.userBookmarks.has(this.articles.get('deal')._id)
+                    <p>${this.articles.get('deal_depression')?.title || 'Loading...'}</p>
+                    ${this.userBookmarks && this.articles.get('deal_depression') && this.userBookmarks.has(this.articles.get('deal_depression')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -634,14 +698,23 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('deal')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
-                      <sl-button slot="footer" variant="primary" 
+                    <sl-dialog label="${this.articles.get('deal_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('deal_depression')?.bodyContent || 'Loading content...'}
+                      <sl-button
+                        slot="footer"
+                        variant="primary"
                         @click=${(e) => {
-                          const articleId = this.articles.get('deal')?._id;
+                          const articleId = this.articles.get('deal_depression')?._id;
                           console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                        }}
+                      >
+                        ${this.userBookmarks.has(this.articles.get('deal_depression')?._id)
+                          ? 'Remove Bookmark'
+                          : 'Bookmark'
+                        }
+                      </sl-button>
+
 
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
@@ -649,8 +722,8 @@ async fetchArticle(id) {
                   <div class="signs" @click=${this.openDialog}>
                     <img src="/images/signs-box.png" class="signs-img">
 
-                    <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('signs') && this.userBookmarks.has(this.articles.get('signs')._id)
+                    <p>${this.articles.get('signs_depression')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('signs_depression') && this.userBookmarks.has(this.articles.get('signs_depression')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -659,14 +732,23 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('signs')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('signs')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('signs')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('signs_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('signs_depression')?.bodyContent || 'Loading content...'}
+                    <sl-button
+                      slot="footer"
+                      variant="primary"
+                      @click=${(e) => {
+                        const articleId = this.articles.get('signs_depression')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}
+                    >
+                      ${this.userBookmarks.has(this.articles.get('signs_depression')?._id)
+                        ? 'Remove Bookmark'
+                        : 'Bookmark'
+                      }
+                    </sl-button>
+
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
@@ -675,8 +757,8 @@ async fetchArticle(id) {
                   <div class="triggers" @click=${this.openDialog}>
                     <img src="/images/triggers-box.png" class="triggers-img">
 
-                    <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('triggers') && this.userBookmarks.has(this.articles.get('triggers')._id)
+                    <p>${this.articles.get('triggers_depression')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('triggers_depression') && this.userBookmarks.has(this.articles.get('triggers_depression')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -685,14 +767,23 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('triggers')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('triggers')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('triggers')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('triggers_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('triggers_depression')?.bodyContent || 'Loading content...'}
+                    <sl-button
+                      slot="footer"
+                      variant="primary"
+                      @click=${(e) => {
+                        const articleId = this.articles.get('triggers_depression')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}
+                    >
+                      ${this.userBookmarks.has(this.articles.get('triggers_depression')?._id)
+                        ? 'Remove Bookmark'
+                        : 'Bookmark'
+                      }
+                    </sl-button>
+
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
@@ -700,8 +791,8 @@ async fetchArticle(id) {
                   <div class="practices" @click=${this.openDialog}>
                     <img src="/images/practices-box.png" class="practices-img">
 
-                      <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
+                      <p>${this.articles.get('practices_depression')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('practices_depression') && this.userBookmarks.has(this.articles.get('practices_depression')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -710,14 +801,23 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('practices')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('practices')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('practices_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('practices_depression')?.bodyContent || 'Loading content...'}
+                    <sl-button
+                      slot="footer"
+                      variant="primary"
+                      @click=${(e) => {
+                        const articleId = this.articles.get('practices_depression')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}
+                    >
+                      ${this.userBookmarks.has(this.articles.get('practices_depression')?._id)
+                        ? 'Remove Bookmark'
+                        : 'Bookmark'
+                      }
+                    </sl-button>
+
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
@@ -725,8 +825,8 @@ async fetchArticle(id) {
                   <div class="seek" @click=${this.openDialog}>
                   <img src="/images/seek-box.png" class="seek-img">
 
-                 <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
+                 <p>${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('seek_depression') && this.userBookmarks.has(this.articles.get('seek_depression')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -735,23 +835,32 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('seek')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('seek_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('seek_depression')?.bodyContent || 'Loading content...'}
+                    <sl-button
+                      slot="footer"
+                      variant="primary"
+                      @click=${(e) => {
+                        const articleId = this.articles.get('seek_depression')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}
+                    >
+                      ${this.userBookmarks.has(this.articles.get('seek_depression')?._id)
+                        ? 'Remove Bookmark'
+                        : 'Bookmark'
+                      }
+                    </sl-button>
+
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="questions_depression" @click=${this.openDialog}>
+                  <div class="questions" @click=${this.openDialog}>
                   <img src="/images/questions-box.png" class="questions-img">
 
-                      <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
+                      <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
+                     ${this.userBookmarks && this.articles.get('questions_depression') && this.userBookmarks.has(this.articles.get('questions_depression')._id)
                       ? html`
                         <img 
                           src="/images/bookmark/bookmark-full.svg" 
@@ -760,14 +869,23 @@ async fetchArticle(id) {
                         >`
                       : ''
                     }
-                    <sl-dialog label="${this.articles.get('questions')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
-                    <sl-button slot="footer" variant="primary" 
-                        @click=${(e) => {
-                          const articleId = this.articles.get('questions')?._id;
-                          console.log("Bookmarking article ID:", articleId);
-                          this.bookmarkArticle(e, articleId);
-                        }}>Bookmark</sl-button>
+                    <sl-dialog label="${this.articles.get('questions_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    ${this.articles.get('questions_depression')?.bodyContent || 'Loading content...'}
+                    <sl-button
+                      slot="footer"
+                      variant="primary"
+                      @click=${(e) => {
+                        const articleId = this.articles.get('questions_depression')?._id;
+                        console.log("Bookmarking article ID:", articleId);
+                        this.bookmarkArticle(e, articleId);
+                      }}
+                    >
+                      ${this.userBookmarks.has(this.articles.get('questions_depression')?._id)
+                        ? 'Remove Bookmark'
+                        : 'Bookmark'
+                      }
+                    </sl-button>
+
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
