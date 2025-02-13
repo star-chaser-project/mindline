@@ -124,7 +124,9 @@ class Auth {
     Toast.show("You are signed out");
     this.currentUser = null;
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('currentUser'); // Make sure the stored user data is removed
     gotoRoute('/');
+    window.location.reload(); // Force a full reload of the application
   }
 }
 

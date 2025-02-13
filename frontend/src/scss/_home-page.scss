@@ -5,39 +5,34 @@
   background:var(--background-home);
 
     h3{
+
+      margin-bottom:0;
       color: #ffffff;
     }
     .button-group {
       display: flex;
       justify-content: center;
       gap: 1rem; 
-      margin: 2rem 0;
-    }
-    
-    sl-button::part(base) {
-      color: var(--base-txt-color);
-      background-color: #ffffff; 
-      border-radius: 12px; 
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
-      padding: 0.5rem 1rem;
-      font-size: 1rem; 
-      transition: background-color 0.3s ease, transform 0.2s;
-    }
-    
-    sl-button::part(base):hover {
-      background-color: #f2f2f2; 
-      transform: scale(1.05); 
-    }
-    
-    }
-  
+      width: 100%;
+     
+      sl-button::part(base) {
+          color: var(--base-txt-color);
+          background-color: #ffffff;
+          font-size: 1rem; 
+          padding: 1rem 4rem 1rem; 
+          width: 100%; 
+          border-radius: 12px;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }  
+}
 
 
   ///------home-banner--------
   .home-banner {
     background: url('../../static/images/home/home-bg-graphics.svg');
-    background-size: cover;
-    background-position: center;
+    background-size: 100%;
+    background-position: top;
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 5rem auto 0;
@@ -50,26 +45,26 @@
     overflow: hidden;
   
     img {
-      margin: -4rem 0 2rem 0;
+      margin: -5rem 0 2rem 0;
       position: relative;
       z-index: 1;
     }
   
     h1 {
-      color: #6D83F2;
-      font-size: 2.5rem; // Adjust size to be responsive 
-      margin-right: 10rem;
-      text-align: left;
-      z-index: 2; // Ensure it’s above any background elements
-    }
+        color: #6D83F2;
+        font-size: 2.5rem; // Adjust size to be responsive 
+        margin-right: 10rem;
+        text-align: left;
+        z-index: 2;
+  }
   
     h2 {
       color: #F2DE96;
-      font-size: 1.5rem; // Adjust size to be responsive /
+      font-size: 1.5rem; 
       padding: 5px;
-      margin: 0; // Remove external margins/
-      text-align: center; // Center-align h2 text /
-      z-index: 2; // Ensure it’s above any background elements /
+      margin: 0; 
+      text-align: center; 
+      z-index: 2; 
     }
   
     .blurb-container {
@@ -80,33 +75,32 @@
 
   // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
   
-  .cloud {
-    animation: float 5s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0% {
-     
-      transform: translateY(0px);
-    }
-    50% {
-    
-      transform: translateY(-20px);
-    }
-    100% {
-     
-      transform: translateY(0px);
-    }
-  }
+ .cloud {
+  animation: float 5s ease-in-out infinite;
+}
 
+@keyframes float {
+  0% {
+   
+    transform: translateY(0px);
+  }
+  50% {
+  
+    transform: translateY(-20px);
+  }
+  100% {
+   
+    transform: translateY(0px);
+  }
+}
   // ---------Responsive design-----------------
 
   @media (max-width: 768px) { // Tablets & smaller screens
    
   .home-banner {
 
-    background-size: contain; /* Shrinks the SVG to fit */
-    background-attachment: scroll; /* Fix scrolling issues on mobile */
+    background-size: contain; // Ensure the background image fits the container
+    background-attachment: scroll; // Fix scrolling issues on mobile
    
     h1 {
       font-size: 2.5rem;
@@ -133,19 +127,22 @@
   
       .button-group {
         display: flex;
-        justify-content: center; /* Centers the buttons horizontally */
-        gap: 1rem; /* Optional: Adds space between buttons */
-        margin: 2rem 0; /* Optional: Adjusts margin around the button group */
-    
-  
+        justify-content: center;
+        gap: 1rem; 
+        width: 100%;
+       
         sl-button::part(base) {
-          font-size: 1rem; /* Increase text size */
-          width: 100%; /* Full width */
+            color: var(--base-txt-color);
+            background-color: #ffffff;
+            font-size: 1rem; 
+            padding: 1rem 2rem 1rem; 
+            width: 100%; 
+            border-radius: 12px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
         }
-      }
     }
   }
-  
+}
   @media (max-width: 480px) {
     .home-page {
     .home-banner {

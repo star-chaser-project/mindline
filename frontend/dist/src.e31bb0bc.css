@@ -14,7 +14,7 @@
   --background-resources:linear-gradient(to bottom,#B26DCB, #C992DD, #6C4F77 );
   --brand-color: #0BB7C0;
   --link-color: --brand-color;
-  --web-color-yelow: #F3C728;
+  --web-color-yellow: #F3C728;
   --web-color-purple: #6587E3;
   --web-color-blue: #6587E3;
   --web-color-lilch: #C992DD;
@@ -459,11 +459,11 @@ sl-details::part(base) {
 
 /* Color customization for headings */
 .our-mission h2 {
-  color: var(--web-color-yelow);
+  color: var(--web-color-yellow);
 }
 
 .contact-info h2 {
-  color: var(--web-color-lilac);
+  color: var(--web-color-lilch);
 }
 
 .how-we-are h2 {
@@ -564,38 +564,32 @@ sl-details::part(base) {
     display: none;
   }
 }
-.banner.mental-health-expanded {
+.mental-health-expanded-page .banner.mental-health-expanded {
   height: 100vh;
   background-color: #6686E3;
   /*padding-top: 15%;*/
 }
-
-.banner-content {
+.mental-health-expanded-page .banner-content {
   height: 80%;
   width: 60%;
 }
-
-sl-tab-group::part(base) {
+.mental-health-expanded-page sl-tab-group::part(base) {
   display: flex;
   align-items: center;
   gap: 32px;
 }
-
-sl-tab-group::part(nav) {
+.mental-health-expanded-page sl-tab-group::part(nav) {
   border-bottom: none;
 }
-
-sl-tab-group::part(active-tab-indicator) {
+.mental-health-expanded-page sl-tab-group::part(active-tab-indicator) {
   display: none !important;
   opacity: 0;
   visibility: hidden;
 }
-
-sl-tab-group::part(tabs) {
+.mental-health-expanded-page sl-tab-group::part(tabs) {
   border-bottom: none;
 }
-
-sl-tab::part(base) {
+.mental-health-expanded-page sl-tab::part(base) {
   border-bottom: none;
   margin: 0 12px;
   padding: 12px 24px;
@@ -603,30 +597,25 @@ sl-tab::part(base) {
   font-weight: 500;
   transition: all 0.2s ease;
 }
-
-sl-tab:not([active])::part(base):hover {
+.mental-health-expanded-page sl-tab:not([active])::part(base):hover {
   font-size: 20px;
 }
-
-sl-tab[active]::part(base) {
+.mental-health-expanded-page sl-tab[active]::part(base) {
   font-size: 20px;
   color: #F3C728 !important;
 }
-
-#bento-tabs {
+.mental-health-expanded-page #bento-tabs {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: left;
 }
-
-h1 {
+.mental-health-expanded-page h1 {
   margin-bottom: 50px !important;
   width: 50% !important;
   margin-left: 13% !important;
 }
-
-.why {
+.mental-health-expanded-page .why {
   grid-area: why;
   width: 193px;
   height: 193px;
@@ -637,8 +626,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.deal {
+.mental-health-expanded-page .deal {
   grid-area: deal;
   width: 361px;
   height: 193px;
@@ -649,8 +637,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.signs {
+.mental-health-expanded-page .signs {
   grid-area: signs;
   width: 193px;
   height: 411px;
@@ -661,8 +648,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.triggers {
+.mental-health-expanded-page .triggers {
   grid-area: triggers;
   width: 361px;
   height: 193px;
@@ -673,8 +659,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.practices {
+.mental-health-expanded-page .practices {
   grid-area: practices;
   width: 193px;
   height: 411px;
@@ -686,8 +671,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.seek {
+.mental-health-expanded-page .seek {
   grid-area: seek;
   width: 361px;
   height: 193px;
@@ -698,8 +682,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.questions {
+.mental-health-expanded-page .questions {
   grid-area: questions;
   width: 193px;
   height: 193px;
@@ -711,8 +694,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.stress {
+.mental-health-expanded-page .stress {
   display: grid;
   grid-template-areas: "why deal signs" "triggers practices practices" "seek questions questions";
   grid-template-columns: 193px 361px 193px; /* Explicit column widths */
@@ -721,12 +703,10 @@ h1 {
   align-items: start; /* Align items to top */
   margin-top: 8px;
 }
-
-p {
+.mental-health-expanded-page p {
   color: #000000;
 }
-
-.bookmark, .bookmark-full {
+.mental-health-expanded-page .bookmark, .mental-health-expanded-page .bookmark-full {
   position: absolute;
   width: auto;
   height: 30px;
@@ -734,26 +714,21 @@ p {
   right: 35px;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
-
-sl-dialog::part(base) {
+.mental-health-expanded-page sl-dialog::part(base) {
   color: #000000;
 }
-
-sl-dialog::part(overlay) {
+.mental-health-expanded-page sl-dialog::part(overlay) {
   backdrop-filter: blur(8px);
   background-color: rgba(0, 0, 0, 0.5);
 }
-
-sl-dialog::part(panel) {
+.mental-health-expanded-page sl-dialog::part(panel) {
   border-radius: 35px;
   z-index: 1000;
 }
-
-sl-dialog::part(close-button) {
+.mental-health-expanded-page sl-dialog::part(close-button) {
   display: none;
 }
-
-.why-img {
+.mental-health-expanded-page .why-img {
   width: 400px; /* Much larger than parent */
   height: 400px; /* Much larger than parent */
   position: absolute;
@@ -765,12 +740,10 @@ sl-dialog::part(close-button) {
   border-radius: 35px;
   transition: transform 0.3s ease;
 }
-
-.why:hover .why-img {
+.mental-health-expanded-page .why:hover .why-img {
   transform: translate(-50%, -50%) scale(1.1);
 }
-
-.why p {
+.mental-health-expanded-page .why p {
   width: 30%;
   font-size: 20px;
   font-weight: 300;
@@ -782,32 +755,29 @@ sl-dialog::part(close-button) {
   background: var(--background-home);
 }
 .home-page h3 {
+  margin-bottom: 0;
   color: #ffffff;
 }
 .home-page .button-group {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin: 2rem 0;
+  width: 100%;
 }
-.home-page sl-button::part(base) {
+.home-page .button-group sl-button::part(base) {
   color: var(--base-txt-color);
   background-color: #ffffff;
+  font-size: 1rem;
+  padding: 1rem 4rem 1rem;
+  width: 100%;
   border-radius: 12px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s;
-}
-.home-page sl-button::part(base):hover {
-  background-color: #f2f2f2;
-  transform: scale(1.05);
 }
 
 .home-banner {
   background: url("/home-bg-graphics.e19972cb.svg");
-  background-size: cover;
-  background-position: center;
+  background-size: 100%;
+  background-position: top;
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin: 5rem auto 0;
@@ -820,7 +790,7 @@ sl-dialog::part(close-button) {
   overflow: hidden;
 }
 .home-banner img {
-  margin: -4rem 0 2rem 0;
+  margin: -5rem 0 2rem 0;
   position: relative;
   z-index: 1;
 }
@@ -861,8 +831,8 @@ sl-dialog::part(close-button) {
 }
 @media (max-width: 768px) {
   .home-banner {
-    background-size: contain; /* Shrinks the SVG to fit */
-    background-attachment: scroll; /* Fix scrolling issues on mobile */
+    background-size: contain;
+    background-attachment: scroll;
   }
   .home-banner h1 {
     font-size: 2.5rem;
@@ -879,13 +849,18 @@ sl-dialog::part(close-button) {
   }
   .home-page .button-group {
     display: flex;
-    justify-content: center; /* Centers the buttons horizontally */
-    gap: 1rem; /* Optional: Adds space between buttons */
-    margin: 2rem 0; /* Optional: Adjusts margin around the button group */
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
   }
   .home-page .button-group sl-button::part(base) {
-    font-size: 1rem; /* Increase text size */
-    width: 100%; /* Full width */
+    color: var(--base-txt-color);
+    background-color: #ffffff;
+    font-size: 1rem;
+    padding: 1rem 2rem 1rem;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
 }
 @media (max-width: 480px) {
