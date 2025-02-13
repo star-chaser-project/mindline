@@ -14,7 +14,7 @@
   --background-resources:linear-gradient(to bottom,#B26DCB, #C992DD, #6C4F77 );
   --brand-color: #0BB7C0;
   --link-color: --brand-color;
-  --web-color-yelow: #F3C728;
+  --web-color-yellow: #F3C728;
   --web-color-purple: #6587E3;
   --web-color-blue: #6587E3;
   --web-color-lilch: #C992DD;
@@ -459,11 +459,11 @@ sl-details::part(base) {
 
 /* Color customization for headings */
 .our-mission h2 {
-  color: var(--web-color-yelow);
+  color: var(--web-color-yellow);
 }
 
 .contact-info h2 {
-  color: var(--web-color-lilac);
+  color: var(--web-color-lilch);
 }
 
 .how-we-are h2 {
@@ -564,38 +564,37 @@ sl-details::part(base) {
     display: none;
   }
 }
-.banner.mental-health-expanded {
-  height: 100vh;
-  background-color: #6686E3;
-  /*padding-top: 15%;*/
+.expanded-page .banner.expanded {
+  padding-top: 3rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
-.banner-content {
-  height: 80%;
-  width: 60%;
+.expanded-page .banner.expanded h1 {
+  margin-top: 3rem;
+  font-size: 2rem;
 }
-
-sl-tab-group::part(base) {
+.expanded-page .banner.expanded .banner-content {
+  padding-top: 0;
+}
+.expanded-page sl-tab-group::part(base) {
   display: flex;
   align-items: center;
   gap: 32px;
 }
-
-sl-tab-group::part(nav) {
+.expanded-page sl-tab-group::part(nav) {
   border-bottom: none;
 }
-
-sl-tab-group::part(active-tab-indicator) {
+.expanded-page sl-tab-group::part(active-tab-indicator) {
   display: none !important;
   opacity: 0;
   visibility: hidden;
 }
-
-sl-tab-group::part(tabs) {
+.expanded-page sl-tab-group::part(tabs) {
   border-bottom: none;
 }
-
-sl-tab::part(base) {
+.expanded-page sl-tab::part(base) {
   border-bottom: none;
   margin: 0 12px;
   padding: 12px 24px;
@@ -603,30 +602,20 @@ sl-tab::part(base) {
   font-weight: 500;
   transition: all 0.2s ease;
 }
-
-sl-tab:not([active])::part(base):hover {
+.expanded-page sl-tab:not([active])::part(base):hover {
   font-size: 20px;
 }
-
-sl-tab[active]::part(base) {
+.expanded-page sl-tab[active]::part(base) {
   font-size: 20px;
   color: #F3C728 !important;
 }
-
-#bento-tabs {
+.expanded-page #bento-tabs {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: left;
 }
-
-h1 {
-  margin-bottom: 50px !important;
-  width: 50% !important;
-  margin-left: 13% !important;
-}
-
-.why {
+.expanded-page .why {
   grid-area: why;
   width: 193px;
   height: 193px;
@@ -637,8 +626,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.deal {
+.expanded-page .deal {
   grid-area: deal;
   width: 361px;
   height: 193px;
@@ -649,8 +637,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.signs {
+.expanded-page .signs {
   grid-area: signs;
   width: 193px;
   height: 411px;
@@ -661,8 +648,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.triggers {
+.expanded-page .triggers {
   grid-area: triggers;
   width: 361px;
   height: 193px;
@@ -673,8 +659,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.practices {
+.expanded-page .practices {
   grid-area: practices;
   width: 193px;
   height: 411px;
@@ -686,8 +671,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.seek {
+.expanded-page .seek {
   grid-area: seek;
   width: 361px;
   height: 193px;
@@ -698,8 +682,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.questions {
+.expanded-page .questions {
   grid-area: questions;
   width: 193px;
   height: 193px;
@@ -711,8 +694,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 }
-
-.stress {
+.expanded-page .stress {
   display: grid;
   grid-template-areas: "why deal signs" "triggers practices practices" "seek questions questions";
   grid-template-columns: 193px 361px 193px; /* Explicit column widths */
@@ -721,12 +703,10 @@ h1 {
   align-items: start; /* Align items to top */
   margin-top: 8px;
 }
-
-p {
+.expanded-page p {
   color: #000000;
 }
-
-.bookmark, .bookmark-full {
+.expanded-page .bookmark, .expanded-page .bookmark-full {
   position: absolute;
   width: auto;
   height: 30px;
@@ -734,26 +714,21 @@ p {
   right: 35px;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
-
-sl-dialog::part(base) {
+.expanded-page sl-dialog::part(base) {
   color: #000000;
 }
-
-sl-dialog::part(overlay) {
+.expanded-page sl-dialog::part(overlay) {
   backdrop-filter: blur(8px);
   background-color: rgba(0, 0, 0, 0.5);
 }
-
-sl-dialog::part(panel) {
+.expanded-page sl-dialog::part(panel) {
   border-radius: 35px;
   z-index: 1000;
 }
-
-sl-dialog::part(close-button) {
+.expanded-page sl-dialog::part(close-button) {
   display: none;
 }
-
-.why-img {
+.expanded-page .why-img {
   width: 400px; /* Much larger than parent */
   height: 400px; /* Much larger than parent */
   position: absolute;
@@ -765,12 +740,10 @@ sl-dialog::part(close-button) {
   border-radius: 35px;
   transition: transform 0.3s ease;
 }
-
-.why:hover .why-img {
+.expanded-page .why:hover .why-img {
   transform: translate(-50%, -50%) scale(1.1);
 }
-
-.why p {
+.expanded-page .why p {
   width: 30%;
   font-size: 20px;
   font-weight: 300;
@@ -781,33 +754,10 @@ sl-dialog::part(close-button) {
 .home-page {
   background: var(--background-home);
 }
-.home-page h3 {
-  color: #ffffff;
-}
-.home-page .button-group {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0;
-}
-.home-page sl-button::part(base) {
-  color: var(--base-txt-color);
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s;
-}
-.home-page sl-button::part(base):hover {
-  background-color: #f2f2f2;
-  transform: scale(1.05);
-}
-
-.home-banner {
+.home-page .home-banner {
   background: url("/home-bg-graphics.e19972cb.svg");
-  background-size: cover;
-  background-position: center;
+  background-size: 100%;
+  background-position: top;
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin: 5rem auto 0;
@@ -819,19 +769,19 @@ sl-dialog::part(close-button) {
   align-items: center;
   overflow: hidden;
 }
-.home-banner img {
-  margin: -4rem 0 2rem 0;
+.home-page .home-banner img {
+  margin: -5rem 0 2rem 0;
   position: relative;
   z-index: 1;
 }
-.home-banner h1 {
+.home-page .home-banner h1 {
+  margin-right: 10rem;
   color: #6D83F2;
   font-size: 2.5rem;
-  margin-right: 10rem;
   text-align: left;
   z-index: 2;
 }
-.home-banner h2 {
+.home-page .home-banner h2 {
   color: #F2DE96;
   font-size: 1.5rem;
   padding: 5px;
@@ -839,9 +789,95 @@ sl-dialog::part(close-button) {
   text-align: center;
   z-index: 2;
 }
-.home-banner .blurb-container {
+.home-page .home-banner .blurb-container {
   position: relative;
   display: center;
+}
+.home-page .secondary-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-page .nav-page {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.home-page .nav-page h3 {
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  align-self: flex-start;
+}
+.home-page .nav-page .button-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  gap: 1rem;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+.home-page .nav-page sl-button::part(base) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--base-txt-color);
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  line-height: normal;
+  height: auto;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+.home-page .nav-page sl-button::part(base):hover {
+  background-color: #f2f2f2;
+  transform: scale(1.05);
+}
+.home-page .secondary-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-page .nav-page {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.home-page .nav-page h3 {
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  align-self: flex-start;
+}
+.home-page .nav-page .button-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  gap: 1rem;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+.home-page .nav-page sl-button::part(base) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--base-txt-color);
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  line-height: normal;
+  height: auto;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+.home-page .nav-page sl-button::part(base):hover {
+  background-color: #f2f2f2;
+  transform: scale(1.05);
 }
 
 .cloud {
@@ -859,10 +895,30 @@ sl-dialog::part(close-button) {
     transform: translateY(0px);
   }
 }
+@media (min-width: 768px) and (max-width: 991px) {
+  .home-page .home-banner h1 {
+    font-size: 2.5rem;
+    margin-right: 10rem;
+  }
+  .home-page .button-group {
+    padding: 0 9rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem auto;
+    gap: 1rem;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+  .home-page .button-group sl-button::part(base) {
+    font-size: 1rem; /* Increase text size */
+    padding: 1rem 2rem; /* Make it larger */
+    width: 100%; /* Full width */
+  }
+}
 @media (max-width: 768px) {
   .home-banner {
-    background-size: contain; /* Shrinks the SVG to fit */
-    background-attachment: scroll; /* Fix scrolling issues on mobile */
+    background-size: contain;
+    background-attachment: scroll;
   }
   .home-banner h1 {
     font-size: 2.5rem;
@@ -871,34 +927,63 @@ sl-dialog::part(close-button) {
   .home-banner img {
     margin: -4rem 0 0rem 0;
   }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .home-page .home-banner h1 {
-    font-size: 2.5rem;
-    margin-right: 10rem;
+  .nav-page {
+    margin: 0 2rem;
   }
-  .home-page .button-group {
+  .nav-page .button-group {
     display: flex;
-    justify-content: center; /* Centers the buttons horizontally */
-    gap: 1rem; /* Optional: Adds space between buttons */
-    margin: 2rem 0; /* Optional: Adjusts margin around the button group */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 6% auto;
+    gap: 1rem;
+    width: 100%;
   }
-  .home-page .button-group sl-button::part(base) {
-    font-size: 1rem; /* Increase text size */
-    width: 100%; /* Full width */
+  .nav-page sl-button {
+    width: 100%;
+  }
+  .nav-page sl-button::part(base) {
+    font-size: 1rem !important;
+    padding: 1rem 3rem !important;
+    width: 100% !important;
+    display: block !important;
+    text-align: center !important;
   }
 }
 @media (max-width: 480px) {
-  .home-page .home-banner {
+  .home-banner {
     background-size: 31rem;
     background-position: top center;
   }
-  .home-page .home-banner h1 {
+  .home-banner h1 {
     font-size: 1.8rem;
     margin-right: 5rem;
   }
+  .nav-page {
+    margin: 0 2rem;
+  }
+  .nav-page .button-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 6% auto;
+    gap: 1rem;
+    width: 100%;
+  }
+  .nav-page sl-button {
+    width: 100%;
+  }
+  .nav-page sl-button::part(base) {
+    font-size: 1rem;
+    padding: 1rem 3rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
 }
-.banner {
+.inner-wrap .banner {
+  padding-top: 3rem;
   height: auto;
   position: relative;
   color: white;
@@ -907,35 +992,32 @@ sl-dialog::part(close-button) {
   justify-content: center;
   overflow: hidden;
 }
-.banner.resources {
+.inner-wrap .banner.resources {
   background: var(--background-resources);
 }
-.banner.about {
+.inner-wrap .banner.about {
   background: var(--background-about);
 }
-.banner.mindfulness {
+.inner-wrap .banner.mindfulness {
   background: var(--background-mindfulness);
 }
-.banner.mental-health {
+.inner-wrap .banner.mental-health {
   background: var(--background-mental-health);
 }
-
-.banner-content {
+.inner-wrap .banner-content {
   display: flex;
   justify-content: center;
   z-index: 2;
   padding-top: 6rem;
 }
-.banner-content .banner-text {
+.inner-wrap .banner-content .banner-text {
   text-align: left;
 }
-
-picture img {
+.inner-wrap picture img {
   z-index: 1;
   bottom: 0;
 }
-
-.nav-page {
+.inner-wrap .nav-page {
   padding: 2rem;
   display: flex;
   flex-direction: column; /* Stack content vertically */
@@ -947,15 +1029,15 @@ picture img {
   /* Hover Effect */
   /* Active Effect (when button is pressed) */
 }
-.nav-page h3 {
+.inner-wrap .nav-page h3 {
   margin-bottom: 2rem;
 }
-.nav-page .button-group {
+.inner-wrap .nav-page .button-group {
   display: flex;
   justify-content: center; /* Centers the buttons horizontally */
   gap: 1rem; /* Optional: Adds space between buttons */
 }
-.nav-page sl-button::part(base) {
+.inner-wrap .nav-page sl-button::part(base) {
   width: 14rem;
   height: 4rem;
   border-radius: 12px;
@@ -964,66 +1046,66 @@ picture img {
   padding: 0.5rem 1rem; /* Optional: Adjust padding for better button size */
   font-size: 1rem; /* Optional: Adjust font size */
 }
-.nav-page sl-button:hover::part(base) {
+.inner-wrap .nav-page sl-button:hover::part(base) {
   border: none; /* Remove border */
   color: #333;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow intensifies */
   transform: scale(1.05); /* Slight zoom effect */
 }
-.nav-page sl-button:active::part(base) {
+.inner-wrap .nav-page sl-button:active::part(base) {
   color: #fff;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Smaller shadow for pressed effect */
   transform: scale(0.98); /* Slight shrink effect */
 }
-.nav-page .meditation-page::part(base),
-.nav-page .stress-page::part(base),
-.nav-page .suppor-paget::part(base) {
+.inner-wrap .nav-page .meditation-page::part(base),
+.inner-wrap .nav-page .stress-page::part(base),
+.inner-wrap .nav-page .support-page::part(base) {
   background-color: var(--web-color-lilch);
   color: white;
 }
-.nav-page .anxiety-page::part(base),
-.nav-page .breathing-page::part(base),
-.nav-page .services-page::part(base) {
+.inner-wrap .nav-page .anxiety-page::part(base),
+.inner-wrap .nav-page .breathing-page::part(base),
+.inner-wrap .nav-page .services-page::part(base) {
   background-color: var(--web-color-blue);
   color: white;
 }
-.nav-page .depression-page::part(base),
-.nav-page .motivation-page::part(base),
-.nav-page .guides-page::part(base) {
+.inner-wrap .nav-page .depression-page::part(base),
+.inner-wrap .nav-page .motivation-page::part(base),
+.inner-wrap .nav-page .guides-page::part(base) {
   background-color: var(--web-color-green);
   color: white;
 }
-
-.mental-health .grphics {
+.inner-wrap .mental-health .grphics {
   background: url("/mental-health-bg-graphics.016614e7.svg") no-repeat center center;
   background-size: 100%;
   width: 90%;
 }
-
-.mindfulness .banner-content {
+.inner-wrap .mindfulness .banner {
+  padding-top: 3rem;
+}
+.inner-wrap .mindfulness .banner-content {
   background: url("/mindfulness-bg-graphics.79a1ec02.svg") no-repeat center center;
   background-size: contain;
 }
-
-.resources .banner-content {
+.inner-wrap .resources .banner-content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: top;
   text-align: left;
 }
-.resources .banner-text {
+.inner-wrap .resources .banner-text {
   text-align: left;
   padding: 0 0 0 2rem;
   max-width: 30%;
 }
-.resources .banner-text h1 {
+.inner-wrap .resources .banner-text h1 {
   font-size: 1.5rem;
 }
-.resources .banner-text h2 {
+.inner-wrap .resources .banner-text h2 {
   font-size: 0.8rem;
 }
-.resources picture {
+.inner-wrap .resources picture {
   background: url("/resources-bg-graphics.e9b7dbb9.svg") no-repeat center center;
   background-size: 14%;
   background-position-y: 3rem;
@@ -1031,47 +1113,46 @@ picture img {
   justify-content: center;
   align-items: center;
 }
-.resources picture img {
+.inner-wrap .resources picture img {
   height: auto;
   display: block;
 }
-
 @media (min-width: 1024px) {
-  .resources .text-banner {
+  .inner-wrap .resources .text-banner {
     padding: 0px 0rem 2rem 2rem;
   }
-  .resources .text-banner h1 {
+  .inner-wrap .resources .text-banner h1 {
     font-size: 2rem;
   }
-  .resources .text-banner h2 {
+  .inner-wrap .resources .text-banner h2 {
     font-size: 1rem;
   }
 }
 @media (max-width: 768px) and (min-width: 500px) {
-  .resources .banner-content {
+  .inner-wrap .resources .banner-content {
     text-align: left;
     background-size: 20%;
   }
-  .resources text-banner {
+  .inner-wrap .resources text-banner {
     padding: 0px 0rem 2rem 2rem;
   }
-  .resources text-banner h1 {
+  .inner-wrap .resources text-banner h1 {
     font-size: 1.5rem;
   }
-  .resources text-banner h2 {
+  .inner-wrap .resources text-banner h2 {
     font-size: 0.8rem;
   }
-  .resources picture {
+  .inner-wrap .resources picture {
     width: 70%;
     background-size: 19%;
     background-position-y: 1rem;
   }
-  .resources picture img {
+  .inner-wrap .resources picture img {
     width: 90%;
   }
 }
 @media (max-width: 500px) {
-  .resources .banner-content {
+  .inner-wrap .resources .banner-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1080,7 +1161,7 @@ picture img {
     padding-top: 4rem;
     background-size: cover;
   }
-  .resources .banner-text {
+  .inner-wrap .resources .banner-text {
     position: relative;
     max-width: 100%;
     text-align: center;
@@ -1089,25 +1170,24 @@ picture img {
     flex-direction: column;
     align-items: top;
   }
-  .resources picture {
+  .inner-wrap .resources picture {
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  .resources img {
+  .inner-wrap .resources img {
     width: 100%;
     height: auto;
   }
 }
-.about .grphics {
+.inner-wrap .about .grphics {
   background: url("/about-bg-graphics.8f312ed0.svg") no-repeat center center;
   background-size: 100%;
   width: 100%;
   margin-top: 3rem;
 }
-
 @media (max-width: 400px) {
-  .banner-content {
+  .inner-wrap .banner-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1116,7 +1196,7 @@ picture img {
     padding-top: 4rem;
     background-size: cover;
   }
-  .banner-text {
+  .inner-wrap .banner-text {
     position: relative;
     max-width: 100%;
     text-align: left;
@@ -1125,22 +1205,23 @@ picture img {
     flex-direction: column;
     align-items: top;
   }
-  picture {
+  .inner-wrap picture {
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  img {
+  .inner-wrap img {
     width: 70%;
     height: auto;
   }
-  .banner-text h1 {
+  .inner-wrap .banner-text h1 {
     font-size: 1.2rem;
   }
-  .banner-text h2 {
+  .inner-wrap .banner-text h2 {
     font-size: 0.8rem;
   }
 }
+
 .input-group {
   margin-bottom: 0.5em;
 }

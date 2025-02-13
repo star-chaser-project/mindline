@@ -1,21 +1,31 @@
+//scss mental-health-expanded-page
 @use 'vars' as *;
 
+.expanded-page {
+.banner.expanded {
+padding-top: 3rem;
+align-items: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
 
-.banner.mental-health-expanded {
-height: 100vh; 
-background-color: #6686E3;
-/*padding-top: 15%;*/
+
+h1{
+    margin-top: 3rem;
+    font-size:2rem;
 }
 
+
 .banner-content {
-height: 80%;
-width: 60%;
+    padding-top: 0; 
+}
 }
 
 sl-tab-group::part(base) {
 display: flex;
 align-items: center;
 gap: 32px;
+
 
 }
 
@@ -58,13 +68,6 @@ display: flex;
 justify-content: center;
 align-items: left;
 }
-
-h1 {
-margin-bottom: 50px !important;
-width: 50% !important;
-margin-left: 13% !important;
-}
-
 
 .why {
 grid-area: why;
@@ -223,5 +226,4 @@ font-weight: 300;
 margin-left: 10%;
 z-index: 1;
 }
-
-
+}
