@@ -256,7 +256,7 @@ async fetchArticle(id) {
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
-
+                  
                   <div class="deal deal-stress" @click=${this.openDialog}>
                     <img src="/images/stress-box.png" class="stress-img">
                     <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
@@ -270,6 +270,10 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('deal')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
+                    </div>
                     ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
 
                       <sl-button slot="footer" variant="primary" 
@@ -296,7 +300,9 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('signs')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('signs')?.bodyContent || 'Loading content...'}
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('signs')?.bodyContent || 'Loading content...'}
+                    </div>
                     <sl-button slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('signs')?._id;
@@ -322,6 +328,10 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('triggers')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('triggers')?.bodyContent || 'Loading content...'}
+                    </div>
                     ${this.articles.get('triggers')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" 
                       @click=${(e) => {
@@ -347,6 +357,10 @@ async fetchArticle(id) {
                         : ''
                       }
                     <sl-dialog label="${this.articles.get('practices')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
+                    </div>
+              
                     ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" 
                         @click=${(e) => {
@@ -356,11 +370,19 @@ async fetchArticle(id) {
                         }}>
                         ${this.userBookmarks.has(this.articles.get('practices')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                       </sl-button>
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                   <div class="seek seek-stress" @click=${this.openDialog}>
                   <img src="/images/seek-box.png" class="seek-img">
+
+                  <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
+                  <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                  <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                  <div style="white-space: pre-line;">
+                    ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
+                  </div>
                     <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
                       ? html`
@@ -397,6 +419,9 @@ async fetchArticle(id) {
                         : ''
                       }
                     <sl-dialog label="${this.articles.get('questions')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
+                    </div>
                     ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" 
                       @click=${(e) => {
@@ -432,6 +457,10 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('why_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+
+                      <div style="white-space: pre-line;">
+                        ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
+                      </div>
                       ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
                       <sl-button slot="footer" variant="primary" 
                       @click=${(e) => {
@@ -441,7 +470,6 @@ async fetchArticle(id) {
                       }}>
                       ${this.userBookmarks.has(this.articles.get('why_anxiety')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                     </sl-button>
-
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
@@ -460,6 +488,9 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('deal_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('deal_anxiety')?.bodyContent || 'Loading content...'}
+                    </div>
                     ${this.articles.get('deal_anxiety')?.bodyContent || 'Loading content...'}
                       <sl-button
                           slot="footer"
@@ -493,6 +524,9 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('signs_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('signs_anxiety')?.bodyContent || 'Loading content...'}
+                    </div>
                     ${this.articles.get('signs_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
@@ -527,6 +561,10 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('triggers_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('triggers_anxiety')?.bodyContent || 'Loading content...'}
+                    </div>
+
                     ${this.articles.get('triggers_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
@@ -542,7 +580,6 @@ async fetchArticle(id) {
                         : 'Bookmark'
                       }
                     </sl-button>
-
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
@@ -560,6 +597,9 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('practices_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('practices_anxiety')?.bodyContent || 'Loading content...'}
+                    </div>
                     ${this.articles.get('practices_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
@@ -593,6 +633,10 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('seek_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('see_anxiety')?.bodyContent || 'Loading content...'}
+                    </div>
+
                     ${this.articles.get('seek_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
@@ -608,7 +652,6 @@ async fetchArticle(id) {
                         : 'Bookmark'
                       }
                     </sl-button>
-
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
@@ -626,6 +669,10 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('questions_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('questions_anxiety')?.bodyContent || 'Loading content...'}
+                    </div>
                     ${this.articles.get('questions_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
@@ -641,7 +688,6 @@ async fetchArticle(id) {
                         : 'Bookmark'
                       }
                     </sl-button>
-
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 </div>
@@ -669,6 +715,10 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('why_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                      <div style="white-space: pre-line;">
+                        ${this.articles.get('why_depression')?.bodyContent || 'Loading content...'}
+                      </div>
+
                       ${this.articles.get('why_depression')?.bodyContent || 'Loading content...'}
                       <sl-button
                         slot="footer"
@@ -684,7 +734,6 @@ async fetchArticle(id) {
                           : 'Bookmark'
                         }
                       </sl-button>
-
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
@@ -703,6 +752,9 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('deal_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('deal_depression')?.bodyContent || 'Loading content...'}
+                    </div>
                     ${this.articles.get('deal_depression')?.bodyContent || 'Loading content...'}
                       <sl-button
                         slot="footer"
@@ -737,6 +789,10 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('signs_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('signs_depression')?.bodyContent || 'Loading content...'}
+                    </div>
                     ${this.articles.get('signs_depression')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
@@ -752,7 +808,6 @@ async fetchArticle(id) {
                         : 'Bookmark'
                       }
                     </sl-button>
-
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
@@ -772,6 +827,10 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('triggers_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('triggers_depression')?.bodyContent || 'Loading content...'}
+                    </div>
                     ${this.articles.get('triggers_depression')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
@@ -806,6 +865,11 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('practices_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('practices_depression')?.bodyContent || 'Loading content...'}
+                    </div>
+
                     ${this.articles.get('practices_depression')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
@@ -822,12 +886,18 @@ async fetchArticle(id) {
                       }
                     </sl-button>
 
-
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                   <div class="seek" @click=${this.openDialog}>
                   <img src="/images/seek-box.png" class="seek-img">
+
+                  <p>${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
+                  <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                  <sl-dialog label="${this.articles.get('seek_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('seek_depression')?.bodyContent || 'Loading content...'}
+                    </div>
 
                  <p>${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('seek_depression') && this.userBookmarks.has(this.articles.get('seek_depression')._id)
@@ -857,11 +927,19 @@ async fetchArticle(id) {
                     </sl-button>
 
 
+
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="questions" @click=${this.openDialog}>
                   <img src="/images/questions-box.png" class="questions-img">
+
+                  <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
+                  <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                  <sl-dialog label="${this.articles.get('questions_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('questions_depression')?.bodyContent || 'Loading content...'}
+                    </div>
 
                       <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('questions_depression') && this.userBookmarks.has(this.articles.get('questions_depression')._id)
@@ -889,7 +967,6 @@ async fetchArticle(id) {
                         : 'Bookmark'
                       }
                     </sl-button>
-
 
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
