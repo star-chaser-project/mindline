@@ -34,19 +34,31 @@ async fetchArticle(id) {
   async init(){
     document.title = 'Mindfulness Expanded'    
     this.articleIds = {
-      // these are the articles for the first tab group "stress" //
-      why: '677dcb34a6cdde9083351d76',
-      deal: '677dcc1c4aea9c354dbd3103',
-      signs: '677e60b05c759160209d1111',
-      practices: '679af473ccbfff59ce1a142e',
-      triggers: '679af4330b0bab1805167cae', 
-      seek: '679af494ccbfff59ce1a1430',
-      questions: '679af4b9ccbfff59ce1a1432'
+      // Meditation - articles for the first tab group "meditation" //
+      what: '679dd9db640ec34e3c22a2a1', // 679dd9db640ec34e3c22a2a1 What is Meditation
+      why: '679ddae8640ec34e3c22a2a2', // 679ddae8640ec34e3c22a2a2 Why Meditate
+      benefits: '679ddd11640ec34e3c22a2a4', // Mental Health Benefits of Meditation
+      guided: '679ddf6e640ec34e3c22a2a5', // 679ddf6e640ec34e3c22a2a5 Guided Meditation
+      practices: '679de245640ec34e3c22a2a7, 679de3f7640ec34e3c22a2a8, 679de47f640ec34e3c22a2a9', // 679de245640ec34e3c22a2a7 Walking it, 679de3f7640ec34e3c22a2a8 Time out, 679de47f640ec34e3c22a2a9 candle gazing
+      questions: '679deda0640ec34e3c22a2b9', // FAQs About Meditation
+      tips: '679ddb6f640ec34e3c22a2a3', // 679ddb6f640ec34e3c22a2a3 When to Meditate
 
-      // these are the articles for the second tab group "anxiety" //
+      // Breathing - articles for the second tab group "breathing" //
+      why_breath: '67ab274607163965f66e57f7', // 67ab274607163965f66e57f7 Why Breath Awareness Matters for Mental Health 
+      how_breath: '67ab40c807163965f66e57fa', // 67ab40c807163965f66e57fa How Does Breathing Consciously help
+      benefits_breath: '67ab38cf07163965f66e57f9', // 67ab38cf07163965f66e57f9 Benefits of Breath Awareness
+      practices_breath: '679b567904f7c1b1216d5410, 679dc065640ec34e3c22a28a', // Breathing Techniques for Calm and Clarity: 679b567904f7c1b1216d5410 A pep me up for mind and body, 679dc065640ec34e3c22a28a A practice to clear your headspace 
+      seek_breath: '679dcac3640ec34e3c22a291', // ?
+      questions_breath: '67ab47da07163965f66e57fc', // 67ab47da07163965f66e57fc Common Questions About Breathing Techniques
+      tips_breath: '67ab44b707163965f66e57fb', // 67ab44b707163965f66e57fb Breath Awareness Tips
 
-
-      // these are te articles fr the thrid tab group "Depression" //
+      // Motivation - articles fr the thrid tab group "motivation" //
+      why_mot: '679de5c7640ec34e3c22a2ab', // 679de5c7640ec34e3c22a2ab Why is Motivation Important
+      ways_mot: '679de645640ec34e3c22a2ac', // 679de645640ec34e3c22a2ac Ways to Gain Motivation
+      how_mot: '679dea10640ec34e3c22a2af, 679dea63640ec34e3c22a2b0', // 679dea10640ec34e3c22a2af How To Get Motivated, 679dea63640ec34e3c22a2b0 How to Stay on Track
+      practices_mot: '679dc9da640ec34e3c22a290, 679de97c640ec34e3c22a2ae', // Motivational Practices To Expore - 679dc9da640ec34e3c22a290 Sunshine, 679de97c640ec34e3c22a2ae Reset & Go, 
+      what_mot: '679deb6c640ec34e3c22a2b3', // 679deb6c640ec34e3c22a2b3 What to do if You Lose Motivation
+      tips_mot: '679debbe640ec34e3c22a2b4' // 679debbe640ec34e3c22a2b4 Still Putting Things Off?
     } 
     
     try {
