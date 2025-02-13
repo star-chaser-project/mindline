@@ -1,6 +1,7 @@
 @use 'vars' as *;
 
 /// Inner pages
+.inner-wrap{
 .banner {
     height: auto; 
     position: relative; 
@@ -88,7 +89,7 @@ sl-button:active::part(base) {
 
 .meditation-page::part(base),
 .stress-page::part(base),
-.suppor-paget::part(base) {
+.suppor-page::part(base) {
     background-color: var(--web-color-lilch);
     color: white;
 }
@@ -303,4 +304,4 @@ sl-button:active::part(base) {
    }
 
 }
-
+}
