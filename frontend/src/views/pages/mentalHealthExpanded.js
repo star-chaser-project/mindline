@@ -211,8 +211,8 @@ async fetchArticle(id) {
       <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png"></a>      
       <div class="page-content mental-health-expanded-page"> 
         <section class="banner mental-health-expanded">
-        <div class="banner-content">     
         <h1>Mental Health</h1>
+        <div class="banner-content">     
           <div id="bento-tabs">
             <sl-tab-group ?active="${activeTab}">
               <sl-tab slot="nav" panel="stress" ?active="${activeTab === 'stress'}">Stress</sl-tab>

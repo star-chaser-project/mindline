@@ -564,14 +564,21 @@ sl-details::part(base) {
     display: none;
   }
 }
-.mental-health-expanded-page .banner.mental-health-expanded {
-  height: 100vh;
-  background-color: #6686E3;
-  /*padding-top: 15%;*/
+.mental-health-expanded-page {
+  background: var(--background-mental-health);
 }
-.mental-health-expanded-page .banner-content {
-  height: 80%;
-  width: 60%;
+.mental-health-expanded-page .banner.mental-health-expanded {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mental-health-expanded-page .banner.mental-health-expanded h1 {
+  margin-top: 3rem;
+  font-size: 2rem;
+}
+.mental-health-expanded-page .banner.mental-health-expanded .banner-content {
+  padding-top: 0;
 }
 .mental-health-expanded-page sl-tab-group::part(base) {
   display: flex;
@@ -609,11 +616,6 @@ sl-details::part(base) {
   display: flex;
   justify-content: center;
   align-items: left;
-}
-.mental-health-expanded-page h1 {
-  margin-bottom: 50px !important;
-  width: 50% !important;
-  margin-left: 13% !important;
 }
 .mental-health-expanded-page .why {
   grid-area: why;
@@ -754,31 +756,7 @@ sl-details::part(base) {
 .home-page {
   background: var(--background-home);
 }
-<<<<<<< HEAD
 .home-page .home-banner {
-=======
-.home-page h3 {
-  margin-bottom: 0;
-  color: #ffffff;
-}
-.home-page .button-group {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-}
-.home-page .button-group sl-button::part(base) {
-  color: var(--base-txt-color);
-  background-color: #ffffff;
-  font-size: 1rem;
-  padding: 1rem 4rem 1rem;
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.home-banner {
->>>>>>> origin/main
   background: url("/home-bg-graphics.e19972cb.svg");
   background-size: 100%;
   background-position: top;
@@ -793,13 +771,8 @@ sl-details::part(base) {
   align-items: center;
   overflow: hidden;
 }
-<<<<<<< HEAD
 .home-page .home-banner img {
-  margin: -4rem 0 2rem 0;
-=======
-.home-banner img {
   margin: -5rem 0 2rem 0;
->>>>>>> origin/main
   position: relative;
   z-index: 1;
 }
@@ -864,9 +837,54 @@ sl-details::part(base) {
   background-color: #f2f2f2;
   transform: scale(1.05);
 }
-.home-page .cloud {
+.home-page .secondary-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-page .nav-page {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.home-page .nav-page h3 {
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  align-self: flex-start;
+}
+.home-page .nav-page .button-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  gap: 1rem;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+.home-page .nav-page sl-button::part(base) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--base-txt-color);
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  line-height: normal;
+  height: auto;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+.home-page .nav-page sl-button::part(base):hover {
+  background-color: #f2f2f2;
+  transform: scale(1.05);
+}
+
+.cloud {
   animation: float 5s ease-in-out infinite;
 }
+
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -878,8 +896,26 @@ sl-details::part(base) {
     transform: translateY(0px);
   }
 }
-<<<<<<< HEAD
-=======
+@media (min-width: 768px) and (max-width: 991px) {
+  .home-page .home-banner h1 {
+    font-size: 2.5rem;
+    margin-right: 10rem;
+  }
+  .home-page .button-group {
+    padding: 0 9rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem auto;
+    gap: 1rem;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+  .home-page .button-group sl-button::part(base) {
+    font-size: 1rem; /* Increase text size */
+    padding: 1rem 2rem; /* Make it larger */
+    width: 100%; /* Full width */
+  }
+}
 @media (max-width: 768px) {
   .home-banner {
     background-size: contain;
@@ -892,59 +928,10 @@ sl-details::part(base) {
   .home-banner img {
     margin: -4rem 0 0rem 0;
   }
-}
->>>>>>> origin/main
-@media (min-width: 768px) and (max-width: 991px) {
-  .home-page .home-page .home-banner h1 {
-    font-size: 2.5rem;
-    margin-right: 10rem;
-  }
-  .home-page .home-page .button-group {
-    padding: 0 9rem;
-    display: flex;
-<<<<<<< HEAD
-    justify-content: space-between;
-    margin: 2rem auto;
-    gap: 1rem;
-    width: 100%;
-    flex-wrap: nowrap;
-  }
-  .home-page .home-page .button-group sl-button::part(base) {
-    font-size: 1rem; /* Increase text size */
-    padding: 1rem 2rem; /* Make it larger */
-    width: 100%; /* Full width */
-=======
-    justify-content: center;
-    gap: 1rem;
-    width: 100%;
-  }
-  .home-page .button-group sl-button::part(base) {
-    color: var(--base-txt-color);
-    background-color: #ffffff;
-    font-size: 1rem;
-    padding: 1rem 2rem 1rem;
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
->>>>>>> origin/main
-  }
-}
-@media (max-width: 768px) {
-  .home-page .home-banner {
-    background-size: contain;
-    background-attachment: scroll;
-  }
-  .home-page .home-banner h1 {
-    font-size: 2.5rem;
-    margin-right: 7rem;
-  }
-  .home-page .home-banner img {
-    margin: -4rem 0 0rem 0;
-  }
-  .home-page .nav-page {
+  .nav-page {
     margin: 0 2rem;
   }
-  .home-page .nav-page .button-group {
+  .nav-page .button-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -953,10 +940,10 @@ sl-details::part(base) {
     gap: 1rem;
     width: 100%;
   }
-  .home-page .nav-page sl-button {
+  .nav-page sl-button {
     width: 100%;
   }
-  .home-page .nav-page sl-button::part(base) {
+  .nav-page sl-button::part(base) {
     font-size: 1rem !important;
     padding: 1rem 3rem !important;
     width: 100% !important;
@@ -965,18 +952,18 @@ sl-details::part(base) {
   }
 }
 @media (max-width: 480px) {
-  .home-page .home-banner {
+  .home-banner {
     background-size: 31rem;
     background-position: top center;
   }
-  .home-page .home-banner h1 {
+  .home-banner h1 {
     font-size: 1.8rem;
     margin-right: 5rem;
   }
-  .home-page .nav-page {
+  .nav-page {
     margin: 0 2rem;
   }
-  .home-page .nav-page .button-group {
+  .nav-page .button-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -985,10 +972,10 @@ sl-details::part(base) {
     gap: 1rem;
     width: 100%;
   }
-  .home-page .nav-page sl-button {
+  .nav-page sl-button {
     width: 100%;
   }
-  .home-page .nav-page sl-button::part(base) {
+  .nav-page sl-button::part(base) {
     font-size: 1rem;
     padding: 1rem 3rem;
     width: 100%;
@@ -996,7 +983,6 @@ sl-details::part(base) {
     text-align: center;
   }
 }
-
 .inner-wrap .banner {
   height: auto;
   position: relative;
