@@ -42,17 +42,17 @@ class GuideView {
 
         <div class="guide-step">
           <h4>Search for information about mental health.</h4>
-          <img src="images/guide-page-young-lady-holding-mobile-w-bg-360.png" class="responsive-img" >
+          <img src="images/guide/guide-page-white-bg-360.webp" class="responsive-img" >
         </div>
 
         <div class="guide-step">
           <h4>Save articles, audio and video to Bookmarks.</h4>
-          <img src="images/guide-page--young-lady-scratching-head-360.png" class="responsive-img">
+          <img src="images/guide/guide-page-pink-bg-360.webp" class="responsive-img">
         </div>
 
         <div class="guide-step">
           <h4>Find resources and other options for assistance and support.</h4>
-          <img src="images/guide-page-happy-young-lady-on-yellow-bg-360.png" class="responsive-img" >
+          <img src="images/guide/guide-page-yellow-bg-360.webp" class="responsive-img" >
         </div>
 
         <sl-animation name="jello" duration="2000" play iterations="10"><sl-button type="primary" @click=${() => gotoRoute('/')}>Okay got it!</sl-button></sl-animation>
