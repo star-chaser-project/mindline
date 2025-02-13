@@ -754,6 +754,9 @@ sl-details::part(base) {
 .home-page {
   background: var(--background-home);
 }
+<<<<<<< HEAD
+.home-page .home-banner {
+=======
 .home-page h3 {
   margin-bottom: 0;
   color: #ffffff;
@@ -775,6 +778,7 @@ sl-details::part(base) {
 }
 
 .home-banner {
+>>>>>>> origin/main
   background: url("/home-bg-graphics.e19972cb.svg");
   background-size: 100%;
   background-position: top;
@@ -789,19 +793,23 @@ sl-details::part(base) {
   align-items: center;
   overflow: hidden;
 }
+<<<<<<< HEAD
+.home-page .home-banner img {
+  margin: -4rem 0 2rem 0;
+=======
 .home-banner img {
   margin: -5rem 0 2rem 0;
+>>>>>>> origin/main
   position: relative;
   z-index: 1;
 }
-.home-banner h1 {
+.home-page .home-banner h1 {
   color: #6D83F2;
   font-size: 2.5rem;
-  margin-right: 10rem;
   text-align: left;
   z-index: 2;
 }
-.home-banner h2 {
+.home-page .home-banner h2 {
   color: #F2DE96;
   font-size: 1.5rem;
   padding: 5px;
@@ -809,15 +817,56 @@ sl-details::part(base) {
   text-align: center;
   z-index: 2;
 }
-.home-banner .blurb-container {
+.home-page .home-banner .blurb-container {
   position: relative;
   display: center;
 }
-
-.cloud {
+.home-page .secondary-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-page .nav-page {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.home-page .nav-page h3 {
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  align-self: flex-start;
+}
+.home-page .nav-page .button-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  gap: 1rem;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+.home-page .nav-page sl-button::part(base) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--base-txt-color);
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  line-height: normal;
+  height: auto;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+.home-page .nav-page sl-button::part(base):hover {
+  background-color: #f2f2f2;
+  transform: scale(1.05);
+}
+.home-page .cloud {
   animation: float 5s ease-in-out infinite;
 }
-
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -829,6 +878,8 @@ sl-details::part(base) {
     transform: translateY(0px);
   }
 }
+<<<<<<< HEAD
+=======
 @media (max-width: 768px) {
   .home-banner {
     background-size: contain;
@@ -842,13 +893,27 @@ sl-details::part(base) {
     margin: -4rem 0 0rem 0;
   }
 }
+>>>>>>> origin/main
 @media (min-width: 768px) and (max-width: 991px) {
-  .home-page .home-banner h1 {
+  .home-page .home-page .home-banner h1 {
     font-size: 2.5rem;
     margin-right: 10rem;
   }
-  .home-page .button-group {
+  .home-page .home-page .button-group {
+    padding: 0 9rem;
     display: flex;
+<<<<<<< HEAD
+    justify-content: space-between;
+    margin: 2rem auto;
+    gap: 1rem;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+  .home-page .home-page .button-group sl-button::part(base) {
+    font-size: 1rem; /* Increase text size */
+    padding: 1rem 2rem; /* Make it larger */
+    width: 100%; /* Full width */
+=======
     justify-content: center;
     gap: 1rem;
     width: 100%;
@@ -861,6 +926,42 @@ sl-details::part(base) {
     width: 100%;
     border-radius: 12px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+>>>>>>> origin/main
+  }
+}
+@media (max-width: 768px) {
+  .home-page .home-banner {
+    background-size: contain;
+    background-attachment: scroll;
+  }
+  .home-page .home-banner h1 {
+    font-size: 2.5rem;
+    margin-right: 7rem;
+  }
+  .home-page .home-banner img {
+    margin: -4rem 0 0rem 0;
+  }
+  .home-page .nav-page {
+    margin: 0 2rem;
+  }
+  .home-page .nav-page .button-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 6% auto;
+    gap: 1rem;
+    width: 100%;
+  }
+  .home-page .nav-page sl-button {
+    width: 100%;
+  }
+  .home-page .nav-page sl-button::part(base) {
+    font-size: 1rem !important;
+    padding: 1rem 3rem !important;
+    width: 100% !important;
+    display: block !important;
+    text-align: center !important;
   }
 }
 @media (max-width: 480px) {
@@ -872,8 +973,31 @@ sl-details::part(base) {
     font-size: 1.8rem;
     margin-right: 5rem;
   }
+  .home-page .nav-page {
+    margin: 0 2rem;
+  }
+  .home-page .nav-page .button-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 6% auto;
+    gap: 1rem;
+    width: 100%;
+  }
+  .home-page .nav-page sl-button {
+    width: 100%;
+  }
+  .home-page .nav-page sl-button::part(base) {
+    font-size: 1rem;
+    padding: 1rem 3rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
 }
-.banner {
+
+.inner-wrap .banner {
   height: auto;
   position: relative;
   color: white;
@@ -882,35 +1006,32 @@ sl-details::part(base) {
   justify-content: center;
   overflow: hidden;
 }
-.banner.resources {
+.inner-wrap .banner.resources {
   background: var(--background-resources);
 }
-.banner.about {
+.inner-wrap .banner.about {
   background: var(--background-about);
 }
-.banner.mindfulness {
+.inner-wrap .banner.mindfulness {
   background: var(--background-mindfulness);
 }
-.banner.mental-health {
+.inner-wrap .banner.mental-health {
   background: var(--background-mental-health);
 }
-
-.banner-content {
+.inner-wrap .banner-content {
   display: flex;
   justify-content: center;
   z-index: 2;
   padding-top: 6rem;
 }
-.banner-content .banner-text {
+.inner-wrap .banner-content .banner-text {
   text-align: left;
 }
-
-picture img {
+.inner-wrap picture img {
   z-index: 1;
   bottom: 0;
 }
-
-.nav-page {
+.inner-wrap .nav-page {
   padding: 2rem;
   display: flex;
   flex-direction: column; /* Stack content vertically */
@@ -922,15 +1043,15 @@ picture img {
   /* Hover Effect */
   /* Active Effect (when button is pressed) */
 }
-.nav-page h3 {
+.inner-wrap .nav-page h3 {
   margin-bottom: 2rem;
 }
-.nav-page .button-group {
+.inner-wrap .nav-page .button-group {
   display: flex;
   justify-content: center; /* Centers the buttons horizontally */
   gap: 1rem; /* Optional: Adds space between buttons */
 }
-.nav-page sl-button::part(base) {
+.inner-wrap .nav-page sl-button::part(base) {
   width: 14rem;
   height: 4rem;
   border-radius: 12px;
@@ -939,66 +1060,63 @@ picture img {
   padding: 0.5rem 1rem; /* Optional: Adjust padding for better button size */
   font-size: 1rem; /* Optional: Adjust font size */
 }
-.nav-page sl-button:hover::part(base) {
+.inner-wrap .nav-page sl-button:hover::part(base) {
   border: none; /* Remove border */
   color: #333;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow intensifies */
   transform: scale(1.05); /* Slight zoom effect */
 }
-.nav-page sl-button:active::part(base) {
+.inner-wrap .nav-page sl-button:active::part(base) {
   color: #fff;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Smaller shadow for pressed effect */
   transform: scale(0.98); /* Slight shrink effect */
 }
-.nav-page .meditation-page::part(base),
-.nav-page .stress-page::part(base),
-.nav-page .suppor-paget::part(base) {
+.inner-wrap .nav-page .meditation-page::part(base),
+.inner-wrap .nav-page .stress-page::part(base),
+.inner-wrap .nav-page .suppor-page::part(base) {
   background-color: var(--web-color-lilch);
   color: white;
 }
-.nav-page .anxiety-page::part(base),
-.nav-page .breathing-page::part(base),
-.nav-page .services-page::part(base) {
+.inner-wrap .nav-page .anxiety-page::part(base),
+.inner-wrap .nav-page .breathing-page::part(base),
+.inner-wrap .nav-page .services-page::part(base) {
   background-color: var(--web-color-blue);
   color: white;
 }
-.nav-page .depression-page::part(base),
-.nav-page .motivation-page::part(base),
-.nav-page .guides-page::part(base) {
+.inner-wrap .nav-page .depression-page::part(base),
+.inner-wrap .nav-page .motivation-page::part(base),
+.inner-wrap .nav-page .guides-page::part(base) {
   background-color: var(--web-color-green);
   color: white;
 }
-
-.mental-health .grphics {
+.inner-wrap .mental-health .grphics {
   background: url("/mental-health-bg-graphics.016614e7.svg") no-repeat center center;
   background-size: 100%;
   width: 90%;
 }
-
-.mindfulness .banner-content {
+.inner-wrap .mindfulness .banner-content {
   background: url("/mindfulness-bg-graphics.79a1ec02.svg") no-repeat center center;
   background-size: contain;
 }
-
-.resources .banner-content {
+.inner-wrap .resources .banner-content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: top;
   text-align: left;
 }
-.resources .banner-text {
+.inner-wrap .resources .banner-text {
   text-align: left;
   padding: 0 0 0 2rem;
   max-width: 30%;
 }
-.resources .banner-text h1 {
+.inner-wrap .resources .banner-text h1 {
   font-size: 1.5rem;
 }
-.resources .banner-text h2 {
+.inner-wrap .resources .banner-text h2 {
   font-size: 0.8rem;
 }
-.resources picture {
+.inner-wrap .resources picture {
   background: url("/resources-bg-graphics.e9b7dbb9.svg") no-repeat center center;
   background-size: 14%;
   background-position-y: 3rem;
@@ -1006,47 +1124,46 @@ picture img {
   justify-content: center;
   align-items: center;
 }
-.resources picture img {
+.inner-wrap .resources picture img {
   height: auto;
   display: block;
 }
-
 @media (min-width: 1024px) {
-  .resources .text-banner {
+  .inner-wrap .resources .text-banner {
     padding: 0px 0rem 2rem 2rem;
   }
-  .resources .text-banner h1 {
+  .inner-wrap .resources .text-banner h1 {
     font-size: 2rem;
   }
-  .resources .text-banner h2 {
+  .inner-wrap .resources .text-banner h2 {
     font-size: 1rem;
   }
 }
 @media (max-width: 768px) and (min-width: 500px) {
-  .resources .banner-content {
+  .inner-wrap .resources .banner-content {
     text-align: left;
     background-size: 20%;
   }
-  .resources text-banner {
+  .inner-wrap .resources text-banner {
     padding: 0px 0rem 2rem 2rem;
   }
-  .resources text-banner h1 {
+  .inner-wrap .resources text-banner h1 {
     font-size: 1.5rem;
   }
-  .resources text-banner h2 {
+  .inner-wrap .resources text-banner h2 {
     font-size: 0.8rem;
   }
-  .resources picture {
+  .inner-wrap .resources picture {
     width: 70%;
     background-size: 19%;
     background-position-y: 1rem;
   }
-  .resources picture img {
+  .inner-wrap .resources picture img {
     width: 90%;
   }
 }
 @media (max-width: 500px) {
-  .resources .banner-content {
+  .inner-wrap .resources .banner-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1055,7 +1172,7 @@ picture img {
     padding-top: 4rem;
     background-size: cover;
   }
-  .resources .banner-text {
+  .inner-wrap .resources .banner-text {
     position: relative;
     max-width: 100%;
     text-align: center;
@@ -1064,25 +1181,24 @@ picture img {
     flex-direction: column;
     align-items: top;
   }
-  .resources picture {
+  .inner-wrap .resources picture {
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  .resources img {
+  .inner-wrap .resources img {
     width: 100%;
     height: auto;
   }
 }
-.about .grphics {
+.inner-wrap .about .grphics {
   background: url("/about-bg-graphics.8f312ed0.svg") no-repeat center center;
   background-size: 100%;
   width: 100%;
   margin-top: 3rem;
 }
-
 @media (max-width: 400px) {
-  .banner-content {
+  .inner-wrap .banner-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1091,7 +1207,7 @@ picture img {
     padding-top: 4rem;
     background-size: cover;
   }
-  .banner-text {
+  .inner-wrap .banner-text {
     position: relative;
     max-width: 100%;
     text-align: left;
@@ -1100,22 +1216,23 @@ picture img {
     flex-direction: column;
     align-items: top;
   }
-  picture {
+  .inner-wrap picture {
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  img {
+  .inner-wrap img {
     width: 70%;
     height: auto;
   }
-  .banner-text h1 {
+  .inner-wrap .banner-text h1 {
     font-size: 1.2rem;
   }
-  .banner-text h2 {
+  .inner-wrap .banner-text h2 {
     font-size: 0.8rem;
   }
 }
+
 .input-group {
   margin-bottom: 0.5em;
 }
