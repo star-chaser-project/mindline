@@ -800,8 +800,7 @@ sl-dialog::part(close-button) {
   border-radius: 12px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.home-banner {
+.home-page .home-banner {
   background: url("/home-bg-graphics.e19972cb.svg");
   background-size: 100%;
   background-position: top;
@@ -816,19 +815,19 @@ sl-dialog::part(close-button) {
   align-items: center;
   overflow: hidden;
 }
-.home-banner img {
+.home-page .home-banner img {
   margin: -5rem 0 2rem 0;
   position: relative;
   z-index: 1;
 }
-.home-banner h1 {
+.home-page .home-banner h1 {
   color: #6D83F2;
   font-size: 2.5rem;
   margin-right: 10rem;
   text-align: left;
   z-index: 2;
 }
-.home-banner h2 {
+.home-page .home-banner h2 {
   color: #F2DE96;
   font-size: 1.5rem;
   padding: 5px;
@@ -836,15 +835,13 @@ sl-dialog::part(close-button) {
   text-align: center;
   z-index: 2;
 }
-.home-banner .blurb-container {
+.home-page .home-banner .blurb-container {
   position: relative;
   display: center;
 }
-
-.cloud {
+.home-page .cloud {
   animation: float 5s ease-in-out infinite;
 }
-
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -857,15 +854,15 @@ sl-dialog::part(close-button) {
   }
 }
 @media (max-width: 768px) {
-  .home-banner {
+  .home-page .home-banner {
     background-size: contain;
     background-attachment: scroll;
   }
-  .home-banner h1 {
+  .home-page .home-banner h1 {
     font-size: 2.5rem;
     margin-right: 7rem;
   }
-  .home-banner img {
+  .home-page .home-banner img {
     margin: -4rem 0 0rem 0;
   }
 }
@@ -876,18 +873,13 @@ sl-dialog::part(close-button) {
   }
   .home-page .button-group {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
-    width: 100%;
+    justify-content: center; /* Centers the buttons horizontally */
+    gap: 1rem; /* Optional: Adds space between buttons */
+    margin: 2rem 0; /* Optional: Adjusts margin around the button group */
   }
   .home-page .button-group sl-button::part(base) {
-    color: var(--base-txt-color);
-    background-color: #ffffff;
-    font-size: 1rem;
-    padding: 1rem 2rem 1rem;
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem; /* Increase text size */
+    width: 100%; /* Full width */
   }
 }
 @media (max-width: 480px) {
@@ -900,6 +892,7 @@ sl-dialog::part(close-button) {
     margin-right: 5rem;
   }
 }
+
 .inner-wrap .banner {
   height: auto;
   position: relative;
