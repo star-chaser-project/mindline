@@ -157,251 +157,26 @@ async fetchArticle(id) {
     if (dialog) dialog.hide();
   }
 
-  
-
   render(){
     console.log('Auth.currentUser:', Auth.currentUser);
     const urlParams = new URLSearchParams(window.location.search);
     const activeTab = urlParams.get('tab') || 'meditation'; // default to stress if no tab specified
     const template = html`
     <style>
-      .banner.mental-health-expanded {
-      height: 100vh; 
-      background-color: #30AAF5;
-      /*padding-top: 15%;*/
+    .expanded-page  {
+    background: var(--background-mindfulness);
     }
-
-    .banner-content {
-      height: 80%;
-      width: 60%;
-    }
-
-    sl-tab-group::part(base) {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    
-    }
-
-  
-    sl-tab-group::part(nav) {
-    border-bottom: none;
-  }
-
-  sl-tab-group::part(active-tab-indicator) {
-    display: none !important;
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  sl-tab-group::part(tabs) {
-    border-bottom: none;
-  }
-
-  sl-tab::part(base) {
-    border-bottom: none;
-    margin: 0 12px;
-    padding: 12px 24px;
-    font-size: 18px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  }
-
-  sl-tab:not([active])::part(base):hover {
-  font-size: 20px;
-}
-
-sl-tab[active]::part(base) {
-  font-size: 20px;
-  color: #F3C728 !important;
-}
-
-    #bento-tabs {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: left;
-    }
-    
-    h1 {
-      margin-bottom: 50px !important;
-      width: 50% !important;
-      margin-left: 13% !important;
-    }
-    
-
-    .why {
-      grid-area: why;
-      width: 193px;
-      height: 193px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .deal {
-      grid-area: deal;
-      width: 361px;
-      height: 193px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .signs {
-      grid-area: signs;
-      width: 193px;
-      height: 411px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .triggers {
-      grid-area: triggers;
-      width: 361px;
-      height: 193px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .practices {
-      grid-area: practices;
-      width: 193px;
-      height: 411px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      margin-left: 168px;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .seek {
-      grid-area: seek;
-      width: 361px;
-      height: 193px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .questions {
-      grid-area: questions;
-      width: 193px;
-      height: 193px;
-      border-radius: 35px;
-      background-color: #FFFFFF;
-      margin-left: 385px;
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .stress {
-      display: grid;
-      grid-template-areas: 
-        "why deal signs"
-        "triggers practices practices"
-        "seek questions questions";
-      grid-template-columns: 193px 361px 193px; /* Explicit column widths */
-      grid-template-rows: 193px 193px 193px; /* Fixed row heights */
-      gap: 24px; /* Minimal gap */
-      align-items: start; /* Align items to top */
-      margin-top: 8px;
-    }
-
-
-    p {
-      color: #000000;
-    }
-
-    .bookmark, .bookmark-full {
-    position: absolute;
-    width: auto;
-    height: 30px;
-    top: -0.5px;
-    right: 35px;
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
-  }
-    
-
-  sl-dialog::part(base) {
-    color: #000000;
-  }
-
-  sl-dialog::part(overlay) {
-    backdrop-filter: blur(8px);
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-
-  sl-dialog::part(panel) {
-    border-radius: 35px;
-    z-index: 1000;
-  }
-
-  sl-dialog::part(close-button) {
-    display: none;
-  }
-
-    .why-img {
-      width: 400px; /* Much larger than parent */
-      height: 400px; /* Much larger than parent */
-      position: absolute;
-      z-index: 0;
-      object-fit: cover;
-      transform: translate(-50%, -50%);
-      top: 60%;
-      left: 60%;
-      border-radius: 35px;
-      transition: transform 0.3s ease;
-    }
-
-    .why:hover .why-img {
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    .why p {
-      width: 30%;
-      font-size: 20px;
-      font-weight: 300;
-      margin-left: 10%;
-      z-index: 1;
-    }
-
     </style>
-
-    
 
     ${Auth.isLoggedIn() ? 
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
       html`<va-public-header></va-public-header>`
     }
       <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png"></a>      
-      <div class="page-content"> 
-        <section class="banner mental-health-expanded">
-        
+      <div class="page-content expanded-page"> 
+        <section class="banner expanded">
+        <h1>Mindfulness</h1>
         <div class="banner-content">     
-          <h1>Mindfulness</h1>
           <div id="bento-tabs">
             <sl-tab-group ?active="${activeTab}">
               <sl-tab slot="nav" panel="meditation" ?active="${activeTab === 'meditation'}">Meditation</sl-tab>
