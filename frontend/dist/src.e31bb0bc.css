@@ -777,6 +777,7 @@ sl-details::part(base) {
   z-index: 1;
 }
 .home-page .home-banner h1 {
+  margin-right: 10rem;
   color: #6D83F2;
   font-size: 2.5rem;
   text-align: left;
@@ -1079,6 +1080,9 @@ sl-details::part(base) {
   background: url("/mental-health-bg-graphics.016614e7.svg") no-repeat center center;
   background-size: 100%;
   width: 90%;
+}
+.inner-wrap .mindfulness .banner {
+  padding-top: 3rem;
 }
 .inner-wrap .mindfulness .banner-content {
   background: url("/mindfulness-bg-graphics.79a1ec02.svg") no-repeat center center;
