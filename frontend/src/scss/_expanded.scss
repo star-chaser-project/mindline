@@ -1,10 +1,9 @@
 //scss mental-health-expanded-page
 @use 'vars' as *;
 
-.mental-health-expanded-page {
-background: var(--background-mental-health);
-
-.banner.mental-health-expanded {
+.expanded-page {
+.banner.expanded {
+padding-top: 3rem;
 align-items: center;
 display: flex;
 flex-direction: column;

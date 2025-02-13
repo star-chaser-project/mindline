@@ -203,14 +203,18 @@ async fetchArticle(id) {
     const urlParams = new URLSearchParams(window.location.search);
     const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
     const template = html`
-
+   <style>
+      .expanded-page {
+      background: var(--background-mental-health);
+    }
+    </style>
     ${Auth.isLoggedIn() ? 
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
       html`<va-public-header></va-public-header>`
     }
       <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png"></a>      
-      <div class="page-content mental-health-expanded-page"> 
-        <section class="banner mental-health-expanded">
+      <div class="page-content expanded-page"> 
+        <section class="banner expanded">
         <h1>Mental Health</h1>
         <div class="banner-content">     
           <div id="bento-tabs">
