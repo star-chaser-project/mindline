@@ -21,7 +21,7 @@ class aboutUsView {
         html`<va-public-header></va-public-header>`
       }
 
-      <div class="page-content"> 
+      <div class="page-content inner-wrap"> 
       <section class="banner about">
       <div class="grphics">
           <div class="banner-content"> 

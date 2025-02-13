@@ -19,7 +19,7 @@ class mentalHealthView {
         html`<va-public-header></va-public-header>`
       }
       
-      <div class="page-content page-centered"> 
+      <div class="page-content page-centered inner-wrap"> 
         <section class="banner mental-health">
         <div class="grphics">
           <div class="banner-content"> 

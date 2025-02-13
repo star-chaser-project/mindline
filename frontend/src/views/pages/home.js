@@ -32,13 +32,15 @@ class HomeView {
             </picture>
             <h2>HARNESS YOUR POTENTIAL</h2>
         </section>
-       <section class="nav-page">
+       <section class ="secondary-content">
+       <div class="nav-page">
         <h3>Ways to deal with...</h3>
           <div class="button-group">
             <sl-button class="home-bth-Mental-Health" @click=${() => gotoRoute('/mentalHealth')}>Mental Health</sl-button>
             <sl-button class="home-bth-mindfulness" @click=${() => gotoRoute('/mindfulness')}>Mindfulness</sl-button>
             <sl-button class="home-bth-resources" @click=${() => gotoRoute('/resources')}>Resources</sl-button>
           </div>
+        </div>
         </section> 
       </div>
      
