@@ -20,8 +20,8 @@ class aboutUsView {
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`
       }
-
-      <div class="page-content"> 
+    <div class= "inner-wrap">
+      <div class="page-content inner-wrap"> 
       <section class="banner about">
       <div class="grphics">
           <div class="banner-content"> 
@@ -69,6 +69,7 @@ class aboutUsView {
         
       </section>
     </div>
+  </div>
   `;
   render(template, App.rootEl);
 }

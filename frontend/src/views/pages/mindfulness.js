@@ -18,8 +18,8 @@ class mindfulnessView {
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`
       }
-
-      <div class="page-content page-centered">        
+    <div class= "inner-wrap">
+      <div class="page-content page-centered ">        
         <section class="banner mindfulness"> 
         <div class="banner-content"> 
          <div class="banner-text"> 
@@ -43,7 +43,7 @@ class mindfulnessView {
           </div>
        </section>
       </div>            
-           
+     </div>      
     `
     render(template, App.rootEl)
   }

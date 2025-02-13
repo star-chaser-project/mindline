@@ -18,8 +18,8 @@ class mentalHealthView {
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`
       }
-      
-      <div class="page-content page-centered"> 
+    <div class= "inner-wrap">
+      <div class="page-content page-centered "> 
         <section class="banner mental-health">
         <div class="grphics">
           <div class="banner-content"> 
@@ -48,7 +48,8 @@ class mentalHealthView {
             </div>
        </section>
 
-      </div>  
+      </div> 
+    </div> 
     `;
 
     render(template, App.rootEl);

@@ -18,7 +18,7 @@ class resourcesView {
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`
       }
-
+    <div class= "inner-wrap">
       <div class="page-content page-centered"> 
       <section class="banner resources">
         <div class ="banner-content"> 
@@ -42,7 +42,8 @@ class resourcesView {
           <sl-button class="guides-page" @click=${() => gotoRoute('/resourcesExpanded?tab=guides')}>Guides</sl-button>
         </div>
       </section>
-      </div>      
+      </div>
+    </div>      
     `
     render(template, App.rootEl)
   }
