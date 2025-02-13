@@ -1,6 +1,6 @@
 @use 'vars' as *;
 
-
+.mental-health-expanded-page {
 .banner.mental-health-expanded {
 height: 100vh; 
 background-color: #6686E3;
@@ -57,12 +57,12 @@ width: 100%;
 display: flex;
 justify-content: center;
 align-items: left;
+padding-top: 6rem;
 }
 
 h1 {
-margin-bottom: 50px !important;
-width: 50% !important;
-margin-left: 13% !important;
+font-size: 2rem;
+align-items: center;
 }
 
 
@@ -76,7 +76,9 @@ position: relative;
 display: flex;
 overflow: hidden;
 cursor: pointer;
+align-items: center;
 }
+
 
 .deal {
 grid-area: deal;
@@ -200,8 +202,6 @@ display: none;
 }
 
 .why-img {
-width: 400px; /* Much larger than parent */
-height: 400px; /* Much larger than parent */
 position: absolute;
 z-index: 0;
 object-fit: cover;
@@ -224,4 +224,17 @@ margin-left: 10%;
 z-index: 1;
 }
 
-
+.signs-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 60%;
+    left: 60%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    }
+    
+    .signs:hover .signs-img {
+    transform: translate(-50%, -50%) scale(1.1);
+    }

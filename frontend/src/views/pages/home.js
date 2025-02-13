@@ -12,7 +12,6 @@ class HomeView {
     Utils.pageIntroAnim();    
   }
    // Image adapted from Canva – Accessed on December 18, 2024
-  // Animation - from https://shoelace.style/components/animation
  render() {
     const template = html`
       ${Auth.isLoggedIn() ? 
@@ -26,7 +25,7 @@ class HomeView {
               <source srcset="images/home/home-hero-image-360.webp" media="(max-width: 480px)">
               <source srcset="images/home/home-hero-image-768.webp" media="(max-width: 768px)">
               <source srcset="images/home/home-hero-image-1024.webp" media="(min-width: 769px)">
-              <img id="heroImage" src="images/home/home-hero-image-1024.webp" alt="banner image of a girl meditating">
+              <img class="cloud" id="heroImage" src="images/home/home-hero-image-1024.webp" alt="banner image of a girl meditating">
             </picture>
             <h2>HARNESS YOUR POTENTIAL</h2>
         </section>

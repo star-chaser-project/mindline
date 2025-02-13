@@ -3,6 +3,7 @@ import {html, render } from 'lit-html'
 import {gotoRoute, anchorRoute} from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
+import Toast from '../../Toast';
 
  // Image adapted from Canva – Accessed on December 18, 2024
 class resourcesExpandedView {
@@ -74,7 +75,7 @@ async fetchArticle(id) {
     console.log("Current user:", Auth.currentUser);
     console.log("Using token:", Auth.currentUser.token);
     if (!Auth.currentUser || !Auth.currentUser.token) {
-      alert("You must be logged in to bookmark articles!");
+      Toast.show("You must be logged in to bookmark articles!");
       return;
     }
     
@@ -91,15 +92,15 @@ async fetchArticle(id) {
     
       const result = await response.json();
       if (response.ok) {
-        alert("Article bookmarked!");
+        Toast.show("Article bookmarked!");
       } else {
         const errMsg = result.message || result.error || "Bookmark failed";
         console.error("Bookmark failed:", errMsg);
-        alert(errMsg);
+        Toast.show(errMsg);
       }
     } catch (err) {
       console.error("Bookmark error:", err);
-      alert("An error occurred while bookmarking the article.");
+      Toast.show("An error occurred while bookmarking the article.");
     }
   }
 

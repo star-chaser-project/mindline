@@ -7,8 +7,8 @@
   ///------home-banner--------
   .home-banner {
     background: url('../../static/images/home/home-bg-graphics.svg');
-    background-size: cover;
-    background-position: center;
+    background-size: 100%;
+    background-position: top;
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 5rem auto 0;
@@ -21,7 +21,7 @@
     overflow: hidden;
 
     img {
-      margin: -4rem 0 2rem 0;
+      margin: -5rem 0 2rem 0;
       position: relative;
       z-index: 1;
     }
@@ -98,6 +98,56 @@
     }
   }
 
+  //bottom section of home page
+  .secondary-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-page {
+    flex-direction: column; // Stack buttons vertically
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+
+    h3 {
+      color: #ffffff;
+      margin: 0 0 1rem 0; // Space below the h3
+      align-self: flex-start; // Align the h3 to the left
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem auto;
+      gap: 1rem;
+      width: 100%;
+      flex-wrap: nowrap;
+    }
+
+    sl-button::part(base) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--base-txt-color);
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem 3rem;
+      font-size: 1rem;
+      line-height: normal;
+      height: auto;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    sl-button::part(base):hover {
+      background-color: #f2f2f2;
+      transform: scale(1.05);
+    }
+  }
+}
   // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
   .cloud {
     animation: float 5s ease-in-out infinite;
@@ -222,4 +272,3 @@
       }
     }
   }
-}
