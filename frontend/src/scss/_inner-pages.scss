@@ -3,6 +3,7 @@
 /// Inner pages
 .inner-wrap{
 .banner {
+ 
     height: auto; 
     position: relative; 
     color: white;
@@ -121,6 +122,9 @@ sl-button:active::part(base) {
 //// mindfulness---------------------------------------------------------------------------------
 
 .mindfulness {
+  .banner{ 
+    padding-top: 3rem;
+  }
   .banner-content {
     background: url('../../static/images/mindfulness/mindfulness-bg-graphics.svg') no-repeat center center;
     background-size: contain;
