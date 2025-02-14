@@ -793,7 +793,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('signs_depression')?.bodyContent || 'Loading content...'}
                     </div>
-                    ${this.articles.get('signs_depression')?.bodyContent || 'Loading content...'}
+               
                     <sl-button
                       slot="footer"
                       variant="primary"
