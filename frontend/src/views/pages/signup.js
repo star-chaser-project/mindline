@@ -278,7 +278,7 @@ class SignUpView{
 
 <sl-drawer class="app-side-menu" placement="left">
     <div slot="label">
-        <a href="/" @click="${anchorRoute}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.png"></a>
+        <a href="/" @click="${anchorRoute}"><img class="app-side-menu-logo" src="/images/logo/logo-mindline-trimmed-no-wording-clr.svg"></a>
     </div>
     <nav class="app-side-menu-items">
         <a href="/" @click="${anchorRoute}">Home</a>
@@ -336,10 +336,10 @@ class SignUpView{
 
 <div class="page-content page-centered">
     <div class="signon2-container">
-        <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
+        <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/mindline-white-logo.png"></a>
         <div class="signinup-box">
 
-            <h1 style="padding-bottom: 1em;">LOG IN</h1>
+            <h1 style="padding-bottom: 1em;">SIGN UP</h1>
             <sl-form class="form-signup" @sl-submit=${this.signUpSubmitHandler}>
                 <div class="input-group">
                     <sl-input size="large" pill style="padding-bottom: 1em;" name="firstName" type="text" placeholder="First name" required></sl-input>
