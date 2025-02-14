@@ -243,7 +243,7 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
 
 <sl-drawer class="app-side-menu" placement="left">
     <div slot="label">
-        < href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo/logo-mindline-svg-converted-to.webp">
+        <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo/logo-mindline-svg-converted-to.webp"></a>
     </div>
     <br>
     <nav class="app-side-menu-items">
