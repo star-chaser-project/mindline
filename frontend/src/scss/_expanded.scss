@@ -22,44 +22,41 @@ h1{
 }
 
 sl-tab-group::part(base) {
-display: flex;
-align-items: center;
-gap: 32px;
-
-
+    display: flex;
+    align-items: center;
+    gap: 32px;
 }
 
-seek
 sl-tab-group::part(nav) {
-border-bottom: none;
+    border-bottom: none;
 }
 
 sl-tab-group::part(active-tab-indicator) {
-display: none !important;
-opacity: 0;
-visibility: hidden;
+    display: none !important;
+    opacity: 0;
+    visibility: hidden;
 }
 
 sl-tab-group::part(tabs) {
-border-bottom: none;
+    border-bottom: none;
 }
 
 sl-tab::part(base) {
-border-bottom: none;
-margin: 0 12px;
-padding: 12px 24px;
-font-size: 18px;
-font-weight: 500;
-transition: all 0.2s ease;
+    border-bottom: none;
+    margin: 0 12px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
 sl-tab:not([active])::part(base):hover {
-font-size: 20px;
+    font-size: 20px;
 }
 
 sl-tab[active]::part(base) {
-font-size: 20px;
-color: #F3C728 !important;
+    font-size: 20px;
+    color: #F3C728 !important;
 }
 
 #bento-tabs {
