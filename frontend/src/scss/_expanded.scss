@@ -29,7 +29,7 @@ gap: 32px;
 
 }
 
-
+seek
 sl-tab-group::part(nav) {
 border-bottom: none;
 }
@@ -168,6 +168,107 @@ align-items: start; /* Align items to top */
 margin-top: 8px;
 }
 
+.meditation {
+    display: grid;
+    grid-template-areas: 
+    "what-med     why-med      ."               /* row 1 (2 areas) */
+    "benefit-med  physical-med  guided-med" /* row 2 (3 areas) */
+    "questions-med tips-med     .";             /* row 3 (2 areas) */
+    grid-template-columns: 193px 193px 193px;
+    grid-template-rows: 193px 193px 193px;
+    gap: 24px;
+    align-items: start;
+    margin-top: 8px;
+}
+
+.what-med {
+    grid-area: what-med;
+    width: 410px;
+    height: 193px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.why-med {
+    grid-area: why-med;
+    width: 410px;
+    height: 193px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    margin-left: 217px;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.benefit-med {
+    grid-area: benefit-med;
+    width: 193px;
+    height: 410px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.physical-med {
+    grid-area: physical-med;
+    width: 193px;
+    height: 410px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.guided-med {
+    grid-area: guided-med;
+    width: 410px;
+    height: 193px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.questions-med {
+    grid-area: questions-med;
+    width: 193px;
+    height: 193px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    margin-left:434px;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tips-med {
+    grid-area: tips-med;
+    width: 193px;
+    height: 193px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    margin-left: 434px ;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
 
 p {
 color: #000000;
@@ -226,4 +327,22 @@ font-weight: 300;
 margin-left: 10%;
 z-index: 1;
 }
+
+.video-embed iframe {
+    width: 251px;
+    height: 142px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+.video-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding-top: 2rem;
+}
+
+}
+
