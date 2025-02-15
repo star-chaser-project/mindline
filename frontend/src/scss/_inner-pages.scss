@@ -146,14 +146,9 @@ sl-button:active::part(base) {
 
   .banner-text {
     text-align: left;
-    padding: 0 0 0 2rem;
+    padding: 2rem 0 0 2rem;
     max-width: 30%;
-    h1{
-      font-size: 1.5rem;
-    }
-    h2{
-      font-size: 0.8rem;
-    }
+  
   }
 
   picture {
