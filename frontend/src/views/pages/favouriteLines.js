@@ -10,69 +10,54 @@ import UserAPI from '../../UserAPI';
 // bookmarks = previously favourites
 // favouriteBookmarks = previously favouriteProducts
 class FavouriteLinesView {
-  init(){
+  init() {
     document.title = 'Favourite Lines';
-    this.favProducts = null;    
+    this.favBookmarks = null;    
     this.render();    
     Utils.pageIntroAnim();
-    this.getFavProducts();
-  }
+    this.getFavBookmarks();
+}
 
-  async getFavProducts(){
+async getFavBookmarks() {
     try {
       const currentUser = await UserAPI.getUser(Auth.currentUser._id);
-      this.favProducts = currentUser.favouriteProducts;
-      console.log(this.favouriteProducts);
+      this.favBookmarks = currentUser.favouriteBookmarks; // Make sure this is the correct property name
+      console.log(this.favBookmarks);
       this.render();
-    }catch(err){
+    } catch(err) {
       Toast.show(err, 'error');
     }
-  }
+}
 
-  render(){
+render() {
     const template = html`
       <va-app-header title="" user="${JSON.stringify(Auth.currentUser)}">
       </va-app-header>
       <div class="page-content favourites-page">   
-        <div class="fav-container "> 
-        <h1>Favourites</h1>     
-        <div class="fav-list">
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/favouriteLines')}>Add bookmarks </sl-button>
-          <sl-button type="primary" size="large" @click=${() => gotoRoute('/favouriteLines')}>View My Favourite</sl-button>     
-        </div>
-
-        <hr>
-        <br>
-
-        <p>Page content ...</p>
-
-      </div> 
-      <div class="favourites-grid">
-        ${this.favouriteProducts == null ? html`
-          <sl-spinner></sl-spinner>
-        ` : html`
-          ${this.favProducts.map(product => html`
-            <va-favourite-product class="favourite-card"
-              id="${product._id}"
-              name="${product.name}"
-              description="${product.description}"
-              price="${product.price}"
-              user="${JSON.stringify(product.user)}"
-              favourite="${favourite.product}" 
-              image="${product.image}"
-              milk="${product.milk}"
-              shots="${product.shots}"
-            >        
-            </va-favourite-product>
-
-          `)}
-        `}
+        <div class="fav-container"> 
+          <h1>Bookmarks</h1>     
+        </div> 
+        <div class="favourites-grid">
+          ${this.favBookmarks == null 
+            ? html`<sl-spinner></sl-spinner>`  // Show spinner while loading
+            : this.favBookmarks.length === 0 
+              ? html`<p>No bookmarks added</p>` // Show message if there are no bookmarks
+              : html`
+                <ul>
+                  ${this.favBookmarks.map(bookmark => html`
+                    <li>
+                      <p>${bookmark.content}</p> <!-- Assuming bookmarks store some text content -->
+                    </li>
+                  `)}
+                </ul>
+              ` // Display the bookmarked content$
+          }
         </div>
       </div>
     `;
     render(template, App.rootEl);
-  }
 }
 
+}
 
 export default new FavouriteLinesView();

@@ -46,15 +46,13 @@ class SignInView {
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
       html`<va-public-header></va-public-header>`
     }  
-
-
     <!-- Left Section -->
     <div class="page-content page-centered">
         <div class="signon2-container profile-container">
             <!-- Left Section -->
             <div class="profile-left">
                 <div class="signinup-box">
-                <h1 >LOG IN</h1>
+                    <h1 >LOG IN</h1>
                     <sl-form class="form-signup dark-theme" @sl-submit=${this.signInSubmitHandler}>
                         <div class="input-group">
                             <sl-input size="large" pill style="padding-bottom: 1em;" name="email" type="email" placeholder="Email" required></sl-input>
@@ -64,10 +62,9 @@ class SignInView {
                         </div>
                         <sl-button size="large" pill class="submit-btn" type="primary" submit style="width: 100%;">LOG IN</sl-button>
                     </sl-form>
-                    <br>Don’t have an account?</br> <a href="/signup" @click=${anchorRoute}>Sign up</a></p>
+                    <p><br>Don’t have an account?</br> <a href="/signup" @click=${anchorRoute}>Sign up</a></p>
             </div>
         </div> 
-
         <!-- Right Section -->
         <div class="profile-right">
             <div class="welcome-box">

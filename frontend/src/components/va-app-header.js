@@ -326,7 +326,7 @@ sl-details::part(base) {
             <a class="menu-static" href="/about" @click="${this.menuClick}">About</a>
 
             <a class="menu-static" href="/profile" @click="${this.menuClick}">Profile</a>
-            <a class="menu-static" href="/favouriteLines" @click="${this.menuClick}">favourites</a>
+            <a class="menu-static" href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
             <hr style="color: #fff width:10%">
 
             <sl-details summary="Privacy">
@@ -467,7 +467,7 @@ sl-details::part(base) {
                 <a class="menu-expand" href="">Services</a>
                 <a class="menu-expand" href="">Guides</a>
             </sl-details>
-            <a class="menu-static" href="/favouriteLines" @click="${this.menuClick}">favourites</a>
+            <a class="menu-static" href="/favouriteLines" @click="${this.menuClick}">Bookmarks</a>
             <a class="menu-static" href="/about" @click="${this.menuClick}">About</a>
             <a class="menu-static" href="/profile" @click="${this.menuClick}">Profile</a>
 
