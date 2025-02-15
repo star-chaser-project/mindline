@@ -438,7 +438,6 @@ async fetchArticle(id) {
                 
                   <div class="why why-anxiety" @click=${this.openDialog}>
                    <img src="/images/mental-health/anxiety/anxiety-why.webp" class="why-img">
-
                     <p>${this.articles.get('why_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('why_anxiety') && this.userBookmarks.has(this.articles.get('why_anxiety')._id)
                       ? html`
@@ -446,11 +445,11 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
-                        >`
+                        >
+                      `
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('why_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-
                       <div style="white-space: pre-line;">
                         ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
                       </div>

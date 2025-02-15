@@ -37,9 +37,9 @@ class resourcesView {
       <section class="nav-page">
         <h3>Ways to deal with...</h3>
           <div class="button-group">
-          <sl-button class="support-page" @click=${() => gotoRoute('/resourcesExpanded?tab=support')}>Support</sl-button>
-          <sl-button class="services-page" @click=${() => gotoRoute('/resourcesExpanded?tab=services')}>Services</sl-button>
-          <sl-button class="guides-page" @click=${() => gotoRoute('/resourcesExpanded?tab=guides')}>Guides</sl-button>
+          <sl-button class="support-page" @click=${() => gotoRoute('/resourcesExpanded?tab=stress')}>Support</sl-button>
+          <sl-button class="services-page" @click=${() => gotoRoute('/resourcesExpanded?tab=anxiety')}>Services</sl-button>
+          <sl-button class="guides-page" @click=${() => gotoRoute('/resourcesExpanded?tab=depression')}>Guides</sl-button>
         </div>
       </section>
       </div>      
