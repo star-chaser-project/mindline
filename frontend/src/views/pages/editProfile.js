@@ -411,14 +411,13 @@ class EditProfileView {
     <sl-spinner></sl-spinner>
     `:html`
     <div class="signon2-container">
-        <a @click="${() => gotoRoute('/')}"><img class="header-logo" src="/images/mindline-white-logo.png"></a>
         <div class="signinup-box">
 
 
             <sl-avatar style="--size: 200px; margin-bottom: 1em;" image="${Auth.currentUser.avatar ? `${App.apiBase}/images/${Auth.currentUser.avatar}` : ''}">
             </sl-avatar>
 
-            <h1>My Details</h1>
+            <h2>My Details</h2>
             <p>Updated: ${moment(Auth.currentUser.updatedAt).format('D MMMM YYYY @ h:mm a')}</p>
             <sl-form class="page-form" @sl-submit=${this.updateProfileSubmitHandler.bind(this)}>
                 <div class="input-group">

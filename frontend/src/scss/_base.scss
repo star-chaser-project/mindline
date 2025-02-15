@@ -218,18 +218,11 @@ sl-details::part(base) {
   }
 }
 
-
-//favorite-page-----------------
-.favourites-page {
-  background: var(--background-favourites);
-}
-
 //profile page --------------------------------------------------------------------------------
 
 .profile-container {
   display: flex;
   height: 100vh;
-
 
 .profile-left {
   flex: 1;
@@ -254,7 +247,7 @@ sl-details::part(base) {
     .edit-button {
       margin-top: 1em;
     }
-
+    
 }
 
 .profile-right {
@@ -296,10 +289,15 @@ sl-details::part(base) {
   color: #000000;
   }
 }
+ // signin style 
+.signin-style{
   
+    .profile-left {
+      background-color: #000000;
+    }
+}
 
-
-// text only --------------------
+// text only -------------------------------------
 .blurb-text {
   position: absolute;
   top: 15%;
@@ -309,6 +307,10 @@ sl-details::part(base) {
   padding: 5px;
 }
 
+//favorite-page-----------------
+.favourites-page {
+  background: var(--background-favourites);
+}
 // Products page ------------------------------------------------------------------------------
 
 .products-container {
@@ -445,61 +447,8 @@ sl-details::part(base) {
   margin: 3em;
 }
 
-// location page ------------------------------------------------------------------------------
-
-.location-info {
-  display: flex;
-  position: relative;
-  text-align: left;
-  column-count: 3;
-  flex-wrap: wrap;
-  column-gap: 70px;
-  margin-left: 3em;
-  padding-inline: 5px;
-}
-
-.location-map {
-  float: right;
-  width: calc(10%);
-  margin-left: 0px;
-}
-
-.current-location,
-.next-location {
-  display: left;
-}
-
-.event-banner {
-  position: absolute;
-  z-index: 3;
-  width: 100%;
-  top: 560px;
-  right: 30px;
-  float: center;
-}
 
 // about page ----------------------------------------------------------------------------
-.about-content {
-  display: flex;
-  flex-wrap: wrap; /* Allows items to wrap to the next line */
-  justify-content: space-between; /* Creates equal spacing between the sections */
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto; /* Centers the content horizontally */
-  padding: 40px 20px;
-}
-
-/* Color customization for headings */
-.our-mission h2 {
-  color: var(--web-color-yellow);
-}
-.contact-info h2 {
-  color: var(--web-color-lilch);
-}
-.how-we-are h2 {
-  color: var(--web-color-green);
-}
-
 
 // Responsive layouts ------------------------------------------------- 
 // makes a one column layout instead of a two-column layout
@@ -530,19 +479,19 @@ sl-details::part(base) {
 // Small Devices (Phones, < 768px)
 @media (max-width: 767px) { 
   body { 
-    font-size: 0.875rem; /* 14px (0.875 * 16px) */
+    font-size: 0.875rem;
   }
   
   h1 { 
-    font-size: 1.5rem;  /* 24px */
+    font-size: 1.5rem; 
   } 
 
   h2 { 
-    font-size: 1.25rem;  /* 20px */
+    font-size: 1.25rem; 
   } 
 
   p { 
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem;
     color: #333; 
     line-height: 1.5;
   } 
@@ -553,19 +502,19 @@ sl-details::part(base) {
 // Medium Devices (Tablets, 768px - 1024px)
 @media (min-width: 768px) and (max-width: 1024px) { 
   body { 
-    font-size: 1rem; /* 16px */
+    font-size: 1rem; 
   }
 
   h1 { 
-    font-size: 2rem; /* 32px */
+    font-size: 2rem; 
   } 
 
   h2 { 
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem; 
   } 
 
   p { 
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
     line-height: 1.6;
   } 
 }
@@ -573,21 +522,112 @@ sl-details::part(base) {
 // Large Devices (Desktops, > 1024px)
 @media (min-width: 1025px) { 
   body { 
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
   }
 
   h1 { 
-    font-size: 2.5rem; /* 40px */
+    font-size: 2.5rem;
   } 
 
   h2 { 
-    font-size: 1.75rem; /* 28px */
+    font-size: 1.75rem; 
   } 
 
   p { 
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem; 
     line-height: 1.8;
   } 
+}
+
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  margin: 0 auto;
+  padding: 3rem;
+
+  article {
+    flex: 1; // Makes each article take equal width
+    min-width: 280px; // Ensures each section has a minimum width
+  }
+
+  .how-to-get-here {
+    width: 100%; // Makes it full width
+    margin-top: 40px; // Adds spacing between the rows
+
+    iframe {
+      width: 100%; // Ensures the iframe fills the width of its container
+      height: 450px; // Set a fixed height for the iframe
+      border: 0; // Optional, to remove iframe border
+    }
+  }
+}
+
+// Color customization for headings
+.our-mission h2 {
+  color: var(--web-color-yellow);
+}
+
+.contact-info h2 {
+  color: var(--web-color-lilch);
+}
+
+.how-we-are h2 {
+  color: var(--web-color-green);
+}
+
+.how-to-get-here h2 {
+  color: var(--web-color-blue);
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .about-content {
+    padding: 2rem; // Reduces padding on smaller screens
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-content {
+    gap: 2rem; // Adjusts the gap between items
+  }
+
+  .about-content article {
+    flex: 1 1 45%; // Adjusts the width of the articles to be 45% on medium screens
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    padding: 1.5rem; // Further reduces padding
+    flex-direction: column; // Stacks the articles in a column instead of a row
+  }
+
+  .about-content article {
+    flex: 1 1 100%; // Makes each article take full width and stack them
+    margin-bottom: 2rem; // Adds space between stacked articles
+  }
+
+  .how-to-get-here iframe {
+    height: 350px; // Adjusts the iframe height for smaller screens
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 679px) {
+  .about-content {
+    padding: 2rem; // Adjusts padding to fit better on medium screens
+    flex-direction: row; // Keeps the layout in row for medium screens
+  }
+
+  .about-content article {
+    flex: 1 1 48%; // Adjusts articles to take around 48% width for a better fit
+  }
+
+  .how-to-get-here iframe {
+    height: 400px; // Adjusts iframe height for medium screens
+  }
 }
 
 
