@@ -292,7 +292,7 @@ sl-details::part(base) {
 
     <sl-drawer class="app-side-menu" placement="left">
         <div slot="label">
-            <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo-mindline-trimmed-no-wording-clr.svg"></a>
+            <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo/logo-mindline-trimmed-no-wording-clr.svg"></a>
         </div>
         <br>
         <nav class="app-side-menu-items">
