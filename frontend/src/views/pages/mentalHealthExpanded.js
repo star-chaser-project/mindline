@@ -954,3 +954,4 @@ async fetchArticle(id) {
 }
 
 export default new mentalHealthExpandedView()
+
