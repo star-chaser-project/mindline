@@ -1,5 +1,5 @@
 import App from '../../App';
-import {html, render } from 'lit-html';
+import {html, render} from 'lit-html';
 import {gotoRoute, anchorRoute} from '../../Router';
 import Auth from '../../Auth';
 import Utils from '../../Utils';
@@ -22,7 +22,7 @@ class FavouriteLinesView {
       const data = await response.json();
       console.log('Fetched data:', data);
       return data;
-    } catch(err) {
+    } catch (err) {
       console.error('Fetch error:', err);
       return null;
     }
@@ -30,7 +30,7 @@ class FavouriteLinesView {
 
   async init() {
     document.title = 'Favourite Lines';
-    this.render();    
+    this.render();
     Utils.pageIntroAnim();
     await this.getFavBookmarks();
   }
@@ -39,11 +39,11 @@ class FavouriteLinesView {
     try {
       const currentUser = await UserAPI.getUser(Auth.currentUser._id);
       console.log('Fetched user data:', currentUser);
-      this.favBookmarks = new Set(currentUser.favouriteBookmarks); // Make sure this is the correct property name
+      this.favBookmarks = new Set(currentUser.favouriteBookmarks); // need to Make sure this is the correct property name not sure it is
       console.log('User bookmarks:', this.favBookmarks);
       await this.fetchFavArticles();
       this.render();
-    } catch(err) {
+    } catch (err) {
       Toast.show(err, 'error');
     }
   }
@@ -59,12 +59,14 @@ class FavouriteLinesView {
           }
         })
       );
-    } catch(err) {
+    } catch (err) {
       console.error('Fetch articles error:', err);
     }
   }
 
   render() {
+    console.log('Auth.currentUser:', Auth.currentUser);
+    console.log('User bookmarks:', Array.from(this.favBookmarks));
     const template = html`
       <va-app-header user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
       <div class="page-content favourites-page">   
