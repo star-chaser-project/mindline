@@ -39,7 +39,7 @@ class FavouriteLinesView {
     try {
       const currentUser = await UserAPI.getUser(Auth.currentUser._id);
       console.log('Fetched user data:', currentUser);
-      this.favBookmarks = new Set(currentUser.favouriteBookmarks); // need to Make sure this is the correct property name not sure it is
+      this.favBookmarks = new Set(currentUser.favouriteBookmarks); // need to Make sure this is the correct property name
       console.log('User bookmarks:', this.favBookmarks);
       await this.fetchFavArticles();
       this.render();
