@@ -107,7 +107,7 @@ class EditProfileView {
     const template = html`
     <style>
     .signin-background {
-        background-image: url('/images/login-background.png');
+        background-image: url('/images/login/login-background.svg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
