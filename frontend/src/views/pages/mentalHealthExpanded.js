@@ -110,6 +110,8 @@ async fetchArticle(id) {
   async bookmarkArticle(e, id) {
     e.preventDefault();
     e.stopPropagation();
+
+   
     
     if (!Auth.currentUser || !Auth.currentUser.token) {
       Toast.show("You must be logged in to bookmark articles!");
@@ -258,7 +260,7 @@ async fetchArticle(id) {
                   </div>
                   
                   <div class="deal deal-stress" @click=${this.openDialog}>
-                    <img src="/images/stress-box.png" class="stress-img">
+                    <img src="/images/mental-health/stress/stress-ways-to-deal-w-stress-360.webp" class="stress-img">
                     <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal') && this.userBookmarks.has(this.articles.get('deal')._id)
                       ? html`
@@ -315,7 +317,7 @@ async fetchArticle(id) {
                 
                 
                   <div class="triggers triggers-stress" @click=${this.openDialog}>
-                    <img src="/images/triggers-box.png" class="triggers-img">
+                    <img src="/images/mental-health/stress/stress-common-triggers.webp" class="triggers-img">
                     <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('triggers') && this.userBookmarks.has(this.articles.get('triggers')._id)
                       ? html`
@@ -343,7 +345,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="practices practices-stress" @click=${this.openDialog}>
-                  <img src="/images/practices-box.png" class="practices-img">
+                  <img src="/images/mental-health/stress/stress-daily-practices.webp" class="practices-img">
                   <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
                           ? html`
@@ -371,7 +373,7 @@ async fetchArticle(id) {
                   </div>
                 
                   <div class="seek seek-stress" @click=${this.openDialog}>
-                  <img src="/images/seek-box.png" class="seek-img">
+                  <img src="/images/mental-health/stress/stress-when-to-seek-help-360.webp" class="seek-img">
 
                   <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
@@ -399,7 +401,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="questions" @click=${this.openDialog}>
-                  <img src="/images/questions-box.png" class="questions-img">
+                  <img src="/images/mental-health/stress/stress-common-questions-360.webp" class="questions-img">
                       <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
                         ? html`
@@ -687,7 +689,7 @@ async fetchArticle(id) {
                 <div class="stress">
                 
                   <div class="why" @click=${this.openDialog}>
-                   <img src="/images/mental-health/stress/stress-why-mental-health-matters-360.webp" class="why-img">
+                   <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="why-img">
 
                     <p>${this.articles.get('why_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('why_depression') && this.userBookmarks.has(this.articles.get('why_depression')._id)
@@ -723,7 +725,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="deal" @click=${this.openDialog}>
-                    <img src="/images/mental-health/stress/stress-why-mental-health-matters-360.webp" class="stress-img">
+                    <img src="/images/mental-health/depression/depression-deal-360r.webp" class="stress-img">
 
                     <p>${this.articles.get('deal_depression')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal_depression') && this.userBookmarks.has(this.articles.get('deal_depression')._id)
@@ -759,7 +761,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="signs" @click=${this.openDialog}>
-                    <img src="/images/signs-box.png" class="signs-img">
+                    <img src="/images/mental-health/depression/depression-signs.webp" class="signs-img">
 
                     <p>${this.articles.get('signs_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('signs_depression') && this.userBookmarks.has(this.articles.get('signs_depression')._id)
@@ -797,7 +799,7 @@ async fetchArticle(id) {
                 
                 
                   <div class="triggers" @click=${this.openDialog}>
-                    <img src="/images/triggers-box.png" class="triggers-img">
+                    <img src="/images/mental-health/depression/depression-triggers-360.webp" class="triggers-img">
 
                     <p>${this.articles.get('triggers_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('triggers_depression') && this.userBookmarks.has(this.articles.get('triggers_depression')._id)
@@ -834,7 +836,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="practices" @click=${this.openDialog}>
-                    <img src="/images/practices-box.png" class="practices-img">
+                    <img src="/images/mental-health/depression/depression-practices-360.webp" class="practices-img">
 
                       <p>${this.articles.get('practices_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('practices_depression') && this.userBookmarks.has(this.articles.get('practices_depression')._id)
@@ -870,7 +872,7 @@ async fetchArticle(id) {
                   </div>
                 
                   <div class="seek" @click=${this.openDialog}>
-                    <img src="/images/seek-box.png" class="seek-img">
+                    <img src="/images/mental-health/depression/depression-seek-360.webp" class="seek-img">
 
                     <p>${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('seek_depression') && this.userBookmarks.has(this.articles.get('seek_depression')._id)
@@ -904,7 +906,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="questions" @click=${this.openDialog}>
-                    <img src="/images/questions-box.png" class="questions-img">
+                    <img src="/images/mental-health/depression/depression-questions.webp" class="questions-img">
                     <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('questions_depression') && this.userBookmarks.has(this.articles.get('questions_depression')._id)
                         ? html`

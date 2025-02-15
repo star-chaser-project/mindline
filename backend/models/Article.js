@@ -42,6 +42,10 @@ articleSchema.pre('save', function(next){
   }
 })
 
+// Static method to find article by ID
+articleSchema.statics.findByArticleId = async function(id) {
+  return await this.findById(id)
+}
 
 // model
 const articleModel = mongoose.model('Article', articleSchema)
