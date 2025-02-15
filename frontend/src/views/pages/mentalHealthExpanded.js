@@ -274,7 +274,6 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
                     </div>
-                    ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
 
                       <sl-button slot="footer" variant="primary" 
                         @click=${(e) => {
@@ -288,7 +287,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="signs signs-stress" @click=${this.openDialog}>
-                    <img src="/images/mental-health/stress/stress-signs_symptoms-360.webp" class="signs-img">
+                    <img src="/images/mental-health/stress/stress-signs_symptons-360.webp" class="signs-img">
                     <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('signs') && this.userBookmarks.has(this.articles.get('signs')._id)
                       ? html`
@@ -332,7 +331,6 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('triggers')?.bodyContent || 'Loading content...'}
                     </div>
-                    ${this.articles.get('triggers')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('triggers')?._id;
@@ -345,23 +343,21 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="practices practices-stress" @click=${this.openDialog}>
-                    <img src="/images/practices-box.png" class="practices-img">
-                      <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
+                  <img src="/images/practices-box.png" class="practices-img">
+                  <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
-                        ? html`
-                          <img 
-                            src="/images/bookmark/bookmark-full.svg" 
-                          class="bookmark"
-                          style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
-                          >`
-                        : ''
-                      }
+                          ? html`
+                            <img 
+                              src="/images/bookmark/bookmark-full.svg" 
+                            class="bookmark"
+                            style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                            >`
+                          : ''
+                        }
                     <sl-dialog label="${this.articles.get('practices')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                       ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
                     </div>
-              
-                    ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('practices')?._id;
@@ -378,23 +374,19 @@ async fetchArticle(id) {
                   <img src="/images/seek-box.png" class="seek-img">
 
                   <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
-                  <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                  <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                  <div style="white-space: pre-line;">
-                    ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
-                  </div>
-                    <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
-                    ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
-                      ? html`
-                        <img 
-                          src="/images/bookmark/bookmark-full.svg" 
-                          class="bookmark"
-                          style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
-                        >`
-                      : ''
-                    }
+                      ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
+                        ? html`
+                          <img 
+                            src="/images/bookmark/bookmark-full.svg" 
+                            class="bookmark"
+                            style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          >`
+                        : ''
+                      }
                     <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
+                    <div style="white-space: pre-line;">
+                      ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
+                    </div>
                     <sl-button slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('seek')?._id;
@@ -422,7 +414,6 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
                     </div>
-                    ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
                     <sl-button slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('questions')?._id;
@@ -461,7 +452,6 @@ async fetchArticle(id) {
                       <div style="white-space: pre-line;">
                         ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
                       </div>
-                      ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
                       <sl-button slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('why_anxiety')?._id;
@@ -491,7 +481,6 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('deal_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
-                    ${this.articles.get('deal_anxiety')?.bodyContent || 'Loading content...'}
                       <sl-button
                           slot="footer"
                           variant="primary"
@@ -527,7 +516,6 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('signs_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
-                    ${this.articles.get('signs_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
                       variant="primary"
@@ -548,7 +536,7 @@ async fetchArticle(id) {
                 
                 
                   <div class="triggers triggers-anxiety" @click=${this.openDialog}>
-                   <img src="static/images/mental-health/anxiety/anxiety-triggers-360.webp" class="triggers-img">
+                   <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="triggers-img">
 
                     <p>${this.articles.get('triggers_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('triggers_anxiety') && this.userBookmarks.has(this.articles.get('triggers_anxiety')._id)
@@ -565,7 +553,6 @@ async fetchArticle(id) {
                       ${this.articles.get('triggers_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
 
-                    ${this.articles.get('triggers_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
                       variant="primary"
@@ -600,7 +587,6 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('practices_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
-                    ${this.articles.get('practices_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
                       variant="primary"
@@ -634,10 +620,10 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('seek_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('see_anxiety')?.bodyContent || 'Loading content...'}
+                      ${this.articles.get('seek_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
 
-                    ${this.articles.get('seek_anxiety')?.bodyContent || 'Loading content...'}
+                    
                     <sl-button
                       slot="footer"
                       variant="primary"
@@ -673,7 +659,6 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('questions_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
-                    ${this.articles.get('questions_anxiety')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
                       variant="primary"
@@ -719,7 +704,6 @@ async fetchArticle(id) {
                         ${this.articles.get('why_depression')?.bodyContent || 'Loading content...'}
                       </div>
 
-                      ${this.articles.get('why_depression')?.bodyContent || 'Loading content...'}
                       <sl-button
                         slot="footer"
                         variant="primary"
@@ -755,7 +739,6 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('deal_depression')?.bodyContent || 'Loading content...'}
                     </div>
-                    ${this.articles.get('deal_depression')?.bodyContent || 'Loading content...'}
                       <sl-button
                         slot="footer"
                         variant="primary"
@@ -831,7 +814,6 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('triggers_depression')?.bodyContent || 'Loading content...'}
                     </div>
-                    ${this.articles.get('triggers_depression')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
                       variant="primary"
@@ -869,8 +851,6 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('practices_depression')?.bodyContent || 'Loading content...'}
                     </div>
-
-                    ${this.articles.get('practices_depression')?.bodyContent || 'Loading content...'}
                     <sl-button
                       slot="footer"
                       variant="primary"
@@ -890,85 +870,71 @@ async fetchArticle(id) {
                   </div>
                 
                   <div class="seek" @click=${this.openDialog}>
-                  <img src="/images/seek-box.png" class="seek-img">
+                    <img src="/images/seek-box.png" class="seek-img">
 
-                  <p>${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
-                  <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                  <sl-dialog label="${this.articles.get('seek_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                      ${this.articles.get('seek_depression')?.bodyContent || 'Loading content...'}
-                    </div>
-
-                 <p>${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('seek_depression') && this.userBookmarks.has(this.articles.get('seek_depression')._id)
-                      ? html`
-                        <img 
-                          src="/images/bookmark/bookmark-full.svg" 
-                          class="bookmark"
-                          style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
-                        >`
-                      : ''
-                    }
-                    <sl-dialog label="${this.articles.get('seek_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('seek_depression')?.bodyContent || 'Loading content...'}
-                    <sl-button
-                      slot="footer"
-                      variant="primary"
-                      @click=${(e) => {
-                        const articleId = this.articles.get('seek_depression')?._id;
-                        console.log("Bookmarking article ID:", articleId);
-                        this.bookmarkArticle(e, articleId);
-                      }}
-                    >
-                      ${this.userBookmarks.has(this.articles.get('seek_depression')?._id)
-                        ? 'Remove Bookmark'
-                        : 'Bookmark'
+                    <p>${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
+                      ${this.userBookmarks && this.articles.get('seek_depression') && this.userBookmarks.has(this.articles.get('seek_depression')._id)
+                        ? html`
+                          <img 
+                            src="/images/bookmark/bookmark-full.svg" 
+                            class="bookmark"
+                            style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          >`
+                        : ''
                       }
-                    </sl-button>
-
-
-
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-dialog label="${this.articles.get('seek_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                      <div style="white-space: pre-line;">
+                        ${this.articles.get('seek_depression')?.bodyContent || 'Loading content...'}
+                      </div>
+                      <sl-button
+                        slot="footer"
+                        variant="primary"
+                        @click=${(e) => {
+                          const articleId = this.articles.get('seek_depression')?._id;
+                          console.log("Bookmarking article ID:", articleId);
+                          this.bookmarkArticle(e, articleId);
+                        }}
+                      >
+                        ${this.userBookmarks.has(this.articles.get('seek_depression')?._id)
+                          ? 'Remove Bookmark'
+                          : 'Bookmark'
+                        }
+                      </sl-button>
+                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="questions" @click=${this.openDialog}>
-                  <img src="/images/questions-box.png" class="questions-img">
-
-                  <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
-                  <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
-                  <sl-dialog label="${this.articles.get('questions_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                      ${this.articles.get('questions_depression')?.bodyContent || 'Loading content...'}
-                    </div>
-
-                      <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
-                     ${this.userBookmarks && this.articles.get('questions_depression') && this.userBookmarks.has(this.articles.get('questions_depression')._id)
-                      ? html`
-                        <img 
-                          src="/images/bookmark/bookmark-full.svg" 
-                          class="bookmark"
-                          style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
-                        >`
-                      : ''
-                    }
-                    <sl-dialog label="${this.articles.get('questions_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    ${this.articles.get('questions_depression')?.bodyContent || 'Loading content...'}
-                    <sl-button
-                      slot="footer"
-                      variant="primary"
-                      @click=${(e) => {
-                        const articleId = this.articles.get('questions_depression')?._id;
-                        console.log("Bookmarking article ID:", articleId);
-                        this.bookmarkArticle(e, articleId);
-                      }}
-                    >
-                      ${this.userBookmarks.has(this.articles.get('questions_depression')?._id)
-                        ? 'Remove Bookmark'
-                        : 'Bookmark'
+                    <img src="/images/questions-box.png" class="questions-img">
+                    <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
+                      ${this.userBookmarks && this.articles.get('questions_depression') && this.userBookmarks.has(this.articles.get('questions_depression')._id)
+                        ? html`
+                          <img 
+                            src="/images/bookmark/bookmark-full.svg" 
+                            class="bookmark"
+                            style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          >`
+                        : ''
                       }
-                    </sl-button>
+                      <sl-dialog label="${this.articles.get('questions_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                      <div style="white-space: pre-line;">
+                        ${this.articles.get('questions_depression')?.bodyContent || 'Loading content...'}
+                      </div>
+                      <sl-button
+                        slot="footer"
+                        variant="primary"
+                        @click=${(e) => {
+                          const articleId = this.articles.get('questions_depression')?._id;
+                          console.log("Bookmarking article ID:", articleId);
+                          this.bookmarkArticle(e, articleId);
+                        }}
+                      >
+                        ${this.userBookmarks.has(this.articles.get('questions_depression')?._id)
+                          ? 'Remove Bookmark'
+                          : 'Bookmark'
+                        }
+                      </sl-button>
 
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 </div>
               </sl-tab-panel>
