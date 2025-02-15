@@ -39,7 +39,7 @@ async fetchArticle(id) {
       tips_support: '67b04613e84a5c439b2b52ca', // Tips When Things Get Tough
       what_support: '67b04673e84a5c439b2b52cb', // What gets in the way of asking for help?
       help_support: '67b046f1e84a5c439b2b52cc', // Where & When to Find Help?
-      mindset: '67b04836e84a5c439b2b52cd', // Change Your Mindset
+      mindset: '67b04836e84a5c439b2b52cd', // Change the Way you Think
 
       // Services - articles for the second tab group "Services" //
       crisis: '67b04ed6e84a5c439b2b52ce', // Crisis & Suicide Services
@@ -172,7 +172,7 @@ async fetchArticle(id) {
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
       html`<va-public-header></va-public-header>`
     }
-      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png"></a>      
+      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png" alt="Mindline logo"></a>      
       <div class="page-content expanded-page"> 
         <section class="banner expanded">
         <h1>Resources</h1>
@@ -185,18 +185,16 @@ async fetchArticle(id) {
 
               <!-- Support - first tab content of the resources page -->
               <sl-tab-panel name="support">
-                
-       
-                <div class="stress">
+                <div class="support-inner">
                 
                   <div class="why ask" @click=${this.openDialog}>
-                    <img src="/images/why-box.png" class="why-img">
+                    <img src="/images/why-box.png" class="why-img" alt="Asking for Support">
                     <p>${this.articles.get('ask')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('ask')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     <div style="white-space: pre-line;">
-                    ${this.articles.get('resources_support')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('ask')?.bodyContent || 'Loading content...'}
                     </div>
                     </div>
                     <sl-button 
@@ -214,9 +212,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="deal talk" @click=${this.openDialog}>
-                    <img src="/images/stress-box.png" class="stress-img">
-                    <p>${this.articles.get('detalkal')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-full.svg" class="bookmark">
+                    <img src="/images/stress-box.png" class="stress-img" alt="Talking About Mental Health Support">
+                    <p>${this.articles.get('talk')?.title || 'Loading...'}</p>
+                    <img src="/images/bookmark/bookmark-full.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('talk')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('talk')?.bodyContent || 'Loading content...'}
@@ -226,9 +224,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="signs how_support" @click=${this.openDialog}>
-                    <img src="/images/signs-box.png" class="signs-img">
+                    <img src="/images/signs-box.png" class="signs-img" alt="How to Get Support">
                     <p>${this.articles.get('how_support')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('how_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('how_support')?.bodyContent || 'Loading content...'}
@@ -239,9 +237,9 @@ async fetchArticle(id) {
                 
                 
                   <div class="triggers tips_support" @click=${this.openDialog}>
-                    <img src="/images/triggers-box.png" class="triggers-img">
+                    <img src="/images/triggers-box.png" class="triggers-img" alt="Support Tips">
                     <p>${this.articles.get('tips_support')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('tips_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('tips_support')?.bodyContent || 'Loading content...'}
@@ -251,9 +249,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="practices what_support" @click=${this.openDialog}>
-                    <img src="/images/practices-box.png" class="practices-img">
+                    <img src="/images/practices-box.png" class="practices-img" alt="What Support is there">
                       <p>${this.articles.get('what_support')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('what_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('what_support')?.bodyContent || 'Loading content...'}
@@ -263,9 +261,9 @@ async fetchArticle(id) {
                   </div>
                 
                   <div class="seek help_support" @click=${this.openDialog}>
-                    <img src="/images/seek-box.png" class="seek-img">
+                    <img src="/images/seek-box.png" class="seek-img" alt="Support Help">
                     <p>${this.articles.get('help_support')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('help_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('help_support')?.bodyContent || 'Loading content...'}
@@ -275,9 +273,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="questions mindset" @click=${this.openDialog}>
-                    <img src="/images/questions-box.png" class="questions-img">
+                    <img src="/images/questions-box.png" class="questions-img" alt="Change the Way You Think">
                     <p>${this.articles.get('mindset')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('mindset')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('mindset')?.bodyContent || 'Loading content...'}
@@ -296,9 +294,9 @@ async fetchArticle(id) {
                 <div class="stress">
                 
                   <div class="why crisis" @click=${this.openDialog}>
-                    <img src="/images/" class="why-img">
+                    <img src="/images/" class="why-img" alt="Crisis and Suicide Services">
                     <p>${this.articles.get('crisis')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('crisis')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('crisis')?.bodyContent || 'Loading content...'}
@@ -309,9 +307,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="deal kids" @click=${this.openDialog}>
-                    <img src="/images/" class="stress-img">
+                    <img src="/images/" class="stress-img" alt="Services for Young People">
                     <p>${this.articles.get('kids')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-full.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-full.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('kids')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('kids')?.bodyContent || 'Loading content...'}
@@ -321,9 +319,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="signs mental_serv" @click=${this.openDialog}>
-                    <img src="/images/" class="signs-img">
+                    <img src="/images/" class="signs-img" alt="Mental Health Services">
                     <p>${this.articles.get('mental_serv')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('mental_serv')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('mental_serv')?.bodyContent || 'Loading content...'}
@@ -334,9 +332,9 @@ async fetchArticle(id) {
                 
                 
                   <div class="triggers counsel" @click=${this.openDialog}>
-                    <img src="/images/" class="triggers-img">
+                    <img src="/images/" class="triggers-img" alt="Counselling Services">
                     <p>${this.articles.get('counsel')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('counsel')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('counsel')?.bodyContent || 'Loading content...'}
@@ -346,9 +344,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="practices substance" @click=${this.openDialog}>
-                    <img src="/images/" class="practices-img">
+                    <img src="/images/" class="practices-img" alt="Substance Use">
                     <p>${this.articles.get('substance')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('substance')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('substance')?.bodyContent || 'Loading content...'}
@@ -358,9 +356,9 @@ async fetchArticle(id) {
                   </div>
                 
                   <div class="seek indgl" @click=${this.openDialog}>
-                    <img src="/images/" class="seek-img">
+                    <img src="/images/" class="seek-img" alt="Services for Indigenous Peoples & LGBTQIA">
                     <p>${this.articles.get('indgl')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('indgl')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('indgl')?.bodyContent || 'Loading content...'}
@@ -370,9 +368,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="questions help_serv" @click=${this.openDialog}>
-                    <img src="/images/" class="questions-img">
+                    <img src="/images/" class="questions-img" alt="Help Services">
                     <p>${this.articles.get('help_serv')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('help_serv')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('help_serv')?.bodyContent || 'Loading content...'}
@@ -388,9 +386,9 @@ async fetchArticle(id) {
                 <div class="stress">
                 
                   <div class="why mental_guides" @click=${this.openDialog}>
-                    <img src="/images/why-box.png" class="why-img">
+                    <img src="/images/why-box.png" class="why-img" alt="Guides for Mental Health">
                     <p>${this.articles.get('mental_guides')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('mental_guides')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('mental_guides')?.bodyContent || 'Loading content...'}
@@ -401,9 +399,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="deal digital" @click=${this.openDialog}>
-                    <img src="/images/stress-box.png" class="stress-img">
+                    <img src="/images/stress-box.png" class="stress-img" alt="Digital Guides">
                     <p>${this.articles.get('digital')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-full.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-full.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('digital')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('digital')?.bodyContent || 'Loading content...'}
@@ -413,9 +411,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="signs parent" @click=${this.openDialog}>
-                    <img src="/images/signs-box.png" class="signs-img">
+                    <img src="/images/signs-box.png" class="signs-img" alt="Help if Your Parent is Mentally Ill">
                     <p>${this.articles.get('parent')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('parent')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('parent')?.bodyContent || 'Loading content...'}
@@ -426,9 +424,9 @@ async fetchArticle(id) {
                 
                 
                   <div class="triggers depression_guides" @click=${this.openDialog}>
-                    <img src="/images/triggers-box.png" class="triggers-img">
+                    <img src="/images/triggers-box.png" class="triggers-img" alt="Guides About Depression">
                     <p>${this.articles.get('depression_guides')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('depression_guides')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('depression_guides')?.bodyContent || 'Loading content...'}
@@ -438,9 +436,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="practices self" @click=${this.openDialog}>
-                    <img src="/images/practices-box.png" class="practices-img">
+                    <img src="/images/practices-box.png" class="practices-img" alt="Self Care">
                     <p>${this.articles.get('self')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('self')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('self')?.bodyContent || 'Loading content...'}
@@ -450,9 +448,9 @@ async fetchArticle(id) {
                   </div>
                 
                   <div class="seek toolkit" @click=${this.openDialog}>
-                    <img src="/images/seek-box.png" class="seek-img">
+                    <img src="/images/seek-box.png" class="seek-img" alt="Toolkit Guides">
                     <p>${this.articles.get('toolkit')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('toolkit')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('toolkit')?.bodyContent || 'Loading content...'}
@@ -462,9 +460,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="questions tips_guides" @click=${this.openDialog}>
-                    <img src="/images/questions-box.png" class="questions-img">
+                    <img src="/images/questions-box.png" class="questions-img" alt="Guide Tips">
                     <p>${this.articles.get('tips_guides')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark">
+                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
                     <sl-dialog label="${this.articles.get('tips_guides')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('tips_guides')?.bodyContent || 'Loading content...'}

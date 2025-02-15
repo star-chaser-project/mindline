@@ -214,7 +214,7 @@ async fetchArticle(id) {
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
       html`<va-public-header></va-public-header>`
     }
-      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png"></a>      
+      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png" alt="Mindline logo"></a>      
       <div class="page-content expanded-page"> 
         <section class="banner expanded">
         <h1>Mental Health</h1>
@@ -232,7 +232,7 @@ async fetchArticle(id) {
                 <div class="stress">
                 
                   <div class="why why-stress" @click=${this.openDialog}>
-                    <img src="/images/mental-health/stress/stress-why-mental-health-matters-360.webp" class="why-img">
+                    <img src="/images/mental-health/stress/stress-why-mental-health-matters-360.webp" class="why-img" alt="Why Stress Matters">
                     <p>${this.articles.get('why')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
                       ? html`
@@ -240,6 +240,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -260,7 +261,7 @@ async fetchArticle(id) {
                   </div>
                   
                   <div class="deal deal-stress" @click=${this.openDialog}>
-                    <img src="/images/mental-health/stress/stress-ways-to-deal-w-stress-360.webp" class="stress-img">
+                    <img src="/images/mental-health/stress/stress-ways-to-deal-w-stress-360.webp" class="stress-img" alt="Ways to Deal with Stress">
                     <p>${this.articles.get('deal')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal') && this.userBookmarks.has(this.articles.get('deal')._id)
                       ? html`
@@ -268,6 +269,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -289,7 +291,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="signs signs-stress" @click=${this.openDialog}>
-                    <img src="/images/mental-health/stress/stress-signs_symptons-360.webp" class="signs-img">
+                    <img src="/images/mental-health/stress/stress-signs_symptons-360.webp" class="signs-img" alt="Signs and Symptons of Stress">
                     <p>${this.articles.get('signs')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('signs') && this.userBookmarks.has(this.articles.get('signs')._id)
                       ? html`
@@ -297,6 +299,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -317,7 +320,7 @@ async fetchArticle(id) {
                 
                 
                   <div class="triggers triggers-stress" @click=${this.openDialog}>
-                    <img src="/images/mental-health/stress/stress-common-triggers.webp" class="triggers-img">
+                    <img src="/images/mental-health/stress/stress-common-triggers.webp" class="triggers-img" alt="Common Triggers of Stress">
                     <p>${this.articles.get('triggers')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('triggers') && this.userBookmarks.has(this.articles.get('triggers')._id)
                       ? html`
@@ -325,6 +328,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -345,7 +349,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="practices practices-stress" @click=${this.openDialog}>
-                  <img src="/images/mental-health/stress/stress-daily-practices.webp" class="practices-img">
+                  <img src="/images/mental-health/stress/stress-daily-practices.webp" class="practices-img" alt="Daily Practices to Help Relieve Stress">
                   <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
                           ? html`
@@ -353,6 +357,7 @@ async fetchArticle(id) {
                               src="/images/bookmark/bookmark-full.svg" 
                             class="bookmark"
                             style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                            alt="Bookmark"
                             >`
                           : ''
                         }
@@ -373,7 +378,7 @@ async fetchArticle(id) {
                   </div>
                 
                   <div class="seek seek-stress" @click=${this.openDialog}>
-                  <img src="/images/mental-health/stress/stress-when-to-seek-help-360.webp" class="seek-img">
+                  <img src="/images/mental-health/stress/stress-when-to-seek-help-360.webp" class="seek-img" alt="When to Seek Help About Stress">
 
                   <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
@@ -382,6 +387,7 @@ async fetchArticle(id) {
                             src="/images/bookmark/bookmark-full.svg" 
                             class="bookmark"
                             style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                            alt="Bookmark"
                           >`
                         : ''
                       }
@@ -401,7 +407,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="questions" @click=${this.openDialog}>
-                  <img src="/images/mental-health/stress/stress-common-questions-360.webp" class="questions-img">
+                  <img src="/images/mental-health/stress/stress-common-questions-360.webp" class="questions-img" alt="Common Questions About Stress">
                       <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
                         ? html`
@@ -409,6 +415,7 @@ async fetchArticle(id) {
                             src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                           >`
                         : ''
                       }
@@ -437,7 +444,7 @@ async fetchArticle(id) {
                 <div class="stress">
                 
                   <div class="why why-anxiety" @click=${this.openDialog}>
-                   <img src="/images/mental-health/anxiety/anxiety-why.webp" class="why-img">
+                   <img src="/images/mental-health/anxiety/anxiety-why.webp" class="why-img" alt="Why Anxiety Matters">
 
                     <p>${this.articles.get('why_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('why_anxiety') && this.userBookmarks.has(this.articles.get('why_anxiety')._id)
@@ -446,6 +453,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -467,7 +475,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="deal deal-anxiety" @click=${this.openDialog}>
-                   <img src="/images/mental-health/anxiety/anxiety-deal-360.webp">
+                   <img src="/images/mental-health/anxiety/anxiety-deal-360.webp" alt="Ways to Deal with Stress">
 
                     <p>${this.articles.get('deal_anxiety')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal_anxiety') && this.userBookmarks.has(this.articles.get('deal_anxiety')._id)
@@ -476,6 +484,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -502,7 +511,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="signs signs-anxiety" @click=${this.openDialog}>
-                   <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="signs-img">
+                   <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="signs-img" alt="Signs of Anxiety">
 
                     <p>${this.articles.get('signs_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('signs_anxiety') && this.userBookmarks.has(this.articles.get('signs_anxiety')._id)
@@ -511,6 +520,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -538,7 +548,7 @@ async fetchArticle(id) {
                 
                 
                   <div class="triggers triggers-anxiety" @click=${this.openDialog}>
-                   <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="triggers-img">
+                   <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="triggers-img" alt="Anxiety Triggers">
 
                     <p>${this.articles.get('triggers_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('triggers_anxiety') && this.userBookmarks.has(this.articles.get('triggers_anxiety')._id)
@@ -547,6 +557,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -573,7 +584,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="practices practices-anxiety" @click=${this.openDialog}>
-                   <img src="/images/mental-health/anxiety/anxiety-practices-360.webp" class="practices-img">
+                   <img src="/images/mental-health/anxiety/anxiety-practices-360.webp" class="practices-img" alt="Practices for Anxiety">
 
                       <p>${this.articles.get('practices_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('practices_anxiety') && this.userBookmarks.has(this.articles.get('practices_anxiety')._id)
@@ -582,6 +593,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -608,7 +620,7 @@ async fetchArticle(id) {
                   </div>
                 
                   <div class="seek seek-anxiety" @click=${this.openDialog}>
-                 <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp" class="seek-img">
+                 <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp" class="seek-img" alt="When to Seek Help About Anxiety">
 
                  <p>${this.articles.get('seek_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('seek_anxiety') && this.userBookmarks.has(this.articles.get('seek_anxiety')._id)
@@ -617,6 +629,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -644,7 +657,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="questions questions-anxiety" @click=${this.openDialog}>
-                 <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-img">
+                 <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-img" alt="Questions About Anxiety">
 
                       <p>${this.articles.get('questions_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('questions_anxiety') && this.userBookmarks.has(this.articles.get('questions_anxiety')._id)
@@ -653,6 +666,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -689,7 +703,7 @@ async fetchArticle(id) {
                 <div class="stress">
                 
                   <div class="why" @click=${this.openDialog}>
-                   <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="why-img">
+                   <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="why-img" alt="Why Depression Matters">
 
                     <p>${this.articles.get('why_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('why_depression') && this.userBookmarks.has(this.articles.get('why_depression')._id)
@@ -698,6 +712,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -725,7 +740,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="deal" @click=${this.openDialog}>
-                    <img src="/images/mental-health/depression/depression-deal-360r.webp" class="stress-img">
+                    <img src="/images/mental-health/depression/depression-deal-360r.webp" class="stress-img" alt="Dealing with Depression">
 
                     <p>${this.articles.get('deal_depression')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal_depression') && this.userBookmarks.has(this.articles.get('deal_depression')._id)
@@ -734,6 +749,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -761,7 +777,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="signs" @click=${this.openDialog}>
-                    <img src="/images/mental-health/depression/depression-signs.webp" class="signs-img">
+                    <img src="/images/mental-health/depression/depression-signs.webp" class="signs-img" alt="Signs of Depression">
 
                     <p>${this.articles.get('signs_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('signs_depression') && this.userBookmarks.has(this.articles.get('signs_depression')._id)
@@ -770,6 +786,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -799,7 +816,7 @@ async fetchArticle(id) {
                 
                 
                   <div class="triggers" @click=${this.openDialog}>
-                    <img src="/images/mental-health/depression/depression-triggers-360.webp" class="triggers-img">
+                    <img src="/images/mental-health/depression/depression-triggers-360.webp" class="triggers-img" alt="Triggers for Depression">
 
                     <p>${this.articles.get('triggers_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('triggers_depression') && this.userBookmarks.has(this.articles.get('triggers_depression')._id)
@@ -808,6 +825,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -836,7 +854,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="practices" @click=${this.openDialog}>
-                    <img src="/images/mental-health/depression/depression-practices-360.webp" class="practices-img">
+                    <img src="/images/mental-health/depression/depression-practices-360.webp" class="practices-img" alt="Practices to Help with Depression">
 
                       <p>${this.articles.get('practices_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('practices_depression') && this.userBookmarks.has(this.articles.get('practices_depression')._id)
@@ -845,6 +863,7 @@ async fetchArticle(id) {
                           src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                          alt="Bookmark"
                         >`
                       : ''
                     }
@@ -872,7 +891,7 @@ async fetchArticle(id) {
                   </div>
                 
                   <div class="seek" @click=${this.openDialog}>
-                    <img src="/images/mental-health/depression/depression-seek-360.webp" class="seek-img">
+                    <img src="/images/mental-health/depression/depression-seek-360.webp" class="seek-img" alt="Where to Seek Help for Depression">
 
                     <p>${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('seek_depression') && this.userBookmarks.has(this.articles.get('seek_depression')._id)
@@ -881,6 +900,7 @@ async fetchArticle(id) {
                             src="/images/bookmark/bookmark-full.svg" 
                             class="bookmark"
                             style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                            alt="Bookmark"
                           >`
                         : ''
                       }
@@ -906,7 +926,7 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="questions" @click=${this.openDialog}>
-                    <img src="/images/mental-health/depression/depression-questions.webp" class="questions-img">
+                    <img src="/images/mental-health/depression/depression-questions.webp" class="questions-img" alt="Questions About Depession">
                     <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('questions_depression') && this.userBookmarks.has(this.articles.get('questions_depression')._id)
                         ? html`
@@ -914,6 +934,7 @@ async fetchArticle(id) {
                             src="/images/bookmark/bookmark-full.svg" 
                             class="bookmark"
                             style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                            alt="Bookmark"
                           >`
                         : ''
                       }
