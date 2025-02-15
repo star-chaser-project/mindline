@@ -14,7 +14,6 @@ import resourcesView from './views/pages/resources';
 import resourcesExpandedView from './views/pages/resourcesExpanded';
 import favouriteLinesView from './views/pages/favouriteLines';
 import aboutView from './views/pages/about';
-
 import productsView from './views/pages/products';
 import favouriteProductsView from './views/pages/favouriteProducts';
 import newProductView from './views/pages/newProduct';

@@ -4,7 +4,6 @@
 .home-page {
   background: var(--background-home);
 
-  ///------home-banner--------
   .home-banner {
     background: url('../../static/images/home/home-bg-graphics.svg');
     background-size: 100%;
@@ -38,8 +37,8 @@
       color: #F2DE96;
       font-size: 1.5rem; // Adjust size to be responsive
       padding: 5px;
-      margin: 0; // Remove external margins
-      text-align: center; // Center-align h2 text
+      margin: 0;
+      text-align: center;
       z-index: 2;
     }
 
@@ -65,8 +64,8 @@
 
     h3 {
       color: #ffffff;
-      margin: 0 0 1rem 0; // Space below the h3
-      align-self: flex-start; // Align the h3 to the left
+      margin: 0 0 1rem 0;
+      align-self: flex-start;
     }
 
     .button-group {
@@ -99,57 +98,7 @@
     }
   }
 
-  //bottom section of home page
-  .secondary-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .nav-page {
-    flex-direction: column; // Stack buttons vertically
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-
-    h3 {
-      color: #ffffff;
-      margin: 0 0 1rem 0; // Space below the h3
-      align-self: flex-start; // Align the h3 to the left
-    }
-
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-      margin: 2rem auto;
-      gap: 1rem;
-      width: 100%;
-      flex-wrap: nowrap;
-    }
-
-    sl-button::part(base) {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--base-txt-color);
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-      padding: 1rem 3rem;
-      font-size: 1rem;
-      line-height: normal;
-      height: auto;
-      transition: background-color 0.3s ease, transform 0.2s;
-    }
-
-    sl-button::part(base):hover {
-      background-color: #f2f2f2;
-      transform: scale(1.05);
-    }
-  }
-}
-  // animations home banner-------https://codepen.io/MarioDesigns/pen/woJgeo-----
+  // Animations for the cloud element
   .cloud {
     animation: float 5s ease-in-out infinite;
   }
@@ -167,6 +116,7 @@
   }
 
   // Responsive Design ----------------------------------------------------------------------------------
+
   @media (min-width: 768px) and (max-width: 991px) {
     .home-page {
       .home-banner {
@@ -175,7 +125,7 @@
           margin-right: 10rem;
         }
       }
-  
+
       .button-group {
         padding: 0 9rem;
         display: flex;
@@ -184,17 +134,17 @@
         gap: 1rem;
         width: 100%;
         flex-wrap: nowrap;
-  
+
         sl-button::part(base) {
-          font-size: 1rem; /* Increase text size */
-          padding: 1rem 2rem; /* Make it larger */
-          width: 100%; /* Full width */
+          font-size: 1rem;
+          padding: 1rem 2rem;
+          width: 100%;
         }
       }
     }
   }
 
-  @media (max-width: 768px) { // Tablets & smaller screens
+  @media (max-width: 768px) {
     .home-banner {
       background-size: contain;
       background-attachment: scroll;
@@ -214,23 +164,23 @@
 
       .button-group {
         display: flex;
-        flex-direction: column; // Stack buttons vertically
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 6% auto;
         gap: 1rem;
-        width: 100%; // Ensure full width
+        width: 100%;
       }
 
       sl-button {
-        width: 100%; // Ensure Shoelace buttons are full width
+        width: 100%;
       }
 
       sl-button::part(base) {
         font-size: 1rem !important;
         padding: 1rem 3rem !important;
         width: 100% !important;
-        display: block !important; // Force buttons to be full width
+        display: block !important;
         text-align: center !important;
       }
     }
@@ -252,24 +202,25 @@
 
       .button-group {
         display: flex;
-        flex-direction: column; // Stack buttons vertically
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 6% auto;
         gap: 1rem;
-        width: 100%; // Ensure full width
+        width: 100%;
       }
 
       sl-button {
-        width: 100%; // Ensure Shoelace buttons are full width
+        width: 100%;
       }
 
       sl-button::part(base) {
-        font-size: 1rem ;
-        padding: 1rem 3rem ;
-        width: 100% ;
-        display: block ; 
-        text-align: center ;
+        font-size: 1rem;
+        padding: 1rem 3rem;
+        width: 100%;
+        display: block;
+        text-align: center;
       }
     }
   }
+}
