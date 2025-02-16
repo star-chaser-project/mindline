@@ -31,12 +31,6 @@ class ProfileView {
             : html`<sl-avatar></sl-avatar>`}
           <h2>${Auth.currentUser.firstName} ${Auth.currentUser.lastName}</h2>
           <p>${Auth.currentUser.email}</p>
-          ${Auth.currentUser.bio
-            ? html`
-                <h3>Bio</h3>
-                <p>${Auth.currentUser.bio}</p>
-              `
-            : html``}
           <p>
             Updated:
             ${moment(Auth.currentUser.updatedAt).format(

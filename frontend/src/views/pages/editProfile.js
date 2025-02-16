@@ -73,19 +73,19 @@ class EditProfileView {
                       <sl-input size="large" pill style="padding-bottom: 1em;" type="text" name="email" value="${this.user.email}" placeholder="Email Address"></sl-input>
                     </div>
                     <div class="input-group">
-                <sl-button size="large" pill class="edit-btn" type="primary" style="width: 100%;">
-                <label for="file-upload">Change Avatar</label>
-                <input id="file-upload" type="file" name="avatar" style="display: none;">
-                </sl-button><br>
-                    <sl-button size="large" pill type="primary" style="width: 100%;" class="submit-btn edit-btn edit-button" submit>Update Profile</sl-button></sl-form>
+                    <sl-button size="large" pill class="edit-btn" type="primary" style="width: 100%;">
+                    <label for="file-upload">Change Avatar</label>
+                    <input id="file-upload" type="file" name="avatar" style="display: none;">
+                    </sl-button><br>
+                        <sl-button size="large" pill type="primary" style="width: 100%;" class="submit-btn edit-btn edit-button" submit>Update Profile</sl-button></sl-form>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-             <!-- Right Section -->
-            <div class="profile-right">
-                <div class="welcome-box">
-                    <h1>Need an Update?</h1>
-                </div>
+                <!-- Right Section -->
+                <div class="profile-right">
+                    <div class="welcome-box">
+                        <h1>Need an Update?</h1>
+                    </div>
             </div>
         </div>
         `}

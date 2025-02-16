@@ -35,8 +35,8 @@
 
     h2 {
       color: #F2DE96;
-      font-size: 1.5rem; // Adjust size to be responsive
-      padding: 5px;
+      text-shadow:1px 1px 7px rgb(0 130 164);
+      font-size: 1.6rem; // Adjust size to be responsive
       margin: 0;
       text-align: center;
       z-index: 2;
@@ -60,7 +60,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 
     h3 {
       color: #ffffff;

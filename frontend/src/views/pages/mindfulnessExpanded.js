@@ -219,7 +219,7 @@ class mindfulnessExpandedView {
            <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png"></a>      
            <div class="page-content expanded-page"> 
              <section class="banner expanded">
-             <h1>Mental Health</h1>
+             <h1>Mindfulness</h1>
              <div class="banner-content">     
                <div id="bento-tabs">
                  <sl-tab-group .active="${activeTab}">
