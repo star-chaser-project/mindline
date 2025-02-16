@@ -411,6 +411,21 @@ sl-dialog::part(close-button) {
 display: none;
 }
 
+sl-dialog::part(title){
+    margin: 0 1.5rem 0;
+}
+
+sl-dialog::part(body){
+    margin: 0 1.5rem 0;
+    padding: 0;
+}
+
+sl-dialog::part(header){
+    margin: 0 1.5rem 0;
+    padding: 0;
+}
+
+
 sl-dialog sl-button::part(base) {
     background-color: #F4D35E;
     border-color: #F4D35E;
