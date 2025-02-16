@@ -213,6 +213,12 @@ margin-top: 8px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
+    img {
+        height: 60%;
+        width: 100%;
+        bottom: 0;
+        padding-top: 11rem;
+    }
 }
 
 .physical-med {
@@ -407,6 +413,18 @@ sl-dialog::part(panel) {
 sl-dialog::part(close-button) {
 display: none;
 }
+
+sl-dialog sl-button::part(base) {
+    background-color: #F4D35E;
+    border-color: #F4D35E;
+    color: #000000;
+    }
+
+sl-dialog sl-button::part(base):hover {
+    background-color: #e5c654;
+    border-color: #e5c654;
+    color: #000000;
+    }
 
 .why-img {
 position: absolute;
