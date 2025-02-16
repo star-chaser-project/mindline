@@ -213,6 +213,12 @@ margin-top: 8px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
+    img {
+        height: 60%;
+        width: 100%;
+        bottom: 0;
+        padding-top: 11rem;
+    }
 }
 
 .physical-med {
@@ -314,8 +320,7 @@ display: none;
 }
 
 .why-img {
-width: 400px; /* Much larger than parent */
-height: 400px; /* Much larger than parent */
+
 position: absolute;
 z-index: 0;
 object-fit: cover;

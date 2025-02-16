@@ -57,18 +57,18 @@ class mindfulnessExpandedView {
     document.title = 'Mindfulness Expanded';
     this.articleIds = {
       // Meditation articles
-      what: '679dd9db640ec34e3c22a2a1',
-      why: '679ddae8640ec34e3c22a2a2',
-      benefits: '679ddd11640ec34e3c22a2a4',
-      guided: '679ddf6e640ec34e3c22a2a5',
-      practices: '679de245640ec34e3c22a2a7',
-      practices_2: '679de3f7640ec34e3c22a2a8',
-      practices_3: '679de47f640ec34e3c22a2a9',
-      questions: '679deda0640ec34e3c22a2b9',
-      tips: '679ddb6f640ec34e3c22a2a3',
+      what: '679dd9db640ec34e3c22a2a1', // What is Meditation
+      why: '679ddae8640ec34e3c22a2a2', // Why Meditate
+      benefits: '679ddd11640ec34e3c22a2a4', // Mental Health Benefits of Meditation
+      guided: '679ddf6e640ec34e3c22a2a5', // Guided Meditation
+      practices: '679de245640ec34e3c22a2a7', //  Meditation Practics + Walking It audio & other audio info
+      practices_2: '679de3f7640ec34e3c22a2a8', // Time out audio 
+      practices_3: '679de47f640ec34e3c22a2a9', // Candle gazing audio
+      questions: '679deda0640ec34e3c22a2b9', // 
+      tips: '679ddb6f640ec34e3c22a2a3', // Tips When to Meditate
 
       // Breathing articles
-      why_breath: '67ab274607163965f66e57f7',
+      why_breath: '67ab274607163965f66e57f7', // Why is Motivation Important
       how_breath: '67ab40c807163965f66e57fa',
       benefits_breath: '67ab38cf07163965f66e57f9',
       practices_breath: '679b567904f7c1b1216d5410',
