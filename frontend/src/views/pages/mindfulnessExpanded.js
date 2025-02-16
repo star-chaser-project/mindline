@@ -3,8 +3,8 @@ import { html, render } from 'lit-html'
 import { gotoRoute, anchorRoute } from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
-import Toast from '../../Toast';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import Toast from '../../Toast'
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 
 class mindfulnessExpandedView {
   constructor() {

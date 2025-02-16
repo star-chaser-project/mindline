@@ -5,6 +5,7 @@ import Auth from '../../Auth';
 import Utils from '../../Utils';
 import Toast from '../../Toast';
 import UserAPI from '../../UserAPI';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 
 class FavouriteLinesView {
   constructor() {
