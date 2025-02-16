@@ -29,7 +29,7 @@ class FavouriteLinesView {
   }
 
   async init() {
-    document.title = 'Favourite Lines';
+    document.title = 'Bookmarks';
     this.render();
     Utils.pageIntroAnim();
     await this.getFavBookmarks();

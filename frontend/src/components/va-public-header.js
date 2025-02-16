@@ -217,7 +217,7 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
 
 <header class="public-header">
     <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
-    <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/mindline-white-logo.png"></a>
+    <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/mindline-white-logo.png" alt="Mindline logo"></a>
 
     <div class="public-header-main">
         ${this.title ? html`
@@ -243,7 +243,7 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
 
 <sl-drawer class="app-side-menu" placement="left">
     <div slot="label">
-        <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo/logo-mindline-svg-converted-to.webp"></a>
+        <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo/logo-mindline-svg-converted-to.webp" alt="Mindline logo"></a>
     </div>
     <br>
     <nav class="app-side-menu-items">

@@ -263,7 +263,7 @@ sl-details::part(base) {
 
     <header class="app-header">
         <sl-icon-button class="hamburger-btn" name="list" @click="${this.hamburgerClick}" style="font-size: 2em;"></sl-icon-button>
-        <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/mindline-white-logo.svg"></a>
+        <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/mindline-white-logo.svg" alt="Mindline logo"></a>
 
         <div class="app-header-main">
             ${this.title ? html`
@@ -292,7 +292,7 @@ sl-details::part(base) {
 
     <sl-drawer class="app-side-menu" placement="left">
         <div slot="label">
-            <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo/logo-mindline-trimmed-no-wording-clr.svg"></a>
+            <a href="/" @click="${this.menuClick}"><img class="app-side-menu-logo" src="/images/logo/logo-mindline-trimmed-no-wording-clr.svg" alt="Mindline logo"></a>
         </div>
         <br>
         <nav class="app-side-menu-items">
