@@ -38,16 +38,16 @@ class GuideView {
       <h1 class="--base-txt-color">A Quick Guide Of Mindline AU</h1>
       <h2 class="--base-txt-color">Welcome ${Auth.currentUser.firstName}!</h2>
         <div class="guide-step">
-          <h4>Step 1: Search for information about mental health.</h4>
-          <img src="images/guide/guide-page-white-bg-360.webp" class="responsive-img" >
+          <h4>Step 1: Find information about mental health.</h4>
+          <img src="images/guide/guide-page-white-bg-360.webp" class="responsive-img" alt="Young person using mobile" >
         </div>
         <div class="guide-step">
-          <h4>Step 2: Save articles, audio and video to Bookmarks.</h4>
-          <img src="images/guide/guide-page-pink-bg-360.webp" class="responsive-img">
+          <h4>Step 2: Save articles and audio to Bookmarks.</h4>
+          <img src="images/guide/guide-page-pink-bg-360.webp" class="responsive-img" alt="Young person stratching their head">
         </div>
         <div class="guide-step">
           <h4>Step 3: Find resources and other options for assistance and support.</h4>
-          <img src="images/guide/guide-page-yellow-bg-360.webp" class="responsive-img" >
+          <img src="images/guide/guide-page-yellow-bg-360.webp" class="responsive-img" alt="Young Person excited to have resources to discover">
         </div>
         <sl-animation name="jello" duration="2000" play iterations="10"><sl-button type="primary" @click=${() => gotoRoute('/')}>Okay got it!</sl-button></sl-animation>
       </div>      
