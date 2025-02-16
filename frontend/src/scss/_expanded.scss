@@ -168,14 +168,13 @@ margin-top: 8px;
 .meditation {
     display: grid;
     grid-template-areas: 
-    "what-med     why-med      ."               /* row 1 (2 areas) */
-    "benefit-med  physical-med  guided-med" /* row 2 (3 areas) */
-    "questions-med tips-med     .";             /* row 3 (2 areas) */
-    grid-template-columns: 193px 193px 193px;
-    grid-template-rows: 193px 193px 193px;
+    "what-med     why-med"               
+    "benefit-med  physical-med"; 
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 193px 1fr ;
     gap: 24px;
     align-items: start;
-    margin-top: 8px;
+    margin: 0 auto; 
 }
 
 .what-med {
@@ -197,7 +196,7 @@ margin-top: 8px;
     border-radius: 35px;
     background-color: #FFFFFF;
     position: relative;
-    margin-left: 217px;
+    
     display: flex;
     overflow: hidden;
     cursor: pointer;
@@ -216,19 +215,20 @@ margin-top: 8px;
 }
 
 .physical-med {
-    grid-area: physical-med;
+    grid-area: benefit-med;
     width: 193px;
     height: 410px;
     border-radius: 35px;
     background-color: #FFFFFF;
     position: relative;
+    margin-left: 217px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
 }
 
 .guided-med {
-    grid-area: guided-med;
+    grid-area: physical-med;
     width: 410px;
     height: 193px;
     border-radius: 35px;
@@ -240,26 +240,27 @@ margin-top: 8px;
 }
 
 .questions-med {
-    grid-area: questions-med;
+    grid-area: physical-med;
     width: 193px;
     height: 193px;
     border-radius: 35px;
     background-color: #FFFFFF;
     position: relative;
-    margin-left:434px;
+    margin-top: 217px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
 }
 
 .tips-med {
-    grid-area: tips-med;
+    grid-area: physical-med;
     width: 193px;
     height: 193px;
     border-radius: 35px;
     background-color: #FFFFFF;
     position: relative;
-    margin-left: 434px ;
+    margin-top: 217px;
+    margin-left: 217px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
@@ -268,18 +269,17 @@ margin-top: 8px;
 .support {
     display: grid;
     grid-template-areas:
-    "ask talk how_support"
-    "mindset mindset mindset"
-    "tips_support what_support  help_support";
-    grid-template-columns: 193px 193px 193px;
-    grid-template-rows: 193px 193px 193px;
+    "top1 top2 top3"
+    "bottom1 bottom2  bottom3";
+    grid-template-columns: 193px 1fr 193px;
+    grid-template-rows: 386px 1fr 1fr;
     gap: 24px;
     align-items: start;
-    margin-top: 8px;
+    margin: 0 auto; 
 }
 
 .ask {
-    grid-area: ask;
+    grid-area: top1;
     width: 193px;
     height: 386px;
     border-radius: 35px;
@@ -291,7 +291,7 @@ margin-top: 8px;
 }
 
 .talk {
-    grid-area: talk;
+    grid-area: top2;
     width: 410px;
     height: 386px;
     border-radius: 35px;
@@ -303,39 +303,36 @@ margin-top: 8px;
 }
 
 .how_support {
-    grid-area: how_support;
+    grid-area: top3;
     width: 193px;
     height: 193px;
     border-radius: 35px;
     background-color: #FFFFFF;
     position: relative;
-    margin-left: 217px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
 }   
 
 .tips_support {
-    grid-area: tips_support;
+    grid-area: bottom1;
     width: 193px;
     height: 193px;
     border-radius: 35px;
     background-color: #FFFFFF;
     position: relative;
-    margin-top: -24px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
 }
 
 .what_support {
-    grid-area: what_support;
+    grid-area: bottom2;
     width: 193px;
     height: 193px;
     border-radius: 35px;
     background-color: #FFFFFF;
     position: relative;
-    margin-top: -24px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
@@ -347,26 +344,26 @@ margin-top: 8px;
 }
 
 .help_support {
-    grid-area: help_support;
+    grid-area: bottom2;
     width: 193px;
     height: 193px;
     border-radius: 35px;
     background-color: #FFFFFF;
     position: relative;
-    margin-top: -24px;
+    margin-left: 217px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
 }
 
 .mindset {
-    grid-area: mindset;
+    grid-area: top3;
     width: 193px;
     height: 386px;
     border-radius: 35px;
     background-color: #FFFFFF;
     position: relative;
-    margin-left: 650px;
+    margin-top: 217px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
