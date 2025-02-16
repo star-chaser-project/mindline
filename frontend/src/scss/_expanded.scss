@@ -265,6 +265,19 @@ margin-top: 8px;
     cursor: pointer;
 }
 
+.support {
+    display: grid;
+    grid-template-areas: 
+    "what-med     why-med      ."               /* row 1 (2 areas) */
+    "benefit-med  physical-med  guided-med" /* row 2 (3 areas) */
+    "questions-med tips-med     .";             /* row 3 (2 areas) */
+    grid-template-columns: 193px 193px 193px;
+    grid-template-rows: 193px 193px 193px;
+    gap: 24px;
+    align-items: start;
+    margin-top: 8px;
+}
+
 
 
 p {

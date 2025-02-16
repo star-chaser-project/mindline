@@ -376,8 +376,8 @@ class mindfulnessExpandedView {
                                 }
                               </div>
                               <div class="video-embed">
-                                ${this.articles.get('practices_2')?.mediaUrl
-                                  ? html`${unsafeHTML(this.articles.get('practices_2')?.mediaUrl)}`
+                                ${this.articles.get('practices_3')?.mediaUrl
+                                  ? html`${unsafeHTML(this.articles.get('practices_3')?.mediaUrl)}`
                                   : null
                                 }
                               </div>

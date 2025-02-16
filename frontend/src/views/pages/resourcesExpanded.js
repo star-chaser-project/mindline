@@ -8,28 +8,52 @@ import Toast from '../../Toast';
  // Image adapted from Canva – Accessed on December 18, 2024
 class resourcesExpandedView {
   constructor() {
-    this.articles = new Map() // Initialize Map
-  }
-
-async fetchArticle(id) {
-  try {
-    console.log('Fetching article:', id);
-    const response = await fetch(`${App.apiBase}/article/${id}`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+        this.articles = new Map() // Initialize Map
+        this.userBookmarks = new Set()
+      }
+  
+    
+    async fetchArticle(id) {
+      try {
+        console.log('Fetching article:', id);
+        const response = await fetch(`${App.apiBase}/article/${id}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Fetched data:', data);
+        // Store the article id in localStorage
+        localStorage.setItem(`article-${id}`, data._id);
+        return data;
+      } catch(err) {
+        console.error('Fetch error:', err);
+        return null;
+      }
     }
-    const data = await response.json();
-    console.log('Fetched data:', data);
-    // Store the article id in localStorage
-    localStorage.setItem(`article-${id}`, data._id);
-    return data;
-  } catch(err) {
-    console.error('Fetch error:', err);
-    return null;
-  }
-}
-
-  async init(){
+    
+      async init(){
+        if (Auth.currentUser) {
+          try {
+            const response = await fetch(`${App.apiBase}/user/${Auth.currentUser._id}`, {
+              headers: {
+                'Authorization': `Bearer ${Auth.currentUser.token}`
+              }
+            });
+            const userData = await response.json();
+            console.log('Fetched user data:', userData);
+            
+            if (userData.bookmarkArticle && userData.bookmarkArticle.length > 0) {
+              if (userData.bookmarkArticle[0]._id) {
+                this.userBookmarks = new Set(userData.bookmarkArticle.map(item => item._id.toString()));
+              } else {
+                this.userBookmarks = new Set(userData.bookmarkArticle.map(item => item.toString()));
+              }
+            }
+          } catch(err) {
+            console.error('Error fetching bookmarks:', err);
+            this.userBookmarks = new Set();
+          }
+        }
     document.title = 'Resources Expanded'    
     this.articleIds = {
       // Support - articles for the first tab group "support" //
@@ -58,432 +82,916 @@ async fetchArticle(id) {
       self: '67b06522e84a5c439b2b52d9', // Guide to Looking After Yourself
       toolkit: '67b066bbe84a5c439b2b52da', // Mental Health Toolkits
       tips_guides: '67b06718e84a5c439b2b52db' // Tips & Factsheets
-    } 
+    };
     
     try {
-      await Promise.all(
-        Object.entries(this.articleIds)
-          .filter(([_, id]) => id)
-          .map(async ([key, id]) => {
-            const article = await this.fetchArticle(id)
-            if (article) {
-              this.articles.set(key, article)
-              console.log(`Set ${key} article:`, article)
+              await Promise.all(
+                Object.entries(this.articleIds)
+                  .filter(([_, id]) => id)
+                  .map(async ([key, id]) => {
+                    const article = await this.fetchArticle(id)
+                    if (article) {
+                      this.articles.set(key, article)
+                      console.log(`Set ${key} article:`, article)
+                    }
+                  })
+              )
+        
+              this.render()    
+              Utils.pageIntroAnim()
+              this.setupDialogHandlers()
+            } catch(err) {
+              console.error('Init error:', err)
             }
-          })
-      )
-
-      this.render()    
-      Utils.pageIntroAnim()
-      this.setupDialogHandlers()
-    } catch(err) {
-      console.error('Init error:', err)
-    }
-  }
-
-  async bookmarkArticle(e, id) {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    console.log("Current user:", Auth.currentUser);
-    console.log("Using token:", Auth.currentUser.token);
-    if (!Auth.currentUser || !Auth.currentUser.token) {
-      Toast.show("You must be logged in to bookmark articles!");
-      return;
-    }
-    
-    
-    
-    try {
-      const response = await fetch(`${App.apiBase}/bookmark/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Auth.currentUser.token}`
-        }
-      });
-    
-      const result = await response.json();
-      if (response.ok) {
-        Toast.show("Article bookmarked!");
-      } else {
-        const errMsg = result.message || result.error || "Bookmark failed";
-        console.error("Bookmark failed:", errMsg);
-        Toast.show(errMsg);
-      }
-    } catch (err) {
-      console.error("Bookmark error:", err);
-      Toast.show("An error occurred while bookmarking the article.");
-    }
-  }
-
-
-  setupDialogHandlers() {
-    document.querySelectorAll('.dialog-width').forEach(dialog => {
-      dialog.addEventListener('sl-request-close', () => {
-        dialog.hide();
-      });
-  
-      dialog.addEventListener('sl-after-hide', () => {
-        const closeButton = dialog.querySelector('sl-button[slot="footer"]');
-        if (closeButton) {
-          closeButton.addEventListener('click', (e) => {
+          }
+        
+          async bookmarkArticle(e, id) {
+            e.preventDefault();
             e.stopPropagation();
-            dialog.hide();
-          });
-        }
-      });
-    });
-  }
-
-  openDialog(e) {
-    e.stopPropagation();
+        
+           
+            
+            if (!Auth.currentUser || !Auth.currentUser.token) {
+              Toast.show("You must be logged in to bookmark articles!");
+              return;
+            }
+            
+            try {
+              // Determine if we're adding or removing
+              const action = this.userBookmarks.has(id) ? 'remove' : 'add';
+              
+              const response = await fetch(`${App.apiBase}/bookmark/${id}`, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${Auth.currentUser.token}`,
+                },
+                body: JSON.stringify({ action }) // Send action to backend
+              });
+          
+              if (response.ok) {
+                // Update local bookmarks set
+                if (action === 'remove') {
+                  this.userBookmarks.delete(id);
+                } else {
+                  this.userBookmarks.add(id);
+                }
+                
+                Toast.show(`Article ${action === 'remove' ? 'removed from' : 'added to'} bookmarks`);
+                this.render();
+              }
+            } catch(err) {
+              console.error("Bookmark error:", err);
+              Toast.show("Failed to update bookmark");
+            }
+          }
+        
+          
+        
+          setupDialogHandlers() {
+            document.querySelectorAll('.dialog-width').forEach(dialog => {
+              dialog.addEventListener('sl-request-close', () => {
+                dialog.hide();
+              });
+          
+              dialog.addEventListener('sl-after-hide', () => {
+                const closeButton = dialog.querySelector('sl-button[slot="footer"]');
+                if (closeButton) {
+                  closeButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dialog.hide();
+                  });
+                }
+              });
+            });
+          }
+        
+          openDialog(e) {
+            e.stopPropagation();
+            
+            // Find the closest sl-dialog inside the clicked element
+            const dialog = e.currentTarget.querySelector('sl-dialog');
+          
+            if (dialog) {
+              dialog.show();
+            }
+          }
+        
+          async closeDialog(e) {
+            e.stopPropagation();
+            const dialog = e.target.closest('sl-dialog');
+            if (dialog) {
+              // Hide the dialog
+              dialog.hide();
+              // Wait for the dialog to finish hiding
+              await new Promise(resolve => {
+                dialog.addEventListener('sl-after-hide', resolve, { once: true });
+              });
+              // Refresh the bookmark data from the backend
+              await this.refreshBookmarks();
+              // Re-render the view
+              this.render();
+            }
+          }
     
-    // Find the closest sl-dialog inside the clicked element
-    const dialog = e.currentTarget.querySelector('sl-dialog');
-  
-    if (dialog) {
-      dialog.show();
-    }
-  }
-
-  closeDialog(e) {
-    e.stopPropagation();
     
-    // Get the closest sl-dialog to the button clicked
-    const dialog = e.target.closest('sl-dialog');
-    
-    if (dialog) dialog.hide();
-  }
-
-  
-
-  render(){
-    console.log('Auth.currentUser:', Auth.currentUser);
-    const urlParams = new URLSearchParams(window.location.search);
-    const activeTab = urlParams.get('tab') || 'meditation'; // default to stress if no tab specified
-    const template = html`
+      render(){
+        console.log('Auth.currentUser:', Auth.currentUser);
+        console.log('User bookmarks:', Array.from(this.userBookmarks));
+         // Get tab from URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
+        const template = html`
     <style>
     .expanded-page  {
      background: var(--background-resources);
     }
     </style>
-    ${Auth.isLoggedIn() ? 
-      html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
-      html`<va-public-header></va-public-header>`
-    }
-      <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png" alt="Mindline logo"></a>      
-      <div class="page-content expanded-page"> 
-        <section class="banner expanded">
-        <h1>Resources</h1>
-        <div class="banner-content">     
-          <div id="bento-tabs">
-            <sl-tab-group ?active="${activeTab}">
-              <sl-tab slot="nav" panel="support" ?active="${activeTab === 'support'}">Support</sl-tab>
-              <sl-tab slot="nav" panel="services" ?active="${activeTab === 'services'}">Services</sl-tab>
-              <sl-tab slot="nav" panel="guides" ?active="${activeTab === 'guides'}">Guides</sl-tab>
-
-              <!-- Support - first tab content of the resources page -->
-              <sl-tab-panel name="support">
-                <div class="support-inner">
-                
-                  <div class="why ask" @click=${this.openDialog}>
-                    <img src="/images/why-box.png" class="why-img" alt="Asking for Support">
-                    <p>${this.articles.get('ask')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('ask')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('ask')?.bodyContent || 'Loading content...'}
-                    </div>
-                    </div>
-                    <sl-button 
-                      slot="footer" 
-                      variant="primary" 
-                      @click=${(e) => {
-                        const articleId = this.articles.get('ask')?._id;
-                        console.log("Bookmarking article ID:", articleId);
-                        this.bookmarkArticle(e, articleId);
-                      }}>
-                      Bookmark
-                    </sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                    </sl-dialog>
-                  </div>
-
-                  <div class="deal talk" @click=${this.openDialog}>
-                    <img src="/images/stress-box.png" class="stress-img" alt="Talking About Mental Health Support">
-                    <p>${this.articles.get('talk')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-full.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('talk')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('talk')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-
-                  <div class="signs how_support" @click=${this.openDialog}>
-                    <img src="/images/signs-box.png" class="signs-img" alt="How to Get Support">
-                    <p>${this.articles.get('how_support')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('how_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('how_support')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-                
-                
-                  <div class="triggers tips_support" @click=${this.openDialog}>
-                    <img src="/images/triggers-box.png" class="triggers-img" alt="Support Tips">
-                    <p>${this.articles.get('tips_support')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('tips_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('tips_support')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-
-                  <div class="practices what_support" @click=${this.openDialog}>
-                    <img src="/images/practices-box.png" class="practices-img" alt="What Support is there">
-                      <p>${this.articles.get('what_support')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('what_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('what_support')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-                
-                  <div class="seek help_support" @click=${this.openDialog}>
-                    <img src="/images/seek-box.png" class="seek-img" alt="Support Help">
-                    <p>${this.articles.get('help_support')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('help_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('help_support')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-
-                  <div class="questions mindset" @click=${this.openDialog}>
-                    <img src="/images/questions-box.png" class="questions-img" alt="Change the Way You Think">
-                    <p>${this.articles.get('mindset')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('mindset')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('mindset')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+   ${Auth.isLoggedIn() ? 
+              html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
+              html`<va-public-header></va-public-header>`
+            }
+              <a href="/" @click="${anchorRoute}"><img class="header-logo" src="/images/logo/logo-mindline-no-wording-white-125.png"></a>      
+              <div class="page-content expanded-page"> 
+                <section class="banner expanded">
+                <h1>Mindfulness </h1>
+                <div class="banner-content">     
+                  <div id="bento-tabs">
+                    <sl-tab-group .active="${activeTab}">
+                      <sl-tab slot="nav" panel="stress" .active="${activeTab === 'stress'}">Support</sl-tab>
+                      <sl-tab slot="nav" panel="anxiety" .active="${activeTab === 'anxiety'}">Services</sl-tab>
+                      <sl-tab slot="nav" panel="depression" .active="${activeTab === 'depression'}">/guides</sl-tab>
+        
+                      <!-- this is the first tab content of the menal health page -->
+                      <sl-tab-panel name="stress">
+                        
+               
+                        <div class="support">
+                        
+                          <div class="what-med" @click=${this.openDialog}>
+                            <img src="/images/mindfulness/meditation/meditation-what-is-meditation.webp" class="why-img">
+                            <p>${this.articles.get('what')?.title || 'Loading...'}</p>
+                            ${this.userBookmarks && this.articles.get('what') && this.userBookmarks.has(this.articles.get('what')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('what')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                              <div style="white-space: pre-line;">
+                              ${this.articles.get('what')?.bodyContent || 'Loading content...'}
+                              </div>
+                              <sl-button slot="footer" variant="primary" 
+                                @click=${(e) => {
+                                  const articleId = this.articles.get('what')?._id;
+                                  console.log("Bookmarking article ID:", articleId);
+                                  this.bookmarkArticle(e, articleId);
+                                }}>
+                                ${this.userBookmarks.has(this.articles.get('what')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                              </sl-button>
+                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            </sl-dialog>
+                          </div>
+                          
+                          <div class="why-med" @click=${this.openDialog}>
+                            <img src="/images/mindfulness/meditation/meditation-why-meditate.webp" class="stress-img">
+                            <p>${this.articles.get('why')?.title || 'Loading...'}</p>
+                            ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+        
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('why')?.bodyContent || 'Loading content...'}
+                            </div>
+        
+                              <sl-button slot="footer" variant="primary" 
+                                @click=${(e) => {
+                                  const articleId = this.articles.get('why')?._id;
+                                  console.log("Bookmarking article ID:", articleId);
+                                  this.bookmarkArticle(e, articleId);
+                                }}>
+                                ${this.userBookmarks.has(this.articles.get('why')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                              </sl-button>
+                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+        
+                          <div class="benefit-med" @click=${this.openDialog}>
+                            <img src="/images/mindfulness/meditation/meditation-mental-health-benefits.webp" class="signs-img">
+                            <p>${this.articles.get('benefits')?.title || 'Loading...'}</p>
+                            ${this.userBookmarks && this.articles.get('benefits') && this.userBookmarks.has(this.articles.get('benefits')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('benefits')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('benefits')?.bodyContent || 'Loading content...'}
+                            </div>
+                            <sl-button slot="footer" variant="primary" 
+                              @click=${(e) => {
+                                const articleId = this.articles.get('benefits')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}>
+                              ${this.userBookmarks.has(this.articles.get('benefits')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                            </sl-button>
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+                        
+                        
+                          <div class="physical-med" @click=${this.openDialog}>
+                            <img src="/images/mindfulness/meditation/meditation-physical-benefits.webp" class="triggers-img">
+                            <p>${this.articles.get('guided')?.title || 'Loading...'}</p>
+                            ${this.userBookmarks && this.articles.get('guided') && this.userBookmarks.has(this.articles.get('guided')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('guided')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+        
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('guided')?.bodyContent || 'Loading content...'}
+                            </div>
+                            <sl-button slot="footer" variant="primary" 
+                              @click=${(e) => {
+                                const articleId = this.articles.get('guided')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}>
+                              ${this.userBookmarks.has(this.articles.get('guided')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                            </sl-button>
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+        
+                          <div class="guided-med" @click=${this.openDialog}>
+                          <img src="/images/mindfulness/meditation/meditation-clock-guided-meditation-253.webp" class="practices-img">
+                          <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
+                              ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
+                                  ? html`
+                                    <img 
+                                      src="/images/bookmark/bookmark-full.svg" 
+                                    class="bookmark"
+                                    style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                    >`
+                                  : ''
+                                }
+                            <sl-dialog label="${this.articles.get('practices')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
+                            </div>
+                             <div class="video-group">
+                                 <div class="video-embed">
+                                   ${this.articles.get('practices')?.mediaUrl
+                                     ? html`${unsafeHTML(this.articles.get('practices')?.mediaUrl)}`
+                                     : null
+                                   }
+                                 </div>
+                                 <div class="video-embed">
+                                   ${this.articles.get('practices_2')?.mediaUrl
+                                     ? html`${unsafeHTML(this.articles.get('practices_2')?.mediaUrl)}`
+                                     : null
+                                   }
+                                 </div>
+                                 <div class="video-embed">
+                                   ${this.articles.get('practices_2')?.mediaUrl
+                                     ? html`${unsafeHTML(this.articles.get('practices_2')?.mediaUrl)}`
+                                     : null
+                                   }
+                                 </div>
+                             </div>
+                            <sl-button slot="footer" variant="primary" 
+                                @click=${(e) => {
+                                  const articleId = this.articles.get('practices')?._id;
+                                  console.log("Bookmarking article ID:", articleId);
+                                  this.bookmarkArticle(e, articleId);
+                                }}>
+                                ${this.userBookmarks.has(this.articles.get('practices')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                              </sl-button>
+        
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+                        
+                          <div class="questions-med" @click=${this.openDialog}>
+                          <img src="/images/mindfulness/meditation/meditation-common-questions.webp" class="seek-img">
+        
+                          <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
+                              ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
+                                ? html`
+                                  <img 
+                                    src="/images/bookmark/bookmark-full.svg" 
+                                    class="bookmark"
+                                    style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                  >`
+                                : ''
+                              }
+                            <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
+                            </div>
+                            <sl-button slot="footer" variant="primary" 
+                                @click=${(e) => {
+                                  const articleId = this.articles.get('seek')?._id;
+                                  console.log("Bookmarking article ID:", articleId);
+                                  this.bookmarkArticle(e, articleId);
+                                }}>
+                                ${this.userBookmarks.has(this.articles.get('seek')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                              </sl-button>
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+        
+                          <div class="tips-med" @click=${this.openDialog}>
+                          <img src="/images/mindfulness/meditation/meditation-tips-light-globe.webp" class="questions-img">
+                              <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
+                              ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
+                                ? html`
+                                  <img 
+                                    src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                  >`
+                                : ''
+                              }
+                            <sl-dialog label="${this.articles.get('questions')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
+                            </div>
+                            <sl-button slot="footer" variant="primary" 
+                              @click=${(e) => {
+                                const articleId = this.articles.get('questions')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}>
+                              ${this.userBookmarks.has(this.articles.get('questions')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                            </sl-button>
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+                        </div>
+                      </sl-tab-panel>
+        
+        
+        
+        
+                       <!-- this is the second tab content of the mental health page -->
+                      <sl-tab-panel name="anxiety">
+                        <div class="meditation">
+                        
+                          <div class="what-med" @click=${this.openDialog}>
+                           <img src="/images/mental-health/anxiety/anxiety-why.webp" class="why-img">
+                            <p>${this.articles.get('why_breath')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('why_breath') && this.userBookmarks.has(this.articles.get('why_breath')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >
+                              `
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('why_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                              <div style="white-space: pre-line;">
+                                ${this.articles.get('why_breath')?.bodyContent || 'Loading content...'}
+                              </div>
+                              <sl-button slot="footer" variant="primary" 
+                              @click=${(e) => {
+                                const articleId = this.articles.get('why_breath')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}>
+                              ${this.userBookmarks.has(this.articles.get('why_breath')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                            </sl-button>
+                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            </sl-dialog>
+                          </div>
+        
+                          <div class="why-med" @click=${this.openDialog}>
+                           <img src="/images/mental-health/anxiety/anxiety-deal-360.webp">
+        
+                            <p>${this.articles.get('how_breath')?.title || 'Loading...'}</p>
+                            ${this.userBookmarks && this.articles.get('how_breath') && this.userBookmarks.has(this.articles.get('how_breath')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('how_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('how_breath')?.bodyContent || 'Loading content...'}
+                            </div>
+                              <sl-button
+                                  slot="footer"
+                                  variant="primary"
+                                  @click=${(e) => {
+                                    const articleId = this.articles.get('how_breath')?._id;
+                                    console.log("Bookmarking article ID:", articleId);
+                                    this.bookmarkArticle(e, articleId);
+                                  }}
+                                >
+                                  ${this.userBookmarks.has(this.articles.get('how_breath')?._id)
+                                    ? 'Remove Bookmark'
+                                    : 'Bookmark'
+                                  }
+                                </sl-button>
+        
+                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+        
+                          <div class="benefit-med" @click=${this.openDialog}>
+                           <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="signs-img">
+        
+                            <p>${this.articles.get('benefits_breath')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('benefits_breath') && this.userBookmarks.has(this.articles.get('benefits_breath')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('benefits_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('benefits_breath')?.bodyContent || 'Loading content...'}
+                            </div>
+                            <sl-button
+                              slot="footer"
+                              variant="primary"
+                              @click=${(e) => {
+                                const articleId = this.articles.get('benefits_breath')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}
+                            >
+                              ${this.userBookmarks.has(this.articles.get('benefits_breath')?._id)
+                                ? 'Remove Bookmark'
+                                : 'Bookmark'
+                              }
+                            </sl-button>
+        
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+                        
+                        
+                          <div class="physical-med" @click=${this.openDialog}>
+                           <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="triggers-img">
+        
+                            <p>${this.articles.get('seek_breath')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('seek_breath') && this.userBookmarks.has(this.articles.get('seek_breath')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('seek_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('seek_breath')?.bodyContent || 'Loading content...'}
+                            </div>
+        
+                            <sl-button
+                              slot="footer"
+                              variant="primary"
+                              @click=${(e) => {
+                                const articleId = this.articles.get('seek_breath')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}
+                            >
+                              ${this.userBookmarks.has(this.articles.get('seek_breath')?._id)
+                                ? 'Remove Bookmark'
+                                : 'Bookmark'
+                              }
+                            </sl-button>
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+        
+                          <div class="guided-med" @click=${this.openDialog}>
+                           <img src="/images/mental-health/anxiety/anxiety-practices-360.webp" class="practices-img">
+        
+                              <p>${this.articles.get('practices_breath')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('practices_breath') && this.userBookmarks.has(this.articles.get('practices_breath')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('practices_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('practices_breath')?.bodyContent || 'Loading content...'}
+                            </div>
+                            <div class="video-group">
+                                 <div class="video-embed">
+                                   ${this.articles.get('practices_breath')?.mediaUrl
+                                     ? html`${unsafeHTML(this.articles.get('practices_breath')?.mediaUrl)}`
+                                     : null
+                                   }
+                                 </div>
+                                 <div class="video-embed">
+                                   ${this.articles.get('practices_breath_2')?.mediaUrl
+                                     ? html`${unsafeHTML(this.articles.get('practices_breath_2')?.mediaUrl)}`
+                                     : null
+                                   }
+                                 </div>
+                                 
+                             </div>
+                            <sl-button
+                              slot="footer"
+                              variant="primary"
+                              @click=${(e) => {
+                                const articleId = this.articles.get('practices_breath')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}
+                            >
+                              ${this.userBookmarks.has(this.articles.get('practices_breath')?._id)
+                                ? 'Remove Bookmark'
+                                : 'Bookmark'
+                              }
+                            </sl-button>
+        
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+                        
+                          <div class="questions-med" @click=${this.openDialog}>
+                         <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp" class="seek-img">
+        
+                         <p>${this.articles.get('questions_breath')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('questions_breath') && this.userBookmarks.has(this.articles.get('questions_breath')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('questions_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('questions_breath')?.bodyContent || 'Loading content...'}
+                            </div>
+        
+                            
+                            <sl-button
+                              slot="footer"
+                              variant="primary"
+                              @click=${(e) => {
+                                const articleId = this.articles.get('questions_breath')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}
+                            >
+                              ${this.userBookmarks.has(this.articles.get('questions_breath')?._id)
+                                ? 'Remove Bookmark'
+                                : 'Bookmark'
+                              }
+                            </sl-button>
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+        
+                          <div class="tips-med" @click=${this.openDialog}>
+                         <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-img">
+        
+                              <p>${this.articles.get('tips_breath')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('tips_breath') && this.userBookmarks.has(this.articles.get('tips_breath')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('tips_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+        
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('tips_breath')?.bodyContent || 'Loading content...'}
+                            </div>
+                            <sl-button
+                              slot="footer"
+                              variant="primary"
+                              @click=${(e) => {
+                                const articleId = this.articles.get('tips_breath')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}
+                            >
+                              ${this.userBookmarks.has(this.articles.get('tips_breath')?._id)
+                                ? 'Remove Bookmark'
+                                : 'Bookmark'
+                              }
+                            </sl-button>
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+                        </div>
+                      </sl-tab-panel>
+        
+        
+        
+        
+                      
+                       <!-- this is the third tab content of the menal health page -->
+                      <sl-tab-panel name="depression">
+                        <div class="meditation">
+                        
+                          <div class="what-med" @click=${this.openDialog}>
+                           <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="why-img">
+        
+                            <p>${this.articles.get('why_mot')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('why_mot') && this.userBookmarks.has(this.articles.get('why_mot')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('why_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                              <div style="white-space: pre-line;">
+                                ${this.articles.get('why_mot')?.bodyContent || 'Loading content...'}
+                              </div>
+        
+                              <sl-button
+                                slot="footer"
+                                variant="primary"
+                                @click=${(e) => {
+                                  const articleId = this.articles.get('why_mot')?._id;
+                                  console.log("Bookmarking article ID:", articleId);
+                                  this.bookmarkArticle(e, articleId);
+                                }}
+                              >
+                                ${this.userBookmarks.has(this.articles.get('why_mot')?._id)
+                                  ? 'Remove Bookmark'
+                                  : 'Bookmark'
+                                }
+                              </sl-button>
+                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            </sl-dialog>
+                          </div>
+        
+                          <div class="why-med" @click=${this.openDialog}>
+                            <img src="/images/mental-health/depression/depression-deal-360r.webp" class="stress-img">
+        
+                            <p>${this.articles.get('ways_mot')?.title || 'Loading...'}</p>
+                            ${this.userBookmarks && this.articles.get('ways_mot') && this.userBookmarks.has(this.articles.get('ways_mot')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('ways_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('ways_mot')?.bodyContent || 'Loading content...'}
+                            </div>
+                              <sl-button
+                                slot="footer"
+                                variant="primary"
+                                @click=${(e) => {
+                                  const articleId = this.articles.get('ways_mot')?._id;
+                                  console.log("Bookmarking article ID:", articleId);
+                                  this.bookmarkArticle(e, articleId);
+                                }}
+                              >
+                                ${this.userBookmarks.has(this.articles.get('ways_mot')?._id)
+                                  ? 'Remove Bookmark'
+                                  : 'Bookmark'
+                                }
+                              </sl-button>
+        
+        
+                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+        
+                          <div class="benefit-med" @click=${this.openDialog}>
+                            <img src="/images/mental-health/depression/depression-signs.webp" class="signs-img">
+        
+                            <p>${this.articles.get('how_mot')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('how_mot') && this.userBookmarks.has(this.articles.get('how_mot')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('how_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+        
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('how_mot')?.bodyContent || 'Loading content...'}
+                            </div>
+                       
+                            <sl-button
+                              slot="footer"
+                              variant="primary"
+                              @click=${(e) => {
+                                const articleId = this.articles.get('how_mot')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}
+                            >
+                              ${this.userBookmarks.has(this.articles.get('how_mot')?._id)
+                                ? 'Remove Bookmark'
+                                : 'Bookmark'
+                              }
+                            </sl-button>
+        
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+                        
+                        
+                          <div class="physical-med" @click=${this.openDialog}>
+                            <img src="/images/mental-health/depression/depression-triggers-360.webp" class="triggers-img">
+        
+                            <p>${this.articles.get('how_mot_2')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('how_mot_2') && this.userBookmarks.has(this.articles.get('how_mot_2')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('how_mot_2')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+        
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('how_mot_2')?.bodyContent || 'Loading content...'}
+                            </div>
+                            <sl-button
+                              slot="footer"
+                              variant="primary"
+                              @click=${(e) => {
+                                const articleId = this.articles.get('how_mot_2')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}
+                            >
+                              ${this.userBookmarks.has(this.articles.get('how_mot_2')?._id)
+                                ? 'Remove Bookmark'
+                                : 'Bookmark'
+                              }
+                            </sl-button>
+        
+        
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+        
+                          <div class="guided-med" @click=${this.openDialog}>
+                            <img src="/images/mental-health/depression/depression-practices-360.webp" class="practices-img">
+        
+                              <p>${this.articles.get('practices_mot')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('practices_mot') && this.userBookmarks.has(this.articles.get('practices_mot')._id)
+                              ? html`
+                                <img 
+                                  src="/images/bookmark/bookmark-full.svg" 
+                                  class="bookmark"
+                                  style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                >`
+                              : ''
+                            }
+                            <sl-dialog label="${this.articles.get('practices_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+        
+                            <div style="white-space: pre-line;">
+                              ${this.articles.get('practices_mot')?.bodyContent || 'Loading content...'}
+                            </div>
+                            <div class="video-group">
+                                 <div class="video-embed">
+                                   ${this.articles.get('practices_mot_2')?.mediaUrl
+                                     ? html`${unsafeHTML(this.articles.get('practices_mot_2')?.mediaUrl)}`
+                                     : null
+                                   }
+                                 </div>
+                                 
+                             </div>
+                            <sl-button
+                              slot="footer"
+                              variant="primary"
+                              @click=${(e) => {
+                                const articleId = this.articles.get('practices_mot')?._id;
+                                console.log("Bookmarking article ID:", articleId);
+                                this.bookmarkArticle(e, articleId);
+                              }}
+                            >
+                              ${this.userBookmarks.has(this.articles.get('practices_mot')?._id)
+                                ? 'Remove Bookmark'
+                                : 'Bookmark'
+                              }
+                            </sl-button>
+        
+                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+                        
+                          <div class="questions-med" @click=${this.openDialog}>
+                            <img src="/images/mental-health/depression/depression-seek-360.webp" class="seek-img">
+        
+                            <p>${this.articles.get('what_mot')?.title || 'Loading...'}</p>
+                              ${this.userBookmarks && this.articles.get('what_mot') && this.userBookmarks.has(this.articles.get('what_mot')._id)
+                                ? html`
+                                  <img 
+                                    src="/images/bookmark/bookmark-full.svg" 
+                                    class="bookmark"
+                                    style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                  >`
+                                : ''
+                              }
+                              <sl-dialog label="${this.articles.get('what_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                              <div style="white-space: pre-line;">
+                                ${this.articles.get('what_mot')?.bodyContent || 'Loading content...'}
+                              </div>
+                              <sl-button
+                                slot="footer"
+                                variant="primary"
+                                @click=${(e) => {
+                                  const articleId = this.articles.get('what_mot')?._id;
+                                  console.log("Bookmarking article ID:", articleId);
+                                  this.bookmarkArticle(e, articleId);
+                                }}
+                              >
+                                ${this.userBookmarks.has(this.articles.get('what_mot')?._id)
+                                  ? 'Remove Bookmark'
+                                  : 'Bookmark'
+                                }
+                              </sl-button>
+                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+        
+                          <div class="tips-med" @click=${this.openDialog}>
+                            <img src="/images/mental-health/depression/depression-questions.webp" class="questions-img">
+                            <p>${this.articles.get('tips_mot')?.title || 'Loading...'}</p>
+                              ${this.userBookmarks && this.articles.get('tips_mot') && this.userBookmarks.has(this.articles.get('tips_mot')._id)
+                                ? html`
+                                  <img 
+                                    src="/images/bookmark/bookmark-full.svg" 
+                                    class="bookmark"
+                                    style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                  >`
+                                : ''
+                              }
+                              <sl-dialog label="${this.articles.get('tips_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                              <div style="white-space: pre-line;">
+                                ${this.articles.get('tips_mot')?.bodyContent || 'Loading content...'}
+                              </div>
+                              <sl-button
+                                slot="footer"
+                                variant="primary"
+                                @click=${(e) => {
+                                  const articleId = this.articles.get('tips_mot')?._id;
+                                  console.log("Bookmarking article ID:", articleId);
+                                  this.bookmarkArticle(e, articleId);
+                                }}
+                              >
+                                ${this.userBookmarks.has(this.articles.get('tips_mot')?._id)
+                                  ? 'Remove Bookmark'
+                                  : 'Bookmark'
+                                }
+                              </sl-button>
+        
+                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                          </div>
+                        </div>
+                      </sl-tab-panel>
+        
+                    </sl-tab-group>
                   </div>
                 </div>
-
-
-
-              </sl-tab-panel>
-
-               <!-- Services - second tab content of the resources page -->
-              <sl-tab-panel name="services">
-                <div class="stress">
-                
-                  <div class="why crisis" @click=${this.openDialog}>
-                    <img src="/images/" class="why-img" alt="Crisis and Suicide Services">
-                    <p>${this.articles.get('crisis')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('crisis')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('crisis')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                    </sl-dialog>
-                  </div>
-
-                  <div class="deal kids" @click=${this.openDialog}>
-                    <img src="/images/" class="stress-img" alt="Services for Young People">
-                    <p>${this.articles.get('kids')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-full.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('kids')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('kids')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-
-                  <div class="signs mental_serv" @click=${this.openDialog}>
-                    <img src="/images/" class="signs-img" alt="Mental Health Services">
-                    <p>${this.articles.get('mental_serv')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('mental_serv')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('mental_serv')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-                
-                
-                  <div class="triggers counsel" @click=${this.openDialog}>
-                    <img src="/images/" class="triggers-img" alt="Counselling Services">
-                    <p>${this.articles.get('counsel')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('counsel')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('counsel')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-
-                  <div class="practices substance" @click=${this.openDialog}>
-                    <img src="/images/" class="practices-img" alt="Substance Use">
-                    <p>${this.articles.get('substance')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('substance')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('substance')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-                
-                  <div class="seek indgl" @click=${this.openDialog}>
-                    <img src="/images/" class="seek-img" alt="Services for Indigenous Peoples & LGBTQIA">
-                    <p>${this.articles.get('indgl')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('indgl')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('indgl')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-
-                  <div class="questions help_serv" @click=${this.openDialog}>
-                    <img src="/images/" class="questions-img" alt="Help Services">
-                    <p>${this.articles.get('help_serv')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('help_serv')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('help_serv')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-                </div>
-              </sl-tab-panel>
-
-               <!-- Guides - third tab content of the resources page -->
-              <sl-tab-panel name="guides">
-                <div class="stress">
-                
-                  <div class="why mental_guides" @click=${this.openDialog}>
-                    <img src="/images/why-box.png" class="why-img" alt="Guides for Mental Health">
-                    <p>${this.articles.get('mental_guides')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('mental_guides')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('mental_guides')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                    </sl-dialog>
-                  </div>
-
-                  <div class="deal digital" @click=${this.openDialog}>
-                    <img src="/images/stress-box.png" class="stress-img" alt="Digital Guides">
-                    <p>${this.articles.get('digital')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-full.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('digital')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('digital')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-
-                  <div class="signs parent" @click=${this.openDialog}>
-                    <img src="/images/signs-box.png" class="signs-img" alt="Help if Your Parent is Mentally Ill">
-                    <p>${this.articles.get('parent')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('parent')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('parent')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-                
-                
-                  <div class="triggers depression_guides" @click=${this.openDialog}>
-                    <img src="/images/triggers-box.png" class="triggers-img" alt="Guides About Depression">
-                    <p>${this.articles.get('depression_guides')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('depression_guides')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('depression_guides')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-
-                  <div class="practices self" @click=${this.openDialog}>
-                    <img src="/images/practices-box.png" class="practices-img" alt="Self Care">
-                    <p>${this.articles.get('self')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('self')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('self')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-                
-                  <div class="seek toolkit" @click=${this.openDialog}>
-                    <img src="/images/seek-box.png" class="seek-img" alt="Toolkit Guides">
-                    <p>${this.articles.get('toolkit')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('toolkit')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('toolkit')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-
-                  <div class="questions tips_guides" @click=${this.openDialog}>
-                    <img src="/images/questions-box.png" class="questions-img" alt="Guide Tips">
-                    <p>${this.articles.get('tips_guides')?.title || 'Loading...'}</p>
-                    <img src="/images/bookmark/bookmark-4.svg" class="bookmark" alt="Bookmark">
-                    <sl-dialog label="${this.articles.get('tips_guides')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                    <div style="white-space: pre-line;">
-                    ${this.articles.get('tips_guides')?.bodyContent || 'Loading content...'}
-                    </div>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Bookmark</sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
-                  </div>
-                </div>
-              </sl-tab-panel>
-
-            </sl-tab-group>
-          </div>
-        </div>
-        </section>
-          
-      
-      </div>  
-    `
-    render(template, App.rootEl)
-  }
-}
+                </section>
+                  
+              
+              </div>  
+            `
+            render(template, App.rootEl)
+          }
+        }
 
 
 export default new resourcesExpandedView()
