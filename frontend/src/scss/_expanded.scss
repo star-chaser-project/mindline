@@ -22,44 +22,41 @@ h1{
 }
 
 sl-tab-group::part(base) {
-display: flex;
-align-items: center;
-gap: 32px;
-
-
+    display: flex;
+    align-items: center;
+    gap: 32px;
 }
 
-seek
 sl-tab-group::part(nav) {
-border-bottom: none;
+    border-bottom: none;
 }
 
 sl-tab-group::part(active-tab-indicator) {
-display: none !important;
-opacity: 0;
-visibility: hidden;
+    display: none !important;
+    opacity: 0;
+    visibility: hidden;
 }
 
 sl-tab-group::part(tabs) {
-border-bottom: none;
+    border-bottom: none;
 }
 
 sl-tab::part(base) {
-border-bottom: none;
-margin: 0 12px;
-padding: 12px 24px;
-font-size: 18px;
-font-weight: 500;
-transition: all 0.2s ease;
+    border-bottom: none;
+    margin: 0 12px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
 sl-tab:not([active])::part(base):hover {
-font-size: 20px;
+    font-size: 20px;
 }
 
 sl-tab[active]::part(base) {
-font-size: 20px;
-color: #F3C728 !important;
+    font-size: 20px;
+    color: #F3C728 !important;
 }
 
 #bento-tabs {
@@ -168,6 +165,107 @@ align-items: start; /* Align items to top */
 margin-top: 8px;
 }
 
+.meditation {
+    display: grid;
+    grid-template-areas: 
+    "what-med     why-med      ."               /* row 1 (2 areas) */
+    "benefit-med  physical-med  guided-med" /* row 2 (3 areas) */
+    "questions-med tips-med     .";             /* row 3 (2 areas) */
+    grid-template-columns: 193px 193px 193px;
+    grid-template-rows: 193px 193px 193px;
+    gap: 24px;
+    align-items: start;
+    margin-top: 8px;
+}
+
+.what-med {
+    grid-area: what-med;
+    width: 410px;
+    height: 193px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.why-med {
+    grid-area: why-med;
+    width: 410px;
+    height: 193px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    margin-left: 217px;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.benefit-med {
+    grid-area: benefit-med;
+    width: 193px;
+    height: 410px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.physical-med {
+    grid-area: physical-med;
+    width: 193px;
+    height: 410px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.guided-med {
+    grid-area: guided-med;
+    width: 410px;
+    height: 193px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.questions-med {
+    grid-area: questions-med;
+    width: 193px;
+    height: 193px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    margin-left:434px;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tips-med {
+    grid-area: tips-med;
+    width: 193px;
+    height: 193px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    position: relative;
+    margin-left: 434px ;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
 
 p {
 color: #000000;
@@ -226,4 +324,22 @@ font-weight: 300;
 margin-left: 10%;
 z-index: 1;
 }
+
+.video-embed iframe {
+    width: 251px;
+    height: 142px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+.video-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding-top: 2rem;
+}
+
+}
+

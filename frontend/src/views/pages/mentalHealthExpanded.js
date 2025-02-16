@@ -454,11 +454,11 @@ async fetchArticle(id) {
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
                           alt="Bookmark"
-                        >`
+                        >
+                      `
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('why_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-
                       <div style="white-space: pre-line;">
                         ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
                       </div>

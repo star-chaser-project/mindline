@@ -16,9 +16,12 @@ class ProfileView {
     render() {
     const template = html`
       <va-app-header user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
+
       <div class="profile-container">
+
         <!-- Left Section -->
         <div class="profile-left">
+        
           ${Auth.currentUser && Auth.currentUser.avatar
             ? html`
                 <sl-avatar
@@ -40,7 +43,7 @@ class ProfileView {
               'D MMMM YYYY @ h:mm a'
             )}
           </p>
-         <sl-button size="large" pill="" class="edit-btn hydrated" type="primary" 
+         <sl-button size="large" pill="" class="edit-btn hydrated edit-button" type="primary" 
             class="edit-button"
             @click=${() => gotoRoute('/editProfile')}
            >EDIT PROFILE</sl-button>

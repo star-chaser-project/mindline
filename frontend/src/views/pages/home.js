@@ -24,7 +24,7 @@ class HomeView {
             <picture>
               <source srcset="images/home/home-hero-image-360.webp" media="(max-width: 480px)">
               <source srcset="images/home/home-hero-image-768.webp" media="(max-width: 768px)">
-              <source srcset="images/home/home-hero-image-1024.webp" media="(min-width: 769px)">
+              <source srcset="images/home/home-hero-image-768.webp" media="(min-width: 1024px)">
               <img class="cloud" id="heroImage" src="images/home/home-hero-image-1024.webp" alt="banner image of a girl meditating">
             </picture>
             <h2>HARNESS YOUR POTENTIAL</h2>

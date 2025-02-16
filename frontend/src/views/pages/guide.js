@@ -34,31 +34,22 @@ class GuideView {
                 html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
                 html`<va-public-header></va-public-header>`
               }
-      <div class="page-content calign">     
-      <br>
-      <p></p>   
+      <div class="page-content calign guide-page">     
+      <h1 class="--base-txt-color">A Quick Guide Of Mindline AU</h1>
       <h2 class="--base-txt-color">Welcome ${Auth.currentUser.firstName}!</h2>
-        <p>Here's a quick tour of Mindline AU</p>
-
         <div class="guide-step">
-          <h4>Search for information about mental health.</h4>
+          <h4>Step 1: Search for information about mental health.</h4>
           <img src="images/guide/guide-page-white-bg-360.webp" class="responsive-img" >
         </div>
-
         <div class="guide-step">
-          <h4>Save articles, audio and video to Bookmarks.</h4>
+          <h4>Step 2: Save articles, audio and video to Bookmarks.</h4>
           <img src="images/guide/guide-page-pink-bg-360.webp" class="responsive-img">
         </div>
-
         <div class="guide-step">
-          <h4>Find resources and other options for assistance and support.</h4>
+          <h4>Step 3: Find resources and other options for assistance and support.</h4>
           <img src="images/guide/guide-page-yellow-bg-360.webp" class="responsive-img" >
         </div>
-
         <sl-animation name="jello" duration="2000" play iterations="10"><sl-button type="primary" @click=${() => gotoRoute('/')}>Okay got it!</sl-button></sl-animation>
-        
-        <p></p>
-
       </div>      
     `;
     render(template, App.rootEl);
