@@ -666,8 +666,8 @@ class resourcesExpandedView {
                           <div class="mindset" @click=${this.openDialog}>
                          <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-img">
         
-                              <p>${this.articles.get('help-serv')?.title || 'Loading...'}</p>
-                             ${this.userBookmarks && this.articles.get('help-serv') && this.userBookmarks.has(this.articles.get('help-serv')._id)
+                              <p>${this.articles.get('help_serv')?.title || 'Loading...'}</p>
+                             ${this.userBookmarks && this.articles.get('help_serv') && this.userBookmarks.has(this.articles.get('help_serv')._id)
                               ? html`
                                 <img 
                                   src="/images/bookmark/bookmark-full.svg" 
@@ -676,21 +676,21 @@ class resourcesExpandedView {
                                 >`
                               : ''
                             }
-                            <sl-dialog label="${this.articles.get('help-serv')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                            <sl-dialog label="${this.articles.get('help_serv')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
         
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('help-serv')?.bodyContent || 'Loading content...'}
+                              ${this.articles.get('help_serv')?.bodyContent || 'Loading content...'}
                             </div>
                             <sl-button
                               slot="footer"
                               variant="primary"
                               @click=${(e) => {
-                                const articleId = this.articles.get('help-serv')?._id;
+                                const articleId = this.articles.get('help_serv')?._id;
                                 console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}
                             >
-                              ${this.userBookmarks.has(this.articles.get('help-serv')?._id)
+                              ${this.userBookmarks.has(this.articles.get('help_serv')?._id)
                                 ? 'Remove Bookmark'
                                 : 'Bookmark'
                               }
