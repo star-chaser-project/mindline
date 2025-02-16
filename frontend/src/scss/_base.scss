@@ -283,12 +283,30 @@ sl-details::part(base) {
     border-color: #F4D35E;
     color: #000000;
   }
+ 
   .edit-btn::part(base):hover {
   background-color: #e5c654;
   border-color: #e5c654;
   color: #000000;
   }
 }
+//////////////////////////////////////////////////////////////////////////////
+.input-group .file-input {
+  background-color: #F4D35E;
+  border: 1px solid #F4D35E;
+  color: #000000;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.input-group .file-input:hover {
+  background-color: #e5c654;
+  border-color: #e5c654;
+  color: #000000;
+}
+//////////////////////////////////////////////////////////////////////////////
+
  // signin style 
 .signin-style{
   
