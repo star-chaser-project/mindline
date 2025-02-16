@@ -11,6 +11,7 @@ class mindfulnessExpandedView {
       this.articles = new Map() // Initialize Map
       this.userBookmarks = new Set()
     }
+
   
   async fetchArticle(id) {
     try {
@@ -205,6 +206,7 @@ class mindfulnessExpandedView {
     const urlParams = new URLSearchParams(window.location.search);
     const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
     const template = html`
+
       <style>
         .expanded-page {
           background: var(--background-mindfulness);
@@ -997,3 +999,4 @@ class mindfulnessExpandedView {
      }
 
 export default new mindfulnessExpandedView();
+
