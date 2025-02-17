@@ -212,6 +212,12 @@ margin-top: 8px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
+    img {
+        height: 60%;
+        width: 100%;
+        bottom: 0;
+        padding-top: 11rem;
+    }
 }
 
 .physical-med {
@@ -630,7 +636,6 @@ display: none;
     left: 50%;
     border-radius: 35px;
     transition: transform 0.3s ease;
-    
 }
 
 .seek-depression-img {
@@ -793,3 +798,14 @@ z-index: 1;
 
 }
 
+sl-dialog::part(body){
+    flex: 1 1 auto;
+    padding-top: 0;
+    margin: 0 1.5rem;
+    overflow: auto;
+    }
+    sl-dialog::part(title){
+        font-weight: 500;
+        font-size: 1.6em;
+        margin: 1.5rem 1.5rem 0.7rem;
+      }

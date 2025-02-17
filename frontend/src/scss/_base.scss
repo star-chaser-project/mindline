@@ -27,7 +27,23 @@ h3{
 a {
   color: var(--link-color);
 }
+//buttons --------------
 
+.edit-btn::part(base) {
+  background-color: #F4D35E;
+  border-color: #F4D35E;
+  color: #000000;
+  border-radius: 30px;
+  margin:10px 0;
+}
+
+.edit-btn::part(base):hover {
+background-color: #e5c654;
+border-color: #e5c654;
+color: #000000;
+border-radius: 30px;
+margin:10px 0;
+}
 
 // app splash screen -------
 .app-splash {
@@ -206,7 +222,7 @@ sl-details::part(base) {
 
 .guide-page{
   padding: 5rem 2rem;
-  background: var(--background-home);
+  background: var(--background-extra-page);
 }
 .guide-step {
   padding: 1em;
@@ -244,10 +260,6 @@ sl-details::part(base) {
       margin-bottom: 1em;
     }
 
-    .edit-button {
-      margin-top: 1em;
-    }
-    
 }
 
 .profile-right {
@@ -278,34 +290,24 @@ sl-details::part(base) {
     padding: 2em;
   }
  
-  .edit-btn::part(base) {
-    background-color: #F4D35E;
-    border-color: #F4D35E;
-    color: #000000;
-  }
- 
-  .edit-btn::part(base):hover {
-  background-color: #e5c654;
-  border-color: #e5c654;
-  color: #000000;
-  }
-}
-//////////////////////////////////////////////////////////////////////////////
-.input-group .file-input {
-  background-color: #F4D35E;
-  border: 1px solid #F4D35E;
-  color: #000000;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
+  
 
-.input-group .file-input:hover {
-  background-color: #e5c654;
-  border-color: #e5c654;
-  color: #000000;
+  //profile page responsive design
+@media (max-width: 767px) {
+  .log-profile-left {
+    p {
+      font-size: 1rem;
+      color: white;
+    }
+    flex-direction: column;
+  }
+
+ .profile-right {
+    display: none;
+  }
+  
 }
-//////////////////////////////////////////////////////////////////////////////
+}
 
  // signin style 
 .signin-style{
@@ -339,151 +341,136 @@ sl-details::part(base) {
   left: 20%;
   text-align: center;
   transform: translate(-50%, -50%);
-  padding: 5px;
 }
-
-//favorite-page-----------------
+///bookmarkbg-------------------------------------
 .favourites-page {
   background: var(--background-favourites);
-}
-// Products page ------------------------------------------------------------------------------
 
-.products-container {
-  margin-top: 1em;
-  margin-left: 3em;
 }
-
-.products-top {
-  display: flex;
-  column-count: 2;
-  justify-content: space-around;
-}
-
-.product-list {
+//bookmark/favorite-page content style-----------------
+.bookmarks-page{
+.page-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  padding: 6rem;
 }
 
-// products cart icon button ----------------
-.cart-icon .sl-icon-button::part(base) {
-  color: #fff;
-}
-
-.cart-icon .sl-icon-button::part(base):hover,
-.cart-icon .sl-icon-button::part(base):focus {
-  color: #fff;
-}
-
-.cart-icon .sl-icon-button::part(base):active {
-  color: #F0C4A1;
-}
-
-.takeaway-cups-img {
-  height: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
-.products-grid {
+.fav-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  border-width: 30%;
-  justify-content: space-around;
-  .product-card {
-    width: calc(25% - 4em);
-    margin: 0.5em;
+  justify-content: flex-start;  // Align content to the left
+}
+
+.fav-container h1 {
+  text-align: left; // Align the title to the left
+  width: 100%;
+}
+
+.favourites-grid {
+    padding: 2rem;
+    background-color: #fafafa;
+    border-radius: 35px;
+    text-align: center;
+
+    p{
+      text-align: left;
+    }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 2rem 0;  // Space between each bookmark
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;  // Creates a line between each bookmark
+  padding-bottom: 5px;  // Adds some space below each bookmark
+}
+li:last-child {
+  border-bottom: none;  // Removes the line from the last item
+}
+.bookmark-item {
+  h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1em;
+    color: #515151;
+    text-align: left;
   }
 }
 
-.product-card::part(body) {
-  background: #F0C4A1;
-  --border-radius: var(--card--border-radius);
+.edit-btn {
+    margin-left: 2rem;
+    padding: 1rem 1rem;
+   
 }
 
-// products dialog ------------------------
-// from Shoelace https://shoelace.style/
+  // Media query for responsiveness (less than 768px)
+  @media (max-width: 768px) {
+    .page-content{
+    padding: 6rem 1.5rem;
+    }
+    .fav-container {
+      flex-direction: column; // Stack elements vertically
+      align-items: flex-start; // Align items to the left
+    }
 
-.product-dialog {
-  --width: 70%;
+    li {
+      flex-direction: column; // Stack text and button vertically
+      align-items: flex-start; // Align text and button to the left
+    }
+
+    .edit-btn {
+      padding: 1rem 0 2rem;
+      margin:0; // Adds some space between the text and button
+      width: 100%; // Make the button take full width
+    }
+  }
+  @media (max-width: 400px) {
+  .bookmarks-page .favourites-grid {
+  padding: 1.8rem;
+}  
+.bookmark-item{
+  padding:1rem;
 }
-
-.product-dialog::part(body) {
-  margin: -4em;
+  }
 }
-
-// products and orders checkout red button ----------
-
-.red-btn::part(base) {
-  color: var(--sl-color-brand);
-  background: red;
-}
-
-.red-btn::part(base):hover {
-  color: var(--sl-color-brand);
-  background: rgba(186, 78, 78, 0.1);
-}
-
-.red-btn::part(base):active {
-  background: rgba(213, 82, 59, 0.2);
-}
-
-
-// orders page --------------------------------------------------------------------------------
-
-.order-list {
-  display: flex;
-  flex-direction: column 3;
-  justify-content: left;
-  gap: 3em;
-}
-
-.orders-container {
-  display: wrap;
-  align-content: left;
-  margin: 3em;
-}
-
-.prev-orders-btn-set {
-  display: flex;
-  justify-items: flex-start;
-  gap: 30px;
-}
-
-.order-btn {
-  position: absolute;
-  top: 40%;
-  left: 45%;
-}
-
-
-// favourites page ---------------------------------------------------------------------------
-
-.fav-container {
-  padding-top: 2rem;
-  margin: 3em;
-}
-
-
-.fav-list {
-  display: flex;
-  flex-direction: column 3;
-  justify-content: left;
-  gap: 3em;
-}
-
-
-// new products page -------------------------------------------------------------------------
-
-.new-product-page-container {
-  margin: 3em;
-}
-
-
 // about page ----------------------------------------------------------------------------
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  margin: 0 auto;
+  padding: 3rem;
+
+  article {
+    flex: 1; // Makes each article take equal width
+    min-width: 280px; // Ensures each section has a minimum width
+  }
+
+  .how-to-get-here {
+    width: 100%; // Makes it full width
+
+    iframe {
+      width: 100%; // Ensures the iframe fills the width of its container
+      height: 450px; // Set a fixed height for the iframe
+      border: 0; // Optional, to remove iframe border
+    }
+  }
+}
 
 // Responsive layouts ------------------------------------------------- 
 // makes a one column layout instead of a two-column layout
@@ -575,30 +562,6 @@ sl-details::part(base) {
 }
 
 
-.about-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 3rem;
-  margin: 0 auto;
-  padding: 3rem;
-
-  article {
-    flex: 1; // Makes each article take equal width
-    min-width: 280px; // Ensures each section has a minimum width
-  }
-
-  .how-to-get-here {
-    width: 100%; // Makes it full width
-    margin-top: 40px; // Adds spacing between the rows
-
-    iframe {
-      width: 100%; // Ensures the iframe fills the width of its container
-      height: 450px; // Set a fixed height for the iframe
-      border: 0; // Optional, to remove iframe border
-    }
-  }
-}
 
 // Color customization for headings
 .our-mission h2 {
@@ -643,6 +606,7 @@ sl-details::part(base) {
   .about-content article {
     flex: 1 1 100%; // Makes each article take full width and stack them
     margin-bottom: 2rem; // Adds space between stacked articles
+    align-items: center; // Centers the content in each article
   }
 
   .how-to-get-here iframe {
@@ -695,18 +659,3 @@ sl-details::part(base) {
   }
 }
 
-//profile page responsive design
-@media (max-width: 767px) {
-  .profile-left {
-    p {
-      font-size: 1rem;
-      color: white;
-    }
-    flex-direction: column;
- 
-
-  .profile-right {
-    display: none;
-  }
-  }
-}

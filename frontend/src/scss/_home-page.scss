@@ -27,7 +27,7 @@
 
     h1 {
       margin-right: 10rem;
-      color: #6D83F2;
+      color: #496ad0;
       font-size: 2.5rem; // Adjust size to be responsive
       text-align: left;
       z-index: 2;
@@ -50,6 +50,7 @@
 
   //bottom section of home page
   .secondary-content {
+      margin-bottom: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -210,17 +211,6 @@
         width: 100%;
       }
 
-      sl-button {
-        width: 100%;
-      }
-
-      sl-button::part(base) {
-        font-size: 1rem;
-        padding: 1rem 3rem;
-        width: 100%;
-        display: block;
-        text-align: center;
-      }
     }
   }
 }

@@ -4,8 +4,14 @@
 sl-dialog::part(title){
   font-weight: 500;
   font-size: 1.6em;
+  margin: 1.5rem 1.5rem 0.7rem;
 }
-
+sl-dialog::part(body){
+flex: 1 1 auto;
+padding-top: 0;
+margin: 0 1.5rem;
+overflow: auto;
+}
 
 // RESPONSIVE - MOBILE -------------------
 @media all and (max-width: 768px){ 

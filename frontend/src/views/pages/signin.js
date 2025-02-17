@@ -60,7 +60,7 @@ class SignInView {
                         <div class="input-group">
                             <sl-input size="large" pill style="padding-bottom: 4em;" name="password" type="password" placeholder="Password" required toggle-password></sl-input>
                         </div>
-                        <sl-button size="large" pill class="submit-btn" type="primary" submit style="width: 100%;">LOG IN</sl-button>
+                        <sl-button size="large" pill class="submit-btn edit-btn" type="primary" submit style="width: 100%;">LOG IN</sl-button>
                     </sl-form>
                     <p><br>Don&apos;t have an account?</br> <a href="/signup" @click=${anchorRoute}>Sign up</a></p>
             </div>

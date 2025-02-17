@@ -391,7 +391,7 @@ async fetchArticle(id) {
                           >`
                         : ''
                       }
-                    <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <sl-dialog class="edit-btn" label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                       ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
                     </div>
