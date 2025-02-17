@@ -51,6 +51,7 @@ class EditProfileView {
       Auth.currentUser = updatedUser;
       this.render();
       Toast.show('Profile Updated');
+      gotoRoute('/profile');
     }catch(err){      
       Toast.show(err, 'error');
     }
