@@ -33,7 +33,7 @@ a {
   background-color: #F4D35E;
   border-color: #F4D35E;
   color: #000000;
-  border-radius: 16px;
+  border-radius: 30px;
   margin:10px 0;
 }
 
@@ -41,7 +41,7 @@ a {
 background-color: #e5c654;
 border-color: #e5c654;
 color: #000000;
-border-radius: 16px;
+border-radius: 30px;
 margin:10px 0;
 }
 
@@ -222,7 +222,7 @@ sl-details::part(base) {
 
 .guide-page{
   padding: 5rem 2rem;
-  background: var( --background-extra-pges);
+  background: var(--background-extra-page);
 }
 .guide-step {
   padding: 1em;
