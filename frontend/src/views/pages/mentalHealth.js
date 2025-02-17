@@ -14,6 +14,7 @@ class mentalHealthView {
 
  render() {
     const template = html`
+    <div class="mental-health-page">
       ${Auth.isLoggedIn() ? 
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`
@@ -46,7 +47,8 @@ class mentalHealthView {
             </div>
        </section>
 
-      </div>  
+      </div> 
+    </div> 
     `;
 
     render(template, App.rootEl);

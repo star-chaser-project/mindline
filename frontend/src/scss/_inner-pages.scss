@@ -1,5 +1,25 @@
 @use 'vars' as *;
 
+//header in diffrent pages colors change
+.about-page {
+  --app-header-bg-color: #83c670;  
+  background-color: var(--app-header-bg-color);
+}
+.resources-page {
+  --app-header-bg-color: #b878d1;
+  background-color: var(--app-header-bg-color);
+}
+.mental-health-page {
+  --app-header-bg-color: #6a89e7;  
+  background-color: var(--app-header-bg-color);
+}
+.mindfulness-page {
+  --app-header-bg-color: #39acf4;  
+  background-color: var(--app-header-bg-color);
+}
+
+
+
 /// Inner pages
 .inner-wrap{
 .banner {
@@ -34,6 +54,7 @@
     padding-top: 6rem; // Adjust this to create space from the top 
    
     .banner-text {
+      padding-top: 3rem;
       text-align: left;
     }
  }
@@ -131,10 +152,15 @@ sl-button:active::part(base) {
     background-size: contain;
    
     }
+    picture{
+    padding-top: 4rem;
+  }
  }
 
 //about----------------------------------------------------------------------------------
 .about{
+
+
 .grphics {
     background: url('../../static/images/about/about-bg-graphics.svg') no-repeat center center;
     background-size: 100%;
@@ -142,6 +168,31 @@ sl-button:active::part(base) {
     margin-top: 3rem;
   }
   
+}
+
+.about-content {
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  margin: 0 auto;
+  padding: 3rem;
+
+  article {
+    flex: 1; // Makes each article take equal width
+    min-width: 280px; // Ensures each section has a minimum width
+  }
+
+  .how-to-get-here {
+    width: 100%; // Makes it full width
+
+    iframe {
+      width: 100%; // Ensures the iframe fills the width of its container
+      height: 450px; // Set a fixed height for the iframe
+      border: 0; // Optional, to remove iframe border
+    }
+  }
 }
 // Resources----------------------------------------------------------------------------------
 
@@ -314,7 +365,7 @@ img {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding-top: 4rem;        
+    padding-top: 2rem;        
     background-size: cover;
   }
 
