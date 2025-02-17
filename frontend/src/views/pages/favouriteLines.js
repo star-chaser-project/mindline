@@ -118,36 +118,38 @@ class FavouriteLinesView {
     console.log('User bookmarks:', Array.from(this.userBookmarks));
     const template = html`
       <va-app-header user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
-      <div class="page-content favourites-page">   
-        <div class="fav-container"> 
-          <h1>Bookmarks</h1>     
-        </div> 
-        <div class="favourites-grid">
-          ${this.userBookmarks.size === 0 
-            ? html`<p>No bookmarks added</p>` 
-            : html`
-              ${this.articles.size > 0 
-                ? html`
-                  <ul>
-                    ${Array.from(this.articles.values()).map(article => html`
-                      <li style="display: flex; align-items: center; justify-content: space-between;">
-                        <div class="bookmark-item" @click="${() => this.openArticleDialog(article)}">
-                          <h3>${article.title}</h3>
-                          <p>
-                            ${article.bodyContent ? article.bodyContent.substring(0, 100) + '...' : ''}
-                          </p>
-                        </div>
-                        <sl-button variant="primary" @click="${(e) => this.removeBookmark(e, article._id)}">
-                          Remove Bookmark
-                        </sl-button>
-                      </li>
-                    `)}
-                  </ul>
-                `
-                : html`<p>Loading bookmarks...</p>`
-              }
-            `
-          }
+      <div class="bookmarks-page">
+        <div class="page-content favourites-page">   
+          <div class="fav-container"> 
+            <h1>Bookmarks</h1>     
+          </div> 
+          <div class="favourites-grid">
+            ${this.userBookmarks.size === 0 
+              ? html`<p>No bookmarks added</p>` 
+              : html`
+                ${this.articles.size > 0 
+                  ? html`
+                    <ul>
+                      ${Array.from(this.articles.values()).map(article => html`
+                        <li style="display: flex; align-items: center; justify-content: space-between;">
+                          <div class="bookmark-item" @click="${() => this.openArticleDialog(article)}">
+                            <h3>${article.title}</h3>
+                            <p>
+                              ${article.bodyContent ? article.bodyContent.substring(0, 100) + '...' : ''}
+                            </p>
+                          </div>
+                          <sl-button class="edit-btn"  @click="${(e) => this.removeBookmark(e, article._id)}">
+                            Remove Bookmark
+                          </sl-button>
+                        </li>
+                      `)}
+                    </ul>
+                  `
+                  : html`<p>Loading bookmarks...</p>`
+                }
+              `
+            }
+          </div>
         </div>
       </div>
     `;

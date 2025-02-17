@@ -44,7 +44,7 @@ class ProfileView {
         </div>
 
         <!-- Right Section -->
-        <div class="profile-right">
+        <div class="profile-right" >
           <h1>Hi ${Auth.currentUser.firstName}</h1>
           <p>All about you</p>
         </div>
