@@ -73,9 +73,10 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
     * {
         box-sizing: border-box;
     }
-    
+  
     .app-header {
-        background: transparent;
+        background-color: var(--app-header-bg-color);
+        backdrop-filter: blur(15px);
         position: fixed;
         top: 0;
         right: 0;
@@ -87,7 +88,6 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.2);
         align-items: center;
     }
-    
     .app-header-main {
         flex-grow: 1;
         display: flex;
