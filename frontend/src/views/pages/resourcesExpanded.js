@@ -3,7 +3,8 @@ import {html, render } from 'lit-html'
 import {gotoRoute, anchorRoute} from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
-import Toast from '../../Toast';
+import Toast from '../../Toast'
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 
  // Image adapted from Canva – Accessed on December 18, 2024
 class resourcesExpandedView {

@@ -3,8 +3,8 @@ import { html, render } from 'lit-html'
 import { gotoRoute, anchorRoute } from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
-import Toast from '../../Toast';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import Toast from '../../Toast'
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 
 class mindfulnessExpandedView {
   constructor() {
@@ -57,35 +57,35 @@ class mindfulnessExpandedView {
     document.title = 'Mindfulness Expanded';
     this.articleIds = {
       // Meditation articles
-      what: '679dd9db640ec34e3c22a2a1',
-      why: '679ddae8640ec34e3c22a2a2',
-      benefits: '679ddd11640ec34e3c22a2a4',
-      guided: '679ddf6e640ec34e3c22a2a5',
-      practices: '679de245640ec34e3c22a2a7',
-      practices_2: '679de3f7640ec34e3c22a2a8',
-      practices_3: '679de47f640ec34e3c22a2a9',
-      questions: '679deda0640ec34e3c22a2b9',
-      tips: '679ddb6f640ec34e3c22a2a3',
+      what: '679dd9db640ec34e3c22a2a1', // What is Meditation
+      why: '679ddae8640ec34e3c22a2a2', // Why Meditate
+      benefits: '679ddd11640ec34e3c22a2a4', // Mental Health Benefits of Meditation
+      guided: '679ddf6e640ec34e3c22a2a5', // Guided Meditation
+      practices: '679de245640ec34e3c22a2a7', //  Meditation Practices - Walking It audio + other audio info
+      practices_2: '679de3f7640ec34e3c22a2a8', // Time out audio 
+      practices_3: '679de47f640ec34e3c22a2a9', // Candle gazing audio
+      questions: '679deda0640ec34e3c22a2b9', // FAQs About Meditation
+      tips: '679ddb6f640ec34e3c22a2a3', // Tips When to Meditate
 
       // Breathing articles
-      why_breath: '67ab274607163965f66e57f7',
-      how_breath: '67ab40c807163965f66e57fa',
-      benefits_breath: '67ab38cf07163965f66e57f9',
-      practices_breath: '679b567904f7c1b1216d5410',
-      practices_breath_2: '679dc065640ec34e3c22a28a',
-      seek_breath: '679dcac3640ec34e3c22a291',
-      questions_breath: '67ab47da07163965f66e57fc',
-      tips_breath: '67ab44b707163965f66e57fb',
+      why_breath: '67ab274607163965f66e57f7', // Why is Motivation Important
+      how_breath: '67ab40c807163965f66e57fa', // How Does Breathing Consciously help
+      benefits_breath: '67ab38cf07163965f66e57f9', // Benefits of Breath Awareness
+      practices_breath: '679b567904f7c1b1216d5410', // Breathing Techniques - Three Part Breathing audio + other audio info
+      practices_breath_2: '679dc065640ec34e3c22a28a', // Alternate Nostril Breathing audio
+      seek_breath: '67b09b9ae84a5c439b2b52dc', // Next Steps to Keep Going
+      questions_breath: '67ab47da07163965f66e57fc', // Common Questions About Breathing Techniques
+      tips_breath: '67ab44b707163965f66e57fb', // Breath Awareness Tips
 
       // Motivation articles
-      why_mot: '679de5c7640ec34e3c22a2ab',
-      ways_mot: '679de645640ec34e3c22a2ac',
-      how_mot: '679dea10640ec34e3c22a2af',
-      how_mot_2: '679dea63640ec34e3c22a2b0',
-      practices_mot: '679dc9da640ec34e3c22a290',
-      practices_mot_2: '679de97c640ec34e3c22a2ae',
-      what_mot: '679deb6c640ec34e3c22a2b3',
-      tips_mot: '679debbe640ec34e3c22a2b4'
+      why_mot: '679de5c7640ec34e3c22a2ab', // Why is Motivation Important
+      ways_mot: '679de645640ec34e3c22a2ac', // Ways to Gain Motivation
+      how_mot: '679dea10640ec34e3c22a2af', // How To Get Motivated
+      how_mot_2: '679dea63640ec34e3c22a2b0', // How to Stay on Track
+      practices_mot: '679de7b5640ec34e3c22a2ad', // Movtivational Practices - Sunshine audio & other audio info 
+      practices_mot_2: '679de97c640ec34e3c22a2ae', // Reset & Go audio
+      what_mot: '679deb6c640ec34e3c22a2b3', // What to do if You Lose Motivation
+      tips_mot: '679debbe640ec34e3c22a2b4' // Still Putting Things Off?
     };
 
     try {
@@ -247,7 +247,9 @@ class mindfulnessExpandedView {
                          }
                          <sl-dialog label="${this.articles.get('what')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                            <div style="white-space: pre-line;">
-                           ${this.articles.get('what')?.bodyContent || 'Loading content...'}
+                           ${this.articles.get('what')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('what')?.bodyContent)}`
+                              : 'Loading content...'}
                            </div>
                            <sl-button slot="footer" variant="primary" 
                              @click=${(e) => {
@@ -397,8 +399,8 @@ class mindfulnessExpandedView {
                        <div class="questions-med" @click=${this.openDialog}>
                        <img src="/images/mindfulness/meditation/meditation-common-questions.webp" class="seek-img">
      
-                       <p>${this.articles.get('seek')?.title || 'Loading...'}</p>
-                           ${this.userBookmarks && this.articles.get('seek') && this.userBookmarks.has(this.articles.get('seek')._id)
+                       <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
+                           ${this.userBookmarks && this.articles.get('questionsk') && this.userBookmarks.has(this.articles.get('seek')._id)
                              ? html`
                                <img 
                                  src="/images/bookmark/bookmark-full.svg" 
@@ -407,17 +409,17 @@ class mindfulnessExpandedView {
                                >`
                              : ''
                            }
-                         <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                         <sl-dialog label="${this.articles.get('questions')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
+                           ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
                          </div>
                          <sl-button slot="footer" variant="primary" 
                              @click=${(e) => {
-                               const articleId = this.articles.get('seek')?._id;
+                               const articleId = this.articles.get('questions')?._id;
                                console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}>
-                             ${this.userBookmarks.has(this.articles.get('seek')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                             ${this.userBookmarks.has(this.articles.get('questions')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                            </sl-button>
                          <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
