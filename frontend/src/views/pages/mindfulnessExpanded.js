@@ -251,15 +251,15 @@ class mindfulnessExpandedView {
                               ? html`${unsafeHTML(this.articles.get('what')?.bodyContent)}`
                               : 'Loading content...'}
                            </div>
-                           <sl-button slot="footer" variant="primary" 
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('what')?._id;
                                console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}>
                              ${this.userBookmarks.has(this.articles.get('what')?._id) ? 'Remove Bookmark' : 'Bookmark'}
-                           </sl-button>
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           </sl-button class="edit-btn hydrated">
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                          </sl-dialog>
                        </div>
                        
@@ -281,7 +281,7 @@ class mindfulnessExpandedView {
                            ${this.articles.get('why')?.bodyContent || 'Loading content...'}
                          </div>
      
-                           <sl-button slot="footer" variant="primary" 
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('why')?._id;
                                console.log("Bookmarking article ID:", articleId);
@@ -289,7 +289,7 @@ class mindfulnessExpandedView {
                              }}>
                              ${this.userBookmarks.has(this.articles.get('why')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                            </sl-button>
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="benefit-med" @click=${this.openDialog}>
@@ -308,7 +308,7 @@ class mindfulnessExpandedView {
                          <div style="white-space: pre-line;">
                            ${this.articles.get('benefits')?.bodyContent || 'Loading content...'}
                          </div>
-                         <sl-button slot="footer" variant="primary" 
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                            @click=${(e) => {
                              const articleId = this.articles.get('benefits')?._id;
                              console.log("Bookmarking article ID:", articleId);
@@ -316,7 +316,7 @@ class mindfulnessExpandedView {
                            }}>
                            ${this.userBookmarks.has(this.articles.get('benefits')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
                      
@@ -337,7 +337,7 @@ class mindfulnessExpandedView {
                          <div style="white-space: pre-line;">
                            ${this.articles.get('guided')?.bodyContent || 'Loading content...'}
                          </div>
-                         <sl-button slot="footer" variant="primary" 
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                            @click=${(e) => {
                              const articleId = this.articles.get('guided')?._id;
                              console.log("Bookmarking article ID:", articleId);
@@ -345,7 +345,7 @@ class mindfulnessExpandedView {
                            }}>
                            ${this.userBookmarks.has(this.articles.get('guided')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="guided-med" @click=${this.openDialog}>
@@ -384,7 +384,7 @@ class mindfulnessExpandedView {
                                 }
                               </div>
                           </div>
-                         <sl-button slot="footer" variant="primary" 
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('practices')?._id;
                                console.log("Bookmarking article ID:", articleId);
@@ -393,7 +393,7 @@ class mindfulnessExpandedView {
                              ${this.userBookmarks.has(this.articles.get('practices')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                            </sl-button>
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
                        <div class="questions-med" @click=${this.openDialog}>
@@ -413,7 +413,7 @@ class mindfulnessExpandedView {
                          <div style="white-space: pre-line;">
                            ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
                          </div>
-                         <sl-button slot="footer" variant="primary" 
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('questions')?._id;
                                console.log("Bookmarking article ID:", articleId);
@@ -421,7 +421,7 @@ class mindfulnessExpandedView {
                              }}>
                              ${this.userBookmarks.has(this.articles.get('questions')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                            </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="tips-med" @click=${this.openDialog}>
@@ -440,7 +440,7 @@ class mindfulnessExpandedView {
                          <div style="white-space: pre-line;">
                            ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
                          </div>
-                         <sl-button slot="footer" variant="primary" 
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                            @click=${(e) => {
                              const articleId = this.articles.get('questions')?._id;
                              console.log("Bookmarking article ID:", articleId);
@@ -448,7 +448,7 @@ class mindfulnessExpandedView {
                            }}>
                            ${this.userBookmarks.has(this.articles.get('questions')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      </div>
                    </sl-tab-panel>
@@ -477,7 +477,7 @@ class mindfulnessExpandedView {
                            <div style="white-space: pre-line;">
                              ${this.articles.get('why_breath')?.bodyContent || 'Loading content...'}
                            </div>
-                           <sl-button slot="footer" variant="primary" 
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                            @click=${(e) => {
                              const articleId = this.articles.get('why_breath')?._id;
                              console.log("Bookmarking article ID:", articleId);
@@ -485,7 +485,7 @@ class mindfulnessExpandedView {
                            }}>
                            ${this.userBookmarks.has(this.articles.get('why_breath')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                          </sl-button>
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                          </sl-dialog>
                        </div>
      
@@ -506,7 +506,7 @@ class mindfulnessExpandedView {
                          <div style="white-space: pre-line;">
                            ${this.articles.get('how_breath')?.bodyContent || 'Loading content...'}
                          </div>
-                           <sl-button
+                           <sl-button class="edit-btn hydrated"
                                slot="footer"
                                variant="primary"
                                @click=${(e) => {
@@ -521,7 +521,7 @@ class mindfulnessExpandedView {
                                }
                              </sl-button>
      
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="benefit-med" @click=${this.openDialog}>
@@ -541,7 +541,7 @@ class mindfulnessExpandedView {
                          <div style="white-space: pre-line;">
                            ${this.articles.get('benefits_breath')?.bodyContent || 'Loading content...'}
                          </div>
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
@@ -556,7 +556,7 @@ class mindfulnessExpandedView {
                            }
                          </sl-button>
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
                      
@@ -578,7 +578,7 @@ class mindfulnessExpandedView {
                            ${this.articles.get('seek_breath')?.bodyContent || 'Loading content...'}
                          </div>
      
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
@@ -592,7 +592,7 @@ class mindfulnessExpandedView {
                              : 'Bookmark'
                            }
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="guided-med" @click=${this.openDialog}>
@@ -627,7 +627,7 @@ class mindfulnessExpandedView {
                               </div>
                               
                           </div>
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
@@ -642,7 +642,7 @@ class mindfulnessExpandedView {
                            }
                          </sl-button>
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
                        <div class="questions-med" @click=${this.openDialog}>
@@ -664,7 +664,7 @@ class mindfulnessExpandedView {
                          </div>
      
                          
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
@@ -678,7 +678,7 @@ class mindfulnessExpandedView {
                              : 'Bookmark'
                            }
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="tips-med" @click=${this.openDialog}>
@@ -699,7 +699,7 @@ class mindfulnessExpandedView {
                          <div style="white-space: pre-line;">
                            ${this.articles.get('tips_breath')?.bodyContent || 'Loading content...'}
                          </div>
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
@@ -713,7 +713,7 @@ class mindfulnessExpandedView {
                              : 'Bookmark'
                            }
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      </div>
                    </sl-tab-panel>
@@ -744,7 +744,7 @@ class mindfulnessExpandedView {
                              ${this.articles.get('why_mot')?.bodyContent || 'Loading content...'}
                            </div>
      
-                           <sl-button
+                           <sl-button class="edit-btn hydrated"
                              slot="footer"
                              variant="primary"
                              @click=${(e) => {
@@ -758,7 +758,7 @@ class mindfulnessExpandedView {
                                : 'Bookmark'
                              }
                            </sl-button>
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                          </sl-dialog>
                        </div>
      
@@ -779,7 +779,7 @@ class mindfulnessExpandedView {
                          <div style="white-space: pre-line;">
                            ${this.articles.get('ways_mot')?.bodyContent || 'Loading content...'}
                          </div>
-                           <sl-button
+                           <sl-button class="edit-btn hydrated"
                              slot="footer"
                              variant="primary"
                              @click=${(e) => {
@@ -795,7 +795,7 @@ class mindfulnessExpandedView {
                            </sl-button>
      
      
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="benefit-med" @click=${this.openDialog}>
@@ -817,7 +817,7 @@ class mindfulnessExpandedView {
                            ${this.articles.get('how_mot')?.bodyContent || 'Loading content...'}
                          </div>
                     
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
@@ -832,7 +832,7 @@ class mindfulnessExpandedView {
                            }
                          </sl-button>
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
                      
@@ -854,7 +854,7 @@ class mindfulnessExpandedView {
                          <div style="white-space: pre-line;">
                            ${this.articles.get('how_mot_2')?.bodyContent || 'Loading content...'}
                          </div>
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
@@ -870,7 +870,7 @@ class mindfulnessExpandedView {
                          </sl-button>
      
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="guided-med" @click=${this.openDialog}>
@@ -900,7 +900,7 @@ class mindfulnessExpandedView {
                               </div>
                               
                           </div>
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
@@ -915,7 +915,7 @@ class mindfulnessExpandedView {
                            }
                          </sl-button>
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
                        <div class="questions-med" @click=${this.openDialog}>
@@ -935,7 +935,7 @@ class mindfulnessExpandedView {
                            <div style="white-space: pre-line;">
                              ${this.articles.get('what_mot')?.bodyContent || 'Loading content...'}
                            </div>
-                           <sl-button
+                           <sl-button class="edit-btn hydrated"
                              slot="footer"
                              variant="primary"
                              @click=${(e) => {
@@ -949,7 +949,7 @@ class mindfulnessExpandedView {
                                : 'Bookmark'
                              }
                            </sl-button>
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="tips-med" @click=${this.openDialog}>
@@ -968,7 +968,7 @@ class mindfulnessExpandedView {
                            <div style="white-space: pre-line;">
                              ${this.articles.get('tips_mot')?.bodyContent || 'Loading content...'}
                            </div>
-                           <sl-button
+                           <sl-button class="edit-btn hydrated"
                              slot="footer"
                              variant="primary"
                              @click=${(e) => {
@@ -983,7 +983,7 @@ class mindfulnessExpandedView {
                              }
                            </sl-button>
      
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      </div>
                    </sl-tab-panel>

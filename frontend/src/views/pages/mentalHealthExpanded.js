@@ -248,7 +248,7 @@ async fetchArticle(id) {
                       <div style="white-space: pre-line;">
                       ${this.articles.get('why')?.bodyContent || 'Loading content...'}
                       </div>
-                      <sl-button slot="footer" variant="primary" 
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('why')?._id;
                           console.log("Bookmarking article ID:", articleId);
@@ -256,7 +256,7 @@ async fetchArticle(id) {
                         }}>
                         ${this.userBookmarks.has(this.articles.get('why')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                       </sl-button>
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
                   
@@ -279,7 +279,7 @@ async fetchArticle(id) {
                       ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
                     </div>
 
-                      <sl-button slot="footer" variant="primary" 
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('deal')?._id;
                           console.log("Bookmarking article ID:", articleId);
@@ -287,7 +287,7 @@ async fetchArticle(id) {
                         }}>
                         ${this.userBookmarks.has(this.articles.get('deal')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                       </sl-button>
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="signs signs-stress" @click=${this.openDialog}>
@@ -307,7 +307,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('signs')?.bodyContent || 'Loading content...'}
                     </div>
-                    <sl-button slot="footer" variant="primary" 
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('signs')?._id;
                         console.log("Bookmarking article ID:", articleId);
@@ -315,7 +315,7 @@ async fetchArticle(id) {
                       }}>
                       ${this.userBookmarks.has(this.articles.get('signs')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                     </sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                 
@@ -337,7 +337,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('triggers')?.bodyContent || 'Loading content...'}
                     </div>
-                    <sl-button slot="footer" variant="primary" 
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('triggers')?._id;
                         console.log("Bookmarking article ID:", articleId);
@@ -345,7 +345,7 @@ async fetchArticle(id) {
                       }}>
                       ${this.userBookmarks.has(this.articles.get('triggers')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                     </sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="practices practices-stress" @click=${this.openDialog}>
@@ -365,7 +365,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
                     </div>
-                    <sl-button slot="footer" variant="primary" 
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('practices')?._id;
                           console.log("Bookmarking article ID:", articleId);
@@ -374,7 +374,7 @@ async fetchArticle(id) {
                         ${this.userBookmarks.has(this.articles.get('practices')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                       </sl-button>
 
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                   <div class="seek seek-stress" @click=${this.openDialog}>
@@ -395,7 +395,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
                     </div>
-                    <sl-button slot="footer" variant="primary" 
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('seek')?._id;
                           console.log("Bookmarking article ID:", articleId);
@@ -403,7 +403,7 @@ async fetchArticle(id) {
                         }}>
                         ${this.userBookmarks.has(this.articles.get('seek')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                       </sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="questions" @click=${this.openDialog}>
@@ -423,7 +423,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
                     </div>
-                    <sl-button slot="footer" variant="primary" 
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('questions')?._id;
                         console.log("Bookmarking article ID:", articleId);
@@ -431,7 +431,7 @@ async fetchArticle(id) {
                       }}>
                       ${this.userBookmarks.has(this.articles.get('questions')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                     </sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 </div>
               </sl-tab-panel>
@@ -462,7 +462,7 @@ async fetchArticle(id) {
                       <div style="white-space: pre-line;">
                         ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
                       </div>
-                      <sl-button slot="footer" variant="primary" 
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('why_anxiety')?._id;
                         console.log("Bookmarking article ID:", articleId);
@@ -470,7 +470,7 @@ async fetchArticle(id) {
                       }}>
                       ${this.userBookmarks.has(this.articles.get('why_anxiety')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                     </sl-button>
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
 
@@ -492,7 +492,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('deal_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
-                      <sl-button
+                      <sl-button class="edit-btn hydrated"
                           slot="footer"
                           variant="primary"
                           @click=${(e) => {
@@ -507,7 +507,7 @@ async fetchArticle(id) {
                           }
                         </sl-button>
 
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="signs signs-anxiety" @click=${this.openDialog}>
@@ -528,7 +528,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('signs_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
-                    <sl-button
+                    <sl-button class="edit-btn hydrated"
                       slot="footer"
                       variant="primary"
                       @click=${(e) => {
@@ -543,7 +543,7 @@ async fetchArticle(id) {
                       }
                     </sl-button>
 
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                 
@@ -566,7 +566,7 @@ async fetchArticle(id) {
                       ${this.articles.get('triggers_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
 
-                    <sl-button
+                    <sl-button class="edit-btn hydrated"
                       slot="footer"
                       variant="primary"
                       @click=${(e) => {
@@ -580,7 +580,7 @@ async fetchArticle(id) {
                         : 'Bookmark'
                       }
                     </sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="practices practices-anxiety" @click=${this.openDialog}>
@@ -601,7 +601,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('practices_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
-                    <sl-button
+                    <sl-button class="edit-btn hydrated"
                       slot="footer"
                       variant="primary"
                       @click=${(e) => {
@@ -616,7 +616,7 @@ async fetchArticle(id) {
                       }
                     </sl-button>
 
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                   <div class="seek seek-anxiety" @click=${this.openDialog}>
@@ -639,7 +639,7 @@ async fetchArticle(id) {
                     </div>
 
                     
-                    <sl-button
+                    <sl-button class="edit-btn hydrated"
                       slot="footer"
                       variant="primary"
                       @click=${(e) => {
@@ -653,7 +653,7 @@ async fetchArticle(id) {
                         : 'Bookmark'
                       }
                     </sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="questions questions-anxiety" @click=${this.openDialog}>
@@ -675,7 +675,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('questions_anxiety')?.bodyContent || 'Loading content...'}
                     </div>
-                    <sl-button
+                    <sl-button class="edit-btn hydrated"
                       slot="footer"
                       variant="primary"
                       @click=${(e) => {
@@ -689,7 +689,7 @@ async fetchArticle(id) {
                         : 'Bookmark'
                       }
                     </sl-button>
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 </div>
               </sl-tab-panel>
@@ -721,7 +721,7 @@ async fetchArticle(id) {
                         ${this.articles.get('why_depression')?.bodyContent || 'Loading content...'}
                       </div>
 
-                      <sl-button
+                      <sl-button class="edit-btn hydrated"
                         slot="footer"
                         variant="primary"
                         @click=${(e) => {
@@ -735,7 +735,7 @@ async fetchArticle(id) {
                           : 'Bookmark'
                         }
                       </sl-button>
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
                   </div>
 
@@ -757,7 +757,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('deal_depression')?.bodyContent || 'Loading content...'}
                     </div>
-                      <sl-button
+                      <sl-button class="edit-btn hydrated"
                         slot="footer"
                         variant="primary"
                         @click=${(e) => {
@@ -773,7 +773,7 @@ async fetchArticle(id) {
                       </sl-button>
 
 
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="signs" @click=${this.openDialog}>
@@ -796,7 +796,7 @@ async fetchArticle(id) {
                       ${this.articles.get('signs_depression')?.bodyContent || 'Loading content...'}
                     </div>
                
-                    <sl-button
+                    <sl-button class="edit-btn hydrated"
                       slot="footer"
                       variant="primary"
                       @click=${(e) => {
@@ -811,7 +811,7 @@ async fetchArticle(id) {
                       }
                     </sl-button>
 
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                 
@@ -834,7 +834,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('triggers_depression')?.bodyContent || 'Loading content...'}
                     </div>
-                    <sl-button
+                    <sl-button class="edit-btn hydrated"
                       slot="footer"
                       variant="primary"
                       @click=${(e) => {
@@ -850,7 +850,7 @@ async fetchArticle(id) {
                     </sl-button>
 
 
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="practices" @click=${this.openDialog}>
@@ -872,7 +872,7 @@ async fetchArticle(id) {
                     <div style="white-space: pre-line;">
                       ${this.articles.get('practices_depression')?.bodyContent || 'Loading content...'}
                     </div>
-                    <sl-button
+                    <sl-button class="edit-btn hydrated"
                       slot="footer"
                       variant="primary"
                       @click=${(e) => {
@@ -887,7 +887,7 @@ async fetchArticle(id) {
                       }
                     </sl-button>
 
-                    <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                    <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
                   <div class="seek" @click=${this.openDialog}>
@@ -908,7 +908,7 @@ async fetchArticle(id) {
                       <div style="white-space: pre-line;">
                         ${this.articles.get('seek_depression')?.bodyContent || 'Loading content...'}
                       </div>
-                      <sl-button
+                      <sl-button class="edit-btn hydrated"
                         slot="footer"
                         variant="primary"
                         @click=${(e) => {
@@ -922,7 +922,7 @@ async fetchArticle(id) {
                           : 'Bookmark'
                         }
                       </sl-button>
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
                   <div class="questions" @click=${this.openDialog}>
@@ -942,7 +942,7 @@ async fetchArticle(id) {
                       <div style="white-space: pre-line;">
                         ${this.articles.get('questions_depression')?.bodyContent || 'Loading content...'}
                       </div>
-                      <sl-button
+                      <sl-button class="edit-btn hydrated"
                         slot="footer"
                         variant="primary"
                         @click=${(e) => {
@@ -957,7 +957,7 @@ async fetchArticle(id) {
                         }
                       </sl-button>
 
-                      <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                      <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 </div>
               </sl-tab-panel>

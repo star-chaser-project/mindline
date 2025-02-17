@@ -245,7 +245,7 @@ class resourcesExpandedView {
                               <div style="white-space: pre-line;">
                               ${this.articles.get('ask')?.bodyContent || 'Loading content...'}
                               </div>
-                              <sl-button slot="footer" variant="primary" 
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                                 @click=${(e) => {
                                   const articleId = this.articles.get('ask')?._id;
                                   console.log("Bookmarking article ID:", articleId);
@@ -253,7 +253,7 @@ class resourcesExpandedView {
                                 }}>
                                 ${this.userBookmarks.has(this.articles.get('ask')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                               </sl-button>
-                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                             </sl-dialog>
                           </div>
                           
@@ -275,7 +275,7 @@ class resourcesExpandedView {
                               ${this.articles.get('talk')?.bodyContent || 'Loading content...'}
                             </div>
         
-                              <sl-button slot="footer" variant="primary" 
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                                 @click=${(e) => {
                                   const articleId = this.articles.get('talk')?._id;
                                   console.log("Bookmarking article ID:", articleId);
@@ -283,7 +283,7 @@ class resourcesExpandedView {
                                 }}>
                                 ${this.userBookmarks.has(this.articles.get('talk')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                               </sl-button>
-                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
         
                           <div class="how_support" @click=${this.openDialog}>
@@ -302,7 +302,7 @@ class resourcesExpandedView {
                             <div style="white-space: pre-line;">
                               ${this.articles.get('how_support')?.bodyContent || 'Loading content...'}
                             </div>
-                            <sl-button slot="footer" variant="primary" 
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
                                 const articleId = this.articles.get('benefits')?._id;
                                 console.log("Bookmarking article ID:", articleId);
@@ -310,7 +310,7 @@ class resourcesExpandedView {
                               }}>
                               ${this.userBookmarks.has(this.articles.get('how_support')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                             </sl-button>
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
                         
                         
@@ -331,7 +331,7 @@ class resourcesExpandedView {
                             <div style="white-space: pre-line;">
                               ${this.articles.get('tips_support')?.bodyContent || 'Loading content...'}
                             </div>
-                            <sl-button slot="footer" variant="primary" 
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
                                 const articleId = this.articles.get('tips_support')?._id;
                                 console.log("Bookmarking article ID:", articleId);
@@ -339,7 +339,7 @@ class resourcesExpandedView {
                               }}>
                               ${this.userBookmarks.has(this.articles.get('tips_support')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                             </sl-button>
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
         
                           <div class="what_support" @click=${this.openDialog}>
@@ -367,7 +367,7 @@ class resourcesExpandedView {
                                  </div>
                                 
                              </div>
-                            <sl-button slot="footer" variant="primary" 
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                                 @click=${(e) => {
                                   const articleId = this.articles.get('what_support')?._id;
                                   console.log("Bookmarking article ID:", articleId);
@@ -376,7 +376,7 @@ class resourcesExpandedView {
                                 ${this.userBookmarks.has(this.articles.get('what_support')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                               </sl-button>
         
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
                         
                           <div class="help_support" @click=${this.openDialog}>
@@ -396,7 +396,7 @@ class resourcesExpandedView {
                             <div style="white-space: pre-line;">
                               ${this.articles.get('help_support')?.bodyContent || 'Loading content...'}
                             </div>
-                            <sl-button slot="footer" variant="primary" 
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                                 @click=${(e) => {
                                   const articleId = this.articles.get('help_support')?._id;
                                   console.log("Bookmarking article ID:", articleId);
@@ -404,7 +404,7 @@ class resourcesExpandedView {
                                 }}>
                                 ${this.userBookmarks.has(this.articles.get('help_support')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                               </sl-button>
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
         
                           <div class="mindset" @click=${this.openDialog}>
@@ -423,7 +423,7 @@ class resourcesExpandedView {
                             <div style="white-space: pre-line;">
                               ${this.articles.get('mindset')?.bodyContent || 'Loading content...'}
                             </div>
-                            <sl-button slot="footer" variant="primary" 
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
                                 const articleId = this.articles.get('mindset')?._id;
                                 console.log("Bookmarking article ID:", articleId);
@@ -431,7 +431,7 @@ class resourcesExpandedView {
                               }}>
                               ${this.userBookmarks.has(this.articles.get('mindset')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                             </sl-button>
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
                         </div>
                       </sl-tab-panel>
@@ -460,7 +460,7 @@ class resourcesExpandedView {
                               <div style="white-space: pre-line;">
                                 ${this.articles.get('crisis')?.bodyContent || 'Loading content...'}
                               </div>
-                              <sl-button slot="footer" variant="primary" 
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
                                 const articleId = this.articles.get('crisis')?._id;
                                 console.log("Bookmarking article ID:", articleId);
@@ -468,7 +468,7 @@ class resourcesExpandedView {
                               }}>
                               ${this.userBookmarks.has(this.articles.get('crisis')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                             </sl-button>
-                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                             </sl-dialog>
                           </div>
         
@@ -489,7 +489,7 @@ class resourcesExpandedView {
                             <div style="white-space: pre-line;">
                               ${this.articles.get('kids')?.bodyContent || 'Loading content...'}
                             </div>
-                              <sl-button
+                              <sl-button class="edit-btn hydrated"
                                   slot="footer"
                                   variant="primary"
                                   @click=${(e) => {
@@ -504,7 +504,7 @@ class resourcesExpandedView {
                                   }
                                 </sl-button>
         
-                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
         
                           <div class="how_support" @click=${this.openDialog}>
@@ -524,7 +524,7 @@ class resourcesExpandedView {
                             <div style="white-space: pre-line;">
                               ${this.articles.get('mental_serv')?.bodyContent || 'Loading content...'}
                             </div>
-                            <sl-button
+                            <sl-button class="edit-btn hydrated"
                               slot="footer"
                               variant="primary"
                               @click=${(e) => {
@@ -539,7 +539,7 @@ class resourcesExpandedView {
                               }
                             </sl-button>
         
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
                         
                         
@@ -561,7 +561,7 @@ class resourcesExpandedView {
                               ${this.articles.get('counsel')?.bodyContent || 'Loading content...'}
                             </div>
         
-                            <sl-button
+                            <sl-button class="edit-btn hydrated"
                               slot="footer"
                               variant="primary"
                               @click=${(e) => {
@@ -575,7 +575,7 @@ class resourcesExpandedView {
                                 : 'Bookmark'
                               }
                             </sl-button>
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
         
                           <div class="what_support" @click=${this.openDialog}>
@@ -610,7 +610,7 @@ class resourcesExpandedView {
                                  </div>
                                  
                              </div>
-                            <sl-button
+                            <sl-button class="edit-btn hydrated"
                               slot="footer"
                               variant="primary"
                               @click=${(e) => {
@@ -625,7 +625,7 @@ class resourcesExpandedView {
                               }
                             </sl-button>
         
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
                         
                           <div class="help_support" @click=${this.openDialog}>
@@ -647,7 +647,7 @@ class resourcesExpandedView {
                             </div>
         
                             
-                            <sl-button
+                            <sl-button class="edit-btn hydrated"
                               slot="footer"
                               variant="primary"
                               @click=${(e) => {
@@ -661,7 +661,7 @@ class resourcesExpandedView {
                                 : 'Bookmark'
                               }
                             </sl-button>
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
         
                           <div class="mindset" @click=${this.openDialog}>
@@ -682,7 +682,7 @@ class resourcesExpandedView {
                             <div style="white-space: pre-line;">
                               ${this.articles.get('help_serv')?.bodyContent || 'Loading content...'}
                             </div>
-                            <sl-button
+                            <sl-button class="edit-btn hydrated"
                               slot="footer"
                               variant="primary"
                               @click=${(e) => {
@@ -696,7 +696,7 @@ class resourcesExpandedView {
                                 : 'Bookmark'
                               }
                             </sl-button>
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
                         </div>
                       </sl-tab-panel>
@@ -727,7 +727,7 @@ class resourcesExpandedView {
                                 ${this.articles.get('mental_guides')?.bodyContent || 'Loading content...'}
                               </div>
         
-                              <sl-button
+                              <sl-button class="edit-btn hydrated"
                                 slot="footer"
                                 variant="primary"
                                 @click=${(e) => {
@@ -741,7 +741,7 @@ class resourcesExpandedView {
                                   : 'Bookmark'
                                 }
                               </sl-button>
-                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                             </sl-dialog>
                           </div>
         
@@ -762,7 +762,7 @@ class resourcesExpandedView {
                             <div style="white-space: pre-line;">
                               ${this.articles.get('digital')?.bodyContent || 'Loading content...'}
                             </div>
-                              <sl-button
+                              <sl-button class="edit-btn hydrated"
                                 slot="footer"
                                 variant="primary"
                                 @click=${(e) => {
@@ -778,7 +778,7 @@ class resourcesExpandedView {
                               </sl-button>
         
         
-                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
         
                           <div class="how_support" @click=${this.openDialog}>
@@ -800,7 +800,7 @@ class resourcesExpandedView {
                               ${this.articles.get('parent')?.bodyContent || 'Loading content...'}
                             </div>
                        
-                            <sl-button
+                            <sl-button class="edit-btn hydrated"
                               slot="footer"
                               variant="primary"
                               @click=${(e) => {
@@ -815,7 +815,7 @@ class resourcesExpandedView {
                               }
                             </sl-button>
         
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
                         
                         
@@ -837,7 +837,7 @@ class resourcesExpandedView {
                             <div style="white-space: pre-line;">
                               ${this.articles.get('depression_guides')?.bodyContent || 'Loading content...'}
                             </div>
-                            <sl-button
+                            <sl-button class="edit-btn hydrated"
                               slot="footer"
                               variant="primary"
                               @click=${(e) => {
@@ -853,7 +853,7 @@ class resourcesExpandedView {
                             </sl-button>
         
         
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
         
                           <div class="what_support" @click=${this.openDialog}>
@@ -874,7 +874,7 @@ class resourcesExpandedView {
                             <div style="white-space: pre-line;">
                               ${this.articles.get('self')?.bodyContent || 'Loading content...'}
                             </div>
-                            <sl-button
+                            <sl-button class="edit-btn hydrated"
                               slot="footer"
                               variant="primary"
                               @click=${(e) => {
@@ -889,7 +889,7 @@ class resourcesExpandedView {
                               }
                             </sl-button>
         
-                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
                         
                           <div class="help_support" @click=${this.openDialog}>
@@ -909,7 +909,7 @@ class resourcesExpandedView {
                               <div style="white-space: pre-line;">
                                 ${this.articles.get('toolkit')?.bodyContent || 'Loading content...'}
                               </div>
-                              <sl-button
+                              <sl-button class="edit-btn hydrated"
                                 slot="footer"
                                 variant="primary"
                                 @click=${(e) => {
@@ -923,7 +923,7 @@ class resourcesExpandedView {
                                   : 'Bookmark'
                                 }
                               </sl-button>
-                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
         
                           <div class="mindset" @click=${this.openDialog}>
@@ -942,7 +942,7 @@ class resourcesExpandedView {
                               <div style="white-space: pre-line;">
                                 ${this.articles.get('tips_guides')?.bodyContent || 'Loading content...'}
                               </div>
-                              <sl-button
+                              <sl-button class="edit-btn hydrated"
                                 slot="footer"
                                 variant="primary"
                                 @click=${(e) => {
@@ -957,7 +957,7 @@ class resourcesExpandedView {
                                 }
                               </sl-button>
         
-                              <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                              <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                           </div>
                         </div>
                       </sl-tab-panel>
