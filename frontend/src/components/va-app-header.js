@@ -284,6 +284,7 @@ sl-details::part(base) {
                 <sl-menu class="right-side-menu">
                     <sl-menu-item @click="${() => gotoRoute('/profile')}">Profile</sl-menu-item>
                     <sl-menu-item @click="${() => gotoRoute('/editProfile')}">Edit Profile</sl-menu-item>
+                    <sl-menu-item @click="${() => gotoRoute('/favouriteLines')}">Bookmarks</sl-menu-item>
                     <sl-menu-item @click="${() => Auth.signOut()}">Sign Out</sl-menu-item>
                 </sl-menu>
             </sl-dropdown>
