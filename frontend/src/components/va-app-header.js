@@ -301,7 +301,7 @@ sl-details::part(base) {
             <a class="menu-static" href="/" @click="${this.menuClick}">Home</a>
             <sl-details>
                 <div slot="summary" class="summary-content">
-                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
+                    <span class="summary-title">Mental Health</span>
                 </div>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/mentalHealthExpanded?tab=stress')}>Stress</a>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/mentalHealthExpanded?tab=anxiety')}>Anxiety</a>
@@ -309,7 +309,7 @@ sl-details::part(base) {
             </sl-details>
             <sl-details>
                 <div slot="summary" class="summary-content">
-                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
+                    <span class="summary-title">Mindfulness</span>
                 </div>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/mindfulnessExpanded?tab=meditation')}>Meditation</a>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/mindfulnessExpanded?tab=breathing')}>Breathing</a>
@@ -317,7 +317,7 @@ sl-details::part(base) {
             </sl-details>
             <sl-details>
                 <div slot="summary" class="summary-content">
-                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
+                    <span class="summary-title">Resources</span>
                 </div>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/resourcesExpanded?tab=support')}>Support</a>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/resourcesExpanded?tab=services')}>Services</a>
