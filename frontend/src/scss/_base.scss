@@ -206,7 +206,7 @@ sl-details::part(base) {
 
 .guide-page{
   padding: 5rem 2rem;
-  background: var(--background-home);
+  background: var( --background-extra-pges);
 }
 .guide-step {
   padding: 1em;
@@ -289,23 +289,22 @@ sl-details::part(base) {
   border-color: #e5c654;
   color: #000000;
   }
-}
-//////////////////////////////////////////////////////////////////////////////
-.input-group .file-input {
-  background-color: #F4D35E;
-  border: 1px solid #F4D35E;
-  color: #000000;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
+  //profile page responsive design
+@media (max-width: 767px) {
+  .log-profile-left {
+    p {
+      font-size: 1rem;
+      color: white;
+    }
+    flex-direction: column;
+  }
 
-.input-group .file-input:hover {
-  background-color: #e5c654;
-  border-color: #e5c654;
-  color: #000000;
+ .profile-right {
+    display: none;
+  }
+  
 }
-//////////////////////////////////////////////////////////////////////////////
+}
 
  // signin style 
 .signin-style{
@@ -342,7 +341,7 @@ sl-details::part(base) {
   padding: 5px;
 }
 
-//favorite-page-----------------
+//bookmark/favorite-page-----------------
 .favourites-page {
   background: var(--background-favourites);
 }
@@ -695,18 +694,3 @@ sl-details::part(base) {
   }
 }
 
-//profile page responsive design
-@media (max-width: 767px) {
-  .profile-left {
-    p {
-      font-size: 1rem;
-      color: white;
-    }
-    flex-direction: column;
- 
-
-  .profile-right {
-    display: none;
-  }
-  }
-}
