@@ -927,7 +927,7 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="mindset" @click=${this.openDialog}>
-                            <img src="/images/mental-health/depression/depression-questions.webp" class="mindset-guides-img">
+                            <img src="/images/mental-health/depression/depression-questions.webp" class="mindset-guides-">
                             <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('tips_guides')?.title || 'Loading...'}</p>
                               ${this.userBookmarks && this.articles.get('tips_guides') && this.userBookmarks.has(this.articles.get('tips_guides')._id)
                                 ? html`
