@@ -203,6 +203,7 @@ class resourcesExpandedView {
         const urlParams = new URLSearchParams(window.location.search);
         const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
         const template = html`
+        <div class="resources-exp">
     <style>
     .expanded-page  {
      background: var(--background-resources);

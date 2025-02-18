@@ -1,6 +1,24 @@
-//scss mental-health-expanded-page
 @use 'vars' as *;
 
+//header in diffrent pages colors change
+$header-colors: (
+  about-page: #83c670,
+  resources-page: #b878d1,
+  mental-health-page: #6a89e7,
+  mindfulness-page: #39acf4,
+  resources-exp: #b878d1,
+  mental-health-exp: #6a89e7,
+  mindfulness-exp: #39acf4
+);
+
+@each $page, $color in $header-colors {
+  .#{$page} {
+    --app-header-bg-color: #{$color};
+    background-color: var(--app-header-bg-color);
+  }
+}
+
+//scss mental-health-expanded-page
 .expanded-page {
 .banner.expanded {
 padding-top: 3rem;
@@ -42,6 +60,7 @@ sl-tab-group::part(tabs) {
 }
 
 sl-tab::part(base) {
+    color:#FFFFFF;
     border-bottom: none;
     margin: 0 12px;
     padding: 12px 24px;

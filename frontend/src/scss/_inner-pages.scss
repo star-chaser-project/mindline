@@ -1,23 +1,21 @@
 @use 'vars' as *;
 
-//header in diffrent pages colors change
-.about-page {
-  --app-header-bg-color: #83c670;  
-  background-color: var(--app-header-bg-color);
-}
-.resources-page {
-  --app-header-bg-color: #b878d1;
-  background-color: var(--app-header-bg-color);
-}
-.mental-health-page {
-  --app-header-bg-color: #6a89e7;  
-  background-color: var(--app-header-bg-color);
-}
-.mindfulness-page {
-  --app-header-bg-color: #39acf4;  
-  background-color: var(--app-header-bg-color);
-}
+$header-colors: (
+  about-page: #83c670,
+  resources-page: #b878d1,
+  mental-health-page: #6a89e7,
+  mindfulness-page: #39acf4,
+  resources-exp: #b878d1,
+  mental-health-exp: #6a89e7,
+  mindfulness-exp: #39acf4
+);
 
+@each $page, $color in $header-colors {
+  .#{$page} {
+    --app-header-bg-color: #{$color};
+    background-color: var(--app-header-bg-color);
+  }
+}
 
 
 /// Inner pages

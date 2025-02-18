@@ -205,6 +205,7 @@ async fetchArticle(id) {
     const urlParams = new URLSearchParams(window.location.search);
     const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
     const template = html`
+     <div class="mental-health-exp">
    <style>
       .expanded-page {
       background: var(--background-mental-health);
