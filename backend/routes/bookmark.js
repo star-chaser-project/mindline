@@ -4,7 +4,7 @@ const Utils = require('../utils')
 const User = require('../models/User')  // ✅ Missing import fixed
 const Article = require('../models/Article')
 
-// ✅ GET - Fetch user's bookmarked articles
+// GET - Fetch user's bookmarked articles
 router.get('/', Utils.authenticateToken, async (req, res) => {
   try {
     const userId = req.user._id
@@ -17,14 +17,14 @@ router.get('/', Utils.authenticateToken, async (req, res) => {
       return res.status(404).json({ message: "User not found" })
     }
 
-    res.json(user.bookmarkArticle || []) // ✅ Always return 200 with an array
+    res.json(user.bookmarkArticle || []) //return with an array
   } catch (err) {
     console.error(err)
     res.status(500).json({ message: "Problem getting bookmarked articles" })
   }
 })
 
-// ✅ PUT - Add an article to bookmarks
+// PUT - Add an article to bookmarks
 router.put('/:articleId', Utils.authenticateToken, async (req, res) => {
   try {
     const { action } = req.body;
@@ -49,7 +49,7 @@ router.put('/:articleId', Utils.authenticateToken, async (req, res) => {
   }
 });
 
-// ✅ DELETE - Remove an article from bookmarks
+// DELETE - Remove an article from bookmarks
 router.delete('/:articleId', Utils.authenticateToken, async (req, res) => {
   try {
     const userId = req.user._id

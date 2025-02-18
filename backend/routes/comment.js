@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
             res.json(comments)
         })
         .catch(err => {
-            console.log(err)
+            //console.log(err)
             res.status(500).json({
                 message: "Couldn't get comments",
                 error: err

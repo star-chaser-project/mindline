@@ -17,7 +17,7 @@ const commentSchema = new mongoose.Schema({
 
 // Middleware
 commentSchema.pre('save', function(next){
-    console.log('document saved')
+    //console.log('document saved')
     if(this.comment) {
         this.comment = this.comment.trim();
     }
