@@ -36,6 +36,7 @@ class EditProfileView {
       this.avatarPreview = URL.createObjectURL(file);
       console.log('Preview URL:', this.avatarPreview);
       this.render();
+      Toast.show('Profile Image Updated');
     }
   }
 
@@ -62,7 +63,7 @@ class EditProfileView {
     const currentAvatar = Auth.currentUser.avatar 
       ? `${App.apiBase}/images/${Auth.currentUser.avatar}` 
       : '';
-    const avatarURL = this.avatarPreview || currentAvatar;
+    
   
     // Conditionally render a template based on whether a preview is available.
     const avatarTemplate = this.avatarPreview

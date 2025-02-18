@@ -214,12 +214,6 @@ margin-top: 8px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
-    img {
-        height: 60%;
-        width: 100%;
-        bottom: 0;
-        padding-top: 11rem;
-    }
 }
 
 .physical-med {
@@ -413,7 +407,7 @@ sl-dialog::part(close-button) {
 display: none;
 }
 
-.why-img,     .what-med-img, .why-med-img, .benefit-med-img, .physical-med-img, .guided-med-img, .questions-med-img, .tips-med-img, .ask-img, .talk-img, .how_support-img, .tips_support-img, .what_support-img, .help_support-img, .mindset-img {
+.why-img,     .what-med-img, .why-med-img,  .physical-med-img, .guided-med-img, .questions-med-img, .tips-med-img, .ask-img, .talk-img, .how_support-img, .tips_support-img, .what_support-img, .help_support-img, .mindset-img {
     position: absolute;
     z-index: 0;
     object-fit: cover;
@@ -674,108 +668,128 @@ display: none;
 
 
 
+.what-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 20%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.why:hover .why-img {
-transform: translate(-50%, -50%) scale(1.1);
+.why-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 50%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
 }
 
-.deal:hover .stress-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.benefit-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 50%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
 }
 
-.signs:hover .signs-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.physical-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 50%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+  }
+
+  .guided-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 80%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
 }
 
-.triggers:hover .triggers-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.questions-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 64%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
 }
 
-.practices:hover .practices-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.tips-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 50%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
 }
 
-.seek:hover .seek-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.questions:hover .questions-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.why:hover .why-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.deal:hover .deal-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.signs:hover .signs-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.triggers:hover .triggers-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.practices:hover .practices-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.seek:hover .seek-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.questions:hover .questions-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.why:hover .why-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.deal:hover .stress-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
+
+
+.why:hover .why-img,
+.deal:hover .stress-img,
+.signs:hover .signs-img,
+.triggers:hover .triggers-img,
+.practices:hover .practices-img,
+.seek:hover .seek-img,
+.questions:hover .questions-img,
+.why:hover .why-anxiety-img,
+.deal:hover .deal-anxiety-img,
+.signs:hover .signs-anxiety-img,
+.triggers:hover .triggers-anxiety-img,
+.practices:hover .practices-anxiety-img,
+.seek:hover .seek-anxiety-img,
+.questions:hover .questions-anxiety-img,
+.why:hover .why-depression-img,
+.deal:hover .stress-depression-img,
+.triggers:hover .triggers-depression-img,
+.practices:hover .practices-depression-img,
+.seek:hover .seek-depression-img,
+.questions:hover .questions-depression-img,
+.what-med:hover .what-med-img,
+.why-med:hover .why-med-img,
+.benefit-med:hover .benefit-med-img,
+.physical-med:hover .physical-med-img,
+.guided-med:hover .guided-med-img,
+.questions-med:hover .questions-med-img,
+.tips-med:hover .tips-med-img {
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 .signs:hover .signs-depression-img {
     transform: translate(-50%, -65%) scale(1.3);
-}
-
-.triggers:hover .triggers-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-.practices:hover .practices-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-.seek:hover .seek-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-.questions:hover .questions-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-
-
+  }
 
 
 
