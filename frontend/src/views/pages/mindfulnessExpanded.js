@@ -81,7 +81,7 @@ class mindfulnessExpandedView {
       why_mot: '679de5c7640ec34e3c22a2ab', // Why is Motivation Important
       ways_mot: '679de645640ec34e3c22a2ac', // Ways to Gain Motivation
       how_mot: '679dea10640ec34e3c22a2af', // How To Get Motivated
-      how_mot_2: '679dea63640ec34e3c22a2b0', // How to Stay on Track
+      how_mot_2: '679dea63640ec34e3c22a2b0', // How to Stay on Track 
       practices_mot: '679de7b5640ec34e3c22a2ad', // Movtivational Practices - Sunshine audio & other audio info 
       practices_mot_2: '679de97c640ec34e3c22a2ae', // Reset & Go audio
       what_mot: '679deb6c640ec34e3c22a2b3', // What to do if You Lose Motivation
