@@ -1008,8 +1008,6 @@ display: none;
     padding-top: 2rem;
 }
 
-}
-
 sl-dialog::part(body){
     flex: 1 1 auto;
     padding-top: 0;
@@ -1021,3 +1019,43 @@ sl-dialog::part(body){
         font-size: 1.6em;
         margin: 1.5rem 1.5rem 0.7rem;
       }
+    
+}  
+
+
+@media (max-width: 767px) {
+    .expanded {
+      h1 {
+        font-size: 1.2rem!important;
+      }
+    }
+  
+   
+  
+    sl-tab {
+      &::part(base) {
+        border-bottom: none;
+        margin: 0 6px;
+        padding: 6px 6px;
+        font-size: 16px!important;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        color: #FFFFFF; // Adjust tab style for smaller screens
+      }
+  
+      &:not([active]) {
+        &::part(base):hover {
+          font-size: 18px;
+          color: #FFFFFF; // Hover effect for non-active tabs
+        }
+      }
+  
+      &[active] {
+        &::part(base) {
+          font-size: 18px;
+          color: #F3C728  // Active tab color
+        }
+      }
+    }
+}
+  
