@@ -233,7 +233,7 @@ async fetchArticle(id) {
                 
                   <div class="why why-stress" @click=${this.openDialog}>
                     <img src="/images/mental-health/stress/stress-why-mental-health-matters-360.webp" class="why-img" alt="Why Stress Matters">
-                    <p>${this.articles.get('why')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 40%; left: 10%;">${this.articles.get('why')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
                       ? html`
                         <img 
@@ -446,7 +446,7 @@ async fetchArticle(id) {
                   <div class="why why-anxiety" @click=${this.openDialog}>
                    <img src="/images/mental-health/anxiety/anxiety-why.webp" class="why-anxiety-img" alt="Why Anxiety Matters">
 
-                    <p>${this.articles.get('why_anxiety')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 40%; left: 10%;">${this.articles.get('why_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('why_anxiety') && this.userBookmarks.has(this.articles.get('why_anxiety')._id)
                       ? html`
                         <img 
@@ -477,7 +477,7 @@ async fetchArticle(id) {
                   <div class="deal deal-anxiety" @click=${this.openDialog}>
                    <img src="/images/mental-health/anxiety/anxiety-deal-360.webp" class="deal-anxiety-img" alt="Ways to Deal with Stress">
 
-                    <p>${this.articles.get('deal_anxiety')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 40%; left: 10%;">${this.articles.get('deal_anxiety')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal_anxiety') && this.userBookmarks.has(this.articles.get('deal_anxiety')._id)
                       ? html`
                         <img 
@@ -513,7 +513,7 @@ async fetchArticle(id) {
                   <div class="signs signs-anxiety" @click=${this.openDialog}>
                    <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="signs-anxiety-img" alt="Signs of Anxiety">
 
-                    <p>${this.articles.get('signs_anxiety')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('signs_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('signs_anxiety') && this.userBookmarks.has(this.articles.get('signs_anxiety')._id)
                       ? html`
                         <img 
@@ -550,7 +550,7 @@ async fetchArticle(id) {
                   <div class="triggers triggers-anxiety" @click=${this.openDialog}>
                    <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="triggers-anxiety-img" alt="Anxiety Triggers">
 
-                    <p>${this.articles.get('triggers_anxiety')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 80%; left: 5%;">${this.articles.get('triggers_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('triggers_anxiety') && this.userBookmarks.has(this.articles.get('triggers_anxiety')._id)
                       ? html`
                         <img 
@@ -586,7 +586,7 @@ async fetchArticle(id) {
                   <div class="practices practices-anxiety" @click=${this.openDialog}>
                    <img src="/images/mental-health/anxiety/anxiety-practices-360.webp" class="practices-anxiety-img" alt="Practices for Anxiety">
 
-                      <p>${this.articles.get('practices_anxiety')?.title || 'Loading...'}</p>
+                      <p style="position: relative; width: 60%; left: 10%;">${this.articles.get('practices_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('practices_anxiety') && this.userBookmarks.has(this.articles.get('practices_anxiety')._id)
                       ? html`
                         <img 
@@ -622,7 +622,7 @@ async fetchArticle(id) {
                   <div class="seek seek-anxiety" @click=${this.openDialog}>
                  <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp" class="seek-anxiety-img" alt="When to Seek Help About Anxiety">
 
-                 <p>${this.articles.get('seek_anxiety')?.title || 'Loading...'}</p>
+                 <p style="position: relative; width: 40%; left: 5%;">${this.articles.get('seek_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('seek_anxiety') && this.userBookmarks.has(this.articles.get('seek_anxiety')._id)
                       ? html`
                         <img 
@@ -659,7 +659,7 @@ async fetchArticle(id) {
                   <div class="questions questions-anxiety" @click=${this.openDialog}>
                  <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-anxiety-img" alt="Questions About Anxiety">
 
-                      <p>${this.articles.get('questions_anxiety')?.title || 'Loading...'}</p>
+                      <p style="position: relative; width: 40%; left: 10%;">${this.articles.get('questions_anxiety')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('questions_anxiety') && this.userBookmarks.has(this.articles.get('questions_anxiety')._id)
                       ? html`
                         <img 
@@ -705,7 +705,7 @@ async fetchArticle(id) {
                   <div class="why" @click=${this.openDialog}>
                    <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="why-depression-img" alt="Why Depression Matters">
 
-                    <p>${this.articles.get('why_depression')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 50%; left: 40%; text-align: right;">${this.articles.get('why_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('why_depression') && this.userBookmarks.has(this.articles.get('why_depression')._id)
                       ? html`
                         <img 
@@ -742,7 +742,7 @@ async fetchArticle(id) {
                   <div class="deal" @click=${this.openDialog}>
                     <img src="/images/mental-health/depression/depression-deal-360r.webp" class="stress-depression-img" alt="Dealing with Depression">
 
-                    <p>${this.articles.get('deal_depression')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 40%; left: 10%;">${this.articles.get('deal_depression')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal_depression') && this.userBookmarks.has(this.articles.get('deal_depression')._id)
                       ? html`
                         <img 
@@ -779,7 +779,7 @@ async fetchArticle(id) {
                   <div class="signs" @click=${this.openDialog}>
                     <img src="/images/mental-health/depression/depression-signs.webp" class="signs-depression-img" alt="Signs of Depression">
 
-                    <p>${this.articles.get('signs_depression')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('signs_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('signs_depression') && this.userBookmarks.has(this.articles.get('signs_depression')._id)
                       ? html`
                         <img 
@@ -818,7 +818,7 @@ async fetchArticle(id) {
                   <div class="triggers" @click=${this.openDialog}>
                     <img src="/images/mental-health/depression/depression-triggers-360.webp" class="triggers-depression-img" alt="Triggers for Depression">
 
-                    <p>${this.articles.get('triggers_depression')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 45%; left: 40%;">${this.articles.get('triggers_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('triggers_depression') && this.userBookmarks.has(this.articles.get('triggers_depression')._id)
                       ? html`
                         <img 
@@ -854,9 +854,9 @@ async fetchArticle(id) {
                   </div>
 
                   <div class="practices" @click=${this.openDialog}>
-                    <img src="/images/mental-health/depression/depression-practices-360.webp" class="practices-depression-img" alt="Practices to Help with Depression">
+                    <img src="/images/mental-health/depression/breath_depression.webp" class="practices-depression-img" alt="Practices to Help with Depression">
 
-                      <p>${this.articles.get('practices_depression')?.title || 'Loading...'}</p>
+                      <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('practices_depression')?.title || 'Loading...'}</p>
                      ${this.userBookmarks && this.articles.get('practices_depression') && this.userBookmarks.has(this.articles.get('practices_depression')._id)
                       ? html`
                         <img 
@@ -893,7 +893,7 @@ async fetchArticle(id) {
                   <div class="seek" @click=${this.openDialog}>
                     <img src="/images/mental-health/depression/depression-seek-360.webp" class="seek-depression-img" alt="Where to Seek Help for Depression">
 
-                    <p>${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 40%; left: 10%;">${this.articles.get('seek_depression')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('seek_depression') && this.userBookmarks.has(this.articles.get('seek_depression')._id)
                         ? html`
                           <img 
@@ -927,7 +927,7 @@ async fetchArticle(id) {
 
                   <div class="questions" @click=${this.openDialog}>
                     <img src="/images/mental-health/depression/depression-questions.webp" class="questions-depression-img" alt="Questions About Depession">
-                    <p>${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
+                    <p style="position: relative; width: 40%; left: 10%;">${this.articles.get('questions_depression')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('questions_depression') && this.userBookmarks.has(this.articles.get('questions_depression')._id)
                         ? html`
                           <img 

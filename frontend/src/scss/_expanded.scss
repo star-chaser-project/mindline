@@ -489,8 +489,8 @@ display: none;
     border-radius: 35px;
     transition: transform 0.3s ease;
     top: 50%;
-    left: 50%;
-    width: 55%;
+    left: 63%;
+    width: 75%;
     height: auto;
 }
 
@@ -534,7 +534,7 @@ display: none;
     z-index: 0;
     object-fit: cover;
     transform: translate(-50%, -50%);
-    top: 65%;
+    top: 75%;
     left: 50%;
     border-radius: 35px;
     transition: transform 0.3s ease;
@@ -573,10 +573,12 @@ display: none;
     z-index: 0;
     object-fit: cover;
     transform: translate(-50%, -50%);
-    top: 60%;
-    left: 70%;
     border-radius: 35px;
     transition: transform 0.3s ease;
+    top: 50%;
+    left: 63%;
+    width: 75%;
+    height: auto;
 }
 
 .why-depression-img {
@@ -585,7 +587,7 @@ display: none;
     object-fit: cover;
     transform: translate(-50%, -50%);
     top: 60%;
-    left: 50%;
+    left: 45%;
     border-radius: 35px;
     transition: transform 0.3s ease;
 }
@@ -635,9 +637,11 @@ display: none;
     object-fit: cover;
     transform: translate(-50%, -50%);
     top: 60%;
-    left: 50%;
+    left: 45%;
     border-radius: 35px;
     transition: transform 0.3s ease;
+    height: 80%;
+    width: auto;
 }
 
 .seek-depression-img {
@@ -662,6 +666,10 @@ display: none;
     left: 70%;
     border-radius: 35px;
     transition: transform 0.3s ease;
+    top: 50%;
+    left: 63%;
+    width: 75%;
+    height: auto;
 }
 
 
@@ -774,13 +782,7 @@ transform: translate(-50%, -50%) scale(1.1);
 
 
 
-.why p {
-width: 30%;
-font-size: 20px;
-font-weight: 300;
-margin-left: 10%;
-z-index: 1;
-}
+
 
 .video-embed iframe {
     width: 251px;
