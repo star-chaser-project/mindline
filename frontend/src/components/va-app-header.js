@@ -272,11 +272,6 @@ sl-details::part(base) {
         </div>
 
         <nav class="app-top-nav">
-
-            ${this.user.accessLevel == 2 ? html`
-            <a href="/newProduct" @click="${anchorRoute}">Add Bookmarks</a>
-            <a href="/orders" @click="${anchorRoute}">View Bookmarks</a> ` : ''} ${this.user.accessLevel == 1 ? html` ` : ''}
-
             <sl-dropdown class="user-menu">
                 <a slot="trigger" href="#" @click="${(e) => e.preventDefault()}">
                     <sl-avatar style="--size: 40px;" image=${(this.user && this.user.avatar) ? `${App.apiBase}/images/${this.user.avatar}` : ''}></sl-avatar> ${this.user && this.user.firstName}
