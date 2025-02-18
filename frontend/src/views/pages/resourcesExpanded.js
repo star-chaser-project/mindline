@@ -243,7 +243,9 @@ class resourcesExpandedView {
                             }
                             <sl-dialog label="${this.articles.get('ask')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                               <div style="white-space: pre-line;">
-                              ${this.articles.get('ask')?.bodyContent || 'Loading content...'}
+                              ${this.articles.get('ask')?.bodyContent || 'Loading content...'
+                                ? html`${unsafeHTML(this.articles.get('ask')?.bodyContent)}`
+                              : 'Loading content...'}
                               </div>
                               <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                                 @click=${(e) => {
@@ -272,7 +274,9 @@ class resourcesExpandedView {
                             <sl-dialog label="${this.articles.get('talk')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
         
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('talk')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('talk')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('talk')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
         
                               <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
@@ -300,7 +304,9 @@ class resourcesExpandedView {
                             }
                             <sl-dialog label="${this.articles.get('how_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('how_support')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('how_support')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('how_support')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                             <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
@@ -329,7 +335,9 @@ class resourcesExpandedView {
                             <sl-dialog label="${this.articles.get('tips_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
         
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('tips_support')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('tips_support')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('tips_support')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                             <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
@@ -356,7 +364,9 @@ class resourcesExpandedView {
                                 }
                             <sl-dialog label="${this.articles.get('what_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('what_support')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('what_support')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('what_support')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                              <div class="video-group">
                                  <div class="video-embed">
@@ -394,7 +404,9 @@ class resourcesExpandedView {
                               }
                             <sl-dialog label="${this.articles.get('help_support')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('help_support')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('help_support')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('help_support')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                             <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                                 @click=${(e) => {
@@ -421,7 +433,9 @@ class resourcesExpandedView {
                               }
                             <sl-dialog label="${this.articles.get('mindset')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('mindset')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('mindset')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('mindset')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                             <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
@@ -458,7 +472,9 @@ class resourcesExpandedView {
                             }
                             <sl-dialog label="${this.articles.get('crisis')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                               <div style="white-space: pre-line;">
-                                ${this.articles.get('crisis')?.bodyContent || 'Loading content...'}
+                              ${this.articles.get('crisis')?.bodyContent || 'Loading content...'
+                                ? html`${unsafeHTML(this.articles.get('seek_crisis')?.bodyContent)}`
+                                : 'Loading content...'}
                               </div>
                               <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
@@ -487,7 +503,9 @@ class resourcesExpandedView {
                             }
                             <sl-dialog label="${this.articles.get('kids')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('kids')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('kids')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('kids')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                               <sl-button class="edit-btn hydrated"
                                   slot="footer"
@@ -522,7 +540,9 @@ class resourcesExpandedView {
                             }
                             <sl-dialog label="${this.articles.get('mental_serv')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('mental_serv')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('mental_serv')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('mental_serv')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                             <sl-button class="edit-btn hydrated"
                               slot="footer"
@@ -558,7 +578,9 @@ class resourcesExpandedView {
                             }
                             <sl-dialog label="${this.articles.get('counsel')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('counsel')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('counsel')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('counsel')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
         
                             <sl-button class="edit-btn hydrated"
@@ -593,7 +615,9 @@ class resourcesExpandedView {
                             }
                             <sl-dialog label="${this.articles.get('substance')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('substance')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('substance')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('substance')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                             <div class="video-group">
                                  <div class="video-embed">
@@ -643,7 +667,9 @@ class resourcesExpandedView {
                             }
                             <sl-dialog label="${this.articles.get('indigl')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('indigl')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('indigl')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('indigl')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
         
                             
@@ -680,7 +706,9 @@ class resourcesExpandedView {
                             <sl-dialog label="${this.articles.get('help_serv')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
         
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('help_serv')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('help_serv')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('help_serv')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                             <sl-button class="edit-btn hydrated"
                               slot="footer"
@@ -724,7 +752,9 @@ class resourcesExpandedView {
                             }
                             <sl-dialog label="${this.articles.get('mental_guides')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                               <div style="white-space: pre-line;">
-                                ${this.articles.get('mental_guides')?.bodyContent || 'Loading content...'}
+                              ${this.articles.get('mental_guides')?.bodyContent || 'Loading content...'
+                                ? html`${unsafeHTML(this.articles.get('mental_guides')?.bodyContent)}`
+                                : 'Loading content...'}
                               </div>
         
                               <sl-button class="edit-btn hydrated"
@@ -760,7 +790,9 @@ class resourcesExpandedView {
                             }
                             <sl-dialog label="${this.articles.get('digital')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('digital')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('digital')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('digital')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                               <sl-button class="edit-btn hydrated"
                                 slot="footer"
@@ -797,7 +829,9 @@ class resourcesExpandedView {
                             <sl-dialog label="${this.articles.get('parent')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
         
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('parent')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('parent')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('parent')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                        
                             <sl-button class="edit-btn hydrated"
@@ -835,7 +869,9 @@ class resourcesExpandedView {
                             <sl-dialog label="${this.articles.get('depression_guides')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
         
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('depression_guides')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('depression_guides')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('depression_guides')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                             <sl-button class="edit-btn hydrated"
                               slot="footer"
@@ -872,7 +908,9 @@ class resourcesExpandedView {
                             <sl-dialog label="${this.articles.get('self')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
         
                             <div style="white-space: pre-line;">
-                              ${this.articles.get('self')?.bodyContent || 'Loading content...'}
+                            ${this.articles.get('self')?.bodyContent || 'Loading content...'
+                              ? html`${unsafeHTML(this.articles.get('self')?.bodyContent)}`
+                              : 'Loading content...'}
                             </div>
                             <sl-button class="edit-btn hydrated"
                               slot="footer"
@@ -907,7 +945,9 @@ class resourcesExpandedView {
                               }
                               <sl-dialog label="${this.articles.get('toolkit')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                               <div style="white-space: pre-line;">
-                                ${this.articles.get('toolkit')?.bodyContent || 'Loading content...'}
+                              ${this.articles.get('toolkit')?.bodyContent || 'Loading content...'
+                                ? html`${unsafeHTML(this.articles.get('toolkit')?.bodyContent)}`
+                                : 'Loading content...'}
                               </div>
                               <sl-button class="edit-btn hydrated"
                                 slot="footer"
@@ -940,7 +980,9 @@ class resourcesExpandedView {
                               }
                               <sl-dialog label="${this.articles.get('tips_guides')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                               <div style="white-space: pre-line;">
-                                ${this.articles.get('tips_guides')?.bodyContent || 'Loading content...'}
+                              ${this.articles.get('tips_guides')?.bodyContent || 'Loading content...'
+                                ? html`${unsafeHTML(this.articles.get('tips_guides')?.bodyContent)}`
+                                : 'Loading content...'}
                               </div>
                               <sl-button class="edit-btn hydrated"
                                 slot="footer"
