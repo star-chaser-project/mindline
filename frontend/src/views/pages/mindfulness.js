@@ -14,6 +14,7 @@ class mindfulnessView {
 
  render() {
     const template = html`
+    <div class="mindfulness-page ">
       ${Auth.isLoggedIn() ? 
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`

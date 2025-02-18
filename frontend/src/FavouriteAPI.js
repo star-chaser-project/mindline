@@ -43,7 +43,7 @@ class FavouriteAPI {
     if(!response.ok){ 
       // console log error
       const err = await response.json();
-      if(err) console.log(err);
+      if(err) //console.log(err);
       // throw error (exit this function)      
       throw new Error('Problem getting favourites');
     }

@@ -15,13 +15,13 @@ class mindfulnessExpandedView {
   
   async fetchArticle(id) {
     try {
-      console.log('Fetching article:', id);
+      //console.log('Fetching article:', id);
       const response = await fetch(`${App.apiBase}/article/${id}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log('Fetched data:', data);
+      //console.log('Fetched data:', data);
       // Store the article id in localStorage
       localStorage.setItem(`article-${id}`, data._id);
       return data;
@@ -40,7 +40,7 @@ class mindfulnessExpandedView {
             }
           });
           const userData = await response.json();
-          console.log('Fetched user data:', userData);
+          //console.log('Fetched user data:', userData);
           
           if (userData.bookmarkArticle && userData.bookmarkArticle.length > 0) {
             if (userData.bookmarkArticle[0]._id) {
@@ -96,7 +96,7 @@ class mindfulnessExpandedView {
                 const article = await this.fetchArticle(id)
                 if (article) {
                   this.articles.set(key, article)
-                  console.log(`Set ${key} article:`, article)
+                  //console.log(`Set ${key} article:`, article)
                 }
               })
           )
@@ -200,12 +200,13 @@ class mindfulnessExpandedView {
 
 
   render(){
-    console.log('Auth.currentUser:', Auth.currentUser);
-    console.log('User bookmarks:', Array.from(this.userBookmarks));
+    //console.log('Auth.currentUser:', Auth.currentUser);
+    //console.log('User bookmarks:', Array.from(this.userBookmarks));
      // Get tab from URL params
     const urlParams = new URLSearchParams(window.location.search);
     const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
     const template = html`
+     <div class="mindfulness-exp">
 
       <style>
         .expanded-page {
@@ -235,8 +236,8 @@ class mindfulnessExpandedView {
                      <div class="meditation">
                      
                        <div class="what-med" @click=${this.openDialog}>
-                         <img src="/images/mindfulness/meditation/meditation-what-is-meditation.webp" class="why-img">
-                         <p>${this.articles.get('what')?.title || 'Loading...'}</p>
+                         <img src="/images/mindfulness/meditation/meditation-what-is-meditation.webp" class="what-med-img">
+                         <p style="position: relative; width: 80%; left: 40%;">${this.articles.get('what')?.title || 'Loading...'}</p>
                          ${this.userBookmarks && this.articles.get('what') && this.userBookmarks.has(this.articles.get('what')._id)
                            ? html`
                              <img 
@@ -247,26 +248,29 @@ class mindfulnessExpandedView {
                            : ''
                          }
                          <sl-dialog label="${this.articles.get('what')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+
                          <div style="white-space: pre-line;">
                           ${this.articles.get('what')?.bodyContent || 'Loading content...'
                             ? html`${unsafeHTML(this.articles.get('what')?.bodyContent)}`
                             : 'Loading content...'}
                          </div>
-                           <sl-button slot="footer" variant="primary" 
+
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
+
                              @click=${(e) => {
                                const articleId = this.articles.get('what')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}>
                              ${this.userBookmarks.has(this.articles.get('what')?._id) ? 'Remove Bookmark' : 'Bookmark'}
-                           </sl-button>
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           </sl-button class="edit-btn hydrated">
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                          </sl-dialog>
                        </div>
                        
-                       <div class="why-med why" @click=${this.openDialog}>
-                         <img src="/images/mindfulness/meditation/meditation-why-meditate.webp" class="stress-img">
-                         <p>${this.articles.get('why')?.title || 'Loading...'}</p>
+                       <div class="why-med" @click=${this.openDialog}>
+                         <img src="/images/mindfulness/meditation/meditation-why-meditate.webp" class="why-med-img">
+                         <p style="position: relative; width: 80%; left: 5%;">${this.articles.get('why')?.title || 'Loading...'}</p>
                          ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
                            ? html`
                              <img 
@@ -284,27 +288,30 @@ class mindfulnessExpandedView {
                           : 'Loading content...'}
                          </div>
      
-                           <sl-button slot="footer" variant="primary" 
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('why')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}>
                              ${this.userBookmarks.has(this.articles.get('why')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                            </sl-button>
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       <div class="benefit-med benefits" @click=${this.openDialog}>
-                         <img src="/images/mindfulness/meditation/meditation-mental-health-benefits.webp" class="signs-img">
-                         <p>${this.articles.get('benefits')?.title || 'Loading...'}</p>
+
+                       <div class="benefit-med" @click=${this.openDialog}>
+                         <img src="/images/mindfulness/meditation/meditation-mental-health-benefits.webp" class="benefit-med-img">
+                         <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('benefits')?.title || 'Loading...'}</p>
+
                          ${this.userBookmarks && this.articles.get('benefits') && this.userBookmarks.has(this.articles.get('benefits')._id)
                            ? html`
                              <img 
-                               src="/images/bookmark/bookmark-full.svg" 
-                               class="bookmark"
-                               style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
-                             >`
+                                src="/images/bookmark/bookmark-full.svg" 
+                                class="bookmark"
+                                style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                                alt="Bookmark"
+                              >`
                            : ''
                          }
                          <sl-dialog label="${this.articles.get('benefits')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
@@ -313,51 +320,60 @@ class mindfulnessExpandedView {
                           ? html`${unsafeHTML(this.articles.get('benefits')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
-                         <sl-button slot="footer" variant="primary" 
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                            @click=${(e) => {
                              const articleId = this.articles.get('benefits')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}>
                            ${this.userBookmarks.has(this.articles.get('benefits')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
                      
-                       <div class="physical-med guided" @click=${this.openDialog}>
-                         <img src="/images/mindfulness/meditation/meditation-physical-benefits.webp" class="triggers-img">
-                         <p>${this.articles.get('guided')?.title || 'Loading...'}</p>
+
+
+                       <div class="physical-med" @click=${this.openDialog}>
+                         <img src="/images/mindfulness/meditation/meditation-physical-benefits.webp" class="physical-med-img">
+                         <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('guided')?.title || 'Loading...'}</p>
+
                          ${this.userBookmarks && this.articles.get('guided') && this.userBookmarks.has(this.articles.get('guided')._id)
                            ? html`
                              <img 
                                src="/images/bookmark/bookmark-full.svg" 
                                class="bookmark"
-                               style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
+                               style="position: absolute; top: -17px; right: 32px; width: 25px; height: 50px; z-index: 9;"
                              >`
                            : ''
                          }
                          <sl-dialog label="${this.articles.get('guided')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          
                          <div style="white-space: pre-line;">
+
                          ${this.articles.get('guided')?.bodyContent || 'Loading content...'
                           ? html`${unsafeHTML(this.articles.get('guided')?.bodyContent)}`
                           : 'Loading content...'}
                           </div>
-                         <sl-button slot="footer" variant="primary" 
+
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
+
                            @click=${(e) => {
                              const articleId = this.articles.get('guided')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}>
                            ${this.userBookmarks.has(this.articles.get('guided')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       <div class="guided-med practices" @click=${this.openDialog}>
-                       <img src="/images/mindfulness/meditation/meditation-clock-guided-meditation-253.webp" class="practices-img">
-                       <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
+
+                       <div class="guided-med" @click=${this.openDialog}>
+                       <img src="/images/mindfulness/meditation/meditation-clock-guided-meditation-253.webp" class="guided-med-img">
+
+                       <p style="position: relative; width: 80%; left: 5%;">${this.articles.get('practices')?.title || 'Loading...'}</p>
+
                            ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
                                ? html`
                                  <img 
@@ -373,6 +389,7 @@ class mindfulnessExpandedView {
                           ? html`${unsafeHTML(this.articles.get('practices')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
+
                           <div class="video-group">
                               <div class="video-embed">
                                 ${this.articles.get('practices')?.mediaUrl
@@ -399,23 +416,28 @@ class mindfulnessExpandedView {
                           : 'Loading content...'}
                          </div>
                           </div>
-                         <sl-button slot="footer" variant="primary" 
+
+                          
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
+
                              @click=${(e) => {
                                const articleId = this.articles.get('practices')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}>
                              ${this.userBookmarks.has(this.articles.get('practices')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                            </sl-button>
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
-                       <div class="questions-med questions" @click=${this.openDialog}>
-                       <img src="/images/mindfulness/meditation/meditation-common-questions.webp" class="seek-img">
+
+                       <div class="questions-med" @click=${this.openDialog}>
+                       <img src="/images/mindfulness/meditation/meditation-common-questions.webp" class="questions-med-img">
      
-                       <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
-                           ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
+
+                          <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('questions')?.title || 'Loading...'}</p>
+                          ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
                              ? html`
                                <img 
                                  src="/images/bookmark/bookmark-full.svg" 
@@ -430,21 +452,24 @@ class mindfulnessExpandedView {
                           ? html`${unsafeHTML(this.articles.get('questions')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
-                         <sl-button slot="footer" variant="primary" 
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('questions')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}>
                              ${this.userBookmarks.has(this.articles.get('questions')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                            </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       <div class="tips-med tips" @click=${this.openDialog}>
-                       <img src="/images/mindfulness/meditation/meditation-tips-light-globe.webp" class="questions-img">
-                           <p>${this.articles.get('tips')?.title || 'Loading...'}</p>
+
+
+                       <div class="tips-med" @click=${this.openDialog}>
+                       <img src="/images/mindfulness/meditation/meditation-tips-light-globe.webp" class="tips-med-img">
+                           <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('questions')?.title || 'Loading...'}</p>
                            ${this.userBookmarks && this.articles.get('tips') && this.userBookmarks.has(this.articles.get('tips')._id)
+
                              ? html`
                                <img 
                                  src="/images/bookmark/bookmark-full.svg" 
@@ -455,19 +480,21 @@ class mindfulnessExpandedView {
                            }
                          <sl-dialog label="${this.articles.get('tips')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
+
                          ${this.articles.get('tips')?.bodyContent || 'Loading content...'
                           ? html`${unsafeHTML(this.articles.get('tips')?.bodyContent)}`
                           : 'Loading content...'}
+
                          </div>
-                         <sl-button slot="footer" variant="primary" 
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                            @click=${(e) => {
                              const articleId = this.articles.get('tips')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}>
                            ${this.userBookmarks.has(this.articles.get('tips')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      </div>
                    </sl-tab-panel>
@@ -479,9 +506,12 @@ class mindfulnessExpandedView {
                    <sl-tab-panel name="anxiety">
                      <div class="meditation">
                      
+
+
                        <div class="what-med" @click=${this.openDialog}>
-                        <img src="/images/mental-health/anxiety/anxiety-why.webp" class="why-img">
-                         <p>${this.articles.get('why_breath')?.title || 'Loading...'}</p>
+                        <img src="/images/mental-health/anxiety/anxiety-why.webp" class="what-breath-img">
+                         <p style="position: relative; width: 50%; left: 5%;">${this.articles.get('why_breath')?.title || 'Loading...'}</p>
+
                           ${this.userBookmarks && this.articles.get('why_breath') && this.userBookmarks.has(this.articles.get('why_breath')._id)
                            ? html`
                              <img 
@@ -493,27 +523,32 @@ class mindfulnessExpandedView {
                            : ''
                          }
                          <sl-dialog label="${this.articles.get('why_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                         <div style="white-space: pre-line;">
-                         ${this.articles.get('why_breath')?.bodyContent || 'Loading content...'
-                          ? html`${unsafeHTML(this.articles.get('why_breath')?.bodyContent)}`
-                          : 'Loading content...'}
-                         </div>
-                           <sl-button slot="footer" variant="primary" 
+
+                           <div style="white-space: pre-line;">
+                           ${this.articles.get('why_breath')?.bodyContent || 'Loading content...'
+                            ? html`${unsafeHTML(this.articles.get('why_breath')?.bodyContent)}`
+                            : 'Loading content...'}
+                           </div>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
+
                            @click=${(e) => {
                              const articleId = this.articles.get('why_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}>
                            ${this.userBookmarks.has(this.articles.get('why_breath')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                          </sl-button>
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                          </sl-dialog>
                        </div>
      
+
+
                        <div class="why-med" @click=${this.openDialog}>
-                        <img src="/images/mental-health/anxiety/anxiety-deal-360.webp">
+                        <img src="/images/mental-health/anxiety/anxiety-deal-360.webp" class="why-breath-img">
+
      
-                         <p>${this.articles.get('how_breath')?.title || 'Loading...'}</p>
+                         <p style="position: relative; width: 50%; left: 5%;">${this.articles.get('how_breath')?.title || 'Loading...'}</p>
                          ${this.userBookmarks && this.articles.get('how_breath') && this.userBookmarks.has(this.articles.get('how_breath')._id)
                            ? html`
                              <img 
@@ -529,12 +564,12 @@ class mindfulnessExpandedView {
                           ? html`${unsafeHTML(this.articles.get('how_breath')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
-                           <sl-button
+                           <sl-button class="edit-btn hydrated"
                                slot="footer"
                                variant="primary"
                                @click=${(e) => {
                                  const articleId = this.articles.get('how_breath')?._id;
-                                 console.log("Bookmarking article ID:", articleId);
+                                 //console.log("Bookmarking article ID:", articleId);
                                  this.bookmarkArticle(e, articleId);
                                }}
                              >
@@ -544,13 +579,15 @@ class mindfulnessExpandedView {
                                }
                              </sl-button>
      
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="benefit-med" @click=${this.openDialog}>
-                        <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="signs-img">
+
+                        <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="benefit-breath-img">
+
      
-                         <p>${this.articles.get('benefits_breath')?.title || 'Loading...'}</p>
+                         <p style="position: relative; width: 70%; left: 10%;">${this.articles.get('benefits_breath')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('benefits_breath') && this.userBookmarks.has(this.articles.get('benefits_breath')._id)
                            ? html`
                              <img 
@@ -566,12 +603,12 @@ class mindfulnessExpandedView {
                           ? html`${unsafeHTML(this.articles.get('benefits_breath')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('benefits_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -581,14 +618,17 @@ class mindfulnessExpandedView {
                            }
                          </sl-button>
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
                      
+
+
                        <div class="physical-med" @click=${this.openDialog}>
-                        <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="triggers-img">
+                        <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="physical-breath-img">
+
      
-                         <p>${this.articles.get('seek_breath')?.title || 'Loading...'}</p>
+                         <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('seek_breath')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('seek_breath') && this.userBookmarks.has(this.articles.get('seek_breath')._id)
                            ? html`
                              <img 
@@ -605,12 +645,12 @@ class mindfulnessExpandedView {
                           : 'Loading content...'}
                          </div>
      
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('seek_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -619,14 +659,16 @@ class mindfulnessExpandedView {
                              : 'Bookmark'
                            }
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       
+
+
                        <div class="guided-med" @click=${this.openDialog}>
-                        <img src="/images/mental-health/anxiety/anxiety-practices-360.webp" class="practices-img">
+                        <img src="/images/mental-health/anxiety/anxiety-practices-360.webp"   class="guided-breath-img">
+
      
-                           <p>${this.articles.get('practices_breath')?.title || 'Loading...'}</p>
+                           <p style="position: relative; width: 60%; left: 30%;">${this.articles.get('practices_breath')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('practices_breath') && this.userBookmarks.has(this.articles.get('practices_breath')._id)
                            ? html`
                              <img 
@@ -657,12 +699,12 @@ class mindfulnessExpandedView {
                               </div>
                               
                           </div>
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('practices_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -672,14 +714,16 @@ class mindfulnessExpandedView {
                            }
                          </sl-button>
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
 
                        <div class="questions-med" @click=${this.openDialog}>
-                      <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp" class="seek-img">
+
+                      <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-breath-img">
+
      
-                      <p>${this.articles.get('questions_breath')?.title || 'Loading...'}</p>
+                      <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('questions_breath')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('questions_breath') && this.userBookmarks.has(this.articles.get('questions_breath')._id)
                            ? html`
                              <img 
@@ -697,12 +741,12 @@ class mindfulnessExpandedView {
                          </div>
      
                          
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('questions_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -711,15 +755,20 @@ class mindfulnessExpandedView {
                              : 'Bookmark'
                            }
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
+
+
                        <div class="tips-med" @click=${this.openDialog}>
-                      <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-img">
+                      <img src="/images/mindfulness/breathing/tips-light-globe.webp" class="tips-breath-img">
+
      
-                           <p>${this.articles.get('tips_breath')?.title || 'Loading...'}</p>
-                            ${this.userBookmarks && this.articles.get('tips_breath') && this.userBookmarks.has(this.articles.get('tips_breath')._id)
-                            ? html`
+
+                           <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('tips_breath')?.title || 'Loading...'}</p>
+                          ${this.userBookmarks && this.articles.get('tips_breath') && this.userBookmarks.has(this.articles.get('tips_breath')._id)
+                           ? html`
+
                              <img 
                                src="/images/bookmark/bookmark-full.svg" 
                                class="bookmark"
@@ -734,12 +783,12 @@ class mindfulnessExpandedView {
                           ? html`${unsafeHTML(this.articles.get('tips_breath')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('tips_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -748,7 +797,7 @@ class mindfulnessExpandedView {
                              : 'Bookmark'
                            }
                          </sl-button>
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      </div>
                    </sl-tab-panel>
@@ -761,10 +810,12 @@ class mindfulnessExpandedView {
                    <sl-tab-panel name="depression">
                      <div class="meditation">
                      
+
+
                        <div class="what-med" @click=${this.openDialog}>
-                        <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="why-img">
+                        <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="what-motivation-med">
      
-                         <p>${this.articles.get('why_mot')?.title || 'Loading...'}</p>
+                         <p style="position: relative; width: 50%; left: 45%;">${this.articles.get('why_mot')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('why_mot') && this.userBookmarks.has(this.articles.get('why_mot')._id)
                            ? html`
                              <img 
@@ -781,12 +832,12 @@ class mindfulnessExpandedView {
                             : 'Loading content...'}
                            </div>
      
-                           <sl-button
+                           <sl-button class="edit-btn hydrated"
                              slot="footer"
                              variant="primary"
                              @click=${(e) => {
                                const articleId = this.articles.get('why_mot')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}
                            >
@@ -795,14 +846,16 @@ class mindfulnessExpandedView {
                                : 'Bookmark'
                              }
                            </sl-button>
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                          </sl-dialog>
                        </div>
      
+
+
                        <div class="why-med" @click=${this.openDialog}>
-                         <img src="/images/mental-health/depression/depression-deal-360r.webp" class="stress-img">
+                         <img src="/images/mental-health/depression/depression-deal-360r.webp" class="why-motivation-img">
      
-                         <p>${this.articles.get('ways_mot')?.title || 'Loading...'}</p>
+                         <p style="position: relative; width: 80%; left: 5%;">${this.articles.get('ways_mot')?.title || 'Loading...'}</p>
                          ${this.userBookmarks && this.articles.get('ways_mot') && this.userBookmarks.has(this.articles.get('ways_mot')._id)
                            ? html`
                              <img 
@@ -818,12 +871,12 @@ class mindfulnessExpandedView {
                           ? html`${unsafeHTML(this.articles.get('ways_mot')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
-                           <sl-button
+                           <sl-button class="edit-btn hydrated"
                              slot="footer"
                              variant="primary"
                              @click=${(e) => {
                                const articleId = this.articles.get('ways_mot')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}
                            >
@@ -834,14 +887,15 @@ class mindfulnessExpandedView {
                            </sl-button>
      
      
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
 
                        <div class="benefit-med" @click=${this.openDialog}>
-                         <img src="/images/mental-health/depression/depression-signs.webp" class="signs-img">
+
+                         <img src="/images/mental-health/depression/depression-signs.webp" class="benefit-motivation-img">
      
-                         <p>${this.articles.get('how_mot')?.title || 'Loading...'}</p>
+                         <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('how_mot')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('how_mot') && this.userBookmarks.has(this.articles.get('how_mot')._id)
                            ? html`
                              <img 
@@ -859,12 +913,12 @@ class mindfulnessExpandedView {
                           : 'Loading content...'}
                          </div>
                     
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('how_mot')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -874,14 +928,16 @@ class mindfulnessExpandedView {
                            }
                          </sl-button>
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
-                     
+
+
                        <div class="physical-med" @click=${this.openDialog}>
-                         <img src="/images/mental-health/depression/depression-triggers-360.webp" class="triggers-img">
+                         <img src="/images/mental-health/depression/depression-triggers-360.webp" class="physical-motivation-img">
+
      
-                         <p>${this.articles.get('how_mot_2')?.title || 'Loading...'}</p>
+                         <p style="position: relative; width: 60%; left: 10%;">${this.articles.get('how_mot_2')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('how_mot_2') && this.userBookmarks.has(this.articles.get('how_mot_2')._id)
                            ? html`
                              <img 
@@ -898,12 +954,12 @@ class mindfulnessExpandedView {
                           ? html`${unsafeHTML(this.articles.get('how_mot_2')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('how_mot_2')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -914,13 +970,13 @@ class mindfulnessExpandedView {
                          </sl-button>
      
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="guided-med" @click=${this.openDialog}>
-                         <img src="/images/mental-health/depression/depression-practices-360.webp" class="practices-img">
+                         <img src="/images/mental-health/depression/depression-practices-360.webp" class="guided-motivation-img">
      
-                           <p>${this.articles.get('practices_mot')?.title || 'Loading...'}</p>
+                           <p style="position: relative; width: 50%; left: 35%;">${this.articles.get('practices_mot')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('practices_mot') && this.userBookmarks.has(this.articles.get('practices_mot')._id)
                            ? html`
                              <img 
@@ -939,6 +995,12 @@ class mindfulnessExpandedView {
                          </div>
                          <div class="video-group">
                               <div class="video-embed">
+                                ${this.articles.get('practices_mot')?.mediaUrl
+                                  ? html`${unsafeHTML(this.articles.get('practices_mot')?.mediaUrl)}`
+                                  : null
+                                }
+                              </div>
+                              <div class="video-embed">
                                 ${this.articles.get('practices_mot_2')?.mediaUrl
                                   ? html`${unsafeHTML(this.articles.get('practices_mot_2')?.mediaUrl)}`
                                   : null
@@ -946,12 +1008,12 @@ class mindfulnessExpandedView {
                               </div>
                               
                           </div>
-                         <sl-button
+                         <sl-button class="edit-btn hydrated"
                            slot="footer"
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('practices_mot')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -961,13 +1023,14 @@ class mindfulnessExpandedView {
                            }
                          </sl-button>
      
-                         <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                         <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
                        <div class="questions-med" @click=${this.openDialog}>
-                         <img src="/images/mental-health/depression/depression-seek-360.webp" class="seek-img">
+                         <img src="/images/mental-health/depression/depression-questions.webp" class="questions-motivation-img">
+                         
      
-                         <p>${this.articles.get('what_mot')?.title || 'Loading...'}</p>
+                         <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('what_mot')?.title || 'Loading...'}</p>
                            ${this.userBookmarks && this.articles.get('what_mot') && this.userBookmarks.has(this.articles.get('what_mot')._id)
                              ? html`
                                <img 
@@ -983,12 +1046,12 @@ class mindfulnessExpandedView {
                             ? html`${unsafeHTML(this.articles.get('what_mot')?.bodyContent)}`
                             : 'Loading content...'}
                            </div>
-                           <sl-button
+                           <sl-button class="edit-btn hydrated"
                              slot="footer"
                              variant="primary"
                              @click=${(e) => {
                                const articleId = this.articles.get('what_mot')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}
                            >
@@ -997,12 +1060,12 @@ class mindfulnessExpandedView {
                                : 'Bookmark'
                              }
                            </sl-button>
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
                        <div class="tips-med" @click=${this.openDialog}>
-                         <img src="/images/mental-health/depression/depression-questions.webp" class="questions-img">
-                         <p>${this.articles.get('tips_mot')?.title || 'Loading...'}</p>
+                         <img src="/images/mindfulness/breathing/tips-light-globe.webp" class="tips-motivation-img">
+                         <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('tips_mot')?.title || 'Loading...'}</p>
                            ${this.userBookmarks && this.articles.get('tips_mot') && this.userBookmarks.has(this.articles.get('tips_mot')._id)
                              ? html`
                                <img 
@@ -1018,12 +1081,12 @@ class mindfulnessExpandedView {
                             ? html`${unsafeHTML(this.articles.get('tips_mot')?.bodyContent)}`
                             : 'Loading content...'}
                            </div>
-                           <sl-button
+                           <sl-button class="edit-btn hydrated"
                              slot="footer"
                              variant="primary"
                              @click=${(e) => {
                                const articleId = this.articles.get('tips_mot')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}
                            >
@@ -1033,7 +1096,7 @@ class mindfulnessExpandedView {
                              }
                            </sl-button>
      
-                           <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
+                           <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      </div>
                    </sl-tab-panel>

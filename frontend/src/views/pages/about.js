@@ -16,11 +16,14 @@ class aboutUsView {
   // <sl-animation name="fadeIn" duration="2000" play iterations="1"></sl-animation>
  render() {
     const template = html`
+    <div class="about-page">
       ${Auth.isLoggedIn() ? 
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
-        html`<va-public-header></va-public-header>`
-      }
+          html`<va-public-header style="background-color: #000000 !important; color: white; padding: 10px;"></va-public-header>
 
+`
+      }
+      
       <div class="page-content inner-wrap"> 
         <section class="banner about">
           <div class="grphics">
@@ -75,6 +78,7 @@ class aboutUsView {
           </div>
         </section>
       </div>
+    </div>
   `;
   render(template, App.rootEl);
 }

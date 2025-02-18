@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
       res.json(article)
     })
     .catch(err => {
-      console.log(err)
+      //console.log(err)
       res.status(500).json({
         message: "Problem getting article"
       })
@@ -32,7 +32,7 @@ router.get("/:id", (req, res) => {
          res.json(article);
        })
        .catch((err) => {
-         console.log(err);
+         //console.log(err);
          res.status(500).json({
            message: "Couldn't get article",
            error: err,
@@ -44,7 +44,7 @@ router.get("/:id", (req, res) => {
 // endpoint - /article
 router.post('/', (req, res) => {
   // Log the request body
-  console.log('req.body = ', req.body)
+  //console.log('req.body = ', req.body)
 
     // Determine type based on mediaUrl presence
     const articleType = req.body.mediaUrl ? 'video' : req.body.type
@@ -63,7 +63,7 @@ router.post('/', (req, res) => {
       res.json(article)
     })
     .catch(err => {
-      console.log(err)
+      //console.log(err)
       res.status(500).json({
         message: "Problem creating article"
       })

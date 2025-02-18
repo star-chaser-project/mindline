@@ -20,8 +20,8 @@ class Utils {
     }
 
     generateAccessToken(user){
-        console.log('Secret = ', process.env.ACCESS_TOKEN_SECRET)
-        console.log('User = ', user)
+        //console.log('Secret = ', process.env.ACCESS_TOKEN_SECRET)
+        //console.log('User = ', user)
         return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '7d'})
     }
 
@@ -31,10 +31,10 @@ class Utils {
       }
 
       authenticateToken(req, res, next) {
-        console.log("All request headers:", req.headers); // Debug log
+        //console.log("All request headers:", req.headers); // Debug log
       
         const authHeader = req.headers['authorization'];
-        console.log("Authorization header received:", authHeader); // Debug log
+        //console.log("Authorization header received:", authHeader); // Debug log
       
         const token = authHeader && authHeader.split(' ')[1];
       
@@ -44,7 +44,7 @@ class Utils {
         
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
           if (err) {
-            console.log("Token verification error:", err);
+            //console.log("Token verification error:", err);
             return res.status(403).json({ error: "Invalid or expired token" });
           }
           req.user = user;
@@ -63,7 +63,7 @@ class Utils {
         // move image to uploadPath
         file.mv(uploadPathFull, function(err) {
             if(err){
-                console.log(err)
+                //console.log(err)
                 return false
             }
             if(typeof callback == 'function'){
