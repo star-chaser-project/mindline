@@ -227,7 +227,8 @@ class mindfulnessExpandedView {
                    <sl-tab slot="nav" panel="anxiety" .active="${activeTab === 'anxiety'}">Breathing</sl-tab>
                    <sl-tab slot="nav" panel="depression" .active="${activeTab === 'depression'}">Motivation</sl-tab>
      
-                   <!-- this is the first tab content of the menal health page -->
+
+                   <!-- Meditation - first tab content of the mindfulness page -->
                    <sl-tab-panel name="stress">
                      
             
@@ -246,11 +247,11 @@ class mindfulnessExpandedView {
                            : ''
                          }
                          <sl-dialog label="${this.articles.get('what')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                           <div style="white-space: pre-line;">
-                           ${this.articles.get('what')?.bodyContent || 'Loading content...'
-                              ? html`${unsafeHTML(this.articles.get('what')?.bodyContent)}`
-                              : 'Loading content...'}
-                           </div>
+                         <div style="white-space: pre-line;">
+                          ${this.articles.get('what')?.bodyContent || 'Loading content...'
+                            ? html`${unsafeHTML(this.articles.get('what')?.bodyContent)}`
+                            : 'Loading content...'}
+                         </div>
                            <sl-button slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('what')?._id;
@@ -263,7 +264,7 @@ class mindfulnessExpandedView {
                          </sl-dialog>
                        </div>
                        
-                       <div class="why-med" @click=${this.openDialog}>
+                       <div class="why-med why" @click=${this.openDialog}>
                          <img src="/images/mindfulness/meditation/meditation-why-meditate.webp" class="stress-img">
                          <p>${this.articles.get('why')?.title || 'Loading...'}</p>
                          ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
@@ -278,7 +279,9 @@ class mindfulnessExpandedView {
                          <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
      
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('why')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('why')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('why')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
      
                            <sl-button slot="footer" variant="primary" 
@@ -292,7 +295,7 @@ class mindfulnessExpandedView {
                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       <div class="benefit-med" @click=${this.openDialog}>
+                       <div class="benefit-med benefits" @click=${this.openDialog}>
                          <img src="/images/mindfulness/meditation/meditation-mental-health-benefits.webp" class="signs-img">
                          <p>${this.articles.get('benefits')?.title || 'Loading...'}</p>
                          ${this.userBookmarks && this.articles.get('benefits') && this.userBookmarks.has(this.articles.get('benefits')._id)
@@ -306,7 +309,9 @@ class mindfulnessExpandedView {
                          }
                          <sl-dialog label="${this.articles.get('benefits')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('benefits')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('benefits')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('benefits')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                          <sl-button slot="footer" variant="primary" 
                            @click=${(e) => {
@@ -320,7 +325,7 @@ class mindfulnessExpandedView {
                        </div>
                      
                      
-                       <div class="physical-med" @click=${this.openDialog}>
+                       <div class="physical-med guidede" @click=${this.openDialog}>
                          <img src="/images/mindfulness/meditation/meditation-physical-benefits.webp" class="triggers-img">
                          <p>${this.articles.get('guided')?.title || 'Loading...'}</p>
                          ${this.userBookmarks && this.articles.get('guided') && this.userBookmarks.has(this.articles.get('guided')._id)
@@ -333,10 +338,12 @@ class mindfulnessExpandedView {
                            : ''
                          }
                          <sl-dialog label="${this.articles.get('guided')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-     
+                         
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('guided')?.bodyContent || 'Loading content...'}
-                         </div>
+                         ${this.articles.get('guided')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('guided')?.bodyContent)}`
+                          : 'Loading content...'}
+                          </div>
                          <sl-button slot="footer" variant="primary" 
                            @click=${(e) => {
                              const articleId = this.articles.get('guided')?._id;
@@ -348,7 +355,7 @@ class mindfulnessExpandedView {
                          <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       <div class="guided-med" @click=${this.openDialog}>
+                       <div class="guided-med practices" @click=${this.openDialog}>
                        <img src="/images/mindfulness/meditation/meditation-clock-guided-meditation-253.webp" class="practices-img">
                        <p>${this.articles.get('practices')?.title || 'Loading...'}</p>
                            ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
@@ -362,7 +369,9 @@ class mindfulnessExpandedView {
                              }
                          <sl-dialog label="${this.articles.get('practices')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('practices')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('practices')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                           <div class="video-group">
                               <div class="video-embed">
@@ -396,11 +405,11 @@ class mindfulnessExpandedView {
                          <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
-                       <div class="questions-med" @click=${this.openDialog}>
+                       <div class="questions-med questions" @click=${this.openDialog}>
                        <img src="/images/mindfulness/meditation/meditation-common-questions.webp" class="seek-img">
      
                        <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
-                           ${this.userBookmarks && this.articles.get('questionsk') && this.userBookmarks.has(this.articles.get('seek')._id)
+                           ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('seek')._id)
                              ? html`
                                <img 
                                  src="/images/bookmark/bookmark-full.svg" 
@@ -411,7 +420,9 @@ class mindfulnessExpandedView {
                            }
                          <sl-dialog label="${this.articles.get('questions')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('questions')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('questions')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                          <sl-button slot="footer" variant="primary" 
                              @click=${(e) => {
@@ -424,10 +435,10 @@ class mindfulnessExpandedView {
                          <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       <div class="tips-med" @click=${this.openDialog}>
+                       <div class="tips-med tips" @click=${this.openDialog}>
                        <img src="/images/mindfulness/meditation/meditation-tips-light-globe.webp" class="questions-img">
-                           <p>${this.articles.get('questions')?.title || 'Loading...'}</p>
-                           ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
+                           <p>${this.articles.get('tips')?.title || 'Loading...'}</p>
+                           ${this.userBookmarks && this.articles.get('tips') && this.userBookmarks.has(this.articles.get('questions')._id)
                              ? html`
                                <img 
                                  src="/images/bookmark/bookmark-full.svg" 
@@ -436,17 +447,19 @@ class mindfulnessExpandedView {
                                >`
                              : ''
                            }
-                         <sl-dialog label="${this.articles.get('questions')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                         <sl-dialog label="${this.articles.get('tips')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('tips')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('tips')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                          <sl-button slot="footer" variant="primary" 
                            @click=${(e) => {
-                             const articleId = this.articles.get('questions')?._id;
+                             const articleId = this.articles.get('tips')?._id;
                              console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}>
-                           ${this.userBookmarks.has(this.articles.get('questions')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+                           ${this.userBookmarks.has(this.articles.get('tips')?._id) ? 'Remove Bookmark' : 'Bookmark'}
                          </sl-button>
                          <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
@@ -456,11 +469,11 @@ class mindfulnessExpandedView {
      
      
      
-                    <!-- this is the second tab content of the mental health page -->
+                    <!-- Breathing - second tab content of the mindfulness page -->
                    <sl-tab-panel name="anxiety">
                      <div class="meditation">
                      
-                       <div class="what-med" @click=${this.openDialog}>
+                       <div class="what-med why_breath" @click=${this.openDialog}>
                         <img src="/images/mental-health/anxiety/anxiety-why.webp" class="why-img">
                          <p>${this.articles.get('why_breath')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('why_breath') && this.userBookmarks.has(this.articles.get('why_breath')._id)
@@ -475,7 +488,9 @@ class mindfulnessExpandedView {
                          }
                          <sl-dialog label="${this.articles.get('why_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                            <div style="white-space: pre-line;">
-                             ${this.articles.get('why_breath')?.bodyContent || 'Loading content...'}
+                           ${this.articles.get('why_breath')?.bodyContent || 'Loading content...'
+                            ? html`${unsafeHTML(this.articles.get('why_breath')?.bodyContent)}`
+                            : 'Loading content...'}
                            </div>
                            <sl-button slot="footer" variant="primary" 
                            @click=${(e) => {
@@ -489,7 +504,7 @@ class mindfulnessExpandedView {
                          </sl-dialog>
                        </div>
      
-                       <div class="why-med" @click=${this.openDialog}>
+                       <div class="why-med how_breath" @click=${this.openDialog}>
                         <img src="/images/mental-health/anxiety/anxiety-deal-360.webp">
      
                          <p>${this.articles.get('how_breath')?.title || 'Loading...'}</p>
@@ -504,7 +519,9 @@ class mindfulnessExpandedView {
                          }
                          <sl-dialog label="${this.articles.get('how_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('how_breath')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('how_breath')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('how_breath')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                            <sl-button
                                slot="footer"
@@ -524,7 +541,7 @@ class mindfulnessExpandedView {
                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       <div class="benefit-med" @click=${this.openDialog}>
+                       <div class="benefit-med benefits_breath" @click=${this.openDialog}>
                         <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="signs-img">
      
                          <p>${this.articles.get('benefits_breath')?.title || 'Loading...'}</p>
@@ -539,7 +556,9 @@ class mindfulnessExpandedView {
                          }
                          <sl-dialog label="${this.articles.get('benefits_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('benefits_breath')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('benefits_breath')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('benefits_breath')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                          <sl-button
                            slot="footer"
@@ -560,7 +579,7 @@ class mindfulnessExpandedView {
                        </div>
                      
                      
-                       <div class="physical-med" @click=${this.openDialog}>
+                       <div class="physical-med seek_breath" @click=${this.openDialog}>
                         <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="triggers-img">
      
                          <p>${this.articles.get('seek_breath')?.title || 'Loading...'}</p>
@@ -575,7 +594,9 @@ class mindfulnessExpandedView {
                          }
                          <sl-dialog label="${this.articles.get('seek_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('seek_breath')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('seek_breath')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('seek_breath')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
      
                          <sl-button
@@ -595,7 +616,8 @@ class mindfulnessExpandedView {
                          <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       <div class="guided-med" @click=${this.openDialog}>
+                       
+                       <div class="guided-med practices_breath" @click=${this.openDialog}>
                         <img src="/images/mental-health/anxiety/anxiety-practices-360.webp" class="practices-img">
      
                            <p>${this.articles.get('practices_breath')?.title || 'Loading...'}</p>
@@ -645,7 +667,8 @@ class mindfulnessExpandedView {
                          <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
-                       <div class="questions-med" @click=${this.openDialog}>
+
+                       <div class="questions-med questions_breath" @click=${this.openDialog}>
                       <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp" class="seek-img">
      
                       <p>${this.articles.get('questions_breath')?.title || 'Loading...'}</p>
@@ -660,7 +683,9 @@ class mindfulnessExpandedView {
                          }
                          <sl-dialog label="${this.articles.get('questions_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('questions_breath')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('questions_breath')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('questions_breath')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
      
                          
@@ -681,12 +706,12 @@ class mindfulnessExpandedView {
                          <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       <div class="tips-med" @click=${this.openDialog}>
+                       <div class="tips-med tips_breath" @click=${this.openDialog}>
                       <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-img">
      
                            <p>${this.articles.get('tips_breath')?.title || 'Loading...'}</p>
-                          ${this.userBookmarks && this.articles.get('tips_breath') && this.userBookmarks.has(this.articles.get('tips_breath')._id)
-                           ? html`
+                            ${this.userBookmarks && this.articles.get('tips_breath') && this.userBookmarks.has(this.articles.get('tips_breath')._id)
+                            ? html`
                              <img 
                                src="/images/bookmark/bookmark-full.svg" 
                                class="bookmark"
@@ -697,7 +722,9 @@ class mindfulnessExpandedView {
                          <sl-dialog label="${this.articles.get('tips_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
      
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('tips_breath')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('tips_breath')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('tips_breath')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                          <sl-button
                            slot="footer"
@@ -722,11 +749,11 @@ class mindfulnessExpandedView {
      
      
                    
-                    <!-- this is the third tab content of the menal health page -->
+                    <!-- Motivation - third tab content of the mindfulness page -->
                    <sl-tab-panel name="depression">
                      <div class="meditation">
                      
-                       <div class="what-med" @click=${this.openDialog}>
+                       <div class="what-med why_mot" @click=${this.openDialog}>
                         <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="why-img">
      
                          <p>${this.articles.get('why_mot')?.title || 'Loading...'}</p>
@@ -741,7 +768,9 @@ class mindfulnessExpandedView {
                          }
                          <sl-dialog label="${this.articles.get('why_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                            <div style="white-space: pre-line;">
-                             ${this.articles.get('why_mot')?.bodyContent || 'Loading content...'}
+                           ${this.articles.get('why_mot')?.bodyContent || 'Loading content...'
+                            ? html`${unsafeHTML(this.articles.get('why_mot')?.bodyContent)}`
+                            : 'Loading content...'}
                            </div>
      
                            <sl-button
@@ -762,7 +791,7 @@ class mindfulnessExpandedView {
                          </sl-dialog>
                        </div>
      
-                       <div class="why-med" @click=${this.openDialog}>
+                       <div class="why-med ways_mot" @click=${this.openDialog}>
                          <img src="/images/mental-health/depression/depression-deal-360r.webp" class="stress-img">
      
                          <p>${this.articles.get('ways_mot')?.title || 'Loading...'}</p>
@@ -777,7 +806,9 @@ class mindfulnessExpandedView {
                          }
                          <sl-dialog label="${this.articles.get('ways_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('ways_mot')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('ways_mot')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('way_mot')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                            <sl-button
                              slot="footer"
@@ -798,7 +829,8 @@ class mindfulnessExpandedView {
                            <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
-                       <div class="benefit-med" @click=${this.openDialog}>
+
+                       <div class="benefit-med how_mot" @click=${this.openDialog}>
                          <img src="/images/mental-health/depression/depression-signs.webp" class="signs-img">
      
                          <p>${this.articles.get('how_mot')?.title || 'Loading...'}</p>
@@ -814,7 +846,9 @@ class mindfulnessExpandedView {
                          <sl-dialog label="${this.articles.get('how_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
      
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('how_mot')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('how_mot')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('how_mot')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                     
                          <sl-button
@@ -836,7 +870,7 @@ class mindfulnessExpandedView {
                        </div>
                      
                      
-                       <div class="physical-med" @click=${this.openDialog}>
+                       <div class="physical-med how_mot_2" @click=${this.openDialog}>
                          <img src="/images/mental-health/depression/depression-triggers-360.webp" class="triggers-img">
      
                          <p>${this.articles.get('how_mot_2')?.title || 'Loading...'}</p>
@@ -852,7 +886,9 @@ class mindfulnessExpandedView {
                          <sl-dialog label="${this.articles.get('how_mot_2')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
      
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('how_mot_2')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('how_mot_2')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('how_mot_2')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                          <sl-button
                            slot="footer"
@@ -889,7 +925,9 @@ class mindfulnessExpandedView {
                          <sl-dialog label="${this.articles.get('practices_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
      
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('practices_mot')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('practices_mot')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('practices_mot')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                          <div class="video-group">
                               <div class="video-embed">
@@ -933,7 +971,9 @@ class mindfulnessExpandedView {
                            }
                            <sl-dialog label="${this.articles.get('what_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                            <div style="white-space: pre-line;">
-                             ${this.articles.get('what_mot')?.bodyContent || 'Loading content...'}
+                           ${this.articles.get('what_mot')?.bodyContent || 'Loading content...'
+                            ? html`${unsafeHTML(this.articles.get('what_mot')?.bodyContent)}`
+                            : 'Loading content...'}
                            </div>
                            <sl-button
                              slot="footer"
@@ -966,7 +1006,9 @@ class mindfulnessExpandedView {
                            }
                            <sl-dialog label="${this.articles.get('tips_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                            <div style="white-space: pre-line;">
-                             ${this.articles.get('tips_mot')?.bodyContent || 'Loading content...'}
+                           ${this.articles.get('tips_mot')?.bodyContent || 'Loading content...'
+                            ? html`${unsafeHTML(this.articles.get('tips_mot')?.bodyContent)}`
+                            : 'Loading content...'}
                            </div>
                            <sl-button
                              slot="footer"
