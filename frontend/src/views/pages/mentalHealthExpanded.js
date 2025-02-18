@@ -225,7 +225,7 @@ async fetchArticle(id) {
               <sl-tab slot="nav" panel="anxiety" .active="${activeTab === 'anxiety'}">Anxiety</sl-tab>
               <sl-tab slot="nav" panel="depression" .active="${activeTab === 'depression'}">Depression</sl-tab>
 
-              <!-- this is the first tab content of the menal health page -->
+              <!-- Stress - first tab content of the mental health page -->
               <sl-tab-panel name="stress">
                 
        
@@ -246,7 +246,9 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                       <div style="white-space: pre-line;">
-                      ${this.articles.get('why')?.bodyContent || 'Loading content...'}
+                      ${this.articles.get('why')?.bodyContent || 'Loading content...'
+                        ? html`${unsafeHTML(this.articles.get('why')?.bodyContent)}`
+                        : 'Loading content...'}
                       </div>
                       <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
@@ -276,7 +278,9 @@ async fetchArticle(id) {
                     <sl-dialog label="${this.articles.get('deal')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
 
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('deal')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('deal')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('deal')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
 
                       <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
@@ -305,7 +309,9 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('signs')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('signs')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('signs')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('signs')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                     <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
@@ -335,7 +341,9 @@ async fetchArticle(id) {
                     <sl-dialog label="${this.articles.get('triggers')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
 
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('triggers')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('triggers')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('triggers')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                     <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
@@ -363,7 +371,9 @@ async fetchArticle(id) {
                         }
                     <sl-dialog label="${this.articles.get('practices')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('practices')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('practices')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('practices')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                     <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
@@ -393,7 +403,9 @@ async fetchArticle(id) {
                       }
                     <sl-dialog class="edit-btn" label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('seek')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('seek')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('seek')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                     <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
@@ -421,7 +433,9 @@ async fetchArticle(id) {
                       }
                     <sl-dialog label="${this.articles.get('questions')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('questions')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('questions')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('questions')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                     <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
@@ -439,7 +453,7 @@ async fetchArticle(id) {
 
 
 
-               <!-- this is the second tab content of the mental health page -->
+               <!-- Anxiety -second tab content of the mental health page -->
               <sl-tab-panel name="anxiety">
                 <div class="stress">
                 
@@ -459,8 +473,10 @@ async fetchArticle(id) {
                       : ''
                     }
                     <sl-dialog label="${this.articles.get('why_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
-                      <div style="white-space: pre-line;">
-                        ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'}
+                    <div style="white-space: pre-line;">
+                    ${this.articles.get('why_anxiety')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('why_anxiety')?.bodyContent)}`
+                      : 'Loading content...'}
                       </div>
                       <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
@@ -469,6 +485,7 @@ async fetchArticle(id) {
                         this.bookmarkArticle(e, articleId);
                       }}>
                       ${this.userBookmarks.has(this.articles.get('why_anxiety')?._id) ? 'Remove Bookmark' : 'Bookmark'}
+
                     </sl-button>
                       <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                     </sl-dialog>
@@ -490,7 +507,9 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('deal_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('deal_anxiety')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('deal_anxiety')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('deal_anxiety')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                       <sl-button class="edit-btn hydrated"
                           slot="footer"
@@ -526,7 +545,9 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('signs_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('signs_anxiety')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('signs_anxiety')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('signs_anxiety')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                     <sl-button class="edit-btn hydrated"
                       slot="footer"
@@ -563,7 +584,9 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('triggers_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('triggers_anxiety')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('triggers_anxiety')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('triggers_anxiety')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
 
                     <sl-button class="edit-btn hydrated"
@@ -599,7 +622,9 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('practices_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('practices_anxiety')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('practices_anxiety')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('practices_anxiety')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                     <sl-button class="edit-btn hydrated"
                       slot="footer"
@@ -635,7 +660,9 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('seek_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('seek_anxiety')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('seek_anxiety')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('seek_anxiety')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
 
                     
@@ -673,7 +700,9 @@ async fetchArticle(id) {
                     <sl-dialog label="${this.articles.get('questions_anxiety')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
 
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('questions_anxiety')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('questions_anxiety')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('questions_anxiety')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                     <sl-button class="edit-btn hydrated"
                       slot="footer"
@@ -718,7 +747,9 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('why_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                       <div style="white-space: pre-line;">
-                        ${this.articles.get('why_depression')?.bodyContent || 'Loading content...'}
+                      ${this.articles.get('why_depression')?.bodyContent || 'Loading content...'
+                        ? html`${unsafeHTML(this.articles.get('why_depression')?.bodyContent)}`
+                        : 'Loading content...'}
                       </div>
 
                       <sl-button class="edit-btn hydrated"
@@ -755,7 +786,9 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('deal_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('deal_depression')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('deal_depression')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('deal_depression')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                       <sl-button class="edit-btn hydrated"
                         slot="footer"
@@ -793,7 +826,9 @@ async fetchArticle(id) {
                     <sl-dialog label="${this.articles.get('signs_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
 
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('signs_depression')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('sign_depression')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('signs_depression')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                
                     <sl-button class="edit-btn hydrated"
@@ -832,7 +867,9 @@ async fetchArticle(id) {
                     <sl-dialog label="${this.articles.get('triggers_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
 
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('triggers_depression')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('triggers_depression')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('triggers_depression')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                     <sl-button class="edit-btn hydrated"
                       slot="footer"
@@ -870,7 +907,9 @@ async fetchArticle(id) {
                     <sl-dialog label="${this.articles.get('practices_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
 
                     <div style="white-space: pre-line;">
-                      ${this.articles.get('practices_depression')?.bodyContent || 'Loading content...'}
+                    ${this.articles.get('practices_depression')?.bodyContent || 'Loading content...'
+                      ? html`${unsafeHTML(this.articles.get('practices_depression')?.bodyContent)}`
+                      : 'Loading content...'}
                     </div>
                     <sl-button class="edit-btn hydrated"
                       slot="footer"
@@ -906,7 +945,9 @@ async fetchArticle(id) {
                       }
                       <sl-dialog label="${this.articles.get('seek_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                       <div style="white-space: pre-line;">
-                        ${this.articles.get('seek_depression')?.bodyContent || 'Loading content...'}
+                      ${this.articles.get('seek_depression')?.bodyContent || 'Loading content...'
+                        ? html`${unsafeHTML(this.articles.get('seek_depression')?.bodyContent)}`
+                        : 'Loading content...'}
                       </div>
                       <sl-button class="edit-btn hydrated"
                         slot="footer"
@@ -940,7 +981,9 @@ async fetchArticle(id) {
                       }
                       <sl-dialog label="${this.articles.get('questions_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                       <div style="white-space: pre-line;">
-                        ${this.articles.get('questions_depression')?.bodyContent || 'Loading content...'}
+                      ${this.articles.get('questions_depression')?.bodyContent || 'Loading content...'
+                        ? html`${unsafeHTML(this.articles.get('questions_depression')?.bodyContent)}`
+                        : 'Loading content...'}
                       </div>
                       <sl-button class="edit-btn hydrated"
                         slot="footer"
