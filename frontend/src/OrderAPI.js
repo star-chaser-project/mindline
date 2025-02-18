@@ -45,7 +45,7 @@ class OrderAPI {
       if(!response.ok){ 
         // console log error
         const err = await response.json();
-        if(err) console.log(err);
+        if(err) ////console.log(err);
         // throw error (exit this function)      
         throw new Error('Problem adding product to favourites');
       }
@@ -59,24 +59,24 @@ class OrderAPI {
     }
 
   async getOrders(){
-    console.log("calling orders beginning")
+    //console.log("calling orders beginning")
     // fetch the json data
     const response = await fetch(`${App.apiBase}/order`, {
       headers: { "Authorization": `Bearer ${localStorage.accessToken}`}
     });
-    console.log("calling orders")
+    //console.log("calling orders")
     // if response not ok
     if(!response.ok){ 
       // console log error
       const err = await response.json();
-      if(err) console.log(err);
+      if(err) //console.log(err);
       // throw error (exit this function)      
       throw new Error('Problem getting orders');
     }
     
     // convert response payload into json - store as data
     const data = await response.json();
-    console.log("data", data)
+    //console.log("data", data)
     
     // return data
     return data;

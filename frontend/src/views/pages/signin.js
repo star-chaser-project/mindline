@@ -15,7 +15,7 @@ class SignInView {
   firstUpdated(){
     super.firstUpdated()
     this.navActiveLinks()
-    console.log('Header initialized with title:', this.title);    
+    //console.log('Header initialized with title:', this.title);    
   }
 
     signInSubmitHandler(e) {
@@ -29,7 +29,7 @@ class SignInView {
           data[key] = value;
         });
         
-        console.log('Converted form data:', data); // Debug: check the converted data
+        //console.log('Converted form data:', data); // Debug: check the converted data
         
         const submitBtn = document.querySelector('.submit-btn');
         submitBtn.setAttribute('loading', '');

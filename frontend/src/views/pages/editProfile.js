@@ -9,7 +9,7 @@ import moment from 'moment';
 
 class EditProfileView {
   init(){
-    console.log('EditProfileView.init');
+    //console.log('EditProfileView.init');
     document.title = 'Edit Profile';
     this.user = null;
     this.avatarPreview = null;
@@ -30,11 +30,11 @@ class EditProfileView {
   // Called when a file is selected.
   handleAvatarChange(e) {
     const file = e.target.files[0];
-    console.log('File selected:', file);
+    //console.log('File selected:', file);
     if (file) {
       // Create a preview URL for the selected image.
       this.avatarPreview = URL.createObjectURL(file);
-      console.log('Preview URL:', this.avatarPreview);
+      //console.log('Preview URL:', this.avatarPreview);
       this.render();
       Toast.show('Profile Image Updated');
     }
