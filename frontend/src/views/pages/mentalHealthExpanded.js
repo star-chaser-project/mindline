@@ -250,6 +250,7 @@ async fetchArticle(id) {
                         ? html`${unsafeHTML(this.articles.get('why')?.bodyContent)}`
                         : 'Loading content...'}
                       </div>
+
                       <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('why')?._id;
