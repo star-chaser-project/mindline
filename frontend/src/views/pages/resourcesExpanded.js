@@ -230,8 +230,8 @@ class resourcesExpandedView {
                         <div class="support">
                         
                           <div class="ask" @click=${this.openDialog}>
-                            <img src="/images/mindfulness/meditation/meditation-what-is-meditation.webp" class="why-img">
-                            <p>${this.articles.get('ask')?.title || 'Loading...'}</p>
+                            <img src="/images/mindfulness/meditation/meditation-what-is-meditation.webp" class="ask-img">
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('ask')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('ask') && this.userBookmarks.has(this.articles.get('ask')._id)
                               ? html`
                                 <img 
@@ -260,8 +260,8 @@ class resourcesExpandedView {
                           </div>
                           
                           <div class="talk" @click=${this.openDialog}>
-                            <img src="/images/mindfulness/meditation/meditation-why-meditate.webp" class="stress-img">
-                            <p>${this.articles.get('talk')?.title || 'Loading...'}</p>
+                            <img src="/images/mindfulness/meditation/meditation-why-meditate.webp" class="talk-img">
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('talk')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('talk') && this.userBookmarks.has(this.articles.get('talk')._id)
                               ? html`
                                 <img 
@@ -291,8 +291,8 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="how_support" @click=${this.openDialog}>
-                            <img src="/images/mindfulness/meditation/meditation-mental-health-benefits.webp" class="signs-img">
-                            <p>${this.articles.get('how_support')?.title || 'Loading...'}</p>
+                            <img src="/images/mindfulness/meditation/meditation-mental-health-benefits.webp" class="how_support-img">
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('how_support')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('how_support') && this.userBookmarks.has(this.articles.get('how_support')._id)
                               ? html`
                                 <img 
@@ -321,8 +321,8 @@ class resourcesExpandedView {
                         
                         
                           <div class="tips_support" @click=${this.openDialog}>
-                            <img src="/images/mindfulness/meditation/meditation-physical-benefits.webp" class="triggers-img">
-                            <p>${this.articles.get('tips_support')?.title || 'Loading...'}</p>
+                            <img src="/images/mindfulness/meditation/meditation-physical-benefits.webp" class="tips_support-img">
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('tips_support')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('tips_support') && this.userBookmarks.has(this.articles.get('tips_support')._id)
                               ? html`
                                 <img 
@@ -351,8 +351,8 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="what_support" @click=${this.openDialog}>
-                          <img src="/images/mindfulness/meditation/meditation-clock-guided-meditation-253.webp" class="what-sup-img">
-                          <p>${this.articles.get('what_support')?.title || 'Loading...'}</p>
+                          <img src="/images/mindfulness/meditation/meditation-clock-guided-meditation-253.webp" class="what_support-img">
+                          <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('what_support')?.title || 'Loading...'}</p>
                               ${this.userBookmarks && this.articles.get('what_support') && this.userBookmarks.has(this.articles.get('what_support')._id)
                                   ? html`
                                     <img 
@@ -390,9 +390,9 @@ class resourcesExpandedView {
                           </div>
                         
                           <div class="help_support" @click=${this.openDialog}>
-                          <img src="/images/mindfulness/meditation/meditation-common-questions.webp" class="seek-img">
+                          <img src="/images/mindfulness/meditation/meditation-common-questions.webp" class="help_support-img">
         
-                          <p>${this.articles.get('help_support')?.title || 'Loading...'}</p>
+                          <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('help_support')?.title || 'Loading...'}</p>
                               ${this.userBookmarks && this.articles.get('help_support') && this.userBookmarks.has(this.articles.get('help_support')._id)
                                 ? html`
                                   <img 
@@ -420,8 +420,8 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="mindset" @click=${this.openDialog}>
-                          <img src="/images/mindfulness/meditation/meditation-tips-light-globe.webp" class="questions-img">
-                              <p>${this.articles.get('mindset')?.title || 'Loading...'}</p>
+                          <img src="/images/mindfulness/meditation/meditation-tips-light-globe.webp" class="mindset-img">
+                              <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('mindset')?.title || 'Loading...'}</p>
                               ${this.userBookmarks && this.articles.get('mindset') && this.userBookmarks.has(this.articles.get('mindset')._id)
                                 ? html`
                                   <img 
@@ -458,8 +458,8 @@ class resourcesExpandedView {
                         <div class="support">
                         
                           <div class="ask" @click=${this.openDialog}>
-                           <img src="/images/mental-health/anxiety/anxiety-why.webp" class="why-img">
-                            <p>${this.articles.get('crisis')?.title || 'Loading...'}</p>
+                           <img src="/images/mental-health/anxiety/anxiety-why.webp" class="ask-services-img">
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('crisis')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('crisis') && this.userBookmarks.has(this.articles.get('crisis')._id)
                               ? html`
                                 <img 
@@ -489,9 +489,9 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="talk" @click=${this.openDialog}>
-                           <img src="/images/mental-health/anxiety/anxiety-deal-360.webp">
+                           <img src="/images/mental-health/anxiety/anxiety-deal-360.webp" class="talk-services-img">
         
-                            <p>${this.articles.get('kids')?.title || 'Loading...'}</p>
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('kids')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('kids') && this.userBookmarks.has(this.articles.get('kids')._id)
                               ? html`
                                 <img 
@@ -526,9 +526,9 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="how_support" @click=${this.openDialog}>
-                           <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="signs-img">
+                           <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="how_services-img">
         
-                            <p>${this.articles.get('mental_serv')?.title || 'Loading...'}</p>
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('mental_serv')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('mental_serv') && this.userBookmarks.has(this.articles.get('mental_serv')._id)
                               ? html`
                                 <img 
@@ -564,9 +564,9 @@ class resourcesExpandedView {
                         
                         
                           <div class="tips_support" @click=${this.openDialog}>
-                           <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="triggers-img">
+                           <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="tips_services-img">
         
-                            <p>${this.articles.get('counsel')?.title || 'Loading...'}</p>
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('counsel')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('counsel') && this.userBookmarks.has(this.articles.get('counsel')._id)
                               ? html`
                                 <img 
@@ -601,9 +601,9 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="what_support" @click=${this.openDialog}>
-                           <img src="/images/mental-health/anxiety/anxiety-practices-360.webp" class="practices-img">
+                           <img src="/images/mental-health/anxiety/anxiety-practices-360.webp" class="what_services-img">
         
-                              <p>${this.articles.get('substance')?.title || 'Loading...'}</p>
+                              <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('substance')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('substance') && this.userBookmarks.has(this.articles.get('substance')._id)
                               ? html`
                                 <img 
@@ -653,9 +653,9 @@ class resourcesExpandedView {
                           </div>
                         
                           <div class="help_support" @click=${this.openDialog}>
-                         <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp" class="seek-img">
+                         <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp" class="help_services-img">
         
-                         <p>${this.articles.get('indigl')?.title || 'Loading...'}</p>
+                         <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('indigl')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('indigl') && this.userBookmarks.has(this.articles.get('indigl')._id)
                               ? html`
                                 <img 
@@ -691,9 +691,9 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="mindset" @click=${this.openDialog}>
-                         <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-img">
+                         <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="mindset-services-img">
         
-                              <p>${this.articles.get('help_serv')?.title || 'Loading...'}</p>
+                              <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('help_serv')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('help_serv') && this.userBookmarks.has(this.articles.get('help_serv')._id)
                               ? html`
                                 <img 
@@ -738,9 +738,9 @@ class resourcesExpandedView {
                         <div class="support">
                         
                           <div class="ask" @click=${this.openDialog}>
-                           <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="why-img">
+                           <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="ask-guides-img">
         
-                            <p>${this.articles.get('mental_guides')?.title || 'Loading...'}</p>
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('mental_guides')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('mental_guides') && this.userBookmarks.has(this.articles.get('mental_guides')._id)
                               ? html`
                                 <img 
@@ -776,9 +776,9 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="talk" @click=${this.openDialog}>
-                            <img src="/images/mental-health/depression/depression-deal-360r.webp" class="stress-img">
+                            <img src="/images/mental-health/depression/depression-deal-360r.webp" class="talk-guides-img">
         
-                            <p>${this.articles.get('digital')?.title || 'Loading...'}</p>
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('digital')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('digital') && this.userBookmarks.has(this.articles.get('digital')._id)
                               ? html`
                                 <img 
@@ -814,9 +814,9 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="how_support" @click=${this.openDialog}>
-                            <img src="/images/mental-health/depression/depression-signs.webp" class="signs-img">
+                            <img src="/images/mental-health/depression/depression-signs.webp" class="how_guides-img">
         
-                            <p>${this.articles.get('parent')?.title || 'Loading...'}</p>
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('parent')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('parent') && this.userBookmarks.has(this.articles.get('parent')._id)
                               ? html`
                                 <img 
@@ -854,9 +854,9 @@ class resourcesExpandedView {
                         
                         
                           <div class="tips_support" @click=${this.openDialog}>
-                            <img src="/images/mental-health/depression/depression-triggers-360.webp" class="triggers-img">
+                            <img src="/images/mental-health/depression/depression-triggers-360.webp" class="tips_guides-img">
         
-                            <p>${this.articles.get('depression_guides')?.title || 'Loading...'}</p>
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('depression_guides')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('depression_guides') && this.userBookmarks.has(this.articles.get('depression_guides')._id)
                               ? html`
                                 <img 
@@ -893,9 +893,9 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="what_support" @click=${this.openDialog}>
-                            <img src="/images/mental-health/depression/depression-practices-360.webp" class="practices-img">
+                            <img src="/images/mental-health/depression/depression-practices-360.webp" class="what_guides-img">
         
-                              <p>${this.articles.get('self')?.title || 'Loading...'}</p>
+                              <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('self')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('self') && this.userBookmarks.has(this.articles.get('self')._id)
                               ? html`
                                 <img 
@@ -931,9 +931,9 @@ class resourcesExpandedView {
                           </div>
                         
                           <div class="help_support" @click=${this.openDialog}>
-                            <img src="/images/mental-health/depression/depression-seek-360.webp" class="seek-img">
+                            <img src="/images/mental-health/depression/depression-seek-360.webp" class="help_guides-img">
         
-                            <p>${this.articles.get('toolkit')?.title || 'Loading...'}</p>
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('toolkit')?.title || 'Loading...'}</p>
                               ${this.userBookmarks && this.articles.get('toolkit') && this.userBookmarks.has(this.articles.get('toolkit')._id)
                                 ? html`
                                   <img 
@@ -967,8 +967,8 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="mindset" @click=${this.openDialog}>
-                            <img src="/images/mental-health/depression/depression-questions.webp" class="questions-img">
-                            <p>${this.articles.get('tips_guides')?.title || 'Loading...'}</p>
+                            <img src="/images/mental-health/depression/depression-questions.webp" class="mindset-guides-">
+                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('tips_guides')?.title || 'Loading...'}</p>
                               ${this.userBookmarks && this.articles.get('tips_guides') && this.userBookmarks.has(this.articles.get('tips_guides')._id)
                                 ? html`
                                   <img 
