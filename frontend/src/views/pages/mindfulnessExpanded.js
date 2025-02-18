@@ -206,6 +206,7 @@ class mindfulnessExpandedView {
     const urlParams = new URLSearchParams(window.location.search);
     const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
     const template = html`
+     <div class="mindfulness-exp">
 
       <style>
         .expanded-page {
