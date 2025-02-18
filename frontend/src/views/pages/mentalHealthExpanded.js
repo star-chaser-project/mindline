@@ -4,7 +4,7 @@ import {gotoRoute, anchorRoute} from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
 import Toast from '../../Toast';
-
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 
 
  // Image adapted from Canva – Accessed on December 18, 2024
@@ -246,8 +246,10 @@ async fetchArticle(id) {
                     }
                     <sl-dialog label="${this.articles.get('why')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                       <div style="white-space: pre-line;">
-                      ${this.articles.get('why')?.bodyContent || 'Loading content...'}
-                      </div>
+                          ${this.articles.get('why')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('why')?.bodyContent)}`
+                          : 'Loading content...'}
+                         </div>
                       <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('why')?._id;
