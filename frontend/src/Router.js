@@ -78,7 +78,8 @@ class Router {
 	gotoRoute(pathname){
 		window.history.pushState({}, pathname, window.location.origin + pathname);
 		this.route(pathname);
-	}	
+	}
+	
 }
 
 // create appRouter instance and export

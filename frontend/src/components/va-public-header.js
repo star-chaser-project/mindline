@@ -63,8 +63,11 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
         box-sizing: border-box;
     }
     
+
     .public-header {
-        background: transparent !important;
+       
+        background: var( --app-header-bg-color);
+        box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.2);
         position: fixed;
         top: 0;
         right: 0;
@@ -250,7 +253,7 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
         <a href="/" @click="${this.menuClick}">Home</a>
         <sl-details>
             <div slot="summary" class="summary-content">
-                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
+                <span class="summary-title">Mental Health</span>
             </div>
             <a class="menu-expand" href="#" @click=${() => gotoRoute('/mentalHealthExpanded?tab=stress')}>Stress</a>
             <a class="menu-expand" href="#" @click=${() => gotoRoute('/mentalHealthExpanded?tab=anxiety')}>Anxiety</a>
@@ -258,7 +261,7 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
         </sl-details>
         <sl-details>
             <div slot="summary" class="summary-content">
-                <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
+                <span class="summary-title">Mindfulness</span>
             </div>
             <a class="menu-expand" href="#" @click=${() => gotoRoute('/mindfulnessExpanded?tab=meditation')}>Meditation</a>
             <a class="menu-expand" href="#" @click=${() => gotoRoute('/mindfulnessExpanded?tab=breathing')}>Breathing</a>
@@ -266,7 +269,7 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
         </sl-details>
         <sl-details>
             <div slot="summary" class="summary-content">
-                <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
+                <span class="summary-title">Resources</span>
             </div>
             <a class="menu-expand" href="#" @click=${() => gotoRoute('/resourcesExpanded?tab=support')}>Support</a>
             <a class="menu-expand" href="#" @click=${() => gotoRoute('/resourcesExpanded?tab=services')}>Services</a>

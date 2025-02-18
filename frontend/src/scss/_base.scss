@@ -225,9 +225,10 @@ sl-details::part(base) {
   background: var(--background-extra-page);
 }
 .guide-step {
-  padding: 1em;
-  margin: 1.5em auto;
+  padding: 5px;
+  margin: 0em auto;
   max-width: 600px;
+
   img {
     width: 100%;
     height: auto;
@@ -447,30 +448,6 @@ li:last-child {
 }
   }
 }
-// about page ----------------------------------------------------------------------------
-.about-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 3rem;
-  margin: 0 auto;
-  padding: 3rem;
-
-  article {
-    flex: 1; // Makes each article take equal width
-    min-width: 280px; // Ensures each section has a minimum width
-  }
-
-  .how-to-get-here {
-    width: 100%; // Makes it full width
-
-    iframe {
-      width: 100%; // Ensures the iframe fills the width of its container
-      height: 450px; // Set a fixed height for the iframe
-      border: 0; // Optional, to remove iframe border
-    }
-  }
-}
 
 // Responsive layouts ------------------------------------------------- 
 // makes a one column layout instead of a two-column layout
@@ -532,7 +509,7 @@ li:last-child {
   } 
 
   h2 { 
-    font-size: 1.5rem; 
+    font-size: 1.2rem; 
   } 
 
   p { 
@@ -548,7 +525,7 @@ li:last-child {
   }
 
   h1 { 
-    font-size: 2.5rem;
+    font-size: 2rem
   } 
 
   h2 { 

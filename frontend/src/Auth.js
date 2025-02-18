@@ -73,7 +73,7 @@ class Auth {
 
     Router.init();
     if(data.user.newUser === true){
-      gotoRoute('/guide');
+      gotoRoute('/');
     } else {
       gotoRoute('/');
     }
