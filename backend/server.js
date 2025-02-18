@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // express app setup -----------------------
 const app = express()
 // Apply CORS as early as possible
-app.use(cors()) // You can also restrict the origin if needed, e.g., cors({ origin: 'http://localhost:1234' })
+app.use(cors())
 
 // Then static files, body parsers, etc.
 app.use(express.static('public'))
@@ -56,5 +56,5 @@ app.use('/bookmark', bookmarkRouter)
 
 // run app listen on port --------------------
 app.listen(port, () => {
-  console.log("App running on port ", port)
+  //console.log("App running on port ", port)
 })
