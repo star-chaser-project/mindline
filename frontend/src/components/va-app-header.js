@@ -597,4 +597,3 @@ sl-details::part(base) {
   }
   
 });
-
