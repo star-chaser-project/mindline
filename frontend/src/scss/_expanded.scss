@@ -21,11 +21,7 @@ h1{
 }
 }
 
-sl-tab-group::part(base) {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-}
+
 
 sl-tab-group::part(nav) {
     border-bottom: none;
@@ -40,18 +36,24 @@ sl-tab-group::part(active-tab-indicator) {
 sl-tab-group::part(tabs) {
     border-bottom: none;
 }
-
+sl-tab-group::part(base) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 sl-tab::part(base) {
     border-bottom: none;
-    margin: 0 12px;
-    padding: 12px 24px;
+    margin: 0 6px;
+    padding: 6px 6px;
     font-size: 18px;
     font-weight: 500;
     transition: all 0.2s ease;
+    color:#FFFFFF;
 }
 
 sl-tab:not([active])::part(base):hover {
     font-size: 20px;
+    color:#FFFFFF;
 }
 
 sl-tab[active]::part(base) {
@@ -674,22 +676,6 @@ display: none;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .why:hover .why-img {
 transform: translate(-50%, -50%) scale(1.1);
 }
@@ -775,15 +761,6 @@ transform: translate(-50%, -50%) scale(1.1);
 }
 
 
-
-
-
-
-
-
-
-
-
 .video-embed iframe {
     width: 251px;
     height: 142px;
@@ -800,7 +777,7 @@ transform: translate(-50%, -50%) scale(1.1);
     padding-top: 2rem;
 }
 
-}
+
 
 sl-dialog::part(body){
     flex: 1 1 auto;
@@ -813,3 +790,41 @@ sl-dialog::part(body){
         font-size: 1.6em;
         margin: 1.5rem 1.5rem 0.7rem;
       }
+
+
+    }@media (max-width: 767px) {
+        .expanded {
+          h1 {
+            font-size: 1.2rem!important;
+          }
+        }
+      
+       
+      
+        sl-tab {
+          &::part(base) {
+            border-bottom: none;
+            margin: 0 6px;
+            padding: 6px 6px;
+            font-size: 16px!important;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            color: #FFFFFF; // Adjust tab style for smaller screens
+          }
+      
+          &:not([active]) {
+            &::part(base):hover {
+              font-size: 18px;
+              color: #FFFFFF; // Hover effect for non-active tabs
+            }
+          }
+      
+          &[active] {
+            &::part(base) {
+              font-size: 18px;
+              color: #F3C728  // Active tab color
+            }
+          }
+        }
+      }
+      
