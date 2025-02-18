@@ -407,7 +407,7 @@ sl-dialog::part(close-button) {
 display: none;
 }
 
-.why-img,      .ask-img, .talk-img, .how_support-img, .tips_support-img, .what_support-img, .help_support-img, .mindset-img {
+.why-img {
     position: absolute;
     z-index: 0;
     object-fit: cover;
@@ -915,6 +915,237 @@ display: none;
 
 
 
+
+  .ask-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .talk-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .how_support-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .tips_support-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .what_support-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .help_support-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .mindset-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+
+.ask-services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
+}
+
+.talk-services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
+}
+
+.how_services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
+}
+
+.tips_services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
+}
+
+.what_services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
+}
+
+.help_services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
+}
+
+.mindset-services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
+}
+
+.ask-guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .talk-guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .how_guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .tips_guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .what_guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .help_guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .mindset-guides- {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
 
 
 
