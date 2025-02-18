@@ -15,13 +15,13 @@ class mindfulnessExpandedView {
   
   async fetchArticle(id) {
     try {
-      console.log('Fetching article:', id);
+      //console.log('Fetching article:', id);
       const response = await fetch(`${App.apiBase}/article/${id}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log('Fetched data:', data);
+      //console.log('Fetched data:', data);
       // Store the article id in localStorage
       localStorage.setItem(`article-${id}`, data._id);
       return data;
@@ -40,7 +40,7 @@ class mindfulnessExpandedView {
             }
           });
           const userData = await response.json();
-          console.log('Fetched user data:', userData);
+          //console.log('Fetched user data:', userData);
           
           if (userData.bookmarkArticle && userData.bookmarkArticle.length > 0) {
             if (userData.bookmarkArticle[0]._id) {
@@ -96,7 +96,7 @@ class mindfulnessExpandedView {
                 const article = await this.fetchArticle(id)
                 if (article) {
                   this.articles.set(key, article)
-                  console.log(`Set ${key} article:`, article)
+                  //console.log(`Set ${key} article:`, article)
                 }
               })
           )
@@ -200,8 +200,8 @@ class mindfulnessExpandedView {
 
 
   render(){
-    console.log('Auth.currentUser:', Auth.currentUser);
-    console.log('User bookmarks:', Array.from(this.userBookmarks));
+    //console.log('Auth.currentUser:', Auth.currentUser);
+    //console.log('User bookmarks:', Array.from(this.userBookmarks));
      // Get tab from URL params
     const urlParams = new URLSearchParams(window.location.search);
     const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
@@ -258,7 +258,7 @@ class mindfulnessExpandedView {
 
                              @click=${(e) => {
                                const articleId = this.articles.get('what')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}>
                              ${this.userBookmarks.has(this.articles.get('what')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -290,7 +290,7 @@ class mindfulnessExpandedView {
                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('why')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}>
                              ${this.userBookmarks.has(this.articles.get('why')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -322,7 +322,7 @@ class mindfulnessExpandedView {
                          <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                            @click=${(e) => {
                              const articleId = this.articles.get('benefits')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}>
                            ${this.userBookmarks.has(this.articles.get('benefits')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -358,7 +358,7 @@ class mindfulnessExpandedView {
 
                            @click=${(e) => {
                              const articleId = this.articles.get('guided')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}>
                            ${this.userBookmarks.has(this.articles.get('guided')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -391,7 +391,7 @@ class mindfulnessExpandedView {
                          <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('practices')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}>
                              ${this.userBookmarks.has(this.articles.get('practices')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -424,7 +424,7 @@ class mindfulnessExpandedView {
                          <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('questions')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}>
                              ${this.userBookmarks.has(this.articles.get('questions')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -457,7 +457,7 @@ class mindfulnessExpandedView {
                          <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                            @click=${(e) => {
                              const articleId = this.articles.get('tips')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}>
                            ${this.userBookmarks.has(this.articles.get('tips')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -498,7 +498,7 @@ class mindfulnessExpandedView {
                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                            @click=${(e) => {
                              const articleId = this.articles.get('why_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}>
                            ${this.userBookmarks.has(this.articles.get('why_breath')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -533,7 +533,7 @@ class mindfulnessExpandedView {
                                variant="primary"
                                @click=${(e) => {
                                  const articleId = this.articles.get('how_breath')?._id;
-                                 console.log("Bookmarking article ID:", articleId);
+                                 //console.log("Bookmarking article ID:", articleId);
                                  this.bookmarkArticle(e, articleId);
                                }}
                              >
@@ -571,7 +571,7 @@ class mindfulnessExpandedView {
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('benefits_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -612,7 +612,7 @@ class mindfulnessExpandedView {
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('seek_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -663,7 +663,7 @@ class mindfulnessExpandedView {
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('practices_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -704,7 +704,7 @@ class mindfulnessExpandedView {
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('questions_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -745,7 +745,7 @@ class mindfulnessExpandedView {
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('tips_breath')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -794,7 +794,7 @@ class mindfulnessExpandedView {
                              variant="primary"
                              @click=${(e) => {
                                const articleId = this.articles.get('why_mot')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}
                            >
@@ -833,7 +833,7 @@ class mindfulnessExpandedView {
                              variant="primary"
                              @click=${(e) => {
                                const articleId = this.articles.get('ways_mot')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}
                            >
@@ -875,7 +875,7 @@ class mindfulnessExpandedView {
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('how_mot')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -915,7 +915,7 @@ class mindfulnessExpandedView {
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('how_mot_2')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -969,7 +969,7 @@ class mindfulnessExpandedView {
                            variant="primary"
                            @click=${(e) => {
                              const articleId = this.articles.get('practices_mot')?._id;
-                             console.log("Bookmarking article ID:", articleId);
+                             //console.log("Bookmarking article ID:", articleId);
                              this.bookmarkArticle(e, articleId);
                            }}
                          >
@@ -1007,7 +1007,7 @@ class mindfulnessExpandedView {
                              variant="primary"
                              @click=${(e) => {
                                const articleId = this.articles.get('what_mot')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}
                            >
@@ -1042,7 +1042,7 @@ class mindfulnessExpandedView {
                              variant="primary"
                              @click=${(e) => {
                                const articleId = this.articles.get('tips_mot')?._id;
-                               console.log("Bookmarking article ID:", articleId);
+                               //console.log("Bookmarking article ID:", articleId);
                                this.bookmarkArticle(e, articleId);
                              }}
                            >
