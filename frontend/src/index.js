@@ -5,11 +5,8 @@ import App from './App.js';
 // ie can use <va-product></va-product> anywhere in the project
 // everytime create a componment make sure to import into index.js otherwise will not work
 import './components/va-app-header';
-import './components/va-product';
-import './components/va-order';
-import './components/va-checkout';
-import './components/va-favourite-line.js';
-import './components/va-favourite-product.js';
+import './components/va-public-header.js';
+
 
 // styles
 import './scss/master.scss';
