@@ -27,10 +27,6 @@ const userSchema = new mongoose.Schema({
   bio: {
     type: String,    
   },
-  accessLevel: {
-    type: Number,
-    required: true    
-  },
   newUser: {
     type: Boolean,
     default: true
