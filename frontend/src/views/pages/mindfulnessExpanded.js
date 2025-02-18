@@ -387,26 +387,7 @@ class mindfulnessExpandedView {
                           ? html`${unsafeHTML(this.articles.get('practices')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
-                          <div class="video-group">
-                              <div class="video-embed">
-                                ${this.articles.get('practices')?.mediaUrl
-                                  ? html`${unsafeHTML(this.articles.get('practices')?.mediaUrl)}`
-                                  : null
-                                }
-                              </div>
-                              <div class="video-embed">
-                                ${this.articles.get('practices_2')?.mediaUrl
-                                  ? html`${unsafeHTML(this.articles.get('practices_2')?.mediaUrl)}`
-                                  : null
-                                }
-                              </div>
-                              <div class="video-embed">
-                                ${this.articles.get('practices_3')?.mediaUrl
-                                  ? html`${unsafeHTML(this.articles.get('practices_3')?.mediaUrl)}`
-                                  : null
-                                }
-                              </div>
-                          </div>
+                          
                          <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                              @click=${(e) => {
                                const articleId = this.articles.get('practices')?._id;
@@ -969,6 +950,12 @@ class mindfulnessExpandedView {
                           : 'Loading content...'}
                          </div>
                          <div class="video-group">
+                              <div class="video-embed">
+                                ${this.articles.get('practices_mot')?.mediaUrl
+                                  ? html`${unsafeHTML(this.articles.get('practices_mot')?.mediaUrl)}`
+                                  : null
+                                }
+                              </div>
                               <div class="video-embed">
                                 ${this.articles.get('practices_mot_2')?.mediaUrl
                                   ? html`${unsafeHTML(this.articles.get('practices_mot_2')?.mediaUrl)}`

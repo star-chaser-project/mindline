@@ -1257,7 +1257,7 @@ sl-dialog::part(body){
 @media (max-width: 767px) {
     .expanded {
       h1 {
-        font-size: 1.2rem!important;
+        font-size: 2.7rem!important;
       }
     }
   
@@ -1288,5 +1288,198 @@ sl-dialog::part(body){
         }
       }
     }
+
+
+    .stress {
+        display: grid;
+        grid-template-areas: 
+        "why deal signs"
+        "triggers practices practices"
+        "seek questions questions";
+        grid-template-columns: 193px 193px 193px !important; /* Explicit column widths */
+        grid-template-rows: 193px 193px 193px; /* Fixed row heights */
+        gap: 24px; /* Minimal gap */
+        align-items: start; /* Align items to top */
+        margin-top: 8px;
+        }
+
+    .meditation {
+        display: grid;
+        grid-template-areas: 
+        "what-med     why-med"
+        "benefit-med  "
+        "physical-med guided-med "
+        ".             tips-med" !important;
+        grid-template-columns: 410px 193px !important;
+        grid-template-rows: auto auto auto auto !important;
+        gap: 24px;
+        align-items: start;
+        margin: 0 auto; 
+    }
+
+    .support {
+        display: grid;
+        grid-template-areas:
+        "top1 top2 top3"
+        "bottom1 bottom2  bottom3";
+        grid-template-columns: 193px 193px 193px !important; /* Explicit column widths */
+        grid-template-rows: 193px 193px 193px !important; /* Fixed row heights */
+        gap: 24px;
+        align-items: start;
+        margin: 0 auto; 
+    }
+
+    .why, 
+    .deal, 
+    .signs, 
+    .seek, 
+    .questions {
+        width: 193px !important;
+        height:193px !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+    }
+
+    .triggers, .questions {
+        width: 410px !important;
+    }
+
+    .practices {
+        width: 193px !important;
+        height:193px !important;
+        margin-left: 217px !important;
+    }
+
+    .what-med{
+        width: 410px !important;
+        height: 193px !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+    }
+
+    
+    .physical-med,
+    .guided-med,
+    .questions-med {
+        width: 193px !important;
+        height: 193px !important;
+    }
+
+    .why-med {
+        width: 193px !important;
+        height: 193px !important;
+        
+    }
+
+    .benefit-med {
+        width: 193px !important;
+        
+    }
+
+    .questions-med {
+        grid-area: benefit-med !important;
+        margin-left: 217px !important;
+    }
+    
+    .tips-med {
+        width: 193px !important;
+        height: 193px !important;
+        margin-left: 0 !important;
+    }
+
+    .talk, .ask {
+        width: 193px !important;
+        height: 410px !important;
+    }
+    
+    .mindset {
+        height: 193px !important;
+    }
+
+    .tips_support, .what_support, .help_support {
+        margin-top: 217px !important;
+    }
+}
+
+
+
+@media (max-width: 400px) {
+    .stress, .meditation, .support {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        overflow: hidden !important;
+        margin: 0 auto !important;
+      }
+  
+    .why, 
+    .deal, 
+    .signs, 
+    .triggers, 
+    .practices, 
+    .seek, 
+    .questions {
+        width: 361px !important;
+        height: 96.5px !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+    }
+
+    .what-med,
+    .why-med,
+    .benefit-med,
+    .physical-med,
+    .guided-med,
+    .questions-med,
+    .tips-med {
+        width: 361px !important;
+        height: 96.5px !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+    }
+
+    .ask,
+    .talk,
+    .how_support,
+    .tips_support,
+    .what_support,
+    .help_support,
+    .mindset {
+        width: 361px !important;
+        height: 96.5px !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+    }
+  
+    #bento-tabs,
+    .banner-content {
+      max-width: 400px !important;
+      margin: 0  !important;
+      padding: 0  !important;
+      overflow-x: hidden !important;
+    }
+
+    sl-tab::part(base) {
+        margin: 0 !important;
+        padding: 0px 24px !important;
+    }
+
+    sl-dialog::part(overlay) {
+        backdrop-filter: blur(8px);
+        background-color: rgba(0, 0, 0, 0.5);
+        max-height: 100% !important;
+    }
+        
+        
+    sl-dialog::part(panel) {
+        max-width: 90vw  !important;
+        overflow-y: auto;
+    }
+
+    
+
+
 }
   
+    
+
