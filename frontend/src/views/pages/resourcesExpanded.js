@@ -454,7 +454,7 @@ class resourcesExpandedView {
         
         
         
-                       <!-- this is the second tab content of the mental health page -->
+                       <!-- Support - second tab content of the resources page -->
                       <sl-tab-panel name="anxiety">
                         <div class="support">
                         
@@ -474,7 +474,7 @@ class resourcesExpandedView {
                             <sl-dialog label="${this.articles.get('crisis')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                               <div style="white-space: pre-line;">
                               ${this.articles.get('crisis')?.bodyContent || 'Loading content...'
-                                ? html`${unsafeHTML(this.articles.get('seek_crisis')?.bodyContent)}`
+                                ? html`${unsafeHTML(this.articles.get('crisis')?.bodyContent)}`
                                 : 'Loading content...'}
                               </div>
                               <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
@@ -734,7 +734,7 @@ class resourcesExpandedView {
         
         
                       
-                       <!-- this is the third tab content of the menal health page -->
+                       <!-- Support - third tab content of the resources page -->
                       <sl-tab-panel name="depression">
                         <div class="support">
                         

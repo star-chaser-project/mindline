@@ -81,7 +81,7 @@ class mindfulnessExpandedView {
       why_mot: '679de5c7640ec34e3c22a2ab', // Why is Motivation Important
       ways_mot: '679de645640ec34e3c22a2ac', // Ways to Gain Motivation
       how_mot: '679dea10640ec34e3c22a2af', // How To Get Motivated
-      how_mot_2: '679dea63640ec34e3c22a2b0', // How to Stay on Track
+      how_mot_2: '679dea63640ec34e3c22a2b0', // How to Stay on Track 
       practices_mot: '679de7b5640ec34e3c22a2ad', // Movtivational Practices - Sunshine audio & other audio info 
       practices_mot_2: '679de97c640ec34e3c22a2ae', // Reset & Go audio
       what_mot: '679deb6c640ec34e3c22a2b3', // What to do if You Lose Motivation
@@ -333,6 +333,7 @@ class mindfulnessExpandedView {
                      
                      
 
+
                        <div class="physical-med" @click=${this.openDialog}>
                          <img src="/images/mindfulness/meditation/meditation-physical-benefits.webp" class="physical-med-img">
                          <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('guided')?.title || 'Loading...'}</p>
@@ -388,8 +389,37 @@ class mindfulnessExpandedView {
                           ? html`${unsafeHTML(this.articles.get('practices')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
+
+                          <div class="video-group">
+                              <div class="video-embed">
+                                ${this.articles.get('practices')?.mediaUrl
+                                  ? html`${unsafeHTML(this.articles.get('practices')?.mediaUrl)}`
+                                  : null
+                                }
+                              </div>
+                              <div class="video-embed">
+                                ${this.articles.get('practices_2')?.mediaUrl
+                                  ? html`${unsafeHTML(this.articles.get('practices_2')?.mediaUrl)}`
+                                  : null
+                                }
+                              </div>
+                              <div class="video-embed">
+                                ${this.articles.get('practices_3')?.mediaUrl
+                                  ? html`${unsafeHTML(this.articles.get('practices_3')?.mediaUrl)}`
+                                  : null
+                                }
+                              </div>
+                              <sl-dialog label="${this.articles.get('practices')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                         <div style="white-space: pre-line;">
+                         ${this.articles.get('practices')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('practices')?.bodyContent)}`
+                          : 'Loading content...'}
+                         </div>
+                          </div>
+
                           
                          <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
+
                              @click=${(e) => {
                                const articleId = this.articles.get('practices')?._id;
                                //console.log("Bookmarking article ID:", articleId);
@@ -405,9 +435,9 @@ class mindfulnessExpandedView {
                        <div class="questions-med" @click=${this.openDialog}>
                        <img src="/images/mindfulness/meditation/meditation-common-questions.webp" class="questions-med-img">
      
+
                           <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('questions')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
-
                              ? html`
                                <img 
                                  src="/images/bookmark/bookmark-full.svg" 
@@ -433,6 +463,7 @@ class mindfulnessExpandedView {
                          <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
+
 
                        <div class="tips-med" @click=${this.openDialog}>
                        <img src="/images/mindfulness/meditation/meditation-tips-light-globe.webp" class="tips-med-img">
@@ -476,6 +507,7 @@ class mindfulnessExpandedView {
                      <div class="meditation">
                      
 
+
                        <div class="what-med" @click=${this.openDialog}>
                         <img src="/images/mental-health/anxiety/anxiety-why.webp" class="what-breath-img">
                          <p style="position: relative; width: 50%; left: 5%;">${this.articles.get('why_breath')?.title || 'Loading...'}</p>
@@ -491,12 +523,14 @@ class mindfulnessExpandedView {
                            : ''
                          }
                          <sl-dialog label="${this.articles.get('why_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+
                            <div style="white-space: pre-line;">
                            ${this.articles.get('why_breath')?.bodyContent || 'Loading content...'
                             ? html`${unsafeHTML(this.articles.get('why_breath')?.bodyContent)}`
                             : 'Loading content...'}
                            </div>
                            <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
+
                            @click=${(e) => {
                              const articleId = this.articles.get('why_breath')?._id;
                              //console.log("Bookmarking article ID:", articleId);
@@ -508,6 +542,7 @@ class mindfulnessExpandedView {
                          </sl-dialog>
                        </div>
      
+
 
                        <div class="why-med" @click=${this.openDialog}>
                         <img src="/images/mental-health/anxiety/anxiety-deal-360.webp" class="why-breath-img">
@@ -548,6 +583,7 @@ class mindfulnessExpandedView {
                        </div>
      
                        <div class="benefit-med" @click=${this.openDialog}>
+
                         <img src="/images/mental-health/anxiety/anxiety-signs-360.webp" class="benefit-breath-img">
 
      
@@ -586,6 +622,7 @@ class mindfulnessExpandedView {
                        </div>
                      
                      
+
 
                        <div class="physical-med" @click=${this.openDialog}>
                         <img src="/images/mental-health/anxiety/anxiety-triggers-360.webp" class="physical-breath-img">
@@ -626,6 +663,7 @@ class mindfulnessExpandedView {
                        </div>
      
 
+
                        <div class="guided-med" @click=${this.openDialog}>
                         <img src="/images/mental-health/anxiety/anxiety-practices-360.webp"   class="guided-breath-img">
 
@@ -642,7 +680,9 @@ class mindfulnessExpandedView {
                          }
                          <sl-dialog label="${this.articles.get('practices_breath')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
-                           ${this.articles.get('practices_breath')?.bodyContent || 'Loading content...'}
+                         ${this.articles.get('practices_breath')?.bodyContent || 'Loading content...'
+                          ? html`${unsafeHTML(this.articles.get('practices_breath')?.bodyContent)}`
+                          : 'Loading content...'}
                          </div>
                          <div class="video-group">
                               <div class="video-embed">
@@ -679,6 +719,7 @@ class mindfulnessExpandedView {
                      
 
                        <div class="questions-med" @click=${this.openDialog}>
+
                       <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-breath-img">
 
      
@@ -717,6 +758,7 @@ class mindfulnessExpandedView {
                          <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
      
+
 
                        <div class="tips-med" @click=${this.openDialog}>
                       <img src="/images/mindfulness/breathing/tips-light-globe.webp" class="tips-breath-img">
@@ -769,9 +811,9 @@ class mindfulnessExpandedView {
                      <div class="meditation">
                      
 
+
                        <div class="what-med" @click=${this.openDialog}>
                         <img src="/images/mental-health/depression/depression-why-depression-matters.webp" class="what-motivation-med">
-
      
                          <p style="position: relative; width: 50%; left: 45%;">${this.articles.get('why_mot')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('why_mot') && this.userBookmarks.has(this.articles.get('why_mot')._id)
@@ -809,9 +851,9 @@ class mindfulnessExpandedView {
                        </div>
      
 
+
                        <div class="why-med" @click=${this.openDialog}>
                          <img src="/images/mental-health/depression/depression-deal-360r.webp" class="why-motivation-img">
-
      
                          <p style="position: relative; width: 80%; left: 5%;">${this.articles.get('ways_mot')?.title || 'Loading...'}</p>
                          ${this.userBookmarks && this.articles.get('ways_mot') && this.userBookmarks.has(this.articles.get('ways_mot')._id)
@@ -826,7 +868,7 @@ class mindfulnessExpandedView {
                          <sl-dialog label="${this.articles.get('ways_mot')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                          <div style="white-space: pre-line;">
                          ${this.articles.get('ways_mot')?.bodyContent || 'Loading content...'
-                          ? html`${unsafeHTML(this.articles.get('way_mot')?.bodyContent)}`
+                          ? html`${unsafeHTML(this.articles.get('ways_mot')?.bodyContent)}`
                           : 'Loading content...'}
                          </div>
                            <sl-button class="edit-btn hydrated"
@@ -850,8 +892,8 @@ class mindfulnessExpandedView {
      
 
                        <div class="benefit-med" @click=${this.openDialog}>
-                         <img src="/images/mental-health/depression/depression-signs.webp" class="benefit-motivation-img">
 
+                         <img src="/images/mental-health/depression/depression-signs.webp" class="benefit-motivation-img">
      
                          <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('how_mot')?.title || 'Loading...'}</p>
                           ${this.userBookmarks && this.articles.get('how_mot') && this.userBookmarks.has(this.articles.get('how_mot')._id)
@@ -889,6 +931,7 @@ class mindfulnessExpandedView {
                          <sl-button class="edit-btn hydrated" slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                        </div>
                      
+
 
                        <div class="physical-med" @click=${this.openDialog}>
                          <img src="/images/mental-health/depression/depression-triggers-360.webp" class="physical-motivation-img">

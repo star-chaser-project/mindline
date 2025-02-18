@@ -1180,9 +1180,6 @@ display: none;
 
 
 
-
-
-
 .why:hover .why-img,
 .deal:hover .stress-img,
 .signs:hover .signs-img,
@@ -1230,10 +1227,10 @@ display: none;
 
 
 
-
 .signs:hover .signs-depression-img {
     transform: translate(-50%, -65%) scale(1.3);
   }
+
 
 
 
@@ -1263,11 +1260,14 @@ sl-dialog::part(body){
     padding-top: 0;
     margin: 0 1.5rem;
     overflow: auto;
+    line-height: 1.75rem;
+    font-family: Arial, Helvetica, sans-serif;
     }
     sl-dialog::part(title){
         font-weight: 500;
         font-size: 1.6em;
         margin: 1.5rem 1.5rem 0.7rem;
+        background-color: --web-color-yellow;
       }
     
 }  
@@ -1501,4 +1501,5 @@ sl-dialog::part(body){
 }
   
     
+
 
