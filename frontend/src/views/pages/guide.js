@@ -20,7 +20,7 @@ class GuideView {
     try{
       const updatedUser = await UserAPI.updateUser(Auth.currentUser._id, { newUser: false});
       Auth.currentUser = updatedUser;
-      console.log('user updated');
+      //console.log('user updated');
 
       
     }catch(err){

@@ -15,13 +15,13 @@ class FavouriteLinesView {
 
   async fetchArticle(id) {
     try {
-      console.log('Fetching article:', id);
+      //console.log('Fetching article:', id);
       const response = await fetch(`${App.apiBase}/article/${id}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log('Fetched data:', data);
+      //console.log('Fetched data:', data);
       return data;
     } catch (err) {
       console.error('Fetch error:', err);
@@ -38,7 +38,7 @@ class FavouriteLinesView {
           }
         });
         const userData = await response.json();
-        console.log('Fetched user data:', userData);
+        //console.log('Fetched user data:', userData);
         
         if (userData.bookmarkArticle && userData.bookmarkArticle.length > 0) {
           if (userData.bookmarkArticle[0]._id) {
@@ -46,9 +46,9 @@ class FavouriteLinesView {
           } else {
             this.userBookmarks = new Set(userData.bookmarkArticle.map(item => item.toString()));
           }
-          console.log('User bookmarks set:', Array.from(this.userBookmarks));
+          //console.log('User bookmarks set:', Array.from(this.userBookmarks));
         } else {
-          console.log('No bookmarks found for the current user.');
+          //console.log('No bookmarks found for the current user.');
         }
       } catch (err) {
         console.error('Error fetching bookmarks:', err);
@@ -65,7 +65,7 @@ class FavouriteLinesView {
             const article = await this.fetchArticle(id);
             if (article) {
               this.articles.set(id, article);
-              console.log(`Set article ${id}:`, article);
+              //console.log(`Set article ${id}:`, article);
             }
           })
         );
@@ -114,8 +114,8 @@ class FavouriteLinesView {
   }
 
   render() {
-    console.log('Auth.currentUser:', Auth.currentUser);
-    console.log('User bookmarks:', Array.from(this.userBookmarks));
+    //console.log('Auth.currentUser:', Auth.currentUser);
+    //console.log('User bookmarks:', Array.from(this.userBookmarks));
     const template = html`
       <va-app-header user="${JSON.stringify(Auth.currentUser)}"></va-app-header>
       <div class="bookmarks-page">
