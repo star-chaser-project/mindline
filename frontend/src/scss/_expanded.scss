@@ -1273,7 +1273,7 @@ sl-dialog::part(body){
 }  
 
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
     .expanded {
       h1 {
         font-size: 2.7rem!important;
@@ -1422,7 +1422,7 @@ sl-dialog::part(body){
 
 
 
-@media (max-width: 400px) {
+@media screen and (max-width: 400px) {
     .stress, .meditation, .support {
         display: flex !important;
         flex-direction: column !important;
