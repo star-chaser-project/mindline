@@ -4,7 +4,7 @@ import {gotoRoute, anchorRoute} from '../../Router'
 import Auth from '../../Auth'
 import Utils from '../../Utils'
 import Toast from '../../Toast';
-
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 
 
  // Image adapted from Canva – Accessed on December 18, 2024
@@ -231,7 +231,7 @@ async fetchArticle(id) {
        
                 <div class="stress">
                 
-                  <div class="why why-stress" @click=${this.openDialog}>
+                  <div class="why-stress why" @click=${this.openDialog}>
                     <img src="/images/mental-health/stress/stress-why-mental-health-matters-360.webp" class="why-img" alt="Why Stress Matters">
                     <p>${this.articles.get('why')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('why') && this.userBookmarks.has(this.articles.get('why')._id)
@@ -262,7 +262,7 @@ async fetchArticle(id) {
                     </sl-dialog>
                   </div>
                   
-                  <div class="deal deal-stress" @click=${this.openDialog}>
+                  <div class="deal-stress deal" @click=${this.openDialog}>
                     <img src="/images/mental-health/stress/stress-ways-to-deal-w-stress-360.webp" class="stress-img" alt="Ways to Deal with Stress">
                     <p style="position: relative; width: 40%; left: 10%;">${this.articles.get('deal')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('deal') && this.userBookmarks.has(this.articles.get('deal')._id)
@@ -294,7 +294,7 @@ async fetchArticle(id) {
                       <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="signs signs-stress" @click=${this.openDialog}>
+                  <div class="signs-stress signs" @click=${this.openDialog}>
                     <img src="/images/mental-health/stress/stress-signs_symptons-360.webp" class="signs-img" alt="Signs and Symptons of Stress">
                     <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('signs')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('signs') && this.userBookmarks.has(this.articles.get('signs')._id)
@@ -325,7 +325,7 @@ async fetchArticle(id) {
                   </div>
                 
                 
-                  <div class="triggers triggers-stress" @click=${this.openDialog}>
+                  <div class="triggers-stress triggers" @click=${this.openDialog}>
                     <img src="/images/mental-health/stress/stress-common-triggers.webp" class="triggers-img" alt="Common Triggers of Stress">
                     <p style="position: relative; width: 40%; left: 50%;">${this.articles.get('triggers')?.title || 'Loading...'}</p>
                     ${this.userBookmarks && this.articles.get('triggers') && this.userBookmarks.has(this.articles.get('triggers')._id)
@@ -356,7 +356,7 @@ async fetchArticle(id) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
-                  <div class="practices practices-stress" @click=${this.openDialog}>
+                  <div class="practices-stress practices" @click=${this.openDialog}>
                   <img src="/images/mental-health/stress/stress-daily-practices.webp" class="practices-img" alt="Daily Practices to Help Relieve Stress">
                   <p style="position: relative; width: 60%; left: 10%;">${this.articles.get('practices')?.title || 'Loading...'}</p>
                       ${this.userBookmarks && this.articles.get('practices') && this.userBookmarks.has(this.articles.get('practices')._id)
@@ -387,7 +387,7 @@ async fetchArticle(id) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
                 
-                  <div class="seek seek-stress" @click=${this.openDialog}>
+                  <div class="seek-stress seek" @click=${this.openDialog}>
                   <img src="/images/mental-health/stress/stress-when-to-seek-help-360.webp" class="seek-img" alt="When to Seek Help About Stress">
 
                   <p style="position: relative; width: 40%; left: 5%;">${this.articles.get('seek')?.title || 'Loading...'}</p>
@@ -453,7 +453,7 @@ async fetchArticle(id) {
 
 
 
-               <!-- Anxiety -second tab content of the mental health page -->
+               <!-- Anxiety - second tab content of the mental health page -->
               <sl-tab-panel name="anxiety">
                 <div class="stress">
                 
@@ -682,6 +682,7 @@ async fetchArticle(id) {
                     <sl-button slot="footer" variant="primary" @click=${this.closeDialog}>Close</sl-button>
                   </div>
 
+
                   <div class="questions questions-anxiety" @click=${this.openDialog}>
                  <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="questions-anxiety-img" alt="Questions About Anxiety">
 
@@ -726,7 +727,7 @@ async fetchArticle(id) {
 
 
               
-               <!-- this is the third tab content of the menal health page -->
+               <!-- Depression - third tab content of the mental health page -->
               <sl-tab-panel name="depression">
                 <div class="stress">
                 
@@ -825,7 +826,7 @@ async fetchArticle(id) {
                     <sl-dialog label="${this.articles.get('signs_depression')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
 
                     <div style="white-space: pre-line;">
-                    ${this.articles.get('sign_depression')?.bodyContent || 'Loading content...'
+                    ${this.articles.get('signs_depression')?.bodyContent || 'Loading content...'
                       ? html`${unsafeHTML(this.articles.get('signs_depression')?.bodyContent)}`
                       : 'Loading content...'}
                     </div>
