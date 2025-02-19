@@ -238,6 +238,8 @@ sl-details::part(base) {
 
 .profile-container {
   display: flex;
+  height: 100vh;
+
 
 .profile-left {
   flex: 1;
@@ -257,6 +259,10 @@ sl-details::part(base) {
     sl-avatar {
       --size: 120px; // Adjust avatar size
       margin-bottom: 1em;
+    }
+
+    .edit-button {
+      margin-top: 1em;
     }
 
 }
@@ -287,11 +293,22 @@ sl-details::part(base) {
     justify-content: center;
     align-items: center;
     padding: 2em;
-    padding-top: 6rem;
   }
  
   
+  .edit-btn::part(base) {
+    background-color: #F4D35E;
+    border-color: #F4D35E;
+    color: #000000;
+}
+.edit-btn::part(base):hover {
+  background-color: #e5c654;
+  border-color: #e5c654;
+  color: #000000;
+}
 
+  
+}
   //profile page responsive design
 @media (max-width: 767px) {
   .profile-left {
@@ -313,7 +330,7 @@ sl-details::part(base) {
   }
   
 }
-}
+
 
  // signin style 
 .signin-style{
