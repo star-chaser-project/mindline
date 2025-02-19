@@ -33,7 +33,7 @@ class Auth {
 
     if(!response.ok){
       const err = await response.json();
-      if(err) console.log(err);
+      if(err) //console.log(err);
       Toast.show(`Problem getting user: ${response.status}`);
       if(typeof fail == 'function') fail();
     }
@@ -43,7 +43,7 @@ class Auth {
   }
 
   async signIn(userData, fail = false){
-    console.log('userData being sent:', userData); // Debug log
+    //console.log('userData being sent:', userData); // Debug log
     const response = await fetch(`${App.apiBase}/auth/signin`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -52,7 +52,7 @@ class Auth {
 
     if(!response.ok){
       const err = await response.json();
-      if(err) console.log(err);
+      if(err) //console.log(err);
       Toast.show(`Problem signing in: ${err.message}`, 'error');
       if(typeof fail == 'function') fail();
       return;
@@ -73,7 +73,7 @@ class Auth {
 
     Router.init();
     if(data.user.newUser === true){
-      gotoRoute('/guide');
+      gotoRoute('/');
     } else {
       gotoRoute('/');
     }
@@ -99,7 +99,7 @@ class Auth {
 
     if(!response.ok){
       const err = await response.json();
-      if(err) console.log(err);
+      if(err) //console.log(err);
       localStorage.removeItem('accessToken');
       Toast.show("session expired, please sign in");
       gotoRoute('/signin');

@@ -39,7 +39,7 @@ router.post('/signin', (req, res) => {
      }
   })
   .catch(err => {
-    console.log(err)
+    //console.log(err)
     res.status(500).json({
       message: "account doesn't exist",
       error: err
@@ -55,7 +55,7 @@ router.get('/validate', (req, res) => {
   // validate token using jwt
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, authData) => {
     if(err){
-      console.log(err)
+      //console.log(err)
       return res.status(401).json({
         message: "Unauthorised"
       })
@@ -71,7 +71,7 @@ router.get('/validate', (req, res) => {
         })
       })
       .catch(err => {
-        console.log(err)
+        //console.log(err)
         res.status(500).json({
           message: "problem validating token",
           error: err

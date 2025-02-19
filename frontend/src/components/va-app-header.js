@@ -73,9 +73,10 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
     * {
         box-sizing: border-box;
     }
-    
+  
     .app-header {
-        background: transparent;
+        background-color: var(--app-header-bg-color);
+        backdrop-filter: blur(15px);
         position: fixed;
         top: 0;
         right: 0;
@@ -87,7 +88,6 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
         box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.2);
         align-items: center;
     }
-    
     .app-header-main {
         flex-grow: 1;
         display: flex;
@@ -230,13 +230,10 @@ sl-details::part(base) {
 
       /* RESPONSIVE - MOBILE --------------------- */
       @media all and (max-width: 768px){       
-        
-
-
-        .app-top-nav {
-            display: none;
-        }
+       .user-menu {
+        margin-right: 0;
     }
+        }
     
     .home-logo {
         cursor: pointer;
@@ -272,11 +269,6 @@ sl-details::part(base) {
         </div>
 
         <nav class="app-top-nav">
-
-            ${this.user.accessLevel == 2 ? html`
-            <a href="/newProduct" @click="${anchorRoute}">Add Bookmarks</a>
-            <a href="/orders" @click="${anchorRoute}">View Bookmarks</a> ` : ''} ${this.user.accessLevel == 1 ? html` ` : ''}
-
             <sl-dropdown class="user-menu">
                 <a slot="trigger" href="#" @click="${(e) => e.preventDefault()}">
                     <sl-avatar style="--size: 40px;" image=${(this.user && this.user.avatar) ? `${App.apiBase}/images/${this.user.avatar}` : ''}></sl-avatar> ${this.user && this.user.firstName}
@@ -301,7 +293,7 @@ sl-details::part(base) {
             <a class="menu-static" href="/" @click="${this.menuClick}">Home</a>
             <sl-details>
                 <div slot="summary" class="summary-content">
-                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/mentalHealth', e)}">Mental Health</span>
+                    <span class="summary-title">Mental Health</span>
                 </div>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/mentalHealthExpanded?tab=stress')}>Stress</a>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/mentalHealthExpanded?tab=anxiety')}>Anxiety</a>
@@ -309,7 +301,7 @@ sl-details::part(base) {
             </sl-details>
             <sl-details>
                 <div slot="summary" class="summary-content">
-                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/mindfulness', e)}">Mindfulness</span>
+                    <span class="summary-title">Mindfulness</span>
                 </div>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/mindfulnessExpanded?tab=meditation')}>Meditation</a>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/mindfulnessExpanded?tab=breathing')}>Breathing</a>
@@ -317,7 +309,7 @@ sl-details::part(base) {
             </sl-details>
             <sl-details>
                 <div slot="summary" class="summary-content">
-                    <span class="summary-title" @click="${(e) => this.handleTitleClick('/resources', e)}">Resources</span>
+                    <span class="summary-title">Resources</span>
                 </div>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/resourcesExpanded?tab=support')}>Support</a>
                 <a class="menu-expand" href="#" @click=${() => gotoRoute('/resourcesExpanded?tab=services')}>Services</a>
@@ -442,7 +434,13 @@ sl-details::part(base) {
             <hr style="color: #fff width:10%">
 
             <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
-            <a href="tel:1800 034 034">1800 034 034</a> ` : ''} ${this.user.accessLevel == 2 ? html`
+            <a href="tel:1800 034 034">1800 034 034</a> 
+            <br>
+            <a href="#" @click="${(e) => { 
+              e.preventDefault(); 
+              Auth.signOut(); 
+            }}" class="menu-static">Sign Out</a>
+            ` : ''} ${this.user.accessLevel == 2 ? html`
             <a class="menu-static" href="/" @click="${this.menuClick}">Home</a>
             <sl-details>
                 <div slot="summary" class="summary-content">
@@ -590,6 +588,7 @@ sl-details::part(base) {
 
             <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
             <a href="tel:1800 034 034">1800 034 034</a> 
+            <br>
             
         ` : ''}
 
@@ -602,4 +601,3 @@ sl-details::part(base) {
   }
   
 });
-

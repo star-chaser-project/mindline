@@ -14,6 +14,7 @@ class mentalHealthView {
 
  render() {
     const template = html`
+    <div class="mental-health-page">
       ${Auth.isLoggedIn() ? 
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`
@@ -39,8 +40,6 @@ class mentalHealthView {
         <section class="nav-page">
           <h3>Ways to deal with...</h3>
           <div class="button-group">
-          
-
             <sl-button class="stress-page" type="primary" size="large" @click=${() => gotoRoute('/mentalHealthExpanded?tab=stress')}>Stress</sl-button>
             <sl-button class="anxiety-page" type="primary" size="large" @click=${() => gotoRoute('/mentalHealthExpanded?tab=anxiety')}>Anxiety</sl-button>
             <sl-button class="depression-page" type="primary" size="large" @click=${() => gotoRoute('/mentalHealthExpanded?tab=depression')}>Depression</sl-button>
@@ -48,7 +47,8 @@ class mentalHealthView {
             </div>
        </section>
 
-      </div>  
+      </div> 
+    </div> 
     `;
 
     render(template, App.rootEl);

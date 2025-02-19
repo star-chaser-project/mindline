@@ -14,6 +14,7 @@ class resourcesView {
 
  render() {
     const template = html`
+    <div class="resources-page">
       ${Auth.isLoggedIn() ? 
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`

@@ -1,6 +1,24 @@
-//scss mental-health-expanded-page
 @use 'vars' as *;
 
+//header in diffrent pages colors change
+$header-colors: (
+  about-page: #83c670,
+  resources-page: #b878d1,
+  mental-health-page: #6a89e7,
+  mindfulness-page: #39acf4,
+  resources-exp: #b878d1,
+  mental-health-exp: #6a89e7,
+  mindfulness-exp: #39acf4
+);
+
+@each $page, $color in $header-colors {
+  .#{$page} {
+    --app-header-bg-color: #{$color};
+    background-color: var(--app-header-bg-color);
+  }
+}
+
+//scss mental-health-expanded-page
 .expanded-page {
 .banner.expanded {
 padding-top: 3rem;
@@ -42,6 +60,7 @@ sl-tab-group::part(tabs) {
 }
 
 sl-tab::part(base) {
+    color:#FFFFFF;
     border-bottom: none;
     margin: 0 12px;
     padding: 12px 24px;
@@ -58,6 +77,8 @@ sl-tab[active]::part(base) {
     font-size: 20px;
     color: #F3C728 !important;
 }
+
+
 
 #bento-tabs {
 width: 100%;
@@ -212,12 +233,6 @@ margin-top: 8px;
     display: flex;
     overflow: hidden;
     cursor: pointer;
-    img {
-        height: 60%;
-        width: 100%;
-        bottom: 0;
-        padding-top: 11rem;
-    }
 }
 
 .physical-med {
@@ -411,7 +426,7 @@ sl-dialog::part(close-button) {
 display: none;
 }
 
-.why-img,     .what-med-img, .why-med-img, .benefit-med-img, .physical-med-img, .guided-med-img, .questions-med-img, .tips-med-img, .ask-img, .talk-img, .how_support-img, .tips_support-img, .what_support-img, .help_support-img, .mindset-img {
+.why-img {
     position: absolute;
     z-index: 0;
     object-fit: cover;
@@ -487,12 +502,12 @@ display: none;
     border-radius: 35px;
     transition: transform 0.3s ease;
     top: 50%;
-    left: 50%;
-    width: 55%;
+    left: 63%;
+    width: 75%;
     height: auto;
 }
 
-.why-anxiety-img {
+.why-anxiety-img  {
     position: absolute;
     z-index: 0;
     object-fit: cover;
@@ -532,7 +547,7 @@ display: none;
     z-index: 0;
     object-fit: cover;
     transform: translate(-50%, -50%);
-    top: 65%;
+    top: 75%;
     left: 50%;
     border-radius: 35px;
     transition: transform 0.3s ease;
@@ -571,10 +586,12 @@ display: none;
     z-index: 0;
     object-fit: cover;
     transform: translate(-50%, -50%);
-    top: 60%;
-    left: 70%;
     border-radius: 35px;
     transition: transform 0.3s ease;
+    top: 50%;
+    left: 63%;
+    width: 75%;
+    height: auto;
 }
 
 .why-depression-img {
@@ -583,7 +600,7 @@ display: none;
     object-fit: cover;
     transform: translate(-50%, -50%);
     top: 60%;
-    left: 50%;
+    left: 45%;
     border-radius: 35px;
     transition: transform 0.3s ease;
 }
@@ -633,9 +650,11 @@ display: none;
     object-fit: cover;
     transform: translate(-50%, -50%);
     top: 60%;
-    left: 50%;
+    left: 45%;
     border-radius: 35px;
     transition: transform 0.3s ease;
+    height: 80%;
+    width: auto;
 }
 
 .seek-depression-img {
@@ -660,100 +679,565 @@ display: none;
     left: 70%;
     border-radius: 35px;
     transition: transform 0.3s ease;
+    top: 50%;
+    left: 63%;
+    width: 75%;
+    height: auto;
 }
 
 
-.why:hover .why-img {
-transform: translate(-50%, -50%) scale(1.1);
+
+.what-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 20%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+  }
+
+.why-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 50%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
 }
 
-.deal:hover .stress-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.benefit-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 50%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
 }
 
-.signs:hover .signs-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.physical-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 50%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+  }
+
+  .guided-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 80%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
 }
 
-.triggers:hover .triggers-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.questions-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 64%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
 }
 
-.practices:hover .practices-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.tips-med-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    top: 62%;
+    left: 50%;
+    border-radius: 35px;
+    transition: transform 0.3s ease;
 }
 
-.seek:hover .seek-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.what-breath-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;  /* adjust as needed */
+    left: 70%; /* adjust as needed */
+  }
+  
+  .why-breath-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 80%;
+    left: 65%;
+    width: 40%;
+    height: auto;
+  }
+  
+  .benefit-breath-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 70%;
+    left: 50%;
+    width: 170%;
+    height: auto;
+  }
+  
+  .physical-breath-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;
+    left: 50%;
+  }
+  
+  .guided-breath-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;
+    left: 30%;
+    width: 50%;
+    height: auto;
+  }
+  
+  .questions-breath-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 50%;
+    left: 64%;
+  }
+  
+  .tips-breath-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 62%;
+    left: 50%;
+  }
+  
+  /* Depression Tab Image Styles */
+  .what-motivation-med {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;  /* adjust as needed */
+    left: 30%; /* adjust as needed */
+  }
+  
+  .why-motivation-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 90%;
+    left: 60%;
+    height: 170%;
+    width: auto;
+  }
+  
+  .benefit-motivation-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 72%;
+    left: 50%;
+  }
+  
+  .physical-motivation-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 70%;
+    left: 60%;
+    width: 120%;
+    height: auto;
+  }
+  
+  .guided-motivation-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;
+    left: 20%;
+    width: 50%;
+    height: auto;
+  }
+  
+  .questions-motivation-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 50%;
+    left: 64%;
+  }
+  
+  .tips-motivation-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 62%;
+    left: 50%;
+  }
+
+
+
+
+
+  .ask-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .talk-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .how_support-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .tips_support-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .what_support-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .help_support-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .mindset-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+
+.ask-services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
 }
 
-.questions:hover .questions-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.talk-services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
 }
 
-.why:hover .why-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.how_services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
 }
 
-.deal:hover .deal-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.tips_services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
 }
 
-.signs:hover .signs-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.what_services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
 }
 
-.triggers:hover .triggers-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.help_services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
 }
 
-.practices:hover .practices-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.mindset-services-img {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+  top: 65%;    
+  left: 50%;   
 }
 
-.seek:hover .seek-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
+.ask-guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .talk-guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .how_guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .tips_guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .what_guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .help_guides-img {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+  
+  .mindset-guides- {
+    position: absolute;
+    z-index: 0;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 35px;
+    transition: transform 0.3s ease;
+    top: 65%;    
+    left: 50%;   
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.why:hover .why-img,
+.deal:hover .stress-img,
+.signs:hover .signs-img,
+.triggers:hover .triggers-img,
+.practices:hover .practices-img,
+.seek:hover .seek-img,
+.questions:hover .questions-img,
+.why:hover .why-anxiety-img,
+.deal:hover .deal-anxiety-img,
+.signs:hover .signs-anxiety-img,
+.triggers:hover .triggers-anxiety-img,
+.practices:hover .practices-anxiety-img,
+.seek:hover .seek-anxiety-img,
+.questions:hover .questions-anxiety-img,
+.why:hover .why-depression-img,
+.deal:hover .stress-depression-img,
+.triggers:hover .triggers-depression-img,
+.practices:hover .practices-depression-img,
+.seek:hover .seek-depression-img,
+.questions:hover .questions-depression-img,
+.what-med:hover .what-med-img,
+.why-med:hover .why-med-img,
+.benefit-med:hover .benefit-med-img,
+.physical-med:hover .physical-med-img,
+.guided-med:hover .guided-med-img,
+.questions-med:hover .questions-med-img,
+.tips-med:hover .tips-med-img,
+.what-med:hover .what-breath-img,
+.why-med:hover .why-breath-img,
+.benefit-med:hover .benefit-breath-img,
+.physical-med:hover .physical-breath-img,
+.guided-med:hover .guided-breath-img,
+.questions-med:hover .questions-breath-img,
+.tips-med:hover .tips-breath-img,
+.what-med:hover .what-motivation-med,
+.why-med:hover .why-motivation-img,
+.benefit-med:hover .benefit-motivation-img,
+.physical-med:hover .physical-motivation-img,
+.guided-med:hover .guided-motivation-img,
+.questions-med:hover .questions-motivation-img,
+.tips-med:hover .tips-motivation-img {
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
-.questions:hover .questions-anxiety-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.why:hover .why-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.deal:hover .stress-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
 .signs:hover .signs-depression-img {
     transform: translate(-50%, -65%) scale(1.3);
-}
+  }
 
-.triggers:hover .triggers-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.practices:hover .practices-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.seek:hover .seek-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.questions:hover .questions-depression-img {
-    transform: translate(-50%, -50%) scale(1.1);
-}
 
-.why p {
-width: 30%;
-font-size: 20px;
-font-weight: 300;
-margin-left: 10%;
-z-index: 1;
-}
+
+
+
 
 .video-embed iframe {
     width: 251px;
@@ -771,8 +1255,6 @@ z-index: 1;
     padding-top: 2rem;
 }
 
-}
-
 sl-dialog::part(body){
     flex: 1 1 auto;
     padding-top: 0;
@@ -787,3 +1269,369 @@ sl-dialog::part(body){
         margin: 1.5rem 1.5rem 0.7rem;
         background-color: --web-color-yellow;
       }
+    
+}  
+
+
+@media screen and (max-width: 767px) {
+    .expanded {
+      h1 {
+        font-size: 2rem!important;
+      }
+    }
+  
+   
+  
+    sl-tab {
+      &::part(base) {
+        border-bottom: none;
+        margin: 0 6px;
+        padding: 6px 6px;
+        font-size: 16px!important;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        color: #FFFFFF; // Adjust tab style for smaller screens
+      }
+  
+      &:not([active]) {
+        &::part(base):hover {
+          font-size: 18px;
+          color: #FFFFFF; // Hover effect for non-active tabs
+        }
+      }
+  
+      &[active] {
+        &::part(base) {
+          font-size: 18px;
+          color: #F3C728  // Active tab color
+        }
+      }
+    }
+
+
+    .stress {
+        display: grid;
+        grid-template-areas: 
+        "why deal signs"
+        "triggers practices practices"
+        "seek questions questions";
+        grid-template-columns: 193px 193px 193px !important; /* Explicit column widths */
+        grid-template-rows: 193px 193px 193px; /* Fixed row heights */
+        gap: 24px; /* Minimal gap */
+        align-items: start; /* Align items to top */
+        margin-top: 8px;
+        }
+
+    .meditation {
+        display: grid;
+        grid-template-areas: 
+        "what-med     why-med"
+        "benefit-med  "
+        "physical-med guided-med "
+        ".             tips-med" !important;
+        grid-template-columns: 410px 193px !important;
+        grid-template-rows: auto auto auto auto !important;
+        gap: 24px;
+        align-items: start;
+        margin: 0 auto; 
+    }
+
+    .support {
+        display: grid;
+        grid-template-areas:
+        "top1 top2 top3"
+        "bottom1 bottom2  bottom3";
+        grid-template-columns: 193px 193px 193px !important; /* Explicit column widths */
+        grid-template-rows: 193px 193px 193px !important; /* Fixed row heights */
+        gap: 24px;
+        align-items: start;
+        margin: 0 auto; 
+    }
+
+    .why, 
+    .deal, 
+    .signs, 
+    .seek, 
+    .questions {
+        width: 193px !important;
+        height:193px !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+    }
+
+    .triggers, .questions {
+        width: 410px !important;
+    }
+
+    .practices {
+        width: 193px !important;
+        height:193px !important;
+        margin-left: 217px !important;
+    }
+
+    .what-med{
+        width: 410px !important;
+        height: 193px !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+    }
+
+    
+    .physical-med,
+    .guided-med,
+    .questions-med {
+        width: 193px !important;
+        height: 193px !important;
+    }
+
+    .why-med {
+        width: 193px !important;
+        height: 193px !important;
+        
+    }
+
+    .benefit-med {
+        width: 193px !important;
+        
+    }
+
+    .questions-med {
+        grid-area: benefit-med !important;
+        margin-left: 217px !important;
+    }
+    
+    .tips-med {
+        width: 193px !important;
+        height: 193px !important;
+        margin-left: 0 !important;
+    }
+
+    .talk, .ask {
+        width: 193px !important;
+        height: 410px !important;
+    }
+    
+    .mindset {
+        height: 193px !important;
+    }
+
+    .tips_support, .what_support, .help_support {
+        margin-top: 217px !important;
+    }
+}
+
+
+
+@media screen and (max-width: 402px) {
+    .stress, .meditation, .support {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        overflow: hidden !important;
+        margin: 0 auto !important;
+      }
+  
+    .why, 
+    .deal, 
+    .signs, 
+    .triggers, 
+    .practices, 
+    .seek, 
+    .questions {
+        width: 361px !important;
+        height: 96.5px !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+    }
+
+    .what-med,
+    .why-med,
+    .benefit-med,
+    .physical-med,
+    .guided-med,
+    .questions-med,
+    .tips-med {
+        width: 361px !important;
+        height: 96.5px !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+    }
+
+    .ask,
+    .talk,
+    .how_support,
+    .tips_support,
+    .what_support,
+    .help_support,
+    .mindset {
+        width: 361px !important;
+        height: 96.5px !important;
+        margin: 0 auto !important;
+        justify-self: center !important;
+    }
+  
+    #bento-tabs,
+    .banner-content {
+      max-width: 400px !important;
+      margin: 0  !important;
+      padding: 0  !important;
+      overflow-x: hidden !important;
+    }
+
+    sl-tab::part(base) {
+        margin: 0 !important;
+        padding: 0px 24px !important;
+    }
+
+    sl-dialog::part(overlay) {
+        backdrop-filter: blur(8px);
+        background-color: rgba(0, 0, 0, 0.5);
+        max-height: 100% !important;
+    }
+        
+        
+    sl-dialog::part(panel) {
+        max-width: 90vw  !important;
+        overflow-y: auto;
+    }
+
+  .signs-img, .triggers-img, .why-anxiety-img, .what-med-img, .why-med-img, .what-breath-img, .ask-img, .talk-img, .ask-services-img  {
+    width: 35% !important;
+    height: auto !important;
+    left: 75% !important;
+  }
+
+  .guided-med-img, .what_support-img {
+    width: 35% !important;
+      height: auto !important;
+      left: 85% !important;
+  }
+
+  .why-depression-img, .what-motivation-med, .ask-guides-img {
+      width: 45% !important;
+      height: auto !important;
+      left: 85% !important;
+      top: 80% !important;
+  }
+
+  .practices-depression-img {
+    left: 75% !important;
+    width: 70% !important;
+    height: auto !important;
+    top: 50% !important;
+  }
+
+  .practices p {
+    width: 60% !important;
+  }
+
+  .practices-img, .practices-anxiety-img, .benefit-med-img, .guided-motivation-img, .how_support-img, .what_guides-img {
+    width: 35% !important;
+    height: auto !important;
+    left: 75% !important;
+    top: 75% !important;
+  }
+
+  .guided-breath-img, .what_services-img {
+    width: 35% !important;
+    height: auto !important;
+    left: 80% !important;
+    top: 75% !important;
+  }
+
+  .signs-anxiety-img, .benefit-breath-img, .how_services-img {
+    width: 40% !important;
+    left: 75% !important;
+  }
+
+  .seek-anxiety-img, .help_services-img {
+    width: 55% !important;
+    height: auto !important;
+    left: 75% !important;
+    top: 50% !important;
+  }
+
+  .triggers-anxiety-img, .physical-breath-img, .tips_services-img {
+    left: 75% !important;
+    height: 90% !important;
+    width: auto !important;
+  }
+  
+  .triggers-depression-img, .physical-motivation-img, .tips_guides-img {
+    left: 80% !important;
+    height: 120% !important;
+    width: auto !important;
+  }
+
+  .signs-depression-img,  .benefit-motivation-img, .how_guides-img {
+    left: 80% !important;
+    height: 90% !important;
+    width: auto !important;
+    border-radius: 35px !important;
+  }
+
+  .deal-anxiety-img, .physical-med-img, .why-breath-img, .tips_support-img  {
+    top: 110% !important;
+    left: 75% !important;
+  }
+
+  .talk-services-img{
+    top: 110% !important;
+    left: 75% !important;
+    height: 250% !important;
+    width: auto !important;
+  }
+
+
+  .stress-depression-img {
+    top: 130% !important;
+    left: 75% !important;
+  }
+
+  .why-motivation-img, .talk-guides-img {
+    top: 130% !important;
+    left: 75% !important;
+    width: 30% !important;
+    height: auto !important;
+  }
+
+  .questions-img, .questions-anxiety-img, .questions-depression-img, .questions-med-img, .questions-breath-img, .questions-motivation-img, .help_support-img, .mindset-services-img, .mindset-guides- {
+    width: auto !important;
+    height: 100% !important;
+    left: 90% !important;
+    top: 50% !important;
+  }
+
+  .tips-med-img, .tips-breath-img, .tips-motivation-img, .mindset-img  {
+    width: auto !important;
+    height: 100% !important;
+    left: 80% !important;
+    top: 50% !important;
+  }
+  
+  .help_guides-img {
+    width: auto !important;
+    height: 150% !important;
+    left: 80% !important;
+    top: 60% !important;
+  }
+
+  .triggers p, .seek p {
+    left: 10% !important;
+  }
+
+  .why p, .what-med p, .why-med p, .guided-med p {
+    left: 10% !important;
+    text-align: left !important;
+  }
+
+  .how_support p, .tips_support p, .help_support p, .what_support p {
+    width: 50% !important;
+  }
+
+
+}
+  
+    
+
+

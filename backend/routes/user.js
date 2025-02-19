@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
           res.json(users)
       })
       .catch(err => {
-          console.log("problem getting users", err)
+          //console.log("problem getting users", err)
       })
 })
 
@@ -36,7 +36,7 @@ router.get("/:id", Utils.authenticateToken, (req, res) => {
       res.json(user);
     })
     .catch((err) => {
-      console.log(err);
+      //console.log(err);
       res.status(500).json({
         message: "Couldn't get user",
         error: err,
@@ -109,7 +109,7 @@ router.post('/', (req, res) => {
       return res.status(201).json(user)
     })
     .catch(err => {
-      console.log(err)
+      //console.log(err)
       return res.status(500).send({
         message: "Problem creating account",
         error: err

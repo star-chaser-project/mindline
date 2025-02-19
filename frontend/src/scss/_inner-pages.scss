@@ -1,5 +1,23 @@
 @use 'vars' as *;
 
+$header-colors: (
+  about-page: #83c670,
+  resources-page: #b878d1,
+  mental-health-page: #6a89e7,
+  mindfulness-page: #39acf4,
+  resources-exp: #b878d1,
+  mental-health-exp: #6a89e7,
+  mindfulness-exp: #39acf4
+);
+
+@each $page, $color in $header-colors {
+  .#{$page} {
+    --app-header-bg-color: #{$color};
+    background-color: var(--app-header-bg-color);
+  }
+}
+
+
 /// Inner pages
 .inner-wrap{
 .banner {
@@ -34,6 +52,7 @@
     padding-top: 6rem; // Adjust this to create space from the top 
    
     .banner-text {
+      padding-top: 3rem;
       text-align: left;
     }
  }
@@ -43,6 +62,7 @@
     }
 
 .nav-page {
+ 
   padding: 2rem;
   display: flex;
   flex-direction: column; /* Stack content vertically */
@@ -63,7 +83,7 @@
 
 /* Base button style */
 sl-button::part(base) {
-    width: 14rem;
+    width: 11rem;
     height: 4rem;
     border-radius: 12px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -130,8 +150,48 @@ sl-button:active::part(base) {
     background-size: contain;
    
     }
+    picture{
+    padding-top: 4rem;
+  }
  }
 
+//about----------------------------------------------------------------------------------
+.about{
+
+
+.grphics {
+    background: url('../../static/images/about/about-bg-graphics.svg') no-repeat center center;
+    background-size: 100%;
+    width: 100%;
+    margin-top: 3rem;
+  }
+  
+}
+
+.about-content {
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  margin: 0 auto;
+  padding: 3rem;
+
+  article {
+    flex: 1; // Makes each article take equal width
+    min-width: 280px; // Ensures each section has a minimum width
+  }
+
+  .how-to-get-here {
+    width: 100%; // Makes it full width
+
+    iframe {
+      width: 100%; // Ensures the iframe fills the width of its container
+      height: 450px; // Set a fixed height for the iframe
+      border: 0; // Optional, to remove iframe border
+    }
+  }
+}
 // Resources----------------------------------------------------------------------------------
 
 .resources {
@@ -149,7 +209,7 @@ sl-button:active::part(base) {
 
   .banner-text {
     text-align: left;
-    padding: 2rem 0 0 2rem;
+    padding: 0 0 0 4rem;
     max-width: 30%;
   
   }
@@ -169,8 +229,8 @@ sl-button:active::part(base) {
   }
 }
 
-// Responsive adjustments
-@media (min-width: 1024px) {
+// Responsive adjustments for resources----------------------------------------------------------------------------------
+@media (max-width: 768px) and (min-width: 1024px) {
   .resources {
     .text-banner {
       padding: 0px 0rem 2rem 2rem;
@@ -184,8 +244,8 @@ sl-button:active::part(base) {
       }
     }
   }
+ 
 }
-
 
 @media (max-width: 768px) and (min-width: 500px) {
   .resources {
@@ -250,28 +310,60 @@ sl-button:active::part(base) {
 
 }
 
+// Responsive banner ----------------
 
-//about----------------------------------------------------------------------------------
-.about{
-.grphics {
-    background: url('../../static/images/about/about-bg-graphics.svg') no-repeat center center;
-    background-size: 100%;
-    width: 100%;
-    margin-top: 3rem;
+@media (min-width: 768px) and (max-width: 1065px) {
+    .resources-page .nav-page ,
+    .mindfulness-page .nav-page {
+    sl-button::part(base) {
+      width: 11rem;
+    }
   }
-  
 }
-//responsive banner ----------------
- //small screen 400px and below
- @media (max-width: 400px) {
+@media (min-width: 768px) and (max-width: 1065px) {
+  .resources-page,
+  .mindfulness-page  {
+.banner-text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0 2rem;
+  max-width: 30%;
+  bottom: 3rem;
 
+}
+
+picture {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 70%;
+  height: auto;
+}
+
+.banner-text h1 {
+  font-size: 1.2rem;
+}
+.banner-text h2 {
+  font-size: 1rem;
+}
+  }
+}
+
+
+
+@media (max-width: 768px) {
   .banner-content {
     display: flex;
-    flex-direction: column; // Stack text and image
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
     text-align: center;
-    padding-top: 4rem;        
+    padding-top: 2rem;        
     background-size: cover;
   }
 
@@ -279,31 +371,71 @@ sl-button:active::part(base) {
     position: relative;
     max-width: 100%;
     text-align: left;
-    padding: 0 1rem; // Prevents text from touching the screen edges
+    padding: 0 1rem;
     display: flex;
     flex-direction: column;
-    align-items: top;
-
+    align-items: flex-start;
   }
 
   picture {
-    width: 100%; // Ensures image fills the width properly
+    width: 100%;
     display: flex;
     justify-content: center;
   }
   
-    img {
-      width: 70%;
-      height: auto;
+  img {
+    width: 70%;
+    height: auto;
   }
-  .banner-text {
-    h1{
-     font-size: 1.2rem;
-    }
-     h2 {
-       font-size: 0.8rem;
-    }
-   }
 
+  .banner-text h1 {
+    font-size: 1.6rem;
+  }
+  .banner-text h2 {
+    font-size: 0.9rem;
+  }
 }
+
+// Small screen 400px and below
+
+@media (max-width: 400px) {
+  .banner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px 0 0 4rem;       
+    background-size: cover;
+  }
+
+  .banner-text {
+    position: relative;
+    max-width: 100%;
+    text-align: left;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  img {
+    width: 70%;
+    height: auto;
+  }
+
+  .banner-text h1 {
+    font-size: 1.2rem;
+  }
+  .banner-text h2 {
+    font-size: 0.8rem;
+  }
+}
+
 }

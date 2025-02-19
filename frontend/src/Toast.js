@@ -27,7 +27,7 @@ export default class Toast {
     // animate using gsap
     const tl = gsap.timeline();
     tl.from(toastEl, { y: 60, opacity: 0, duration: 0.3, ease: "power3.out"});
-    tl.to(toastEl, { marginTop: -50, opacity: 0, delay: this.showDuration, duration: 0.3, onComplete: () => {
+    tl.to(toastEl, { marginTop: -50, opacity: 0, delay: this.showDuration, duration: 0.4, onComplete: () => {
       toastEl.remove();
     }});
     

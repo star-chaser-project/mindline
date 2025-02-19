@@ -8,7 +8,7 @@ import Utils from './../../Utils';
 class SignUpView{
    
   init(){      
-    console.log('SignUpView.init');  
+    //console.log('SignUpView.init');  
     document.title = 'Sign up';    
     this.render();
     Utils.pageIntroAnim();
@@ -17,7 +17,7 @@ class SignUpView{
   firstUpdated(){
       super.firstUpdated()
       this.navActiveLinks()
-      console.log('Header initialized with title:', this.title);    
+      //console.log('Header initialized with title:', this.title);    
     }
       signUpSubmitHandler(e){
         e.preventDefault();    
@@ -32,7 +32,7 @@ class SignUpView{
       }
 
   render(){
-    console.log('Auth.currentUser:', Auth.currentUser);
+    //console.log('Auth.currentUser:', Auth.currentUser);
     const template = html`
     ${Auth.isLoggedIn() ? 
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
@@ -44,7 +44,7 @@ class SignUpView{
      <!-- Left Section -->
         <div class="profile-left">
         <div class="signinup-box">
-            <h1 style="padding-bottom: 1em;">LOG IN</h1>
+            <h1 style="padding-bottom: 1em;">SIGN UP</h1>
             <sl-form class="form-signup" @sl-submit=${this.signUpSubmitHandler}>
                 <div class="input-group">
                     <sl-input size="large" pill style="padding-bottom: 1em;" name="firstName" type="text" placeholder="First name" required></sl-input>
@@ -58,12 +58,7 @@ class SignUpView{
                 <div class="input-group">
                     <sl-input size="large" pill style="padding-bottom: 1em;" name="password" type="password" placeholder="Password" required toggle-password></sl-input>
                 </div>
-                <div class="input-group">
-                    <sl-select size="large" pill style="padding-bottom: 4em;" name="accessLevel" placeholder="I am a ..." placement="bottom">
-                        <sl-menu-item value="1">Customer</sl-menu-item>
-                        <sl-menu-item value="2">Mindline Admin</sl-menu-item>
-                    </sl-select>
-                </div>
+                
                 <div>
                     <sl-button size="large" pill class="submit-btn edit-btn edit-button" type="primary"  submit style="width: 100%;">SIGN UP</sl-button>
             </sl-form>

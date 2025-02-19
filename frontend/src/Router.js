@@ -14,11 +14,9 @@ import resourcesView from './views/pages/resources';
 import resourcesExpandedView from './views/pages/resourcesExpanded';
 import favouriteLinesView from './views/pages/favouriteLines';
 import aboutView from './views/pages/about';
-import productsView from './views/pages/products';
-import favouriteProductsView from './views/pages/favouriteProducts';
-import newProductView from './views/pages/newProduct';
+
 import locationView from './views/pages/location';
-import hairdressersView from './views/pages/hairdressers';
+
 
 // define routes
 const routes = {
@@ -37,12 +35,8 @@ const routes = {
 	'/resourcesExpanded': resourcesExpandedView,
 	'/favouriteLines': favouriteLinesView,
 	'/about': aboutView,
-
-	'/products': productsView,
-	'/newProduct': newProductView,
-	'/favouriteProducts': favouriteProductsView,
 	'/location': locationView,
-	'/hairdressers': hairdressersView
+
 	
 	
 };
@@ -78,7 +72,8 @@ class Router {
 	gotoRoute(pathname){
 		window.history.pushState({}, pathname, window.location.origin + pathname);
 		this.route(pathname);
-	}	
+	}
+	
 }
 
 // create appRouter instance and export

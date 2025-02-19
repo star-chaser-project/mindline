@@ -6,7 +6,7 @@ import Utils from './../../Utils';
 
 class HomeView {
   init(){    
-    console.log('HomeView.init');
+    //console.log('HomeView.init');
     document.title = 'Home';    
     this.render();    
     Utils.pageIntroAnim();    
