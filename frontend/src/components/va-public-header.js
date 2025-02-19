@@ -151,13 +151,14 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
     .right-side-menu {
         --base-txt-color: #2F1E1F;
     }
-    /* RESPONSIVE - MOBILE ------------------- */
-    
-    @media all and (max-width: 768px) {
-        .app-top-nav {
-            display: none;
-        }
+ 
+    /* RESPONSIVE - MOBILE --------------------- */
+      @media all and (max-width: 768px){       
+       .user-menu {
+        margin-right: 15px;
     }
+        }
+    
     
     .user-menu {
         margin-right: 2em;
