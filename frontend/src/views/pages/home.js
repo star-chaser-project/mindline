@@ -18,7 +18,9 @@ class HomeView {
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`
       }
+  
     <div class="page-content home-page">
+      <div class="home-bg"> 
         <section class="home-banner">
             <h1>Empower </br>Your </br>Life</h1>
             <picture>
@@ -39,8 +41,9 @@ class HomeView {
           </div>
         </div>
         </section> 
-      </div>
-     
+      </div> 
+    </div>
+   
     `;
     
     

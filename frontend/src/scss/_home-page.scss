@@ -3,13 +3,14 @@
 // Home page ----------------------------------------------------------------------------------
 .home-page {
   background: var(--background-home);
+.home-bg{
+    background: url('../../static/images/home/home-bg-graphics.svg')  no-repeat center center;
+    background-size: 100%;
+    background-attachment: fixed;
+  }
+
 
   .home-banner {
-    background: url('../../static/images/home/home-bg-graphics.svg');
-    background-size: 100%;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     margin: 5rem auto 0;
     position: relative;
     color: white;
