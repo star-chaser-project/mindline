@@ -311,6 +311,13 @@ margin-top: 8px;
     cursor: pointer;
 }
 
+ask img {
+    height: 60%;
+    width: 100%;
+    bottom: 0;
+    padding-top: 4rem;
+}
+
 .talk {
     grid-area: top2;
     width: 410px;
@@ -987,7 +994,8 @@ display: none;
     border-radius: 35px;
     transition: transform 0.3s ease;
     top: 65%;    
-    left: 50%;   
+    left: 50%; 
+    width: 73%;  
   }
   
   .help_support-img {
@@ -1528,6 +1536,15 @@ sl-dialog::part(body){
   .practices-img, .practices-anxiety-img, .benefit-med-img, .guided-motivation-img, .how_support-img, .what_guides-img {
     width: 35% !important;
     height: auto !important;
+    left: 75% !important;
+    top: 75% !important;
+  }
+
+  .how_supp-img {
+    height: 60%;
+    width: 100%;
+    bottom: 0;
+    padding-top: 5rem;
     left: 75% !important;
     top: 75% !important;
   }

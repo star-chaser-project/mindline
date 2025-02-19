@@ -224,14 +224,14 @@ class resourcesExpandedView {
                       <sl-tab slot="nav" panel="anxiety" .active="${activeTab === 'anxiety'}">Services</sl-tab>
                       <sl-tab slot="nav" panel="depression" .active="${activeTab === 'depression'}">Guides</sl-tab>
         
-                      <!-- this is the first tab content of the mental health page -->
+                      <!-- Support first tab content of the resources page -->
                       <sl-tab-panel name="stress">
                         
                
                         <div class="support">
                         
                           <div class="ask" @click=${this.openDialog}>
-                            <img src="/images/mindfulness/meditation/meditation-what-is-meditation.webp" class="ask-img">
+                            <img src="/images/resources/support/resources-support-1-ok-to-ask.webp" class="ask-img">
                             <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('ask')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('ask') && this.userBookmarks.has(this.articles.get('ask')._id)
                               ? html`
@@ -261,7 +261,7 @@ class resourcesExpandedView {
                           </div>
                           
                           <div class="talk" @click=${this.openDialog}>
-                            <img src="/images/mindfulness/meditation/meditation-why-meditate.webp" class="talk-img">
+                            <img src="/images/resources/support/support-2-black-phone-talk-can-help.webp" class="talk-img">
                             <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('talk')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('talk') && this.userBookmarks.has(this.articles.get('talk')._id)
                               ? html`
@@ -292,8 +292,8 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="how_support" @click=${this.openDialog}>
-                            <img src="/images/mindfulness/meditation/meditation-mental-health-benefits.webp" class="how_support-img">
-                            <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('how_support')?.title || 'Loading...'}</p>
+                            <img src="/images/resources/support/support-why-seek-support-253.webp" class="how_supp-img"class="how_support-img">
+                            <p style="position: relative; width: 60%; left: 1%;">${this.articles.get('how_support')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('how_support') && this.userBookmarks.has(this.articles.get('how_support')._id)
                               ? html`
                                 <img 
@@ -322,7 +322,7 @@ class resourcesExpandedView {
                         
                         
                           <div class="tips_support" @click=${this.openDialog}>
-                            <img src="/images/mindfulness/meditation/meditation-physical-benefits.webp" class="tips_support-img">
+                            <img src="/images/resources/support/support-where-to-find-support-spyglass.webp" class="tips_support-img">
                             <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('tips_support')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('tips_support') && this.userBookmarks.has(this.articles.get('tips_support')._id)
                               ? html`
@@ -352,7 +352,7 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="what_support" @click=${this.openDialog}>
-                          <img src="/images/mindfulness/meditation/meditation-clock-guided-meditation-253.webp" class="what_support-img">
+                          <img src="/images/resources/support/support-tools-for-self-support-360.webp" class="what_support-img">
                           <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('what_support')?.title || 'Loading...'}</p>
                               ${this.userBookmarks && this.articles.get('what_support') && this.userBookmarks.has(this.articles.get('what_support')._id)
                                   ? html`
@@ -459,7 +459,7 @@ class resourcesExpandedView {
                         <div class="support">
                         
                           <div class="ask" @click=${this.openDialog}>
-                           <img src="/images/mental-health/anxiety/anxiety-why.webp" class="ask-services-img">
+                           <img src="/images/resources/support/resources-support-1-ok-to-ask.webp" class="ask-services-img">
                             <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('crisis')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('crisis') && this.userBookmarks.has(this.articles.get('crisis')._id)
                               ? html`
@@ -490,7 +490,7 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="talk" @click=${this.openDialog}>
-                           <img src="/images/mental-health/anxiety/anxiety-deal-360.webp" class="talk-services-img">
+                           <img src="/images/resources/support/support-2-black-phone-talk-can-help.webp" class="talk-services-img">
         
                             <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('kids')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('kids') && this.userBookmarks.has(this.articles.get('kids')._id)
