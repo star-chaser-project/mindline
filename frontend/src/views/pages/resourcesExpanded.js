@@ -734,7 +734,7 @@ class resourcesExpandedView {
         
         
                       
-                       <!-- Support - third tab content of the resources page -->
+                       <!-- Guide - third tab content of the resources page -->
                       <sl-tab-panel name="depression">
                         <div class="support">
                         
@@ -777,7 +777,7 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="talk" @click=${this.openDialog}>
-                            <img src="/images/mental-health/depression/depression-deal-360r.webp" class="talk-guides-img">
+                            <img src="/images/resources/guides/guides-person-holding-blue-mobile.webp" class="talk-guides-img">
         
                             <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('digital')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('digital') && this.userBookmarks.has(this.articles.get('digital')._id)
@@ -932,7 +932,7 @@ class resourcesExpandedView {
                           </div>
                         
                           <div class="help_support" @click=${this.openDialog}>
-                            <img src="/images/mental-health/depression/depression-seek-360.webp" class="help_guides-img">
+                            <img src="/images/resources/guides/guides-girl-scratching-head.webp" class="help_guides-img">
         
                             <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('toolkit')?.title || 'Loading...'}</p>
                               ${this.userBookmarks && this.articles.get('toolkit') && this.userBookmarks.has(this.articles.get('toolkit')._id)
