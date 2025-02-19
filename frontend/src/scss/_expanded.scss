@@ -1039,7 +1039,8 @@ display: none;
   border-radius: 35px;
   transition: transform 0.3s ease;
   top: 65%;    
-  left: 50%;   
+  left: 50%;
+  width: 100%;
 }
 
 .how_services-img {
@@ -1061,7 +1062,8 @@ display: none;
   border-radius: 35px;
   transition: transform 0.3s ease;
   top: 65%;    
-  left: 50%;   
+  left: 65%; 
+  width: 30%;  
 }
 
 .what_services-img {
@@ -1073,6 +1075,7 @@ display: none;
   transition: transform 0.3s ease;
   top: 65%;    
   left: 50%;   
+  width: 205%;
 }
 
 .help_services-img {
@@ -1428,8 +1431,6 @@ sl-dialog::part(body){
     }
 }
 
-
-
 @media screen and (max-width: 402px) {
     .stress, .meditation, .support {
         display: flex !important;
@@ -1568,6 +1569,7 @@ sl-dialog::part(body){
     top: 50% !important;
   }
 
+  
   .triggers-anxiety-img, .physical-breath-img, .tips_services-img {
     left: 75% !important;
     height: 90% !important;
