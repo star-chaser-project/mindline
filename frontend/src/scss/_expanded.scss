@@ -1495,7 +1495,93 @@ sl-dialog::part(body){
         overflow-y: auto;
     }
 
-    
+    .signs-img, .triggers-img, .why-anxiety-img  {
+      width: 35% !important;
+      height: auto !important;
+      left: 75% !important;
+  }
+
+  .why-depression-img {
+      width: 45% !important;
+      height: auto !important;
+      left: 85% !important;
+      top: 80% !important;
+  }
+
+  .practices-depression-img {
+    left: 75% !important;
+    width: 70% !important;
+    height: auto !important;
+    top: 50% !important;
+  }
+
+  .practices p {
+    width: 60% !important;
+  }
+
+  .practices-img, .practices-anxiety-img {
+      width: 35% !important;
+      height: auto !important;
+      left: 75% !important;
+      top: 75% !important;
+  }
+
+  .signs-anxiety-img {
+      width: 40% !important;
+      left: 75% !important;
+  }
+
+  .seek-anxiety-img {
+      width: 55% !important;
+      height: auto !important;
+      left: 75% !important;
+      top: 50% !important;
+  }
+
+  .triggers-anxiety-img {
+    left: 75% !important;
+    height: 90% !important;
+    width: auto !important;
+  }
+  
+  .triggers-depression-img {
+    left: 80% !important;
+    height: 120% !important;
+    width: auto !important;
+  }
+
+  .signs-depression-img {
+    left: 80% !important;
+    height: 90% !important;
+    width: auto !important;
+    border-radius: 35px !important;
+  }
+
+  .deal-anxiety-img {
+      top: 110% !important;
+      left: 75% !important;
+  }
+
+  .stress-depression-img {
+      top: 130% !important;
+      left: 75% !important;
+  }
+
+  .questions-img, .questions-anxiety-img, .questions-depression-img {
+      width: auto !important;
+      height: 100% !important;
+      left: 90% !important;
+      top: 50% !important;
+  }
+
+  .triggers p, .seek p {
+    left: 10% !important;
+  }
+
+  .why p {
+    left: 10% !important;
+    text-align: left !important;
+  }
 
 
 }
