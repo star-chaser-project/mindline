@@ -155,13 +155,13 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
     /* RESPONSIVE - MOBILE --------------------- */
       @media all and (max-width: 768px){       
        .user-menu {
-        margin-right: 15px;
+        margin-right: 10px;
     }
         }
     
     
     .user-menu {
-        margin-right: 2em;
+        margin-right: 10px;
     }
     
     sl-details::part(base) {

@@ -185,9 +185,9 @@ customElements.define('va-app-header', class AppHeader extends LitElement {
     }
     
     .user-menu {
-        margin-right: 2em;
+        margin-right: 10px;
     }
-    
+ 
     .menu-expand {
         font-size: 1.3em;
         margin-left: 1em;
@@ -231,7 +231,7 @@ sl-details::part(base) {
       /* RESPONSIVE - MOBILE --------------------- */
       @media all and (max-width: 768px){       
        .user-menu {
-        margin-right: 15px;
+        margin-right: 10px;
     }
         }
     
