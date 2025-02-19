@@ -437,7 +437,13 @@ sl-details::part(base) {
             <hr style="color: #fff width:10%">
 
             <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
-            <a href="tel:1800 034 034">1800 034 034</a> ` : ''} ${this.user.accessLevel == 2 ? html`
+            <a href="tel:1800 034 034">1800 034 034</a> 
+            <br>
+            <a href="#" @click="${(e) => { 
+              e.preventDefault(); 
+              Auth.signOut(); 
+            }}" class="menu-static">Sign Out</a>
+            ` : ''} ${this.user.accessLevel == 2 ? html`
             <a class="menu-static" href="/" @click="${this.menuClick}">Home</a>
             <sl-details>
                 <div slot="summary" class="summary-content">
@@ -585,6 +591,7 @@ sl-details::part(base) {
 
             <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
             <a href="tel:1800 034 034">1800 034 034</a> 
+            <br>
             
         ` : ''}
 

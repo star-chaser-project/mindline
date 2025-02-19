@@ -399,8 +399,9 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
 
         <a href="mailto:hello@mindline.telstra.com.au">hello@mindline.telstra.com.au</a>
         <a href="tel:1800 034 034">1800 034 034</a>
-
-
+        <br>
+        <a href="#" @click="${() => gotoRoute('/signin')}">Login</a>
+        
 
 
 
