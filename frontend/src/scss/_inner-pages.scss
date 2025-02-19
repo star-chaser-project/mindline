@@ -163,7 +163,6 @@ sl-button:active::part(base) {
     background: url('../../static/images/about/about-bg-graphics.svg') no-repeat center center;
     background-size: 100%;
     width: 100%;
-    margin-top: 3rem;
   }
   
 }
@@ -355,7 +354,16 @@ img {
   }
 }
 
-
+@media (min-width: 768px) and (max-width: 1440px) {
+  .about .banner-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding-top: 2rem;
+      background-size: cover;
+  }
+}
 
 @media (max-width: 768px) {
   .banner-content {
@@ -384,7 +392,6 @@ img {
   }
   
   img {
-    width: 70%;
     height: auto;
   }
 
