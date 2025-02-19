@@ -1,5 +1,7 @@
 @use 'vars' as *;
 
+
+
 // Home page ----------------------------------------------------------------------------------
 .home-page {
   background: var(--background-home);
@@ -7,6 +9,7 @@
     background: url('../../static/images/home/home-bg-graphics.svg')  no-repeat center center;
     background-size: 100%;
     background-attachment: fixed;
+    padding: 0;
   }
 
 

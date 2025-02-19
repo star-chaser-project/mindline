@@ -7,7 +7,8 @@ $header-colors: (
   mindfulness-page: #39acf4,
   resources-exp: #b878d1,
   mental-health-exp: #6a89e7,
-  mindfulness-exp: #39acf4
+  mindfulness-exp: #39acf4,
+  home-header: #0ca1c9,
 );
 
 @each $page, $color in $header-colors {

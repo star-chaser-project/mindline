@@ -14,6 +14,7 @@ class HomeView {
    // Image adapted from Canva – Accessed on December 18, 2024
  render() {
     const template = html`
+     <div class="home-header">
       ${Auth.isLoggedIn() ? 
         html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 
         html`<va-public-header></va-public-header>`
@@ -43,7 +44,7 @@ class HomeView {
         </section> 
       </div> 
     </div>
-   
+   </div>
     `;
     
     
