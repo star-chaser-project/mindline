@@ -292,8 +292,8 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="how_support" @click=${this.openDialog}>
-                            <img src="/images/resources/support/support-why-seek-support-253.webp" class="how_supp-img"class="how_support-img">
-                            <p style="position: relative; width: 60%; left: 1%;">${this.articles.get('how_support')?.title || 'Loading...'}</p>
+                            <img src="/images/resources/support/support-why-seek-support-253.webp" class="how_support-img">
+                            <p style="position: relative; width: 60%; left: 10%;">${this.articles.get('how_support')?.title || 'Loading...'}</p>
                             ${this.userBookmarks && this.articles.get('how_support') && this.userBookmarks.has(this.articles.get('how_support')._id)
                               ? html`
                                 <img 
@@ -654,9 +654,9 @@ class resourcesExpandedView {
                           </div>
                         
                           <div class="help_support" @click=${this.openDialog}>
-                         <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp" class="help_serv" class="help_services-img">
+                         <img src="/images/mental-health/anxiety/anxiety-when-to-seek-help-360.webp"  class="help_services-img">
         
-                         <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('indigl')?.title || 'Loading...'}</p>
+                         <p style="position: relative; width: 60%; left: 10%;">${this.articles.get('indigl')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('indigl') && this.userBookmarks.has(this.articles.get('indigl')._id)
                               ? html`
                                 <img 
@@ -692,7 +692,7 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="mindset" @click=${this.openDialog}>
-                         <img src="/images/mental-health/anxiety/anxiety-questions-360.webp" class="mindset-services-img">
+                         <img src="/images/resources/services/question_mark.webp" class="mindset-services-img">
         
                               <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('help_serv')?.title || 'Loading...'}</p>
                              ${this.userBookmarks && this.articles.get('help_serv') && this.userBookmarks.has(this.articles.get('help_serv')._id)
@@ -968,7 +968,7 @@ class resourcesExpandedView {
                           </div>
         
                           <div class="mindset" @click=${this.openDialog}>
-                            <img src="/images/mental-health/depression/depression-questions.webp" class="mindset-guides-">
+                            <img src="/images/resources/services/question_mark.webp" class="mindset-guides-">
                             <p style="position: relative; width: 80%; left: 10%;">${this.articles.get('tips_guides')?.title || 'Loading...'}</p>
                               ${this.userBookmarks && this.articles.get('tips_guides') && this.userBookmarks.has(this.articles.get('tips_guides')._id)
                                 ? html`

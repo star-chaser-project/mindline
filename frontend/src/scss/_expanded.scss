@@ -311,13 +311,6 @@ margin-top: 8px;
     cursor: pointer;
 }
 
-ask img {
-    height: 60%;
-    width: 100%;
-    bottom: 0;
-    padding-top: 4rem;
-}
-
 .talk {
     grid-area: top2;
     width: 410px;
@@ -364,6 +357,10 @@ ask img {
     display: flex;
     overflow: hidden;
     cursor: pointer;
+}
+
+.what_support p {
+  text-align: right;
 }
 
 .what-sup-img {
@@ -949,7 +946,7 @@ display: none;
     transform: translate(-50%, -50%);
     border-radius: 35px;
     transition: transform 0.3s ease;
-    top: 65%;    
+    top: 73%;    
     left: 50%;   
   }
   
@@ -972,7 +969,9 @@ display: none;
     border-radius: 35px;
     transition: transform 0.3s ease;
     top: 65%;    
-    left: 50%;   
+    left: 70%; 
+    width: 80%;
+    height: auto;  
   }
   
   .tips_support-img {
@@ -982,8 +981,9 @@ display: none;
     transform: translate(-50%, -50%);
     border-radius: 35px;
     transition: transform 0.3s ease;
-    top: 65%;    
-    left: 50%;   
+    top: 10%;    
+    left: 10%;   
+    transform: scaleX(-1);
   }
   
   .what_support-img {
@@ -993,7 +993,8 @@ display: none;
     transform: translate(-50%, -50%);
     border-radius: 35px;
     transition: transform 0.3s ease;
-    top: 65%;    
+
+    top: 70%;    
     left: 50%; 
     width: 73%;  
   }
@@ -1005,8 +1006,8 @@ display: none;
     transform: translate(-50%, -50%);
     border-radius: 35px;
     transition: transform 0.3s ease;
-    top: 65%;    
-    left: 50%;   
+    top: 50%;    
+    left: 64%;   
   }
   
   .mindset-img {
@@ -1027,8 +1028,8 @@ display: none;
   transform: translate(-50%, -50%);
   border-radius: 35px;
   transition: transform 0.3s ease;
-  top: 65%;    
-  left: 50%;   
+  top: 75%;    
+  left: 55%;   
 }
 
 .talk-services-img {
@@ -1039,8 +1040,9 @@ display: none;
   border-radius: 35px;
   transition: transform 0.3s ease;
   top: 65%;    
-  left: 50%;
+  left: 45%;
   width: 100%;
+  height: auto;   
 }
 
 .how_services-img {
@@ -1062,8 +1064,9 @@ display: none;
   border-radius: 35px;
   transition: transform 0.3s ease;
   top: 65%;    
-  left: 65%; 
-  width: 30%;  
+  left: 70%;   
+  height: 70%;
+  width: auto;
 }
 
 .what_services-img {
@@ -1074,9 +1077,11 @@ display: none;
   border-radius: 35px;
   transition: transform 0.3s ease;
   top: 65%;    
-  left: 50%;   
-  width: 205%;
+  left: 30%;   
+  width: 90%;
+  height: auto;
 }
+
 
 .help_services-img {
   position: absolute;
@@ -1085,8 +1090,10 @@ display: none;
   transform: translate(-50%, -50%);
   border-radius: 35px;
   transition: transform 0.3s ease;
-  top: 65%;    
-  left: 50%;   
+  height: 100% !important;
+      width: auto !important;
+      top: 50% !important;
+      left: 95% !important;
 }
 
 .mindset-services-img {
@@ -1096,8 +1103,10 @@ display: none;
   transform: translate(-50%, -50%);
   border-radius: 35px;
   transition: transform 0.3s ease;
-  top: 65%;    
-  left: 50%;   
+  top: 55%;    
+    left: 50%;  
+    height: 70%;
+    width: auto; 
 }
 
 .ask-guides-img {
@@ -1107,7 +1116,7 @@ display: none;
     transform: translate(-50%, -50%);
     border-radius: 35px;
     transition: transform 0.3s ease;
-    top: 65%;    
+    top: 75%;    
     left: 50%;   
   }
   
@@ -1116,10 +1125,11 @@ display: none;
     z-index: 0;
     object-fit: cover;
     transform: translate(-50%, -50%);
-    border-radius: 35px;
     transition: transform 0.3s ease;
     top: 65%;    
-    left: 50%;   
+    left: 60%;   
+    width: 80%;
+    height: auto;
   }
   
   .how_guides-img {
@@ -1129,10 +1139,10 @@ display: none;
     transform: translate(-50%, -50%);
     border-radius: 35px;
     transition: transform 0.3s ease;
-    top: 65%;    
-    left: 30%;  
-    width: 60%; 
-    padding-top: 4rem;
+    width: 100% !important;
+    height: auto !important;
+    top: 68% !important;
+    left: 50%;
   }
   
   .tips_guides-img {
@@ -1142,9 +1152,10 @@ display: none;
     transform: translate(-50%, -50%);
     border-radius: 35px;
     transition: transform 0.3s ease;
-    top: 65%;    
-    left: 80%;   
-    width: 60%;
+    width: 80% !important;
+      height: auto !important;
+      top: 68% !important;
+      left: 75%;
   }
   
   .what_guides-img {
@@ -1154,10 +1165,10 @@ display: none;
     transform: translate(-50%, -50%);
     border-radius: 35px;
     transition: transform 0.3s ease;
-    top: 65%;    
-    left: 50%;
-    width: 57%;
-    padding-top: 1rem;   
+    width: 80% !important;
+      height: auto !important;
+      top: 68% !important;
+      left: 25%; 
   }
   
   .help_guides-img {
@@ -1168,9 +1179,7 @@ display: none;
     border-radius: 35px;
     transition: transform 0.3s ease;
     top: 65%;    
-    left: 50%;  
-    width: 60%;
-    padding-top: 2rem; 
+    left: 65%;   
   }
   
   .mindset-guides- {
@@ -1180,10 +1189,10 @@ display: none;
     transform: translate(-50%, -50%);
     border-radius: 35px;
     transition: transform 0.3s ease;
-    top: 65%;    
-    left: 64%;
-    padding-top: 2rem;
-    height: 62%;   
+    top: 55%;    
+    left: 50%;  
+    height: 70%;
+    width: auto; 
   }
 
 
@@ -1296,7 +1305,7 @@ sl-dialog::part(body){
 @media screen and (max-width: 767px) {
     .expanded {
       h1 {
-        font-size: 2rem!important;
+        font-size: 2.7rem!important;
       }
     }
   
@@ -1438,7 +1447,51 @@ sl-dialog::part(body){
     .tips_support, .what_support, .help_support {
         margin-top: 217px !important;
     }
+
+    .ask-services-img {
+        top: 80% !important;
+    }
+
+    .talk-services-img {
+      border-radius: 0 !important;
+    }
+
+    .ask-guides-img {
+        top: 80% !important;
+    }
+
+    .talk-guides-img {
+      width: 100% !important;
+      border-radius: 0 !important;
+    }
+
+    .help_services-img {
+      height: 100% !important;
+      width: auto !important;
+      top: 50% !important;
+      left: 90% !important;
+    }
+
+    .how_guides-img {
+      width: 100% !important;
+      height: auto !important;
+      top: 68% !important;
+    }
+
+    .tips_guides-img, .what_guides-img {
+      width: 80% !important;
+      height: auto !important;
+      top: 68% !important;
+    }
+
+    .mindset-guides- {
+      width: 60% !important;
+      height: auto !important;
+      top: 55% !important;
+    }
 }
+
+
 
 @media screen and (max-width: 402px) {
     .stress, .meditation, .support {
@@ -1519,6 +1572,13 @@ sl-dialog::part(body){
     left: 75% !important;
   }
 
+  .talk-services-img {
+    width: 60% !important;
+    height: 80% !important;
+    top: 50% !important;
+    left: 50% !important;
+  }
+
   .guided-med-img, .what_support-img {
     width: 35% !important;
       height: auto !important;
@@ -1550,15 +1610,6 @@ sl-dialog::part(body){
     top: 75% !important;
   }
 
-  .how_supp-img {
-    height: 60%;
-    width: 100%;
-    bottom: 0;
-    padding-top: 5rem;
-    left: 75% !important;
-    top: 75% !important;
-  }
-
   .guided-breath-img, .what_services-img {
     width: 35% !important;
     height: auto !important;
@@ -1578,7 +1629,6 @@ sl-dialog::part(body){
     top: 50% !important;
   }
 
-  
   .triggers-anxiety-img, .physical-breath-img, .tips_services-img {
     left: 75% !important;
     height: 90% !important;
@@ -1599,16 +1649,11 @@ sl-dialog::part(body){
   }
 
   .deal-anxiety-img, .physical-med-img, .why-breath-img, .tips_support-img  {
-    top: 110% !important;
-    left: 75% !important;
+    top: -20% !important;
+    left: 40% !important;
   }
 
-  .talk-services-img{
-    top: 110% !important;
-    left: 75% !important;
-    height: 250% !important;
-    width: auto !important;
-  }
+
 
 
   .stress-depression-img {
@@ -1616,17 +1661,35 @@ sl-dialog::part(body){
     left: 75% !important;
   }
 
-  .why-motivation-img, .talk-guides-img {
+  .why-motivation-img {
     top: 130% !important;
     left: 75% !important;
     width: 30% !important;
     height: auto !important;
   }
 
-  .questions-img, .questions-anxiety-img, .questions-depression-img, .questions-med-img, .questions-breath-img, .questions-motivation-img, .help_support-img, .mindset-services-img, .mindset-guides- {
+  .talk-guides-img {
+    top: 50% !important;
+    left: 85% !important;
+    width: 40% !important;
+    height: auto !important;
+  }
+
+  .talk p {
+    width: 50% !important;
+  }
+
+  .questions-img, .questions-anxiety-img, .questions-depression-img, .questions-med-img, .questions-breath-img, .questions-motivation-img, .help_support-img, .mindset-guides- {
     width: auto !important;
     height: 100% !important;
     left: 90% !important;
+    top: 50% !important;
+  }
+
+  .mindset-services-img, .mindset-guides- {
+    width: auto !important;
+    height: 100% !important;
+    left: 80% !important;
     top: 50% !important;
   }
 
@@ -1653,8 +1716,17 @@ sl-dialog::part(body){
     text-align: left !important;
   }
 
-  .how_support p, .tips_support p, .help_support p, .what_support p {
+  .tips_support p, .help_support p {
     width: 50% !important;
+  }
+
+  .how_support p {
+    width: 50% !important;
+  }
+
+  .what_support p {
+    width: 60% !important;
+    text-align: left !important;
   }
 
 
