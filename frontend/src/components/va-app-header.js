@@ -231,7 +231,7 @@ sl-details::part(base) {
       /* RESPONSIVE - MOBILE --------------------- */
       @media all and (max-width: 768px){       
        .user-menu {
-        margin-right: 0;
+        margin-right: 15px;
     }
         }
     
