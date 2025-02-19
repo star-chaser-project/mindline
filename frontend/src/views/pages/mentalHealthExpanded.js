@@ -16,13 +16,13 @@ class mentalHealthExpandedView {
 
 async fetchArticle(id) {
   try {
-    console.log('Fetching article:', id);
+    //console.log('Fetching article:', id);
     const response = await fetch(`${App.apiBase}/article/${id}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    console.log('Fetched data:', data);
+    //console.log('Fetched data:', data);
     // Store the article id in localStorage
     localStorage.setItem(`article-${id}`, data._id);
     return data;
@@ -41,7 +41,7 @@ async fetchArticle(id) {
           }
         });
         const userData = await response.json();
-        console.log('Fetched user data:', userData);
+        //console.log('Fetched user data:', userData);
         
         if (userData.bookmarkArticle && userData.bookmarkArticle.length > 0) {
           if (userData.bookmarkArticle[0]._id) {
@@ -94,7 +94,7 @@ async fetchArticle(id) {
             const article = await this.fetchArticle(id)
             if (article) {
               this.articles.set(key, article)
-              console.log(`Set ${key} article:`, article)
+              //console.log(`Set ${key} article:`, article)
             }
           })
       )
@@ -199,8 +199,8 @@ async fetchArticle(id) {
   
   
   render(){
-    console.log('Auth.currentUser:', Auth.currentUser);
-    console.log('User bookmarks:', Array.from(this.userBookmarks));
+    //console.log('Auth.currentUser:', Auth.currentUser);
+    //console.log('User bookmarks:', Array.from(this.userBookmarks));
      // Get tab from URL params
     const urlParams = new URLSearchParams(window.location.search);
     const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
@@ -255,7 +255,7 @@ async fetchArticle(id) {
                       <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('why')?._id;
-                          console.log("Bookmarking article ID:", articleId);
+                          //console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>
                         ${this.userBookmarks.has(this.articles.get('why')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -288,7 +288,7 @@ async fetchArticle(id) {
                       <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('deal')?._id;
-                          console.log("Bookmarking article ID:", articleId);
+                          //console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>
                         ${this.userBookmarks.has(this.articles.get('deal')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -318,7 +318,7 @@ async fetchArticle(id) {
                     <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('signs')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}>
                       ${this.userBookmarks.has(this.articles.get('signs')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -350,7 +350,7 @@ async fetchArticle(id) {
                     <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('triggers')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}>
                       ${this.userBookmarks.has(this.articles.get('triggers')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -380,7 +380,7 @@ async fetchArticle(id) {
                     <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('practices')?._id;
-                          console.log("Bookmarking article ID:", articleId);
+                          //console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>
                         ${this.userBookmarks.has(this.articles.get('practices')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -403,7 +403,7 @@ async fetchArticle(id) {
                           >`
                         : ''
                       }
-                    <sl-dialog class="edit-btn" label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('seek')?.bodyContent || 'Loading content...'
                       ? html`${unsafeHTML(this.articles.get('seek')?.bodyContent)}`
@@ -412,7 +412,7 @@ async fetchArticle(id) {
                     <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                         @click=${(e) => {
                           const articleId = this.articles.get('seek')?._id;
-                          console.log("Bookmarking article ID:", articleId);
+                          //console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}>
                         ${this.userBookmarks.has(this.articles.get('seek')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -426,7 +426,7 @@ async fetchArticle(id) {
                       ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
                         ? html`
                           <img 
-                            src="/images/bookmark/bookmark-full.svg" 
+                          src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
                           alt="Bookmark"
@@ -442,7 +442,7 @@ async fetchArticle(id) {
                     <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('questions')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}>
                       ${this.userBookmarks.has(this.articles.get('questions')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -483,7 +483,7 @@ async fetchArticle(id) {
                       <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                       @click=${(e) => {
                         const articleId = this.articles.get('why_anxiety')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}>
                       ${this.userBookmarks.has(this.articles.get('why_anxiety')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -518,7 +518,7 @@ async fetchArticle(id) {
                           variant="primary"
                           @click=${(e) => {
                             const articleId = this.articles.get('deal_anxiety')?._id;
-                            console.log("Bookmarking article ID:", articleId);
+                            //console.log("Bookmarking article ID:", articleId);
                             this.bookmarkArticle(e, articleId);
                           }}
                         >
@@ -556,7 +556,7 @@ async fetchArticle(id) {
                       variant="primary"
                       @click=${(e) => {
                         const articleId = this.articles.get('signs_anxiety')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}
                     >
@@ -596,7 +596,7 @@ async fetchArticle(id) {
                       variant="primary"
                       @click=${(e) => {
                         const articleId = this.articles.get('triggers_anxiety')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}
                     >
@@ -633,7 +633,7 @@ async fetchArticle(id) {
                       variant="primary"
                       @click=${(e) => {
                         const articleId = this.articles.get('practices_anxiety')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}
                     >
@@ -673,7 +673,7 @@ async fetchArticle(id) {
                       variant="primary"
                       @click=${(e) => {
                         const articleId = this.articles.get('seek_anxiety')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}
                     >
@@ -711,7 +711,7 @@ async fetchArticle(id) {
                       variant="primary"
                       @click=${(e) => {
                         const articleId = this.articles.get('questions_anxiety')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}
                     >
@@ -759,7 +759,7 @@ async fetchArticle(id) {
                         variant="primary"
                         @click=${(e) => {
                           const articleId = this.articles.get('why_depression')?._id;
-                          console.log("Bookmarking article ID:", articleId);
+                          //console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}
                       >
@@ -797,7 +797,7 @@ async fetchArticle(id) {
                         variant="primary"
                         @click=${(e) => {
                           const articleId = this.articles.get('deal_depression')?._id;
-                          console.log("Bookmarking article ID:", articleId);
+                          //console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}
                       >
@@ -838,7 +838,7 @@ async fetchArticle(id) {
                       variant="primary"
                       @click=${(e) => {
                         const articleId = this.articles.get('signs_depression')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}
                     >
@@ -878,7 +878,7 @@ async fetchArticle(id) {
                       variant="primary"
                       @click=${(e) => {
                         const articleId = this.articles.get('triggers_depression')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}
                     >
@@ -918,7 +918,7 @@ async fetchArticle(id) {
                       variant="primary"
                       @click=${(e) => {
                         const articleId = this.articles.get('practices_depression')?._id;
-                        console.log("Bookmarking article ID:", articleId);
+                        //console.log("Bookmarking article ID:", articleId);
                         this.bookmarkArticle(e, articleId);
                       }}
                     >
@@ -956,7 +956,7 @@ async fetchArticle(id) {
                         variant="primary"
                         @click=${(e) => {
                           const articleId = this.articles.get('seek_depression')?._id;
-                          console.log("Bookmarking article ID:", articleId);
+                          //console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}
                       >
@@ -992,7 +992,7 @@ async fetchArticle(id) {
                         variant="primary"
                         @click=${(e) => {
                           const articleId = this.articles.get('questions_depression')?._id;
-                          console.log("Bookmarking article ID:", articleId);
+                          //console.log("Bookmarking article ID:", articleId);
                           this.bookmarkArticle(e, articleId);
                         }}
                       >

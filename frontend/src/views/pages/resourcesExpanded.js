@@ -16,13 +16,13 @@ class resourcesExpandedView {
     
     async fetchArticle(id) {
       try {
-        console.log('Fetching article:', id);
+        //console.log('Fetching article:', id);
         const response = await fetch(`${App.apiBase}/article/${id}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log('Fetched data:', data);
+        //console.log('Fetched data:', data);
         // Store the article id in localStorage
         localStorage.setItem(`article-${id}`, data._id);
         return data;
@@ -41,7 +41,7 @@ class resourcesExpandedView {
               }
             });
             const userData = await response.json();
-            console.log('Fetched user data:', userData);
+            //console.log('Fetched user data:', userData);
             
             if (userData.bookmarkArticle && userData.bookmarkArticle.length > 0) {
               if (userData.bookmarkArticle[0]._id) {
@@ -93,7 +93,7 @@ class resourcesExpandedView {
                     const article = await this.fetchArticle(id)
                     if (article) {
                       this.articles.set(key, article)
-                      console.log(`Set ${key} article:`, article)
+                      //console.log(`Set ${key} article:`, article)
                     }
                   })
               )
@@ -197,8 +197,8 @@ class resourcesExpandedView {
     
     
       render(){
-        console.log('Auth.currentUser:', Auth.currentUser);
-        console.log('User bookmarks:', Array.from(this.userBookmarks));
+        //console.log('Auth.currentUser:', Auth.currentUser);
+        //console.log('User bookmarks:', Array.from(this.userBookmarks));
          // Get tab from URL params
         const urlParams = new URLSearchParams(window.location.search);
         const activeTab = urlParams.get('tab') || 'stress'; // default to stress if no tab specified
@@ -251,7 +251,7 @@ class resourcesExpandedView {
                               <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                                 @click=${(e) => {
                                   const articleId = this.articles.get('ask')?._id;
-                                  console.log("Bookmarking article ID:", articleId);
+                                  //console.log("Bookmarking article ID:", articleId);
                                   this.bookmarkArticle(e, articleId);
                                 }}>
                                 ${this.userBookmarks.has(this.articles.get('ask')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -283,7 +283,7 @@ class resourcesExpandedView {
                               <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                                 @click=${(e) => {
                                   const articleId = this.articles.get('talk')?._id;
-                                  console.log("Bookmarking article ID:", articleId);
+                                  //console.log("Bookmarking article ID:", articleId);
                                   this.bookmarkArticle(e, articleId);
                                 }}>
                                 ${this.userBookmarks.has(this.articles.get('talk')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -312,7 +312,7 @@ class resourcesExpandedView {
                             <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
                                 const articleId = this.articles.get('benefits')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}>
                               ${this.userBookmarks.has(this.articles.get('how_support')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -343,7 +343,7 @@ class resourcesExpandedView {
                             <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
                                 const articleId = this.articles.get('tips_support')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}>
                               ${this.userBookmarks.has(this.articles.get('tips_support')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -381,7 +381,7 @@ class resourcesExpandedView {
                             <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                                 @click=${(e) => {
                                   const articleId = this.articles.get('what_support')?._id;
-                                  console.log("Bookmarking article ID:", articleId);
+                                  //console.log("Bookmarking article ID:", articleId);
                                   this.bookmarkArticle(e, articleId);
                                 }}>
                                 ${this.userBookmarks.has(this.articles.get('what_support')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -412,7 +412,7 @@ class resourcesExpandedView {
                             <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                                 @click=${(e) => {
                                   const articleId = this.articles.get('help_support')?._id;
-                                  console.log("Bookmarking article ID:", articleId);
+                                  //console.log("Bookmarking article ID:", articleId);
                                   this.bookmarkArticle(e, articleId);
                                 }}>
                                 ${this.userBookmarks.has(this.articles.get('help_support')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -441,7 +441,7 @@ class resourcesExpandedView {
                             <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
                                 const articleId = this.articles.get('mindset')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}>
                               ${this.userBookmarks.has(this.articles.get('mindset')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -480,7 +480,7 @@ class resourcesExpandedView {
                               <sl-button class="edit-btn hydrated" slot="footer" variant="primary" 
                               @click=${(e) => {
                                 const articleId = this.articles.get('crisis')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}>
                               ${this.userBookmarks.has(this.articles.get('crisis')?._id) ? 'Remove Bookmark' : 'Bookmark'}
@@ -513,7 +513,7 @@ class resourcesExpandedView {
                                   variant="primary"
                                   @click=${(e) => {
                                     const articleId = this.articles.get('kids')?._id;
-                                    console.log("Bookmarking article ID:", articleId);
+                                    //console.log("Bookmarking article ID:", articleId);
                                     this.bookmarkArticle(e, articleId);
                                   }}
                                 >
@@ -550,7 +550,7 @@ class resourcesExpandedView {
                               variant="primary"
                               @click=${(e) => {
                                 const articleId = this.articles.get('mental_serv')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}
                             >
@@ -589,7 +589,7 @@ class resourcesExpandedView {
                               variant="primary"
                               @click=${(e) => {
                                 const articleId = this.articles.get('counsel')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}
                             >
@@ -640,7 +640,7 @@ class resourcesExpandedView {
                               variant="primary"
                               @click=${(e) => {
                                 const articleId = this.articles.get('substance')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}
                             >
@@ -679,7 +679,7 @@ class resourcesExpandedView {
                               variant="primary"
                               @click=${(e) => {
                                 const articleId = this.articles.get('indigl')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}
                             >
@@ -716,7 +716,7 @@ class resourcesExpandedView {
                               variant="primary"
                               @click=${(e) => {
                                 const articleId = this.articles.get('help_serv')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}
                             >
@@ -763,7 +763,7 @@ class resourcesExpandedView {
                                 variant="primary"
                                 @click=${(e) => {
                                   const articleId = this.articles.get('mental_guides')?._id;
-                                  console.log("Bookmarking article ID:", articleId);
+                                  //console.log("Bookmarking article ID:", articleId);
                                   this.bookmarkArticle(e, articleId);
                                 }}
                               >
@@ -800,7 +800,7 @@ class resourcesExpandedView {
                                 variant="primary"
                                 @click=${(e) => {
                                   const articleId = this.articles.get('digital')?._id;
-                                  console.log("Bookmarking article ID:", articleId);
+                                  //console.log("Bookmarking article ID:", articleId);
                                   this.bookmarkArticle(e, articleId);
                                 }}
                               >
@@ -840,7 +840,7 @@ class resourcesExpandedView {
                               variant="primary"
                               @click=${(e) => {
                                 const articleId = this.articles.get('parent')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}
                             >
@@ -879,7 +879,7 @@ class resourcesExpandedView {
                               variant="primary"
                               @click=${(e) => {
                                 const articleId = this.articles.get('depression_guides')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}
                             >
@@ -918,7 +918,7 @@ class resourcesExpandedView {
                               variant="primary"
                               @click=${(e) => {
                                 const articleId = this.articles.get('self')?._id;
-                                console.log("Bookmarking article ID:", articleId);
+                                //console.log("Bookmarking article ID:", articleId);
                                 this.bookmarkArticle(e, articleId);
                               }}
                             >
@@ -955,7 +955,7 @@ class resourcesExpandedView {
                                 variant="primary"
                                 @click=${(e) => {
                                   const articleId = this.articles.get('toolkit')?._id;
-                                  console.log("Bookmarking article ID:", articleId);
+                                  //console.log("Bookmarking article ID:", articleId);
                                   this.bookmarkArticle(e, articleId);
                                 }}
                               >
@@ -990,7 +990,7 @@ class resourcesExpandedView {
                                 variant="primary"
                                 @click=${(e) => {
                                   const articleId = this.articles.get('tips_guides')?._id;
-                                  console.log("Bookmarking article ID:", articleId);
+                                  //console.log("Bookmarking article ID:", articleId);
                                   this.bookmarkArticle(e, articleId);
                                 }}
                               >

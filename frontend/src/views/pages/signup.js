@@ -8,7 +8,7 @@ import Utils from './../../Utils';
 class SignUpView{
    
   init(){      
-    console.log('SignUpView.init');  
+    //console.log('SignUpView.init');  
     document.title = 'Sign up';    
     this.render();
     Utils.pageIntroAnim();
@@ -17,7 +17,7 @@ class SignUpView{
   firstUpdated(){
       super.firstUpdated()
       this.navActiveLinks()
-      console.log('Header initialized with title:', this.title);    
+      //console.log('Header initialized with title:', this.title);    
     }
       signUpSubmitHandler(e){
         e.preventDefault();    
@@ -32,7 +32,7 @@ class SignUpView{
       }
 
   render(){
-    console.log('Auth.currentUser:', Auth.currentUser);
+    //console.log('Auth.currentUser:', Auth.currentUser);
     const template = html`
     ${Auth.isLoggedIn() ? 
       html`<va-app-header user=${JSON.stringify(Auth.currentUser)}></va-app-header>` : 

@@ -12,7 +12,7 @@ customElements.define('va-public-header', class PublicHeader extends LitElement 
   firstUpdated(){
     super.firstUpdated()
     this.navActiveLinks()
-    console.log('Header initialized with title:', this.title);    
+    //console.log('Header initialized with title:', this.title);    
   }
 
   navActiveLinks(){	
