@@ -230,13 +230,10 @@ sl-details::part(base) {
 
       /* RESPONSIVE - MOBILE --------------------- */
       @media all and (max-width: 768px){       
-        
-
-
-        .app-top-nav {
-            display: none;
-        }
+       .user-menu {
+        margin-right: 0;
     }
+        }
     
     .home-logo {
         cursor: pointer;

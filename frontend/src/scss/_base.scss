@@ -1,7 +1,6 @@
 // Base
 @use 'vars' as *;
 
-
 body {
   padding: 0;  
   margin: 0;
@@ -239,7 +238,6 @@ sl-details::part(base) {
 
 .profile-container {
   display: flex;
-  height: 100vh;
 
 .profile-left {
   flex: 1;
@@ -289,12 +287,19 @@ sl-details::part(base) {
     justify-content: center;
     align-items: center;
     padding: 2em;
+    padding-top: 6rem;
   }
  
   
 
   //profile page responsive design
 @media (max-width: 767px) {
+  .profile-left {
+    p {
+      font-size: 1rem;
+      color: white;
+    }
+  }
   .log-profile-left {
     p {
       font-size: 1rem;

@@ -403,7 +403,7 @@ async fetchArticle(id) {
                           >`
                         : ''
                       }
-                    <sl-dialog class="edit-btn" label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
+                    <sl-dialog label="${this.articles.get('seek')?.title}" class="dialog-width" style="--width: 50vw; --height: 60vh;">
                     <div style="white-space: pre-line;">
                     ${this.articles.get('seek')?.bodyContent || 'Loading content...'
                       ? html`${unsafeHTML(this.articles.get('seek')?.bodyContent)}`
@@ -426,7 +426,7 @@ async fetchArticle(id) {
                       ${this.userBookmarks && this.articles.get('questions') && this.userBookmarks.has(this.articles.get('questions')._id)
                         ? html`
                           <img 
-                            src="/images/bookmark/bookmark-full.svg" 
+                          src="/images/bookmark/bookmark-full.svg" 
                           class="bookmark"
                           style="position: absolute; top: -7px; right: 32px; width: 25px; height: 50px; z-index: 9;"
                           alt="Bookmark"
