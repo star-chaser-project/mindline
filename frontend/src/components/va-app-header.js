@@ -289,7 +289,7 @@ sl-details::part(base) {
         </div>
         <br>
         <nav class="app-side-menu-items">
-            ${this.user.accessLevel == 1 ? html`
+            ${(this.user.accessLevel == 1 || !this.user.accessLevel) ? html`
             <a class="menu-static" href="/" @click="${this.menuClick}">Home</a>
             <sl-details>
                 <div slot="summary" class="summary-content">
@@ -440,7 +440,7 @@ sl-details::part(base) {
               e.preventDefault(); 
               Auth.signOut(); 
             }}" class="menu-static">Sign Out</a>
-            ` : ''} ${this.user.accessLevel == 2 ? html`
+             ` : this.user.accessLevel == 2 ? html`
             <a class="menu-static" href="/" @click="${this.menuClick}">Home</a>
             <sl-details>
                 <div slot="summary" class="summary-content">
