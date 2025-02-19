@@ -5,13 +5,13 @@
 // Home page ----------------------------------------------------------------------------------
 .home-page {
   background: var(--background-home);
-.home-bg{
-    background: url('../../static/images/home/home-bg-graphics.svg')  no-repeat center center;
-    background-size: 100%;
-    background-attachment: fixed;
-    padding: 0;
-  }
 
+  .home-bg {
+    background: url('../../static/images/home/home-bg-graphics.svg') no-repeat;
+    background-size: cover;  /* or 'contain' if you prefer */
+    background-position: top center; /* Ensures proper alignment */
+    padding: 0;
+}
 
   .home-banner {
     margin: 5rem auto 0;
@@ -150,6 +150,20 @@
   }
 
   @media (max-width: 768px) {
+    .home-bg{
+      background: url('../../static/images/home/home-bg-graphics.svg')  no-repeat;
+      background-size: 100%;
+      background-attachment: fixed;
+      padding: 0;
+      position: top;
+    }
+    .home-bg{
+      background: url('../../static/images/home/home-bg-graphics.svg')  no-repeat ;
+      background-size: 100%;
+      background-attachment: fixed;
+      padding: 0;
+      position: top;
+    }
     .home-banner {
       background-size: contain;
       background-attachment: scroll;
