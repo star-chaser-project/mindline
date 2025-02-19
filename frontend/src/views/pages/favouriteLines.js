@@ -5,7 +5,7 @@ import Auth from '../../Auth';
 import Utils from '../../Utils';
 import Toast from '../../Toast';
 import UserAPI from '../../UserAPI';
-// Removed unsafeHTML since it's not used
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
 
 class FavouriteLinesView {
   constructor() {
@@ -135,7 +135,9 @@ class FavouriteLinesView {
                           <div class="bookmark-item" @click="${() => this.openArticleDialog(article)}">
                             <h3>${article.title}</h3>
                             <p>
-                              ${article.bodyContent ? article.bodyContent.substring(0, 100) + '...' : ''}
+                              ${article.bodyContent 
+                                ? html`${unsafeHTML(article.bodyContent.substring(0, 200))}${article.bodyContent.length > 200 ? '...' : ''}`
+                                : 'Loading content...'}
                             </p>
                           </div>
                           <sl-button class="edit-btn"  @click="${(e) => this.removeBookmark(e, article._id)}">
